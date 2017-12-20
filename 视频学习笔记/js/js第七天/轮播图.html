@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>轮播图</title>
+	<style>
+	*{margin:0;padding:0;}
+	#wrap{
+		width: 600px;
+		height: 400px;
+		border: 1px solid;
+		margin:0 auto;
+		position: relative;
+		overflow: hidden;
+	}
+	#box img{
+		width: 600px;
+		height: 400px;
+	}
+	ul{
+		list-style: none;
+		/*width: 2400px;*/
+		position: absolute;
+		left: 0;
+		transition:all 1s;
+
+	}
+	ul li{
+		float: left;
+	}
+	#imgLeft{
+		position: absolute;
+		left: 0;
+		top: 150px;
+	}
+	#imgRight{
+		position: absolute;
+		left: 566px;
+		top: 150px;
+	}
+	#circle p{
+		display: inline-block;
+		border:1px solid;
+		/*background-color: grey;*/
+		border-radius: 6px;
+		/*color: white;*/
+		padding: 6px;
+		margin-left: 5px;
+		
+	}
+	#circle{
+		position: absolute;
+		left: 250px;
+		top: 350px;
+	}
+
+
+
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<ul id="box">
+			<li><img src="img/01.jpg" alt=""></li>
+			<li><img src="img/02.jpg" alt=""></li>
+			<li><img src="img/03.jpg" alt=""></li>
+			<li><img src="img/04.jpg" alt=""></li>
+		</ul>
+		<div id="imgLeft"><img src="img/zuo.png" alt=""></div>
+		<div id="imgRight"><img src="img/you.png" alt=""></div>
+		<div id="circle">
+			<p class="active"></p>
+			<p></p>
+			<p></p>
+			<p></p>
+		</div>
+	</div>
+
+	
+	<script>
+		var wrap=document.getElementById('wrap');
+		var box=document.getElementById('box');
+		var lis=box.getElementsByTagName('li');
+		var imgLeft=document.getElementById('imgLeft');
+		var imgRight=document.getElementById('imgRight');
+		var circle=document.getElementById('circle');
+		var ps=circle.getElementsByTagName('p');
+		console.log(lis);
+		var truwidth=lis[0].offsetWidth*lis.length;
+		box.style.width=truwidth+'px';
+		var timer=null;
+		var step=0;
+		
+		move();
+		function move(){
+			timer=setInterval(function(){
+						step++;
+						// console.log(step);
+						if(step>lis.length-1){
+							step=0;
+						}
+						box.style.left=-step*lis[0].offsetWidth+'px';
+						for(var j=0;j<ps.length;j++){
+							if(step==j){
+								ps[j].style.background='red';
+							}else{
+								ps[j].style.background='';
+							}
+
+						}
+					},1500)
+			
+		}
+
+		imgLeft.onclick=function(){
+			// console.log(step);
+			step++;
+			if(step>lis.length-1){
+				step=0;
+			}
+			box.style.left=-step*lis[0].offsetWidth+'px';
+			console.log(step);
+		}
+
+		imgRight.onclick=function(){
+			step--;
+			if(step<=0){
+				step=0;
+			}
+			// console.log(step);
+			box.style.left=step*-lis[0].offsetWidth+'px';
+			
+		}
+
+		wrap.onmouseover=function(){
+			clearInterval(timer);
+
+		}
+		wrap.onmouseout=function(){
+			move();
+
+		}
+
+
+
+
+	</script>
+	
+</body>
+</html>

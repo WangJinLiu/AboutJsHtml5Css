@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件冒泡</title>
+	<style>
+	#div1{
+		width: 100px;
+		height: 100px;
+		background: red;
+
+	}
+	#diva{
+		width: 50px;
+		height: 50px;
+		margin:0 auto;
+		background: pink;
+	}
+
+
+/*冒泡：就是点击这个小div会触发大div和小div两个点击事件，为了解决这个问题就在小的div的最后加上解决冒泡的兼容写法*/
+
+	</style>
+</head>
+<body>
+	<div id="div1">
+		<div id="diva"></div>
+	</div>
+	<script type="text/javascript">
+	var div1=document.getElementById('div1');
+	var diva=document.getElementById('diva');
+
+	div1.onclick=function(obj){
+		console.log(obj);
+		console.log('点击了大盒子');
+		console.log(obj.target,obj.srcElement);
+
+	}
+	diva.onclick=function(obj1){
+		var e=obj1 || window.event;
+		//只要写事件对象就把这句话写上
+		console.log(obj1);
+		console.log('点击了小盒子');
+		console.log(obj1.target,obj1.srcElement);
+		// obj1.cancelBubble=true;//默认false
+		//cancelBubble取消冒泡(ie)
+		// obj1.stopPropagation();这是W3C（非ie）里的
+		//解决冒泡兼容性写法(下边)
+		if(e.stopPropagation){
+			e.stopPropagation();
+		}else{
+			e.cancelBubble = true;
+		}
+
+	}
+
+
+
+	</script>
+	
+</body>
+</html>

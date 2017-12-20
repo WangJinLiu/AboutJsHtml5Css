@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>锅打灰太狼</title>
+	<style>
+    #gameWrap {
+		width: 320px; 
+		height: 480px;
+		box-shadow: 0 0 10px #333;
+		margin: 160px auto 0;
+		background: url(img/game_bg.jpg);
+		transform: scale(1.5);
+		position: relative;
+	}
+	#score
+	{
+		height:45px;
+		line-height: 45px;
+		padding-left: 80px;
+		color: #fff;
+		font-size: 18px;
+		text-shadow: 0 0 2px #000;
+	}
+	#progress
+	{
+		width: 180px;
+		height:16px;
+		position: absolute;
+		left:63px;
+		top:66px;
+		background: url(img/progress.png) 0 0 no-repeat;
+		background-size:180px 16px;
+		border-radius: 15px;
+		display: none; 
+	}
+	#wolfs
+	{
+		position: absolute;
+		left:0px;
+		top:108px;
+	}
+	.grayWolf
+	{
+		background:url(img/grayWolf.png);
+		background-position:0px bottom;  
+	}
+	.redWolf
+	{
+		background:url(img/redWolf.png);
+		background-position:0px bottom;  		
+	}
+	#wolfs div
+	{
+		width: 108px;
+		height:101px;
+		position: absolute;
+		left: 18px;
+		top:52px;
+	}
+	#menu,#gameOver
+	{
+		position: absolute;
+		left:0;
+		right:0;
+		bottom: 32%;
+		text-align: center;
+		font-size: 24px;
+		font-weight:bold;
+		color: #f60;
+		text-shadow: 0 0 5px #ff0;
+
+	}
+	#menu p
+	{
+		cursor: pointer;
+	}
+	#gameOver
+	{
+		width: 100%;
+		height:100%;
+		padding-top: 60%;
+		box-sizing: border-box;
+		bottom: 0;
+		z-index:2;
+		background: rgba(0,0,0,0.3);
+		display:none;
+
+	}
+	</style>
+</head>
+<body>
+	<div id="gameWrap">
+		<div id="score">0</div>
+		<div id="progress"></div>
+		<div id="wolfs">
+			<!-- <div class="redWolf"></div> -->
+		</div>
+		<div id="menu">
+			<p id="start">开始游戏</p>
+			<p id="info">游戏说明</p>
+		</div>
+		<div id="gameOver">
+			<p>游戏结束</p>
+			<p></p>
+		</div>
+	</div>
+	<!-- 首页 index
+	头 head
+	尾 foot
+	大图 banner
+	主题内容 content
+	弹出窗  pop_up
+	二维码 qr_code -->
+	<script type="text/javascript">
+		var wolfBox=document.getElementById('wolfs');
+		var scoreEle=document.getElementById('score');
+		var overLayer=document.getElementById('gameOver');
+		var progress=document.getElementById('progress');
+		var start=document.getElementById('start');
+		var score=0;
+		var timer=null;
+		var pos = [
+			{x: 18,y: 52},
+			{x: 98,y: 8},
+			{x: 186,y: 35},
+			{x: 15,y: 114},
+			{x: 104,y: 84},
+			{x: 200,y: 104},
+			{x: 32,y: 186},
+			{x: 120,y: 166},
+			{x: 208,y: 188}
+		];
+
+		//start绑定事件
+		start.onclick=function(){
+			this.parentNode.style.display='none';
+			progress.style.display='block';
+			gameStart();
+
+		}
+
+		//开始游戏
+		function gameStart(){
+			var index=progress.offsetWidth;
+			timer=setInterval(function(){
+                index-=5;
+                progress.style.backgroundSize=index+"px 16px";
+				createWolf();
+				if (index<0) {
+					clearInterval(timer);
+					overLayer.style.display='block';
+					overLayer.lastElementChild.innerHTML=score;
+				}
+			},2000)
+		}
+
+		//创建狼
+		function createWolf(){
+			var oDiv=document.createElement('div');
+			var num=rand(0,100);
+			oDiv.className=num>85?'redWolf':'grayWolf';
+			oDiv.clicked=false;//创建一个新属性做开关用
+			
+			wolfBox.appendChild(oDiv);
+			wolfPlay(oDiv);
+			oDiv.onclick=function(){
+				if (this.clicked==false) {
+					if (this.className=='grayWolf')	score+=10;
+					if (this.className=='redWolf') 	score-=10;
+					scoreEle.innerHTML=score;
+					// clearInterval(wolf.startimer);
+					hitWolf(this);
+				}
+				this.clicked=true;
+			}
+		}
+
+		//狼的出来和回去
+		function wolfPlay(wolf){
+			var index=rand(0,pos.length);
+			var x=pos[index].x;
+			var y=pos[index].y;
+			var i=0;
+			var n=1;
+			wolf.style.left=x+'px';
+			wolf.style.top=y+'px';
+			clearInterval(wolf.startimer);
+			wolf.startimer=setInterval(function(){
+				wolf.style.backgroundPosition=-108*i+'px';
+				i+=n;
+				if (i==6) {
+					n=-1;
+					i+=n;
+				}
+				if (i<0) {
+					clearInterval(wolf.startimer);
+					if(wolf.className=="redWolf"){
+						score+=10;
+						scoreEle.innerHTML=score;
+					}
+					wolfBox.removeChild(wolf);
+				}
+			},100);
+		}
+
+		//点击特效
+		function hitWolf(wolf){
+			var i=6;
+			clearInterval(wolf.startimer);
+			clearInterval(wolf.endtimer);
+			wolf.endtimer=setInterval(function(){
+				wolf.style.backgroundPosition=-108*i+'px';
+				i++;
+				if (i==10) {
+					clearInterval(wolf.endtimer);
+					wolfBox.removeChild(wolf);
+				}
+			},100);
+		}
+
+		//随机数函数
+		function rand(min,max){
+			return Math.floor(Math.random()*(max-min)+min);
+		}
+	</script>
+</body>
+<html>

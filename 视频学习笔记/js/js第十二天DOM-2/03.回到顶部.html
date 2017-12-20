@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>回到顶部</title>
+	<style type="text/css">
+	*{margin:0;padding:0;}
+	body{position:relative;}
+	body p{
+		position: absolute;
+		bottom: 0;
+		left: 100px;
+
+	}
+	#go_up{
+		position: fixed;
+		bottom: 0;
+		right: 0;
+		width: 100px;
+		height: 100px;
+		background: red;
+		line-height: 100px;
+		text-align: center;
+		cursor: pointer;
+		/*鼠标的位置*/
+		display: none;
+	}
+
+
+
+	</style>
+</head>
+<body style="height:2500px">
+	<p>一嗨到底</p>
+	<div id="go_up">返回顶部</div>
+	<script type="text/javascript">
+		var goBtn=document.getElementById('go_up');
+		bind();
+		//事件绑定
+		function bind()
+		{
+
+			window.onscroll=function()
+			{
+
+				topFn();
+			}
+			goBtn.onclick=function()
+			{
+				goFn();
+			}
+		}
+		//点击返回顶部
+		function goFn()
+		{
+			
+			if(document.documentElement.scrollTop)//true的时候就是代表除了谷歌之外的浏览器支持
+			{
+				document.documentElement.scrollTop=0;
+
+			}else//代表谷歌浏览器支持
+			{
+				document.body.scrollTop=0;
+			}
+
+
+		}
+		//滚动显示
+		function topFn()
+		{
+			var top=document.body.scrollTop||document.documentElement.scrollTop;
+			top>0?goBtn.style.display="block":goBtn.style.display="none";
+
+		}
+
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style media="screen">
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <!-- <div class="box">
+            <img src="" alt="">
+            <div class="price">
+                <div class="price_money"></div>
+                <div class="price_fukuan"></div>
+            </div>
+            <div class="detail"></div>
+            <div class="shop">
+                <div class="shop_title"></div>
+                <div class="shop_addr"></div>
+            </div>
+        </div> -->
+    </div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+    var str = '\
+    [{"img":"img/1.jpg","price":"¥ 208.00","pCount":"543人付款","desc":"包头半拖鞋女夏2017新款穆勒鞋女真皮平底无后跟时尚外穿懒人凉拖","shop":"kozrng鞋类旗舰店","address":"广东 广州"},{"img":"img/2.jpg","price":"¥ 218.00","pCount":"543人付款","desc":"包头半拖鞋女夏2017新款穆勒鞋女真皮平底无后跟时尚外穿懒人凉拖","shop":"kozrng鞋类旗舰店","address":"广东 广州"},{"img":"img/3.jpg","price":"¥ 228.00","pCount":"543人付款","desc":"包头半拖鞋女夏2017新款穆勒鞋女真皮平底无后跟时尚外穿懒人凉拖","shop":"kozrng鞋类旗舰店","address":"\
+    广东 广州"},{"img":"img/4.jpg","price":"¥ 238.00","pCount":"543人付款","desc":"包头半拖鞋女夏2017新款穆勒鞋女真皮平底无后跟时尚外穿懒人凉拖","shop":"kozrng鞋类旗舰店","address":"广东 广州"},{"img":"img/5.jpg","price":"¥ 238.00","pCount":"543人付款","desc":"包头半拖鞋女夏2017新款穆勒鞋女真皮平底无后跟时尚外穿懒人凉拖","shop":"kozrng鞋类旗舰店","address":"广东 广州"},{"img":"img/1.jpg","price":"¥ 238.00","pCount":"543人付款","desc":"包头半拖鞋女夏2017新款穆勒鞋女真皮平底无后跟时尚外穿懒人凉拖","shop":"kozrng鞋类旗舰店","address":"广东 广州"},{"img":"img/2.jpg","price":"¥ 238.00","pCount":"543人付款","desc":"包头半拖鞋女夏2017新款穆勒鞋女真皮平底无后跟时尚外穿懒人凉拖","shop":"kozrng鞋类旗舰店","address":"广东 广州"},{"img":"img/3.jpg","price":"¥ 238.00","pCount":"543人付款","desc":"包头半拖鞋女夏2017新款穆勒鞋女真皮平底无后跟时尚外穿懒人凉拖","shop":"kozrng鞋类旗舰店","address":"广东 广州"},{"img":"img/4.jpg","price":"¥ 238.00","pCount":"543人付款","desc":"包头半拖鞋女夏2017新款穆勒鞋女真皮平底无后跟时尚外穿懒人凉拖","shop":"kozrng鞋类旗舰店","address":"广东 广州"}]';
+    var arr = JSON.parse(str);
+    //创建标签
+    function createGoods(myarr) {
+        $("#wrap").html("");
+        $.each(myarr,function (i,obj) {
+            var box = $("<div>");
+            $("#wrap").append(box);
+            box.addClass("box");
+            var myimg = $("<img>");
+            myimg.attr("src",this.img);
+            box.append(myimg);
+        })
+    }
+    createPage(arr,2);
+    function createPage(myArr,perNum) {
+        var num = Math.ceil(myArr.length / perNum);
+        var ul = $("<ul>");
+        $(document.body).append(ul);
+        for (var i = 0; i < num; i++) {
+            var li = $("<li>");
+            ul.append(li);
+            li.text(i + 1);
+            // li[0].bbbbb = i;
+            li.attr("index",i);
+            li.on("click",function () {
+                console.log(this);
+                //获取它的自定义属性
+                var myIndex = Number($(this).attr("index"));
+                // 封装新的数组
+                createArr(myArr,myIndex,perNum);
+            })
+        }
+    }
+    //
+    function createArr(myArr,myIndex,perNum) {
+        var myNewArr = [];
+        myNewArr = myArr.slice(myIndex*perNum,(myIndex + 1) * perNum);
+        createGoods(myNewArr);
+    }
+    createArr(arr,0,2);
+
+
+</script>
+</html>

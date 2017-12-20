@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>距形</title>
+	<style>
+		#canvas{
+			background-color: grey;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="300" height="300"></canvas>
+	
+</body>
+<script>
+	var canvas=document.getElementById('canvas');
+	var ctx=canvas.getContext("2d");
+	//设置fillStyle属性可以是CSS颜色，渐变，或图案。fillStyle 默认设置是#000000（黑色）。
+	ctx.fillStyle="#FF0000";
+	//fillRect(x,y,width,height) 方法定义了矩形当前的填充方式。
+	ctx.fillRect(0,0,150,75);
+
+	
+</script>
+</html>

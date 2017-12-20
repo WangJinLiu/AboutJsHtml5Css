@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		#wrap{
+			width: 200px;
+			height: 200px;
+			background: red;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="wrap"></div>
+	<script type="text/javascript">
+	//创建一个函数，把标签传入函数并修改其颜色
+	// var wrap=document.getElementById('wrap');
+	// function m(a)
+	// {
+		
+	// 	a.style.background='green';
+	// }
+	// m(wrap);
+	var a=10;
+	var b=1111;
+	var c=a||b;
+	console.log(c);//10
+	// 或语法得到的是为真的那个值（这里边a为真所以就输出啊a了，不看右边的东西了）
+	var a=[2,5,7,9,4,3,2];
+	array(a);
+	console.log(a);
+	//把可变的提出来
+	function array(a)
+	{
+		for(var i=0;i<a.length;i++)
+		{
+			for(var j=0;j<a.length-i-1;j++)
+			{
+				judge(a,j);
+
+			}
+		}
+	}
+	//把未定义的传进来
+	function judge(a,j)
+	{
+		if(a[j]>a[j+1])
+		{
+			var temp=a[j];
+			a[j]=a[j+1];
+			a[j+1]=temp;
+
+		}
+
+	}
+
+
+
+	</script>
+	
+</body>
+</html>

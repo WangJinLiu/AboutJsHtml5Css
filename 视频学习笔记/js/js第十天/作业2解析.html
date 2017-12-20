@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>作业解析2</title>
+	<style>
+		*{margin:0;padding:0;}
+		.par{
+			width: 300px;
+			height: 300px;
+			border: 1px solid;
+			position: relative;
+		}
+		.son{
+			width: 50px;
+			height: 50px;
+			background: red;
+			position: absolute;
+			left: 0;
+			top: 0;
+
+		}
+
+
+
+
+
+	</style>
+</head>
+<!-- B作业：页面有三个button按钮，按第一个按钮div沿着父级DIV内侧边缘顺时针移动，按第二个按钮逆时针移动，页面有几个输入框，其中一个输入框的数字代表运动的圈数，另一个输入框的数字带表运动的速度，当进行完所有的正确输入以后才能按确定按钮，然后div开始运动。如果哪个输入框没有输入数字，那么需要相应的提示。 -->
+<body>
+	<div class="par" id="par">
+		<div class="son" id="son"></div>
+		
+	</div>
+	<input type="button" value="顺时针" class="but01 direc"  >
+	<input type="button" value="逆时针" class="but02 direc">
+	<input type="text" placeholder="速度" class="tex01" id="speed">
+	<input type="text" placeholder="圈数" class="tex02" id="race"><br>
+	<input type="button" value="确定" class="but03" id="sure">
+
+	<script type="text/javascript">
+	var par=document.getElementById('par');
+	var son=document.getElementById('son');
+	var direc=document.querySelectorAll('.direc');
+	var speed=document.getElementById('speed');
+	var sure=document.getElementById('sure');
+	var race=document.getElementById('race');
+	//4个点的坐标
+	//代表顺时针
+	var iTimer00=null;
+	var raceNum=0;
+	var thedir;//代表方向
+	theClick();
+	
+	//确定按钮绑定事件
+	function theClick()
+	{
+		var dir;//方向
+		for(var i=0;i<direc.length;i++)
+		{
+			direc[i].onclick=(function(index)
+			{
+				return function()
+				{
+					thedir=index;
+				}
+
+			})(i)
+
+		}
+		sure.onclick=function()
+		{
+			enter();
+		}
+	}
+	//输入信息函数
+	function enter()
+	{
+		var raceVue=parseInt(race.value);//获取圈数value
+		var speedVue=parseInt(speed.value);//速度value
+		
+		timer(speedVue,raceVue,thedir);
+	}
+	//运动，转圈
+	function move(speed,theraceNum,dir)
+	{
+		if(dir==0)
+		{
+			direction=true;
+		}
+		else{
+			direction=false;
+		}
+		var theleft=son.offsetLeft;
+		var thetop=son.offsetTop;
+		var maxX=par.clientWidth-son.clientWidth;
+		var maxY=par.clientHeight-son.clientHeight;
+		//获取当前的left，top值
+		//代表顺时针运动
+		if(direction&&raceNum<theraceNum)
+		{
+			if(theleft<maxX&&thetop==0)//left<250,top=0向右走
+			{
+				thetop=0;
+				theleft+=speed;
+				if(theleft>=maxX)
+				{
+					theleft=maxX;
+
+				}
+
+			}
+			if(theleft==maxX&&thetop<maxY)//left=250,top<250 向下走
+			{
+				thetop+=speed;
+				if(thetop>=maxY)
+				{
+					thetop=maxY;
+
+				}
+
+			}
+			if(theleft<=maxX&&thetop==maxY)//left<250,top=250 向左走
+			{
+				theleft-=speed;
+				if(theleft<=0)
+				{
+					theleft=0;
+
+				}
+
+			}
+			if(theleft==0&&thetop<=maxY)//left=0 top<250 向上走
+			{
+				thetop-=speed;
+				if(thetop<=0)
+				{
+					thetop=0;
+					raceNum++;
+					console.log(raceNum);
+
+				}
+
+			}
+
+
+		}
+		//逆时针运动
+		else if(!direction&&raceNum<theraceNum)
+		{
+			if(theleft<maxX&&thetop==0)
+			{
+				thetop=0;
+				theleft+=speed;
+				if(theleft>=maxX)
+				{
+					theleft=maxX;
+				}
+			}
+
+		}
+		son.style.left=theleft+'px';
+		son.style.top=thetop+'px';
+
+
+	}
+	//转圈定时器
+	function timer(speed,theraceNum,dir)
+	{
+		clearInterval(iTimer00);
+		iTimer00=setInterval(function()
+		{
+			move(speed,theraceNum,dir);
+		},10)
+	}
+
+
+
+
+
+
+	//获取某个元素当前left值用offsetLeft，为某个元素附left值用style
+	</script>
+</body>
+</html>

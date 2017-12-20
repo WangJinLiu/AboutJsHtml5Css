@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#wrap{
+		width: 100px;
+		height: 200px;
+		background: red;
+	}
+	</style>
+</head>
+<body>
+	<div id="wrap"></div>
+	<script type="text/javascript" src="wheel.js"></script>
+	<script>
+	var wrap=document.getElementById('wrap');
+
+	mousewheel(wrap,function(){
+		wrap.style.background='green';
+	},function(){
+		wrap.style.background='pink';
+
+	})
+	//调用的函数在wheel.js 里面
+	
+	</script>
+</body>
+</html>

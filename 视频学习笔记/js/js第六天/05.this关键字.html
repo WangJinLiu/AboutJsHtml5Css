@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>关键字</title>
+</head>
+<body>
+	<script type="text/javascript">
+
+	//1.在函数体外，this指向window
+		console.log(this.document===document);//treu
+		console.log(this.window===window);//true
+
+		this.a=200;
+		console.log(a);
+	//2.在函数体内部this指向？
+	function fn1(){
+		return this;
+	}
+	console.log(fn1()===window);//true
+	//2.在默认情况下（也就是非严格模式下）this指向全局对象window
+
+	//3.this在对象中指向该对象
+	var obj={
+		prop:37,
+		f:function(){
+			return this.prop;
+		}
+	}
+	console.log(obj.f());//37
+
+
+	//4.谁调用函数，函数中的this指向谁
+	var o={prop:37};
+	function func(){
+		return this.prop;
+	}
+	console.log(func());//undefined
+	o.methed=func;
+	console.log(o.methed());//37（this谁调用指向谁）
+
+	//此时的this关键字指向了o对象，原因：在运行时，method作为o的属性，属性值是func函数，那么o调用了func函数，所以func函数中的this指向o
+
+	//5.this的指向，受最近成员的影响
+	var o={prop:37};//o是对象，o.b代表o对象里的属性名叫b的
+	o.b={
+		g:func,
+		prop:55,
+	}
+	function func(){
+		return this.prop;
+	}
+	console.log(o.b.g());//55
+
+
+	/*this关键字总结：
+		在一个函数中，this总是指向当前函数的所有者对象
+		this总是在运行时才能确定其具体指向，也才能知道他的调用对象。
+		this关键字在函数外：默认值向的是window*/
+	
+
+
+
+
+	</script>
+	
+</body>
+</html>

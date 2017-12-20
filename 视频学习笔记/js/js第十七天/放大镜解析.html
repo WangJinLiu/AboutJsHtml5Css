@@ -1,0 +1,174 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>放大镜解析</title>
+	<style>
+	#wrap{
+		overflow: hidden;
+	}
+		#little{
+			width: 300px;
+			height: 300px;
+			background: url(img/yifu.jpg);
+			float: left;
+			background-size: 300px 300px;
+			position: relative;
+		}
+		#big{
+			float: left;
+			width: 300px;
+			height: 300px;
+			background: url(img/yifu.jpg) no-repeat;
+			background-size: 800px 800px;
+		}
+		#move{
+			width: 100px;
+			height: 100px;
+			background: black;
+			opacity: 0.5;
+			position: absolute;
+			left: 0;
+			top:0;
+			display: none;
+
+		}
+
+
+
+
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="little">
+			<div id="move"></div>
+		</div>
+		<div id="big"></div>
+	</div>
+	<script type="text/javascript">
+		var move=document.getElementById('move');
+		var little=document.getElementById('little');
+		var judge=1;//2.代表方框已经显示了，1代表方框未显示
+		var big=document.getElementById('big');
+		little.onmouseover=function(obj){
+			var e=obj||window.event;
+			if(judge==1){
+				
+				//移入先让move出现
+				move.style.display='block';
+				move.style.left=e.offsetX-50+'px';
+				move.style.top=e.offsetY-50+'px';
+			}
+			judge=2;
+			
+			var X=move.offsetLeft;
+			var Y=move.offsetTop;
+			var bx=e.clientX;
+			var by=e.clientY;
+			little.onmousemove=function(m1){
+				var m=m1||window.event;
+				var nx=m.clientX;
+				var ny=m.clientY;
+				move.style.left=nx-bx+X+'px';
+				move.style.top=ny-by+Y+'px';
+
+			}
+			little.onmouseout=function(){
+				little.onmousemove=null;
+
+
+			}
+		}
+
+
+
+
+
+	</script>
+	
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style media="screen">
+        #wrap{
+
+            overflow: hidden;
+            margin-left: 200px;
+        }
+        #little{
+            float: left;
+            width: 300px;
+            height: 300px;
+            background: url(img/yifu.jpg);
+            position: relative;
+        }
+        #n{
+            display: none;
+            width: 100px;
+            height: 100px;
+            border: 1px solid blue;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        #big{
+            /*float: left;
+            width: 300px;
+            height: 300px;
+            background: url(img/yifu.jpg) no-repeat;
+            background-size: 800px 800px;*/
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="little">
+            <div id="n"></div>
+        </div>
+        <div id="big"></div>
+    </div>
+</body>
+<script type="text/javascript">
+    // 移动
+    var biaoqian = document.querySelector("#n");
+    var little = document.querySelector("#little");
+    var judge = 1; // 2:方框已经显示了，1:方框未显示
+    little.onmouseover = function (ev) {
+
+        var e = ev || window.event;
+        console.log(e.offsetX);
+        if(judge == 1) {
+            biaoqian.style.display = "block";
+            biaoqian.style.left = e.offsetX - 100 + "px";
+            biaoqian.style.top = e.offsetY - 100 + "px";
+        }
+        judge = 2;
+        var offLeft = biaoqian.offsetLeft;
+        var offTop = biaoqian.offsetTop;
+        var currentX = e.clientX;
+        var currentY = e.clientY;
+        document.onmousemove = function (ev) {
+            var e = ev || window.event;
+            var nowX = e.clientX;
+            var nowY = e.clientY;
+            biaoqian.style.left = nowX - currentX + offLeft + "px";
+            biaoqian.style.top = nowY - currentY + offTop + "px";
+            
+            if(e.clientX < little.offsetLeft
+                || e.clientX > little.offsetLeft + little.offsetWidth
+                || e.clientY < little.offsetTop
+                || e.clientY > little.offsetTop + little.offsetHeight) {
+                    judge = 1;
+                    document.onmousemove = null;
+                    biaoqian.style.display = "none";
+                }
+        }
+
+    }
+</script>
+</html>

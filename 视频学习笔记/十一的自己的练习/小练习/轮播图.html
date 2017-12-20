@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>轮播图</title>
+	<style>
+	*{margin: 0;padding: 0}
+		img{
+			width: 500px;
+			height:500px;
+		}
+		#wrap{
+			width: 500px;
+			height: 500px;
+			margin:0 auto;
+			position: relative;
+			border: 1px solid;
+			/*overflow: hidden;*/
+		}
+		#box{
+			font-size: 0;
+			width: 5000px;
+			position: absolute;
+			left: 0;
+			top:0;
+			transition:all 1s;
+
+		}
+		#butBox li{
+			width: 10px;
+			margin-left: 3px;
+			height: 10px;
+			border: 1px solid black;
+			list-style: none;
+			background: white;
+			float: left;
+			border-radius: 50%;
+
+
+		}
+		#butBox{
+			overflow: hidden;
+			width: 150px;
+			height: 15px;
+			position: absolute;
+			left: 160px;
+			top: 450px;
+
+		}
+		#button{
+			width: 100%;
+			height: 50px;
+			position: absolute;
+			left: 0;
+			top: 230px;
+		}
+		#button div{
+			display: inline-block;
+			width: 50px;
+			height: 50px;
+			background: grey;
+
+		}
+		#left{
+			float: left;
+		}
+		#right{
+			float: right;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="box">
+			<img src="img/2.jpg" alt="">
+			<img src="img/3.jpg" alt="">
+			<img src="img/4.jpeg" alt="">
+			<img src="img/5.jpeg" alt="">
+			<img src="img/6.jpeg" alt="">
+			<img src="img/7.jpg" alt="">
+			<img src="img/8.jpeg" alt="">
+			<img src="img/9.jpg" alt="">
+			<img src="img/10.jpeg" alt="">
+		</div>
+		<ul id="butBox">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<div id="button">
+			<div id="left"></div>
+			<div id="right"></div>
+		</div>
+	</div>
+	
+</body>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+	var box=document.getElementById('box');
+	var wrap=document.getElementById('wrap');
+	var img0=document.getElementsByTagName('img')[0];
+	var lis=document.getElementsByTagName("li");
+	var left=document.getElementById("left");
+	var right=document.getElementById("right");
+	lis[0].style.backgroundColor='grey';
+	var index=0;
+	var width=0;
+	var timer=null;
+	move(index);
+	muse();
+	//小圆点变色
+	function changeColor(i){
+		for(var j=0;j<lis.length;j++){
+			lis[j].style.backgroundColor='white';
+		}
+		lis[i].style.backgroundColor='grey';
+
+	}
+	//轮播功能
+	function move(index){
+		width=img0.offsetWidth;
+		clearInterval(timer);
+		timer=setInterval(function(){
+
+			// console.log(img0.offsetWidth);//？？？在里面获取不到img宽度
+			index++;
+			if(index>8){
+				index=0;
+			}
+			if(index<=0){
+				index=0;
+			}
+			
+			box.style.left=-index*width+'px';
+
+			changeColor(index);
+			// console.log(index);
+
+		},2000)	
+		box1(index);
+		click(index);
+
+	}
+	//点击事件
+	function click(index){
+
+		left.onclick=function(){
+			index--;
+			if(index<=0){
+				index=0;
+			}
+			changeColor(index);
+			console.log(index);
+			box.style.left=-index*width+'px';
+			// box1(index);
+			move(index);
+
+		}
+		right.onclick=function(){
+			index++;
+			if(index>8){
+				index=0;
+			}
+			changeColor(index);
+			box.style.left=-index*width+'px';
+			// box1(index);
+			move(index);
+
+		}
+	}
+
+	//wrap添加onmouseover
+	function box1(index){
+		wrap.onmouseover=function(){
+			clearInterval(timer);
+		}
+		wrap.onmouseout=function(){
+			move(index);
+		}
+
+	}
+	//给小圆点添加mouseover，mouseout事件
+	function muse(){
+		for(var i=0;i<lis.length;i++){
+			lis[i].index=i;
+			lis[i].onmouseover=function(){
+				clearInterval(timer);
+				box.style.left=-this.index*width+'px';
+				changeColor(this.index);
+			}
+			lis[i].onmouseout=function(){
+				move(this.index);
+			}
+		}
+	}
+
+	
+
+	
+
+</script>
+</html>

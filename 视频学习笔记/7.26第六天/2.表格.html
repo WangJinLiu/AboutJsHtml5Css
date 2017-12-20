@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表格</title>
+	<style type="text/css">
+		table{
+			border: 1px solid;
+			border-collapse: collapse;
+			/*table 标签下去掉间隙*/
+		}
+		td,th{
+			border: 1px solid;
+			padding: 0;
+			margin: 0;
+		}
+
+	/*
+		表格标签的属性：
+		table标签：至少三层嵌套
+		table分为：thead tbody tfoot
+		tr 行 
+		th 表头中的内容
+		td 单元格
+		th,td最好设计宽高
+
+		colspan 行合并
+		rowspan列合并
+		写法：要求写在行间 colspan/rowspan
+		rowspan="数字"
+		数字代表合并的单元格个数
+		被合并的单元格要删除，不然会跑偏
+
+
+	*/
+
+	</style>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th colspan="2">星期一</th>
+				<!-- <th>星期二</th> -->
+				<th>星期三</th>
+				<th>星期四</th>
+				<th>星期五</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>音乐</td>
+				<td>音乐</td>
+				<td>音乐</td>
+				<td>音乐</td>
+				<td>音乐</td>
+			</tr>
+			<tr>
+				<td>美术</td>
+				<td>美术</td>
+				<td>美术</td>
+				<td>美术</td>
+				<td>美术</td>
+			</tr>
+			<tr>
+				<td rowspan="2">体育</td>
+				<td>体育</td>
+				<td>体育</td>
+				<td>体育</td>
+				<td>体育</td>
+			</tr>
+			<tr>
+				<!-- <td>数学</td> -->
+				<td>数学</td>
+				<td>数学</td>
+				<td>数学</td>
+				<td>数学</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="5">自习</td>
+			</tr>
+		</tfoot>
+	</table>
+</body>
+</html>

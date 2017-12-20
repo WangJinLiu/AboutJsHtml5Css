@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DOM-Dom扩展</title>
+</head>
+<body>
+	<ul id="list">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+	</ul>
+	<button id="btn" onfocus="thefn()">按钮</button>
+	<script type="text/javascript">
+	var list=document.getElementById('list');
+	var lis=list.getElementsByTagName('li');
+	var btn=document.getElementById('btn');
+	console.log(list.childElementCount);//6
+	//childElementCount
+	//只获取元素的个数（不包含空格换行等其他节点）
+	//这一组属性ie9以下不兼容
+	//children		
+	//只获取所有的子元素，但IE9以下会包含注释节点
+	console.log(list.children);//[li, li, li, li, li, li]
+	console.log(list.childNodes);// [text, li, text, li, text, li, text, li, text, li, text, li, text]
+	
+	//firstElementChild
+	//获取第一个子元素，不包含其他节点(空格什么的)，ie9以下不兼容
+	console.log(list.firstElementChild);//<li>1</li>
+
+	//lastElementChild	不包含其他节点(空格什么的)，ie9以下不兼容
+	console.log(list.lastElementChild);//<li>6</li>
+
+	//previousElementSibling	获取当前节点的上一个元素节点ie9以下不兼容（空格回车不是元素节点）
+	console.log(lis[1].previousElementSibling);
+	//nextElementSibling		获取当前节点的下一个元素节点ie9以下不兼容（空格回车不是元素节点）
+	console.log(lis[1].nextElementSibling);
+
+	// btn.onfocus();
+	//代表btn获得焦点
+	// btn.onblur();
+	//代表btn失去焦点
+
+	function thefn()
+	{
+		console.log('获取焦点');
+	}
+	btn.onblur=function()
+	{
+		console.log('失去焦点');
+	}
+	// console.log(document.activeElement);
+	//activeElement代表页面中获取了焦点的元素
+	// innerHTML  和  outerHTML
+	console.log(list.innerHTML);//输出list里所有元素	
+	console.log(list.outerHTML);//输出自身及所有子元素
+
+	
+
+
+
+
+	</script>
+	
+</body>
+</html>

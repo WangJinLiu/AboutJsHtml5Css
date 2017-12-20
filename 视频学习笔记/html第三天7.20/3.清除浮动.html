@@ -1,0 +1,62 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		/*c初始化页面所有的margin和padding*/
+		
+		*{margin: 0;padding:0;}
+		.div1{ 
+			
+			width: 500px;
+			border: 3px solid red;
+
+			}
+			img{
+				float: left;
+				height: 120px;
+				
+			}
+
+
+			</style>
+	</head>
+	<body>
+		<!-- <div style="height:53px;"> 
+			<img src="img/9.png" alt="">
+			<p>
+				你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你
+			</p>
+		</div>-->
+		<!-- 清除浮动方法一：为父级添加高度
+		     原理：为父级手动添加高度，解决父级div无法获取整体高度问题 
+		     优点：代码少，容易理解
+		     缺点：仅限于高度固定的布局，必须给出精确地高度，如果不精确，会导致布局问题。
+		     建议：不得不使用的情况下。
+		     产生的原因：当div中的子元素添加浮动之后就会脱离当前文档流，导致父级div没有内容去撑开高度-->
+		    <!-- <div class="div1">
+				<img src="img/9.png" alt="">
+				<p>
+				你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你
+				</p>
+				<div style="clear:both;"></div>
+			</div>  -->
+			<!-- 清除浮动方法二：在父级结束之前添加一个空的div标签，样式为clear：both；
+			     原理：添加一个空的div标签使用css提供的clear:both的样式方法，清除浮动，让父级能够自动获取内容高度。
+			     优点：浏览器的支持好
+			     缺点：当有大量的浮动的时候时需要添加大量div的空标签，增加代码量
+			     建议：在适当的情况下使用。曾经的主流方法 -->
+			     <div class="div1" style="overflow:hidden;"> 
+				<img src="img/9.png" alt="">
+				<p>
+				你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你好你
+				</p>
+				
+				</div>
+				<!-- 清除浮动方法三：为父级添加overflow：hidden属性
+				     原理：使用overflow：hidden(他也超出部分隐藏)时，浏览器会检查浮动区域的高度。
+				     优点：代码少，浏览器支持好
+				     缺点：不能和position结合使用。如果有超出的部分，会被隐藏
+				     建议：在没有position的情况下使用，或者是对position有深度了解 -->
+	</body>
+</html>

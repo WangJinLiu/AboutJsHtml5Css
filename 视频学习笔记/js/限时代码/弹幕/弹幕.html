@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>弹幕</title>
+	<style>
+		*{margin: 0;padding:0;}
+		.all{
+			width: 600px;
+			height: 400px;
+			background: black;
+			position: relative;
+
+
+		}
+		p{
+			width: 100px;
+			position: absolute;
+			left: 600px;
+			color: white;
+
+		}
+	</style>
+</head>
+<body>
+	<div class="all">
+		<input type="text" placeholder="这是一个弹幕">
+		<button>发送</button>
+	</div>
+</body>
+<script>
+	var all = document.getElementsByClassName('all')[0];
+	var button = document.getElementsByTagName('button')[0];
+	var text = document.getElementsByTagName('input')[0];
+	button.onclick = function () {
+		var p = document.createElement("p");
+		p.innerHTML = text.value;
+		p.style.top = Math.random()*400+'px';
+		all.appendChild(p);
+		//p滚动
+		var timer = setInterval(function(){
+			p.style.left = parseInt(p.offsetLeft)-10+'px';
+			console.log(p.offsetLeft);
+			if(parseInt(p.offsetLeft) <= -100){
+				clearInterval(timer);
+
+
+			}
+
+		},100)
+
+
+	}
+
+</script>
+</html>

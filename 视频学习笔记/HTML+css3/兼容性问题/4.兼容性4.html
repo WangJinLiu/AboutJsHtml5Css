@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			p{
+				width: 100px;
+				height: 100px;
+				background: red;
+				border: 1px solid;
+			}
+			div{
+				border: 1px solid green;
+			}
+		</style>
+	</head>
+	<body>
+	<!--浏览器认为p标签未闭合，前面少了结束标签，后面少了开始表签，
+		注意标签的嵌套规则
+	-->
+		<p>
+			<div></div>
+		</p>
+	</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Baidu注册界面解析</title>
+	<style type="text/css">
+	*{margin:0;padding:0;}
+		#wrap{
+			width: 700px;
+			border: 1px solid;
+			margin: 0 auto;
+
+		}
+
+		.row{
+			overflow: hidden;
+			/*清除浮动*/
+			margin-bottom: 30px;
+
+		}
+		.pre-lable{
+			width: 50px;
+			height: 20px;
+			font-weight: bold;
+			float: left;
+			line-height: 38px;
+			margin-right: 20px;	
+			text-align: right;	
+		}
+		.input{
+			float: left;
+			width: 480px;
+			height: 28px;
+			border: 0.5px solid lightgrey;
+			padding: 5px;
+		}
+		.enter{
+			width: 480px;
+			border: none;
+			outline: none;
+			font-size: 16px;
+		}
+		.userError{
+			color: red;
+
+		}
+
+
+
+
+
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div class="row" >
+			<div class="pre-lable">用户名</div>
+			<div class="input">
+				<input type="text" class="enter">
+			</div>
+			<div class="end-lable">
+				设置后不可更改<br>
+				中英文均可，最长14个英文或7个汉字
+			</div>
+		</div>
+		<div class="row" >
+			<div class="pre-lable">电话号</div>
+			<div class="input">
+				<input type="text" class="enter">
+			</div>
+		</div>
+		<div class="row" >
+			<div class="pre-lable">验证码</div>
+			<div class="input">
+				<input type="text" class="enter">
+			</div>
+		</div>
+		<div class="row" >
+			<div class="pre-lable">密码</div>
+			<div class="input">
+				<input type="text" class="enter">
+			</div>
+		</div>
+		<div id="lawer"></div>
+		<div id="agree"></div>
+	</div>
+	<script type="text/javascript">
+		var rows=document.querySelectorAll('.row');
+		console.log(rows);
+		var firstInput=rows[0].querySelector('.enter');
+		firstInput.onchange=function(){
+			//判断内容是否超出长度
+			var length=this.value.length;
+			if(length>14){
+				//改变框的颜色(获得输入输入框的父标签，并修改样式)
+				this.parentNode.style.border='0.5px solid red';
+				var end=rows[0].querySelector('.end-lable');
+				end.style.display='none';
+				var span=document.createElement('span');
+				span.innerHTML='用户名不能超过7个汉字或14个字符';
+				span.className='userError';
+				rows[0].appendChild(span);
+
+
+
+			}
+
+		}
+		var phoneInput0=rows[1].querySelector('.enter');
+		phoneInput0.onchange=function(){
+			if(checkNumber(this.value)){
+				console.log('都是数字');
+			}
+			else{
+				console.log('有别的符号');
+
+			}
+		}
+		//电话号
+		
+		phoneInput0.oninput=function(){
+			
+			//如果长度超过11位，截取0-10；重新赋值给输入框
+			if(this.value.length>11){
+				var str=this.value.substring(0,11);//从0开始截，截到下标为11位置
+				this.value=str;
+
+			}
+
+		}
+		//验证手机号的正则函数
+		function checkNumber(theObj) {
+	        var reg = /^[0-9]+?[0-9]*$/;
+	        if (reg.test(theObj)) {
+	            return true;
+	        }
+	        return false;
+    	}
+    	var passwordInput=rows[3].querySelector('.enter');
+    	passwordInput.oninput=function(){
+    		//长度
+    		//空格
+    		//简单方法
+    		var arr=this.value.split(' ');
+    		if(arr.length>1){
+
+    		}
+    		//复杂的
+    		for(var i=0;i<this.value.length;i++){
+    			var s=this.value.charAt(i);//charAt是返回制定索引的字符
+    			if(s==' '){
+
+    			}
+    		}
+    		//第三种方法
+    		var index=this.value.indexOf(' ');
+    		if(index>=0){
+    			
+    		}
+    	}
+
+    	// 
+    	pwd.onfocus=function(){
+    		1.查询所有的提示内容
+    		2.让所有的提示内容消失
+    		3.让当前的标签的提示内容显示
+    	}
+    	zhuce.
+
+
+
+
+
+
+	</script>
+</body>
+</html>

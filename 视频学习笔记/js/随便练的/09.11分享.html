@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Date</title>
+	<style>
+	*{margin:0;padding:0;}
+		#wrap{
+			width: 100px;
+			height: 100px;
+			background: red;
+			position: absolute;
+			left: 0px;
+			top: 0;
+		}
+
+
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		
+	</div>
+<script type="text/javascript">
+	var wrap=document.getElementById('wrap');
+	function getStyle(obj,attr) {
+		if(obj.currentStyle){
+			return obj.currentStyle[attr];
+		}else{
+			return getComputedStyle(obj)[attr];
+		}
+
+		
+	}
+	function linearMove(obj,attr,iTarget,speed,h){
+
+		
+
+		clearInterval(obj.timer);
+		obj.timer = setInterval(function(){
+			var attrValue=parseInt(getStyle(obj,attr));
+			console.log(attrValue);//0
+			if(Math.abs(iTarget - attrValue) <= Math.abs(speed)){
+				obj.style[attr] = iTarget + "px";
+			}else{
+				obj.style[attr] = attrValue + speed + 'px';
+			}
+		},h)
+		
+
+	}
+	linearMove(wrap,"left",800,10,20);
+//date
+	// var now=new Date();
+	// console.log(now);
+	// var settime=new Date(2017,8,11,14,10,10);
+	// console.log(settime);
+	// var settime1=new Date('sep 11 2017 14:15:10');
+	// console.log(settime1);
+	// var settime2=new Date('2017/12/11 14:10:10');
+	// console.log(settime2);
+	// var snow=now.getTime();
+	// console.log(snow);
+	// var setf=new Date(1505110543408);
+	// console.log(setf);
+	// var birth=new Date('1995/11/26 14:10:10');
+	// console.log(birth);
+	// var sbirth=birth.getTime();
+	// console.log(sbirth);
+	// var day=Math.ceil((snow-sbirth)/1000/60/60/24);
+	// console.log(day);
+
+//二维数组冒泡
+	// var arr=[1,2,3,4,5];
+	// var arr2=[5,8,6,5,56,1];
+	// var arr3=[arr,arr2];
+	// console.log(arr3);
+	// for(var i=0;i<arr3.length;i++){
+	// 	for(var j=0;j<arr3[i].length-1;j++){
+	// 		for(var k=0;k<arr3[i].length-1-j;k++){
+	// 			if(arr3[i][k]>arr3[i][k+1]){
+	// 				var array=arr3[i][k];
+	// 				arr3[i][k]=arr3[i][k+1];
+	// 				arr3[i][k+1]=array;
+
+	// 			}
+	// 		}
+	// 	}
+	// }
+	// console.log(arr3);
+//匀速运动
+
+	
+
+
+
+</script>
+	
+</body>
+</html>

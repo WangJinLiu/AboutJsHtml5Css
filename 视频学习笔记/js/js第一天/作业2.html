@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>计算器</title>
+	<style>
+		#div1{
+			display: inline-block;
+			width: 30px;
+
+		}
+	
+
+
+	</style>
+</head>
+<body>
+	<input type="text" id="onenumber">
+	
+		
+		<select name="" id="ch">
+			<option value="+" id="jia">加</option>
+			<option value="-" id="jian">减</option>
+			<option value="*" id="cheng">乘</option>
+			<option value="/" id="chu">除</option>
+		</select>
+
+	<input type="text" id="twonumber">=<input type="text" id="lastnumber">
+	<button id="jisuan">计算</botton>
+	<script type="text/javascript">
+		var a=document.getElementById('onenumber');
+		var b=document.getElementById('ch');
+		var c=document.getElementById('twonumber');
+		var d=document.getElementById('lastnumber');
+		var e=document.getElementById('jisuan');
+		e.onclick=function(){
+			var a1=Number(a.value);
+			var c1=Number(c.value);
+			var d1=a1+c1;
+			var d2=a1-c1;
+			var d3=a1*c1;
+			var d4=a1/c1;
+			if(b.value=="+"){d.value=d1}
+			if(b.value=='-'){d.value=d2} 
+			if(b.value=='*'){d.value=d3}
+			if(b.value=='/'){d.value=d4}
+
+
+		}
+
+
+
+
+	</script>
+	
+</body>
+</html>

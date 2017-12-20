@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>刀塔练习</title>
+	<style>
+		#wrap{
+			width: 750px;
+			height: 524px;
+			/*border: 1px solid;*/
+			margin:0 auto;
+		}
+		#boxfirst{
+			width: 750px;
+			height: 40px;
+			background: #3c3c3c;
+		}
+		#divsecond{
+			width: 748px;
+			height: 488px;
+			background: grey;
+		}
+		.box{
+			width: 310px;
+			/*height: 170px;*/
+			border: 1px solid grey;
+			float: left;
+			margin:30px 30px;
+		}
+		.box:hover{
+			border: 1px solid;
+			border-color:blue; 
+		}
+		#boxfirst span{
+			display: inline-block;
+			text-align: center;
+			width: 140px;
+			height: 40px;
+			line-height: 40px;
+			margin-left: 40px;
+			
+		}
+		#boxfirst span:hover{
+			border-bottom:1px solid; 
+			border-color: blue;
+			color: blue;
+		}
+		.box img{
+			width: 310px;
+			height:145px;
+		}
+		.box input{
+			width: 150px;
+			height: 50px;
+			color: white;
+			background: black;
+			margin-left: 90px;
+		}
+
+
+
+
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="boxfirst">
+			<!-- <span></span>
+			<span></span>
+			<span></span>
+			<span></span> -->
+			
+		</div>
+		<div id="divsecond">
+			<!-- <div class="box"></div>
+			<div class="box"></div>
+			<div class="box"></div>
+			<div class="box"></div> -->
+			
+		</div>
+	</div>
+	<script>
+		var s1='[{"title":"官方活动","date":[{"img":"img/1.jpg","state":1,"title":"新战役退出"},{"img":"img/2.jpg","state":2,"title":"神秘商店的夏夜馈赠"},{"img":"img/3.jpg","state":2,"title":"TI7神秘商店开张"},{"img":"img/4.jpg","state":1,"title":"破泞之战退出"}]},{"title":"赛事活动","date":[{"img":"img/download01.jpg","title":"2017国际邀请赛"},{"img":"img/download02.jpg","title":"国际赛预选"},{"img":"img/download03.jpg","title":"国际赛预选报名"},{"img":"img/download04.jpg","title":"国际赛预选观战"}]},{"title":"推广活动","date":[{"img":"img/1.jpg","title":"贴吧电竞"},{"img":"img/2.jpg","title":"联想拯救者"},{"img":"img/3.jpg","title":"京东游戏"},{"img":"img/4.jpg","title":"维他可可"}]},{"title":"商城特选","date":[{"img":"img/download01.jpg","title":"贴吧电竞","content":"无需任何符印即可解析此珍藏，其中内涵的珍宝无与伦比","but":"前往购买"},{"img":"img/2.jpg","title":"联想拯救者","content":"无需任何符印即可解析此珍藏，其中内涵的珍宝无与伦比","but":"来呀来呀前往购买呀"}]}]';
+		var arr=JSON.parse(s1);
+		// console.log(arr);
+		var boxfirst=document.getElementById('boxfirst');
+
+		my(arr);
+		function my(myArr){
+			var divsecond=document.getElementById('divsecond');
+			for(var i=0;i<myArr.length;i++){
+				var span=create('span',boxfirst);
+				span.innerHTML=myArr[i].title;
+				//自定义属性
+				span.aa = myArr[i].date;
+				console.log(span.aa);
+				// var m=myArr[i].date;
+				// 这样写的话只存最后一个date
+				create02(myArr[0].date);
+				span.onmouseover=function(){
+					create02(this.aa,divsecond);
+				}
+			}	
+		}
+		//创建标签
+		function create(name,father,classname){
+			var o=document.createElement(name);
+			o.className=classname;
+			father.appendChild(o);
+			return o;
+
+		}
+		//事件
+		function create02(index){
+			divsecond.innerHTML='';
+			for(var j=0;j<index.length;j++){
+				if(index.length==4){
+					var div0=create('div',divsecond,'box');
+					// div.innerHTML = this.aaa[j].title;
+					var img=create('img',div0);
+					img.src=index[j].img;
+					var div1=create('div',div0);
+					div1.innerHTML=index[j].title;
+				}
+				
+				if(index.length==2){
+					var div0_=create('div',divsecond,'box');
+					// div.innerHTML = this.aaa[j].title;
+					var img_=create('img',div0_);
+					img_.src=index[j].img;
+					var div1_=create('h1',div0_);
+					div1_.innerHTML=index[j].title;
+					var divnew_=create('h3',div0_);
+					divnew_.innerHTML=index[j].content;
+					var butt=create('input',div0_);
+					butt.type='button';
+					butt.value=index[j].but;
+				}
+
+			}
+		}
+
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

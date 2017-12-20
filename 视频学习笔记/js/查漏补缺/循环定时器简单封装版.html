@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>简单定时器简单封装版</title>
+	<style>
+		.a1{
+			width: 200px;
+			height: 200px;
+			background: red;
+			position: absolute;
+			left: 0;
+
+		}
+		.a1:nth-child(1)
+		{
+			top:0;
+		}
+		.a1:nth-child(2)
+		{
+			top:250px;
+			
+		}
+
+
+
+
+
+	</style>
+</head>
+<body>
+	<div class="a1">1</div>
+	<div class="a1">2</div>
+</body>
+<script type="text/javascript">
+	var sa=document.querySelectorAll('.a1');
+	console.log(sa);
+
+	for(var i=0;i<sa.length;i++)
+	{
+		sa[i].onclick=function()
+		{
+			click(this,1000,100,'left');
+			
+		}
+
+	}
+	//m：当前的对象
+	//first
+	//end
+	//direction:方向left，top。bottom，right
+	function click(m,first,end,direction)
+	{
+		var step=first;
+		var dir=first>end?-1:1;
+		var timer=setInterval(function()
+		{
+			step+=dir;
+			m.style[direction]=step+'px';
+			if(dir>0)
+			{
+				if(step>=end)
+				{
+					clearInterval(timer);
+
+				}
+			}
+			else
+			{
+				if(step<=end)
+				{
+					clearInterval(timer);
+
+				}
+			}
+
+
+
+		},10)
+	}
+	
+
+
+
+</script>
+</html>

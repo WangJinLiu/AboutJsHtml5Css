@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>大图滚动Tween版</title>
+		<style type="text/css">
+		*{ 
+			margin: 0;
+			padding: 0 ;
+			list-style:none;
+	    }
+		.btn_mod,.img_mod{
+			width: 400px;
+			margin: 20px auto 0;
+			overflow: hidden;
+		}
+		.btn_mod{
+			padding-left:10px;
+			position: relative; 
+		}
+		.btn_mod div,.btn_mod li{
+			float: left;
+			width: 60px;
+			height: 30px;
+			margin-right:6px;
+			line-height: 30px;
+			text-align: center;
+			font-weight: bold;
+			font-size: 14px;
+			color: #666;
+			background: red;
+			cursor: pointer;
+			outline: none;
+		}
+		.btn_mod .active{
+			background: #999;
+		}
+		.img_mod{ 
+			position: relative; 
+		}
+		.img_mod .scroll{
+			position: absolute;
+			left: 0;
+			right: 0;
+			overflow: hidden;
+		}
+		.img_mod .scroll img{
+			float: left;
+			width: 400px;
+			height: 400px;
+		}
+		.img_mod .scroll,.img_mod{
+			height: 400px;
+		}
+			
+			
+		</style>
+	</head>
+	<body>
+		<div class="btn_mod">
+			<div class="prev">上一页</div>
+			<ul class="btn_list">
+				<li class="active">1</li>
+				<li class="active">2</li>
+				<li class="active">3</li>
+				<li class="active">4</li>
+			</ul>
+			<div class="next">下一页</div>
+		</div>
+		<div class="img_mod">
+			<div class="scroll">
+				<img src="img/img01.jpg"/>
+				<img src="img/img02.jpg"/>
+				<img src="img/img03.jpg"/>
+				<img src="img/img04.jpg"/>
+			</div>
+			
+		</div>
+		<script type="text/javascript" src="js/tween.js"></script>
+		<script type="text/javascript">
+		imgScroll();
+		function  imgScroll()
+		{
+			var btnMod=document.querySelector(".btn_mod");
+			// console.log(btn_Mod);
+			// var btns=document.querySelectorAll(".btn_mod");
+			// console.log(btns);
+			//querySelector获取任意一个标签，可以通过class，id，标签名。得到的是单个的
+			//querySelectorAll获取任意一个或几个，通过class，id，标签名获取到的是某一个个数组
+			var imgMod=document.querySelector(".img_mod");
+			var scrollMod=imgMod.querySelector(".scroll");
+			var imgs=imgMod.querySelectorAll("img");
+			var btns=document.querySelectorAll('.btn_list li');
+			var width=imgMod.offsetWidth;
+			var maxLength=imgs.length;
+			var scrollTimer=null;
+
+			var activeIndex=0;
+			//代表可视区里图片的索引
+			var scrollTimerauto=null;
+			init();
+			
+			scrollMod.style.width=width*maxLength+'px';
+			var theindex=0;
+			
+			//鼠标悬停
+			function mouseover()
+			{
+				imgMod.onmouseover=function()
+				{
+					clearInterval(scrollTimerauto);
+				}
+
+				btnMod.onmouseover=function()
+				{
+					clearInterval(scrollTimerauto);
+				}
+
+			}
+			//鼠标离开
+			function mouseout()
+			{
+				imgMod.onmouseout=function()
+				{
+					auto();
+				}
+				btnMod.onmouseout=function()
+				{
+					auto();
+				}
+
+			}
+			//自动滚动定时器
+			function auto()
+			{
+				clearInterval(scrollTimerauto);
+				scrollTimerauto=setInterval(function()
+				{
+                    theindex++;
+					if(theindex>maxLength-1)
+					{
+						theindex=0;
+					}
+					switchTo(theindex);
+				},2000)
+					
+			}
+			//切换到指定索引的位置
+			// switchTo(3);
+			function switchTo(index)
+			{
+				var t=0;
+				//时间轴里开始的时间
+				var b=scrollMod.offsetLeft;
+				//位置轴里开始的位置 这里指的是初始的left 值
+				var end=-index*width;
+				//目标值(最终的的left值)， 
+				var c=end-b;
+				//变化的量等于目标值减去初始值
+				var d=40;
+				//时间轴的结束 
+				clearInterval(scrollTimer);
+				scrollTimer=setInterval(function()
+				{
+					t++;
+					if(t>=d)
+					{
+						clearInterval(scrollTimer);
+						scrollTimer=null;
+						return;
+						//直接跳出
+					}
+					scrollMod.style.left=Tween.Cubic.easeOut(t,b,c,d)+'px';
+
+
+				},30)
+				activeIndex=index;              //这是后来定义的
+
+
+			}
+			//添加绑定事件
+			function bind()
+			{
+				var next=document.querySelector(".next");
+				var prev=document.querySelector(".prev");
+				next.onclick=function()
+				{
+					nextFn();
+				}
+				prev.onclick=function()
+				{
+					prevFn();
+				}
+				for(var i=0;i<btns.length;i++)
+				{
+					(function(i){
+						btns[i].onclick=function()
+						{
+							switchTo(i);
+						}
+
+					}(i))
+				}
+
+			}
+			 //下一页切换
+			 function nextFn()
+			 {
+			 	var index=activeIndex+1;
+			 	//index代表可视区图片的索引加一
+			 	index=index>maxLength-1?0:index;
+			 	switchTo(index);
+
+			 }
+			 //上一页切换
+			 function prevFn()
+			 {
+			 	var index=activeIndex-1;
+			 	index=index<0?maxLength-1:index;
+			 	switchTo(index);
+			 }
+			 //初始化
+			function init()
+			{
+				bind();
+				auto();
+				mouseover();
+				mouseout();
+
+			}
+			
+
+
+
+		}
+		//js函数调用顺序，1.封装每一个功能函数，2.封装初始化函数 3.在初始化函数里调用每一个功能函数，4.调用初始化函数  5.把所有上述语句封装在一个整体函数里 6.调用这个整体函数
+		//注意：封装的函数永远写在后面
+		
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		</script>
+	</body>
+</html>

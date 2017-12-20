@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>游戏自己练习的</title>
+	<style>
+		.wrap{
+			width: 500px;
+			height:400px;
+			border: 1px solid;
+			margin: 0 auto;
+		}
+		.content{
+			width: 100%;
+			height: 300px;
+			background:#ffd9ec; 
+			position: relative;
+			background-image: url(./img/bac.jpg);
+			background-size: 100% 100%;
+			background-position:0 0; 
+		}
+		.bottom{
+			width: 100%;
+			height: 100px;
+			background: grey;
+		}
+		.man{
+			width: 50px;
+			height: 50px;
+			background: hotpink;
+			position:absolute;
+			left: 0;
+			bottom: 0;	
+		}
+
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="content">
+			<div class="man"></div>
+		</div>
+		<div class="bottom"></div>
+		
+	</div>
+	
+</body>
+<script src="./js/heronew.js"></script>
+<script>
+	var hero=new Hero({
+		element:".man",
+		//定义一个函数时刻监听人物到哪了
+		moveFn:function(){
+			console.log(this);
+			judge(this.element,document.querySelector(".content"));
+
+		}
+
+	})
+	key();
+	function key(){
+		window.onkeydown=function(e){
+			var ev=e||window.event;
+			switch(ev.keyCode){
+				case 65:
+					hero.deriction="left";
+					hero.move();
+					break;
+				case 68:
+					hero.deriction="right";
+					hero.move();
+					break;
+				case 32:
+					hero.jump();
+					break;
+			}
+		}
+		window.onkeyup=function(e){
+			var ev=e||window.event;
+			switch(ev.keyCode){
+				case 65:
+				case 68:
+				// case 32:
+				// 上下动的时候左右也能动
+					hero.stop();
+					break;
+			}
+
+		}
+		
+	}
+	//判断边框不让其出去
+	function judge(son,father){
+		if(son.offsetLeft<=0){
+			son.style.left=0;
+		}
+		if(son.offsetLeft>=300){
+			son.style.left=300+'px';
+			changebac(father);
+		}
+
+
+
+	}
+	//背景图片改变
+	function changebac(ele){
+		var po=getStyle(ele,"backgroundPosition");
+		console.log(po);//string类型
+		var aa=po.replace(/px/g,"");
+		var bb=aa.split(" ");
+		var x=Number(bb[0]);
+		console.log(bb[0]);
+		x-=5;
+		// var x=bb[0];
+		ele.style.backgroundPosition=x+'px 0';
+
+
+	}
+	//获得计算后样式
+	function getStyle(a,cssname){
+		if(a.currentStyle){
+			return a.currentStyle[cssname];
+
+		}else{
+			return getComputedStyle(a,null)[cssname];
+		}
+
+	}
+
+</script>
+</html>

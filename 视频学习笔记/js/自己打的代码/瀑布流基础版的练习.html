@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>瀑布流基础版</title>
+	<style>
+	*{margin: 0;
+		padding: 0;}
+		#box{
+			width: 800px;
+			margin:0 auto;
+			border:1px solid;
+			overflow: hidden;
+		}
+		ul{
+			width: 250px;
+			float: left;
+			margin-left: 10px;
+			border:1px solid;
+			box-sizing:border-box;
+		}
+		li{
+			list-style: none;
+			border:1px solid;
+		}
+
+
+
+
+
+	</style>
+</head>
+<body>
+	<div id="box">
+		<ul></ul>
+		<ul></ul>
+		<ul></ul>
+	</div>
+	<script type="text/javascript">
+		var aUl=document.getElementsByTagName('ul');
+		create();
+		function create()
+		{
+			for(var i=0;i<30;i++)
+			{
+				var li=document.createElement('li');
+				var height=rand(100,300);//随机一个li的高度
+				li.style.height=height+'px';
+				li.innerHTML=i;
+				var arr=[];//定义一个空数组用来存ul的高度
+				var index=0;
+				for(var j=0;j<aUl.length;j++)
+				{
+					arr.push(aUl[j].offsetHeight);
+					var min0=arr[index];
+					if(min0>arr[j])
+					{
+						index=j;
+
+
+					}
+
+
+				}
+				
+				aUl[index].appendChild(li);
+			}
+		}
+
+		//定义一个随机函数
+		function rand(min,max)
+		{
+			return Math.floor(Math.random()*(max-min+1)+min);
+
+		}
+		window.onscroll=function()
+		{
+			var contentHeight=document.documentElement.offsetHeight;
+			//内容高度
+			var scrollTop=document.documentElement.scrollTop||document.body.scrollTop;
+			//滚动条高度
+			var sayHeight=document.documentElement.clientHeight;
+			//可视区高度
+			var big=contentHeight-sayHeight;
+			//最大滚动高度
+			if(scrollTop>=big-300)
+			{
+				create();
+			}
+		}
+
+
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

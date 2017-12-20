@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>02.scrollTop兼容</title>
+</head>
+<body style="height:2000px;width:2000px;">
+<script type="text/javascript">
+	//获取滚动条的高度（就是滚动条距上边的距离）
+	var inElemScrollTop=document.body.scrollTop;
+	// console.log(inElemScrollTop);
+	//获取浏览器的高度
+	var VH=document.documentElement.clientHeight;
+	//获取可视区高度（浏览器）
+	var windowHeight=document.documentElement.clientHeight;
+	console.log(VH); 
+
+	var distance=300;
+	document.body.scrollTop=distance;//这个属性不支持动态更新
+	//scroll 事件（当用户滚动带滚动条的元素中的内容（标签中的页面滚动条也可以用这个事件操作）时，在该元素上触发）
+	window.onscroll=function()
+	{
+		
+		var t=document.body.scrollTop;//document.body.scrollTop只有Chrome支持
+		// console.log(t);
+
+		var t2=document.documentElement.scrollTop;//其他浏览器支持
+		// console.log(t2);
+
+		//兼容写法（获取内容的滚动高度（是正的））
+		var t3=document.body.scrollTop||document.documentElement.scrollTop;
+		console.log(t3);
+
+		var t4=document.body.scrollTop+document.documentElement.scrollTop;
+		console.log(t4);
+
+	}
+	
+
+
+
+
+</script>
+	
+</body>
+</html>

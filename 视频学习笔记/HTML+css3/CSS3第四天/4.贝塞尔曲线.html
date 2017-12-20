@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			article{
+				width: 600px;
+				border: 1px solid;
+			}
+			div{
+				width: 100px;
+				height: 50px;
+				background: greenyellow;
+				border: 1px solid red;
+				position: relative;
+				animation: move 5s infinite;
+			}
+			@keyframes move{
+				from{left:0}
+				to{left:500px}
+			}
+			/*linear：匀速
+			ease:逐渐慢下来
+			ease-out:由快到慢
+			ease-in:由慢到快
+			ease-in-out:慢-快-慢*/
+				 
+				 
+			.div1{
+				animation-timing-function: cubic-bezier(0,0,1,1);
+			}
+			.div2{
+				animation-timing-function: cubic-bezier(.25,.1,.25,1);
+			}
+			.div3{
+				animation-timing-function: cubic-bezier(.42,0,1,1);
+			}
+			.div4{
+				animation-timing-function: cubic-bezier(0,0,.58,1);
+			}
+			.div5{
+				animation-timing-function: cubic-bezier(.42,0,.58,1);
+			}
+			
+		</style>
+	</head>
+	<body>
+		<article>
+			<div class="div1">linear</div>
+			<div class="div2">ease</div>
+			<div class="div3">ease-in</div>
+			<div class="div4">ease-out</div>
+			<div class="div5">ease-in-out</div>
+		</article>
+	</body>
+</html>

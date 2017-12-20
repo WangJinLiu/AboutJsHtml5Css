@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件</title>
+	<style>
+		#a1{
+			width: 100px;
+			height: 100px;
+			background:red;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+
+
+
+
+	</style>
+</head>
+<body>
+	<div id="a1"></div>
+	
+</body>
+<script type="text/javascript">
+	var a1=document.getElementById('a1');
+	// 鼠标点击的过程叫事件对象
+	//所有的事件都是在标签的范围内使用的
+	a1.onmousedown=function(obj)//鼠标点击没放开
+	{
+		// console.log(obj.offsetX);//相对于自己定义的这个标签的x坐标,鼠标相对于事件源元素（srcElement）的X,Y坐标，只有IE事件有这2个属性，标准事件没有对应的属性。
+		// console.log(obj.clientX);//相对于可视区域的X轴坐标
+		// (鼠标相对于浏览器窗口可视区域的X，Y坐标（窗口坐标），可视区域不包括工具栏和滚动条。IE事件和标准事件都定义了这2个属性)
+		// console.log(obj.screenX);//鼠标相对于用户显示器屏幕左上角的X,Y坐标。标准事件和IE事件都定义了这2个属性
+		//e.target(可以捕获当前事件作用的对象)
+		var currentX=obj.clientX;
+		var currentY=obj.clientY;
+		var oL=this.offsetLeft;//获取当前的的left值
+		var oT=this.offsetTop;
+		document.onmousemove=function(m)
+		{
+			var endX=m.clientX-currentX;//要移动的x的距离
+			var endY=m.clientY-currentY;
+			console.log(endX);
+			a1.style.left=endX+oL+'px';
+			a1.style.top=endY+oT+'px';
+
+		}
+		document.onmouseup=function()//鼠标点击放开
+		{
+			document.onmousemove=null;
+		}
+	}
+	
+	
+
+
+
+</script>
+</html>

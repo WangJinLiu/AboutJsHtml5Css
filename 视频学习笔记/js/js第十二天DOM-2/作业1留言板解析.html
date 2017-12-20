@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>留言板</title>
+		<style type="text/css">
+			* { padding: 0; margin: 0; font-size: 14px; }
+			ul { list-style: none; }
+			a,a:hover { text-decoration:none; }
+			a,input,textarea { outline: none; }
+			.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+			.clearfix { display:inline-block; }
+			.clearfix { display:block; }
+			
+			.msg_mod { width: 500px; margin: 20px auto; }
+			.msg_mod .m_box { width: 100%; padding: 10px; border: 1px #ccc solid; border-radius: 3px; background: #f4f4f4; }
+			.msg_mod .m_line { margin-top: 10px; }
+			.msg_mod .m_line .fl { float: left; }
+			.msg_mod .m_line .fr { float: right; }
+			.msg_mod .m_line .font { width: 50px; } 
+			.msg_mod .m_line .input,
+			.msg_mod .m_line .textarea { width: 438px; padding: 0 5px; background: #fff; border: 1px #ccc solid; border-radius: 2px; } 
+			.msg_mod .m_line .font,
+			.msg_mod .m_line .input { height: 30px; line-height: 30px; }
+			.msg_mod .m_line .textarea { height: 120px; padding: 5px 5px; line-height: 16px; }
+			.msg_mod .m_line .submit { width: 60px; height: 30px; line-height: 30px; text-align: center; border: 1px #ccc solid; border-radius: 2px; cursor: pointer; }
+			
+			.msg_mod .m_title { padding-top: 20px; font-size: 20px; }
+			.msg_mod .m_cont { padding-top: 20px; }
+			.msg_mod .m_cont ul li { padding-top: 15px; }
+			.msg_mod .m_cont h3 { width: 100%; height: 30px; padding-left: 20px; line-height: 30px; background: #ccc; }
+			.msg_mod .m_cont p { width: 100%; height: 60px; padding-left: 20px; line-height: 60px; background: #f4f4f4; overflow: scroll; }
+			.msg_mod .m_cont p a { float: right; display: inline; margin-right: 20px; }
+			/*文字强制不换行  white-space:nowrap; overflow:hidden
+			文字省略号  text-overflow:ellipsis; */
+		</style>
+</head>
+<body>
+	<div class="msg_mod">
+		<div class="m_box">
+			<form action="">
+				<div class="m_line clearfix">
+					<span class="f1 font">姓名：</span>
+					<input type="text" value="" class="fr input" id="name">
+				</div>
+				<div class="m_line clearfix">
+					<span class="f1 font">内容：</span>
+					<textarea name="" id="msg" cols="30" rows="10" class="fr textarea"></textarea>
+				</div>
+				<div class="m_line clearfix">
+					<input type="button" value="提交" class="fr submit" id="sub">
+				</div>
+			</form>
+		</div>
+		<h2 class="m_title">显示留言</h2>
+		<div class="m_cont">
+			<ul id="list"></ul>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/tween.js"></script>
+	<script type="text/javascript">
+	nav();
+	function nav()
+	{
+		var name01=document.getElementById('name');
+		var msg=document.getElementById('msg');
+		var submitBtn=document.getElementById('sub');
+		var list=document.getElementById('list');
+		var timer=null;
+		var lock=false;//作用设置开关（让动画执行完毕之前关闭点击事件，不让点）
+
+			//提交留言
+			submitBtn.onclick=function()
+			{
+				if(lock)
+				{
+					console.log(lock);
+					return;
+
+				}
+				else  //条件为假，false
+				{
+					lock=true;
+					var nameVal=name01.value;
+					var msgVal=msg.value;
+					if(nameVal==""||msgVal=="")
+					{
+						alert('都空啦，快输入吧');
+						lock=false;
+						return;
+
+					}
+					else
+					{
+						var li=document.createElement('li');
+						li.innerHTML="<h3>"+nameVal+"</h3><p>"+msgVal+"<a href='#'>删除</a></p>";
+						list.insertBefore(li,list.firstElementChild);
+
+					}
+					removeTtem(li);
+					//开始高度  0
+					//最终高度 li.offsetHeight
+					animation(li.offsetHeight,0,li);
+				}
+				
+			}
+			//删除功能
+			function removeTtem(obj)
+			{
+				var removeBtn=obj.getElementsByTagName('a');
+				removeBtn[0].onclick=function()
+				{
+					
+					animation(0,obj.offsetHeight,obj);
+					// list.removeChild(obj);//执行时间太短了在下面判断一下
+				}
+
+				
+			}
+			//动画效果(text-over)
+			function animation(endNum,bNum,obj)
+			{
+				var t=0;
+				var end=endNum;//最后的高度
+				var b=bNum;//开始的高度
+				var c=end-b;
+				var d=20;
+				timer=setInterval(function()
+				{
+					t++;
+					if(t>=d)
+					{
+						clearInterval(timer);
+						if(endNum==0)//如果删除的时候最后的位置=0时，就可以把li标签删了
+						{
+							list.removeChild(obj);
+							
+						}
+						lock=false;//为了让按钮能点击了
+					}
+
+					obj.style.height=Tween.Quad.easeIn(t,b,c,d)+'px'
+
+				},30)
+			}
+
+		}
+
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

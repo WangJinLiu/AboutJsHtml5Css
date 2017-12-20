@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<p class="wrap"> This is just a test.</p> <p> So is this</p>
+	<p>Hello</p>
+	<div>
+		<span>
+			<span></span>
+		</span>
+	</div>
+	<p>And Again</p>
+	<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+		<script>
+			//  eq(index|-index)
+			// 获取当前链式操作中第N个jQuery对象，返回jQuery对象，当参数大于等于0时为正向选取，比如0代表第一个，1代表第二个。当参数为负数时为反向选取，比如-1为倒数第一个，具体可以看以下示例。 类似的有get(index),不过get(index)返回的是DOM对象。
+		console.log($("p").eq(-1));
+		console.log($("p").first());
+		console.log($("p").last());
+		// hasClass(class)  检查当前的元素是否含有某个特定的类，如果有，则返回true。
+		console.log($("p").hasClass("wrap"));
+		// is(expr|obj|ele|fn)  根据选择器、DOM元素或 jQuery (用if就行)对象来检测匹配元素集合，如果其中至少有一个元素符合这个给定的表达式就返回true。如果没有元素符合，或者表达式无效，都返回'false'
+
+
+		//children([expr])取得一个包含匹配的元素集合中每一个元素的所有子元素的元素集合。可以通过可选的表达式来过滤所匹配的子元素。注意：parents()将查找所有祖辈元素，而children()只考虑子元素而不考虑所有后代元素。(查找DIV中的每个子元素)
+		//find(e|o|e)  搜索所有与指定表达式匹配的元素。这个函数是找出正在处理的元素的后代元素的好方法。 相当于$("div span")
+		console.log($("div").find("span"));
+
+
+
+		</script>
+	
+</body>
+</html>

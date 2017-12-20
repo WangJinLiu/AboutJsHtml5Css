@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="swiper-3.4.2.min.css">
+	<style>
+		.swiper-container{
+			width: 500px;
+			height: 300px;
+			background: red;
+		}
+		img{
+			width: 500px;
+			height: 300px;
+		}
+	</style>
+</head>
+<body>
+	<div class="swiper-container">
+		<div class="swiper-wrapper">
+	        <div class="swiper-slide s"><img src="img/01.jpg" alt=""></div>
+	        <div class="swiper-slide"><img src="img/02.jpg" alt=""></div>
+	        <div class="swiper-slide"><img src="img/03.jpg" alt=""></div>
+	        <div class="swiper-slide"><img src="img/04.jpg" alt=""></div>
+	        <div class="swiper-slide"><img src="img/05.jpg" alt=""></div>
+    	</div>
+    	<div class="swiper-pagination"></div>
+	</div>
+	<!-- 给大的加宽高 -->
+	<div id="btn1">删掉第一个</div>
+</body>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="swiper-3.4.2.jquery.min.js"></script>
+<script src="swiper-3.4.2.min.js"></script>
+<script>
+	var swiper = new Swiper ('.swiper-container',{
+		direction:'horizontal',
+		autoplay: 2000,
+		touchRatio:2,
+		// autoplayDisableOnInteraction : true
+		mousewheelControl : true,
+		pagination : '.swiper-pagination',
+		observer:true,
+		loop:true,
+		// 回调函数，初始化后执行。可选Swiper实例作为参数。
+		// onInit:function(swiper){
+		// 	alert("初始化完成");
+		// }
+		// 函数回调就相当于监听他的状态
+		// 回调函数，当碰触到slider时执行。可选Swiper和touchstart事件作为参数。
+		// onTouchStart:function(swiper,even){
+		// 	console.log(111);
+		// },
+
+		// onSlideChangeStart:function(swiper){
+  //     		// alert(swiper.activeIndex);
+  //   	}
+
+	})
+
+	$('#btn1').click(function(){
+	// $(".swiper-wrapper .s").remove(); 
+	console.log(swiper.activeIndex);
+	console.log(swiper.realIndex);
+
+	})
+	
+</script>
+</html>

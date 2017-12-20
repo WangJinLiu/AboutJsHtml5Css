@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>第四天作业讲解</title>
+</head>
+<body>
+<script type="text/javascript">
+	var arr=['a','b','c','e','h','i','c','a','h','e','b'];
+	// for(var i=0;i<arr.length-1;i++){
+	// 		for(var j=0;j<arr.length-1-i;j++){
+	// 			if(arr[j]>arr[j+1]){
+	// 				var b=0;
+	// 				b=arr[j];
+	// 				arr[j]=arr[j+1];
+	// 				arr[j+1]=b;
+	// 			}
+
+				
+
+	// 		}
+	// 	}
+	// 	console.log(arr);
+	//给字符串从小到大排序
+	arr.sort();//新的排序方法(只能排字符串)
+	console.log(arr);
+	var res=[arr[0]];
+	var res02=[arr[0]];
+	var res03=[arr[0]];
+	for(var i=1;i<arr.length;i++){
+
+		if(arr[i]!=res[res.length-1]){//res.length-1新数组最后一位
+			res.push(arr[i]);
+			//首先得去重，去重就是判断新数组的最后一位是否等于原数组的第i位，若不等写入新数组中，若相等去除新数组中的这个数
+			
+			res02.push(arr[i]);
+			
+			res03.push(arr[i]);
+			
+		}
+		else{
+			res.splice(res.length-1,1);//若相同把res最后一位删了
+			// console.log(res.splice(res.length-1,1));
+
+
+		}
+
+	}
+	console.log(res);//i
+	console.log(res02);//a,b,c,e,h,i
+	console.log(res03 );//a,b,c,e,h,i
+	for(var i=0;i<res02.length;i++){//
+		if(res[0]==res02[i]){//?
+			res02.splice(i,1);
+			
+			res03.splice(i,1);
+			
+			res02.push(res[0]);
+
+
+		}
+
+	}
+	for(var i=res03.length-1;i>=0;i--){//反着取res03中的数据
+
+		res02.push(res03[i]);
+
+	}
+	console.log(res);//取出单独的一个字母
+	console.log(res02);//结果
+	console.log(res03);//重复的数字两个中的一个组成的集合
+
+
+
+
+
+
+</script>
+</body>
+</html>

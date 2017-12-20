@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			margin: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div class="div1">0</div>
+	<div class="div2">1</div>
+	<div class="div3">2</div>
+<script>
+	var a=document.getElementsByTagName('div');
+	var num=0;
+	for(i=0;i<a.length;i++)
+	{
+		a[i].id=i;
+		a[i].onclick=function()
+		{
+
+			// console.log(this.id);
+			// this.innerHTML=this.id;
+			alert(a[this.id].innerHTML);
+
+		}
+
+	}
+</script>
+</body>
+</html>

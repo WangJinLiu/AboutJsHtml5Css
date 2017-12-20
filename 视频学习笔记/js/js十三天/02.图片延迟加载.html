@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片延迟加载</title>
+</head>
+<style>
+	*{margin:0;padding:0;}
+	ul{
+		list-style: none;
+		width: 500px;
+		margin: 0 auto;
+		border: 1px solid red;
+		background-color: blue;
+	}
+	ul li{
+		position: relative;
+		width: 100%;
+		height: 1000px;
+		border: 1px solid green;
+	}
+	ul li img{
+		position: absolute;
+		bottom: 0;
+		width: 500px;
+		height: 500px;
+		border: 1px solid;
+
+	}
+</style>
+<body>
+<ul>
+	
+	<li><img src="img/img01(1).jpg" alt=""></li>
+	<!-- 当是真实写页面时这个src不写东西 -->
+	<li><img src="img/img02(1).jpg" alt=""></li>
+	<li><img src="img/img03(1).jpg" alt=""></li>
+	<li><img src="img/img04(1).jpg" alt=""></li>
+</ul>
+<script type="text/javascript">
+	
+
+	var imgs=document.getElementsByTagName('img');
+	var bodyHeight=document.documentElement.clientHeight;//可视区高度
+	var bodyScroll=document.body.scrollTop||document.documentElement.scrollTop;//滚动高度
+
+	for(var i=0;i<imgs.length;i++)
+	{
+		// var srcVal=imgs[i].src;
+		var scroll=imgs[i].getAttribute("src");//得到img中的src的属性值
+		imgs[i].setAttribute("_src",scroll);//设置一个新属性，_src,里面放的是scroll
+		imgs[i].setAttribute("src","");//然后再设置原来的src的属性值为空
+		console.log(imgs[i].offsetTop);
+		//offsetTop指该元素到它的第一个有定位元素顶端的距离，如果它的每一层父级都没有定位，那么获取到body的距离
+		console.log(imgs[i].offsetParent.offsetParent);
+		//offfsetParent 是获取该元素的第一个有定位的属性父级，如果它的每一层父级都没有定位，那么获取body标签
+		if(getTop(imgs[i])<bodyHeight+bodyScroll)//说明该img标签出现在了可视区里
+		{
+			imgs[i].src=imgs[i].getAttribute("_src");
+		}
+
+
+	}
+	//绑定滚动事件
+	window.onscroll=function()
+	{
+		var bodyScroll=document.body.scrollTop||document.documentElement.scrollTop;//实时滚动高度（每次都重新获取当前的滚动高度）
+
+		for(var i=0;i<imgs.length;i++)
+		{
+			if(getTop(imgs[i])<bodyHeight+bodyScroll)//说明该img标签出现在了可视区里
+			{
+				imgs[i].src=imgs[i].getAttribute("_src");
+			}
+
+		}
+	}
+	//获取绝对offsetTop(标签距body的高度)
+	function getTop(obj)
+	{ 
+		var iTop=0;
+		while(obj)
+		{
+			iTop+=obj.offsetTop;
+			obj=obj.offsetParent;
+
+		}
+		return iTop;
+
+	}
+</script>
+	
+</body>
+</html>

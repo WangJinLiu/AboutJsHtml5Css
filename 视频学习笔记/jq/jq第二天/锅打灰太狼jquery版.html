@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>打灰太狼</title>
+	<style type="text/css">
+	#borderwrap{
+		width: 320px;
+		height: 480px;
+		border: 1px solid;
+		margin: 0 auto;
+		background: url(img/game_bg.jpg);
+		position: relative;
+	}
+	#begin{
+		width: 320px;
+		height: 480px;
+		background: black;
+		left: 0;
+		top: 0;
+		position: absolute;
+		z-index: 3;
+		text-align: center;
+		font-size: 30px;
+		opacity: 0.8;
+	}
+	.graywolf{
+		width: 108px;
+		height: 101px;
+	
+		position: absolute;
+		top: 150px;
+		left: 20px;
+		background: url(img/grayWolf.png) no-repeat;
+		border:1px solid;
+	}
+	.redwolf{
+		width: 108px;
+		height: 101px;
+		/*border: 1px solid;*/
+		position: absolute;
+		top: 150px;
+		left: 20px;
+		background: url(img/redWolf.png) no-repeat;
+	}
+	#progress{
+		position: absolute;
+		left: 63px;
+		top:66px;
+		background: url(img/progress.png) no-repeat;	
+		width: 180px;
+		height: 16px;
+	}
+	.score{
+		position: absolute;
+		left: 60px;
+		top:14px;
+		width: 50px;
+		height: 50px;
+	}
+	#over{
+		width: 320px;
+		height: 480px;
+		background: black;
+		display: none;
+		opacity: 0.5;
+		position: absolute;
+		left: 0;
+		top: 0;
+		z-index: 100;
+		text-align: center;
+		
+		font-size: 30px;
+		color: white;
+		
+	}
+	#start{
+		margin-top: 200px;
+		cursor: pointer;
+		color: white;
+
+	}
+
+
+
+
+	</style>
+</head>
+<body>
+	<div id="borderwrap">
+		
+	<!--<div id="begin">
+			<div id="start">开始游戏</div>
+		</div>
+		<div class="score">0</div>
+		<div id="progress"></div>
+		<!- <div id="box"></div> -->
+		<!-- <div id="over">游戏结束		分数：</div> -->
+	</div>
+	
+</body>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript">
+	// var begin=document.getElementById('begin');
+	// var start=document.getElementById('start');
+	// var borderwrap=document.getElementById('borderwrap');
+	// var progress=document.getElementById('progress');
+	// var score0=document.getElementsByClassName('score')[0];
+	// var over=document.getElementById('over');
+	var begin=$("<div id='begin'>");
+	begin.appendTo("#borderwrap");
+	var start=$("<div id='start'>");
+	start.appendTo(begin);
+	start.text("开始游戏");
+	var score=$("<div>");
+	score.addClass("score");
+	score.appendTo("#borderwrap");
+	score.text("0");
+	var progress=$("<div id='progress'>");
+	progress.appendTo("#borderwrap");
+	// var box=$("<div id='box'>");
+	// box.appendTo("borderwrap");
+	var scorea=0;
+	var arr=[
+		{x: 18,y: 83},
+		{x: 98,y: 38},
+		{x: 186,y: 65},
+		{x: 15,y: 144},
+		{x: 104,y: 114},
+		{x: 200,y: 134},
+		{x: 32,y: 200},
+		{x: 120,y: 186},
+		{x: 208,y: 210},
+	];
+	//给游戏开始添加点击事件
+	start.click(function(){
+		begin.css({
+			display:"none"
+		})
+		startgame();
+		
+	})
+	var timer=null;
+	//游戏开始
+	function startgame(){
+		var index=progress.innerWidth();
+		console.log(index);
+		timer=setInterval(function(){
+			index-=10;
+			// console.log(index);
+			progress.css({
+
+				backgroundSize:index+'px 16px'
+			})
+			if(index==0){
+				clearInterval(timer);
+
+			}
+			createwolf();
+
+		},1000)
+		
+
+
+	}
+
+	//创造狼
+	
+	function createwolf(){
+		
+		var timer2=null;
+		var num=random(0,100);
+		var classname=num>85?"redwolf":"graywolf";
+
+		var divsmallbox=$("<div>");
+		divsmallbox.addClass(classname);
+		divsmallbox.appendTo("#borderwrap");
+		//随机洞口
+		var index=random(0,arr.length-1);
+		divsmallbox.css({
+			left:arr[index].x,
+			top:arr[index].y
+		})
+		//狼的出来和进去
+		move(divsmallbox);
+		//点击事件
+		
+		divsmallbox.click(function(){
+			clearInterval(timer2);
+			// console.log(typeof($(this).attr("class")));
+			var name=$(this).attr("class");
+			if(name=="graywolf"){
+				scorea+=10;
+				console.log(scorea);
+				score.text(scorea);
+
+
+			}else{
+				scorea-=10;
+				score.text(scorea);
+			}
+			//锅出来
+			up(divsmallbox);
+
+		})
+
+	}
+	//随机
+	function random(min,max){
+		return Math.floor(Math.random()*(max-min+1))+min;
+	}
+	//狼的出来和进去
+	function move(divsmallbox){
+		var i=0;
+		var n=1;
+		timer2=setInterval(function(){
+			i+=n;
+			divsmallbox.css({
+				backgroundPosition:-108*i
+			})
+			if(i==5){
+				n=-1;
+
+			}
+
+		},100)
+	}
+	//锅出来
+	function up(divsmallbox){
+		var i=0;
+		var index1=6;
+		clearInterval(timer2);
+		var timer3=setInterval(function(){
+			i++;
+			divsmallbox.css({
+				backgroundPosition:-108*i
+			})
+			if(i==9){
+				clearInterval(timer3);
+				$(divsmallbox).remove();
+
+			}
+		},10)
+	}
+	
+
+
+
+
+</script>
+</html>

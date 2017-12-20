@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+	#wrap{
+		width: 100px;
+		height: 100px;
+		background: red;
+	}
+
+
+
+	</style>
+</head>
+<body>
+	<div id="wrap"></div>
+	<script type="text/javascript">
+	var wrap=document.getElementById('wrap');
+	function m(){
+		console.log(111);
+	}
+	function n(){
+		console.log(222);
+	}
+	addListener(wrap,'click',m,false);
+	addListener(wrap,'click',n,false);
+	//添加的兼容写法
+	function addListener(ele,event,Fn,useCapture){
+		if(ele.addEventListener){
+			ele.addEventListener(event,Fn,useCapture);
+		}else{
+			ele.attachEvent('on'+event,Fn,useCapture);
+		}
+
+	}
+	removeListener(wrap,'click',n,false);
+	//删除的兼容写法
+	function removeListener(ele,event,Fn,useCapture){
+		if(ele.removeEventListener){
+			ele.removeEventListener(event,Fn,useCapture)
+		}else{
+			ele.detachEvent('on'+event,Fn,useCapture);
+		}
+
+	}
+
+
+
+	</script>
+	
+</body>
+</html>

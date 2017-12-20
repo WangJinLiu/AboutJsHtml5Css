@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#wrap{
+		width: 100px;
+		height: 100px;
+		background: red;
+		/*display: none;*/
+	}
+	#go{
+		width: 50px;
+		height:50px;
+		background: green;
+
+	}
+	#stop{
+		width: 50px;
+		height: 50px;
+		background: yellow;
+	}
+	.block{
+		width: 100px;
+		height: 100px;
+		background: red;
+		position: absolute;
+		left: 0;
+	}
+
+
+	</style>
+</head>
+<body>
+	<div id="wrap">123456</div>
+
+	<button id="go">Go</button>
+    <button id="stop">STOP!</button>
+	<div class="block"></div>
+	<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+	<script>
+		//状态改变才会出现这种效果动画执行完才会执行那个函数
+		// 显示隐藏的匹配元素。
+		// 这个就是 'show( speed, [callback] )' 无动画的版本。如果选择的元素是可见的，这个方法将不会改变任何东西。无论这个元素是通过hide()方法隐藏的还是在CSS里设置了display:none;，这个方法都将有效。
+		
+		// fn:在动画完成时执行的函数，每个元素执行一次。
+		// [speed],[easing],[fn]
+
+		// speed:三种预定速度之一的字符串("slow","normal", or "fast")或表示动画时长的毫秒数值(如：1000)
+		// easing:(Optional) 用来指定切换效果，默认是"swing"，可用参数"linear"
+		// fn:在动画完成时执行的函数，每个元素执行一次。
+		//目的： 点击第一次隐藏，点击第二次显示
+		//show([s,[e],[fn]])
+		//hide([s,[e],[fn]])隐藏显示的元素
+		// change();
+		// function change(){
+		// 	var but=$("<input type='button' />");
+		// 	$(document.body).append(but);
+		// 	$(but)[0].judge=true;
+		// 	but.click(function(){
+		// 		if(this.judge){
+		// 			$("#wrap").hide("fast",function(){
+		// 				console.log(111);
+		// 			});
+		// 		}else{
+		// 			$("#wrap").show("fast");
+		// 		}
+		// 		this.judge=!this.judge;
+		// 		// $("#wrap").toggle();
+				
+		// 	})
+		// }
+
+		//  toggle([s],[e],[fn])用于绑定两个或多个事件处理器函数，以响应被选元素的轮流的 click 事件。
+
+		// 滑动改变过程中改变的是高度，但最终改变的还是display
+
+		// slideDown([s],[e],[fn]) 通过高度变化（向下增大）来动态地显示所有匹配的元素，在显示完成后可选地触发一个回调函数。
+		// slideUp([s,[e],[fn]])通过高度变化（向上减小）来动态地隐藏所有匹配的元素，在隐藏完成后可选地触发一个回调函数。
+		// slideToggle([s],[e],[fn])通过高度变化来切换所有匹配元素的可见性，并在切换完成后可选地触发一个回调函数。
+
+		// 淡入淡出改变过程中改变的是透明度，但最终改变的还是display
+
+		// fadeIn([s],[e],[fn]) 通过不透明度的变化来实现所有匹配元素的淡出效果最终改变的还是display，并在动画完成后可选地触发一个回调函数。
+		// test();
+		// function test(){
+		// 	var but=$("<input type='button' />");
+		// 	$(document.body).append(but);
+		// 	but.click(function(){
+		// 		$("#wrap").fadeIn();
+				
+		// 	})
+		// }
+
+		// fadeOut([s],[e],[fn]) 通过不透明度的变化来实现所有匹配元素的淡出效果，并在动画完成后可选地触发一个回调函数。。
+		// test();
+		// function test(){
+		// 	var but=$("<input type='button' />");
+		// 	$(document.body).append(but);
+		// 	but.click(function(){
+		// 		$("#wrap").fadeOut();
+				
+		// 	})
+		// }
+
+		// fadeTo([[s],o,[e],[fn]])  把所有匹配元素的不透明度以渐进方式调整到指定的不透明度，并在动画完成后可选地触发一个回调函数。
+		// test();
+		// function test(){
+		// 	var but=$("<input type='button' />");
+		// 	$(document.body).append(but);
+		// 	but.click(function(){
+		// 		$("#wrap").fadeTo(4000,0.5,function(){
+		// 			console.log(111);
+		// 		});
+				
+		// 	})
+		// }
+
+		// fadeToggle([s,[e],[fn]]) 通过不透明度的变化来开关所有匹配元素的淡入和淡出效果，并在动画完成后可选地触发一个回调函数。
+		// test();
+		// function test(){
+		// 	var but=$("<input type='button' />");
+		// 	$(document.body).append(but);
+		// 	but.click(function(){
+		// 		$("#wrap").fadeToggle();
+				
+		// 	})
+		// }
+
+		// animate(p,[s],[e],[fn])  用于创建自定义动画的函数。  params:一组包含作为动画属性和终值的样式属性和及其值的集合(定位可以用)
+		// test();
+		// function test(){
+		// 	var but=$("<input type='button' />");
+		// 	$(document.body).append(but);
+		// 	but.click(function(){
+		// 		$("#wrap").animate({
+		// 			width:100,
+		// 			height:500
+		// 		},1000);
+				
+		// 	})
+		// }
+
+		//stop([c],[j])  停止所有在指定元素上正在运行的动画。 如果队列中有等待执行的动画(并且clearQueue没有设为true)，他们将被马上执行
+		// clearQueue:如果设置成true，则清空队列。可以立即结束动画。  jumpToEnd:如果设置成true，则完成队列。可以立即完成动画。
+		// $("#go").click(function(){
+		// 	$(".block").animate({
+		// 		left:"500px"
+
+		// 	},1000)
+		// })
+		// $("#stop").click(function(){
+		// 	$(".block").stop();
+		// })
+
+		 // delay(d,[q])  设置一个延时来推迟执行队列中之后的项目。 duration:延时时间，单位：毫秒  queueName:队列名词，默认是Fx，动画队列。
+
+		// test();
+		// function test(){
+		// 	var but=$("<input type='button' />");
+		// 	$(document.body).append(but);
+		// 	but.click(function(){
+		// 		$("#wrap").slideUp(400).delay(1000).fadeIn(800);//jQuery特性链式写法
+				
+		// 	})
+		// }
+
+		// finish([queue])  停止当前正在运行的动画，删除所有排队的动画，并完成匹配元素所有的动画。
+		// 当.finish()在一个元素上被调用，立即停止当前正在运行的动画和所有排队的动画（如果有的话），并且他们的CSS属性设置为它们的目标值（所有动画的目标值）。所有排队的动画将被删除。如果第一个参数提供，该字符串表示的队列中的动画将被停止。
+		// .finish()方法和.stop(true, true)很相似，.stop(true, true)将清除队列，并且目前的动画跳转到其最终值。但是，不同的是，.finish() 会导致所有排队的动画的CSS属性跳转到他们的最终值。
+
+
+
+			
+
+
+		
+		
+	</script>
+</body>
+</html>

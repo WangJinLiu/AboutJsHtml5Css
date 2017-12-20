@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单验证</title>
+	<style>
+	.agepar .sp{
+		display: none;
+
+		}
+	</style>
+</head>
+<body>
+	*<span>姓名</span><input type="text" placeholder='请输入姓名' class="thename must"><br>
+	*<span>年龄</span><input type="text" placeholder='请输入年龄' class="theage must"><br>
+	<div class="agepar">
+		*<span>性别</span>
+		<lable>
+			<input type="radio" id="RadioGroup1_0" name="11" class="sex must" >男
+		</lable>
+		<lable>
+			<input type="radio" id="RadioGroup1_1" name="11" class="sex must">女
+		</lable>
+		<span class="sp">此项为必填</span>
+	</div>
+	<span>地址：</span><input type="text" placeholder="请输入地址" class="adress"><br>
+	<span>邮箱：</span><input type="text" class="email must" placeholder='请输入邮箱'>
+	<input type="button" value="提交" class="but">
+	<script type="text/javascript">
+	var thename=document.querySelector('.thename');
+	var theage=document.querySelector('.theage');
+	var agesex=document.querySelectorAll('.agepar .sex');
+	console.log(agesex);
+	var adress=document.querySelector('.adress');
+	var email=document.querySelector('.email');
+	var but=document.querySelector('.but');
+	var agesp=document.querySelector('.agepar .sp');
+	var iBtn;//开关
+	but.onclick=function()
+	{
+		iBtn=true;
+		butval(thename);
+		butval(theage);
+		butval(email);
+		rad(agesex);
+		if(iBtn)
+		{
+			alert('成功');
+		}
+
+
+	}
+	//判断value
+	function butval(obj)
+	{
+		var pla=obj.placeholder;
+		if(obj.value=='')
+		{
+			obj.placeholder='此项为必填';
+			iBtn=false;
+
+		}
+		obj.onclick=function()
+		{
+			obj.placeholder=pla;
+		}
+
+	}
+	//判断radio
+	function rad(obj)
+	{
+		var num=0;//计数器
+		for(var i=0;i<obj.length;i++)
+		{
+			// if(obj[i].checked==false)
+			// {
+
+				
+
+			// }
+			// else
+			// {
+			// 	num++;
+			// }
+			if(obj[i].checked!=false)
+			{
+				num++;
+			}
+		}
+		if(num==0)
+		{
+			agesp.style.display='block';
+			iBtn=false;
+		}
+		else
+		{
+			agesp.style.display='none';
+		}
+
+
+
+	}
+
+
+
+
+
+
+	</script>
+
+	
+</body>
+</html>
+李梦月  19:01:17
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>打地鼠</title>
+	<style>
+		#gameWrap{
+			width: 320px;
+			height: 480px;
+			background: url(img/game_bg.jpg);
+			box-shadow: 0 0 10px #333;
+			margin: 160px auto 0;
+			transform: scale(1.5);
+		}
+		#score{
+			height: 45px;
+			line-height: 45px;
+			padding-left: 80px;
+			color: #fff;
+			font-size: 18px;
+			text-shadow: 0 0 2px #000;
+		}
+		#progress{
+			width: 180px;
+			height: 16px;
+			position: absolute;
+			left: 63px;
+			top: 66px;
+			background: url(img/progress.png) 0 0 no-repeat;
+			background-size: 180px 16px;
+			border-radius: 15px;
+		}
+		#wolfs{
+			position: absolute;
+			left: 0px;
+			top: 108px;
+		}
+		.grayWolf{
+			background: url(img/grayWolf.png);
+			background-position: 0px bottom;
+		}
+		.redWolf{
+			background: url(img/redWolf.png);
+			background-position: 0px bottom;
+		}
+		#wolfs div{
+			width: 108px;
+			height: 101px;
+			position: absolute;
+			left: 18px;
+			top: 52px;
+		}
+		#menu,#gameOver{
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 32%;
+			text-align: center;
+			font-size: 24px;
+			font-weight: bold;
+			color: #f60;
+			text-shadow: 0 0 5px #ff0; 
+		}
+		#menu p{
+			cursor: pointer;
+		}
+		#gameOver{
+			width: 100%;
+			height: 100%;
+			padding-top: 60%;
+			box-sizing: border-box;
+			bottom: 0;
+			z-index: 2;
+			background: rgba(0,0,0,0.3);
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="gameWrap">
+		<div id="score">0</div>
+		<div id="progress"></div>
+		<div id="wolfs"></div>
+		<div id="menu">
+			<p id="start">开始游戏</p>
+			<p id="info">游戏说明</p>
+		</div>
+		<div id="gameOver">
+			<p>游戏结束</p>
+			<p></p>
+		</div>
+	</div>
+	<script>
+		var wolfBox=document.getElementById('wolfs');
+		var scoreEle=document.getElementById('score');
+		var overLayer=document.getElementById('gameOver');
+		var progress=document.getElementById('progress');
+		var start=document.getElementById('start');
+		var score=0;
+		var pos=[
+			{x: 18,y: 52},
+			{x: 98,y: 8},
+			{x: 186,y: 35},
+			{x: 15,y: 114},
+			{x: 104,y: 84},
+			{x: 200,y: 104},
+			{x: 32,y: 186},
+			{x: 120,y: 166},
+			{x: 208,y: 188}
+		];
+		//start绑定事件
+		start.onclick=function()
+		{
+			this.parentNode.style.display="none";
+			gameStart();
+		}
+		//开始游戏
+		function gameStart()
+		{
+			timer=setInterval(function()
+			{
+				createWolf();
+			},2000)
+		}
+		//创建狼
+		function createWolf()
+		{
+			var oDiv=document.createElement('div');
+			var num=rand(0,100);
+			oDiv.className=num>85?"redWolf":"grayWolf";
+			oDiv.clicked=false;
+			oDiv.onclick=function()
+			{
+				// clearInterval(this.timer);
+				if(this.clicked==false)
+				{
+					if (this.className=="grayWolf") 
+					{
+						score+=10;
+					}
+					if (this.className=="redWolf") 
+					{
+						score-=10;
+					}
+					scoreEle.innerHTML=score;
+					hitWolf(this);
+				}
+				// this.clicked=true;
+			}
+			wolfBox.appendChild(oDiv);
+			wolfPlay(oDiv);
+		}
+		//狼的出现和回去
+		function wolfPlay(wolf)
+		{
+			var index=rand(0,pos.length-1);
+			var x=pos[index].x;
+			var y=pos[index].y;
+			var i=0;
+			var n=1;
+			wolf.style.left=x+'px';
+			wolf.style.top=y+'px';
+
+			wolf.entertimer=setInterval(function()
+				{
+					wolf.style.backgroundPosition=-108*i+'px';
+					i+=n;
+					if (i==6) 
+					{
+						n=-1;
+						i+=n;
+					}
+					if (i<0) 
+					{
+						clearInterval(wolf.entertimer);
+						if (wolf.className=='redWolf') 
+						{
+							score+=10;
+							scoreEle.innerHTML=score;
+						}
+						wolfBox.removeChild(wolf);
+					}
+				},100)
+		}
+		//点击狼时的特效
+		function hitWolf(wolf)
+		{
+			clearInterval(wolf.entertimer);
+			var i=6;
+			wolf.timer=setInterval(function()
+				{
+					wolf.style.backgroundPosition=-108*i+'px';
+					i++;
+					if (i==10) 
+					{
+						wolf.clicked=true;
+						clearInterval(wolf.timer);
+						wolfBox.removeChild(wolf);
+					}
+				},100);
+		}
+		//随机数函数
+		function rand(x,y)
+		{
+			return Math.floor(Math.random()*(y-x)+x);
+		}
+	</script>
+</body>
+</html>
+
+<!-- 首页 index 头 head 尾 foot 大图 banner 主体内容 content 弹出窗 pop_up 二维码 qr_code  -->

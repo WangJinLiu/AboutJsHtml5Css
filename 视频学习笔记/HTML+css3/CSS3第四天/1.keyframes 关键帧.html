@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			/*几乎所有动画都和定位有关*/
+			div{
+				height: 200px;
+				width: 200px;
+				/*background: red;*/
+				position: relative;
+				
+				background:url(img/V.png);
+				animation: move 5s infinite;
+			}
+			@keyframes move{
+				/*from{top:0;left: 0;}*/
+				/*to{ top:0;left: 500px;}*/
+				/*百分比是时间的百分比*/
+				0%{top:0;left: 0;background: red;background:url(img/V.png);}
+				25%{top:0;left: 500px;background: pink;background:url(img/V.png);}
+				50%{top:500px;left: 500px;background: blue;background:url(img/V.png);}
+				75%{top:500px;left: 0px;background: red;background:url(img/V.png);}
+				100%{top:0;left: 0;background: firebrick;border-radius: 50%;background:url(img/V.png);}
+				
+			}
+			/*@keyframes：关键帧
+			  move：动画名称
+			  from：开始值（0%）
+			  to：结束值（100%）
+			  大部分用百分比
+			  
+			 * 
+			 * */
+			
+		</style>
+	</head>
+	<body>
+		<div></div>
+	</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	*{	margin: 0;padding: 0
+
+	}
+		.div1{
+			height: 100px;
+			width: 200px;
+			background-color: red;
+			/*添加一个相对定位（非完全脱离）*/
+
+			position: relative;
+			/*top:100px;*/
+			left: 100px;
+			margin-top: 100px;
+			
+		}
+		.div2{
+			height: 100px;
+			width: 200px;
+			background-color: yellow;
+		}
+	</style>
+</head>
+<body>
+<!-- position:relative 相对定位
+		未完全脱离文档流
+		相对自身原始位置的左上角进行改变 (如果有margin什么的就是改变完的为初始位置)
+		自身位置未发生改变，改变的只是相对位置
+		，自身原始位置依然保留
+		控制偏移量:top/right/bottom/left		
+
+		-->
+	<!-- <div class="div2"></div> -->
+	<div class="div1">
+		
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	for (var i = 0; i <=100; i++) {
+		document.write(i + "<br>");
+
+		
+	};
+</script>

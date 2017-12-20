@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>瀑布流窗口版</title>
+	<style>
+	*{margin: 0;padding:0;}
+		#wrap ul{
+			width: 300px;
+			/*height: 100px;*/
+			border:1px solid;
+			float: left;
+			margin-left: 22px;
+		}
+		#wrap{
+			width: 1000px;
+			border:1px solid;
+			margin: 0 auto;
+			overflow: hidden;
+		}
+		ul li{
+			list-style: none;
+			background: red;
+			margin-top: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<ul class="box"></ul>
+		<ul class="box"></ul>
+		<ul class="box"></ul>
+	</div>
+
+
+	
+	
+</body>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+	function rand(min,max){
+		return Math.floor(Math.random()*(max-min+1))+min;
+
+	}
+	create();
+	function create() {
+		for(var i=0;i<20;i++){
+			var height=rand(80,300);
+			var li=$("<li>");
+			li.height(height);
+			li.text(i);
+			var index=0;
+			for(var j=0;j<$(".box").length;j++){
+				var min=$(".box")[index].offsetHeight;
+				console.log(min);
+				if($(".box")[j].offsetHeight<min){
+					index=j;
+				}
+				
+			}
+			li.appendTo($(".box")[index]);
+
+
+		}
+	}
+	window.onscroll=function(){
+		var m=document.documentElement.scrollTop||document.body.scrollTop||window.pageYOffset;
+		var sayHeight=document.documentElement.clientHeight;
+		var height=document.documentElement.offsetHeight;
+		console.log(height,sayHeight,m);
+		if(m>=height-sayHeight-150){
+			create();
+
+		}
+
+	}
+
+	
+
+</script>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>1.object</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//万事万物皆为对象
+		//创建对象:第一种
+		var obj ={};
+		//为对象添加属性
+		obj.name="无名";
+		obj.age=24;
+		alert(obj.name);
+		alert(obj.age);
+		//删除对象的属性
+		delete obj.name;
+		alert(obj.name);
+		//创建对象的第二种
+		var obj02={};
+		obj02['name']="有名";
+		alert(obj02['name']);
+		alert(obj02.name);
+		// 创建对象：第三种
+		var obj03={};
+		var prop='name';
+		obj03[prop]="李梦月";
+		alert(obj03[prop]);
+		alert(obj03['name']);
+		alert(obj03.name)
+
+		//用中括号的时候，属性名若为变量，不加引号，若是字符串，加引号
+
+		//创建对象第四种  key:value
+		var style={
+			color:"red",
+			width:200,
+			height:200
+		}
+		alert(style.color);
+		alert(style.width);
+		alert(style.height);
+
+		// 等同于
+		// var style{};
+		// style.width=200;
+		// style.height=200;
+		// style.color='red';
+		//对象可以嵌套定义 key:value
+		var a={
+			href:'http://baidu.com',
+			target:'blank',
+			style:{
+				width:200,
+				height:300,
+				color:'red'
+			}
+
+
+		};
+		alert(a.style.width);
+
+
+
+
+
+
+	</script>
+
+	
+</body>
+</html>

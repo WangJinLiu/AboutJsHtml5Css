@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>作业1双色球</title>
+</head>
+<body>
+
+	<p id="result"></p><input type="button" value="随机一注" id="btn">
+	<script type="text/javascript">
+		function randomNumber(x)
+		{
+			return Math.floor(Math.random()*x+1);
+		}
+		var arr00=[];//中奖的号码
+		while(arr00.length!=6){
+			//随机产生数组
+			var num=randomNumber(33);
+			var flag=false;
+			//遍历数组，判断数组是否已经有该数字
+			for(var i=0;i<arr00.length;i++)
+			{
+				if(num==arr00[i])
+				{
+					flag=true;
+					break;
+
+				}
+
+			}
+			//如果没有该数字就添加到数组中
+			if(flag==false)
+			{
+				arr00.push(num);
+			}
+
+		}
+		
+		arr00.push(randomNumber(16));
+		for(var i=0;i<arr00.length;i++)
+		{
+			if(arr00[i]<10)
+			{
+				arr00[i]='0'+arr00[i];
+
+			}
+
+		}
+		console.log(arr00);
+		// console.log(arr);
+		var btn=document.getElementById('btn');
+		btn.onclick=function(){
+
+
+			var arr=[];//中奖的号码
+			while(arr.length!=6){
+			//随机产生数组
+			var num=randomNumber(33);
+			var flag=false;
+			//遍历数组，判断数组是否已经有该数字
+			for(var i=0;i<arr.length;i++)
+			{
+				if(num==arr[i])
+				{
+					flag=true;
+					break;
+
+				}
+
+			}
+			//如果没有该数字就添加到数组中
+			if(flag==false)
+			{
+				arr.push(num);
+			}
+
+		}
+		// console.log(arr);
+		arr.push(randomNumber(16));
+		for(var i=0;i<arr.length;i++)
+		{
+			if(arr[i]<10)
+			{
+				arr[i]='0'+arr[i];
+
+			}
+
+		}
+		console.log(arr);
+		var arr03=arr;
+		var result=document.getElementById('result');
+		result.innerHTML=(result.innerHTML+'<p>'+arr+'</p>');
+
+		var scr=0;//中一个球加一分
+		for(i in arr)
+		{
+			if(arr[i]==arr03[i])
+			{
+				scr++;
+			};
+			if(i=arr.length-2)
+			{
+				if(scr==7)
+				{
+					console.log('1等奖');
+				};
+				if(i==arr.length-2)
+				{
+					if(scr==6&&arr[arr.length-1]!=arr03[arr03.length-1])
+					{
+						console.log('2等奖');
+					}
+	
+					if(scr!=6&&arr[arr.length-1]==arr03[arr03.length-1])
+					{
+							console.log('3等奖');
+					}
+					if(scr!=6&&arr[arr.length-1]!=arr03[arr03.length-1])
+					{
+						console.log('未中奖');
+					}
+				}
+				
+			}
+		}
+
+		}
+
+
+
+
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>cookie的应用</title>
+	<style>
+		#wrap{
+			width:200px;
+			height:200px;
+			border: 1px solid;
+			background: hotpink;
+			margin: 0 auto;
+		}
+
+
+	</style>
+</head>
+<body>
+	<div id="wrap"></div>
+	<!-- <input type="button"> -->
+	<script>
+		var wrap=document.getElementById('wrap');
+		var span=document.createElement('span');
+		span.innerHTML='姓名:';
+		wrap.appendChild(span);
+		
+		var name0=document.createElement('input');
+		wrap.appendChild(name0);
+		var br=document.createElement('br');
+		wrap.appendChild(br);
+		var span1=document.createElement('span');
+		span1.innerHTML='密码:';
+		wrap.appendChild(span1);
+		var password=document.createElement('input');
+		wrap.appendChild(password);
+		var button=document.createElement('input');
+		button.type='button';
+		button.value='注册';
+		button.marginLeft='50px';
+		wrap.appendChild(button);
+		var button1=document.createElement('input');
+		button1.type='button';
+		button1.value="登录";
+		wrap.appendChild(button1);
+		button.onclick=function(){
+			setcookie("name02",name0.value);
+			setcookie("password",password.value);
+		}
+		console.log(document.cookie);
+		button1.onclick=function(){
+			var name02=getcookie("name02");
+			var password0=getcookie("password");
+			if(name02==name0.value&&password0==password.value){
+				alert("登录成功");
+				
+				
+			}else{
+				alert("登录失败");
+			}
+		}
+		
+		
+		
+		
+		//cookie的设置
+		function setcookie(cname,cvalue,exdays){
+			var a=new Date();
+			a.setTime(a.getTime()+(exdays*24*60*60*1000));
+			var expires="expires="+a.toUTCString();
+			document.cookie=cname+"="+cvalue+";"+expires;
+		}
+//		setcookie("age",18);
+//		setcookie("name","王小二");
+//		setcookie("sex","男");
+//		console.log(document.cookie);
+		
+			
+//		//cookie的获得
+		function getcookie(cname){
+			var name=cname+"=";
+			var arr=document.cookie.split(";");
+			for(var i=0;i<arr.length;i++){
+				var c=arr[i].trim();
+				if(c.indexOf(name)==0){
+					return c.substring(name.length,c.length);
+					
+				}
+			}
+			return "";
+			
+		}
+//		var m=getcookie("sex");
+//		console.log(m);
+		
+		
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

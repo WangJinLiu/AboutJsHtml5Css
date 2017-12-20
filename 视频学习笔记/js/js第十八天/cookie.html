@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>cookie</title>
+</head>
+<body>
+	<script>
+	setCookie("name","sun",1);
+	setCookie('spk',100,1);
+	var name=getCookie('name');
+	console.log(name);
+	//设置 cookie 值的函数
+	//cname:将要存储的cooki的名称
+	//cvalue：名称对应的值
+	//exdays：cookie过期时间，天
+	//toUTCString() 根据世界时，把 Date 对象转换为字符串。
+	//getTime()返回 1970 年 1 月 1 日至今的毫秒数,叫时间戳1000毫秒=1s。
+	function setCookie(cname,cvalue,exdays)
+	{
+	  console.log(cname,cvalue,exdays)
+	  var d = new Date();
+	  //创建 Date 对象的语法
+	  // console.log(d);
+	  d.setTime(d.getTime()+(exdays*24*60*60*1000));
+	  // console.log(d.getTime());
+	  var expires = "expires="+d.toUTCString();
+	  // console.log(expires);
+	  document.cookie = cname + "=" + cvalue + "; " + expires;
+	  console.log(cname + "=" + cvalue + "; " + expires);
+	}
+
+	//获取 cookie 值的函数
+	//split(从该参数指定的地方分割 stringObject,该参数可指定返回的数组的最大长度) 方法用于把一个字符串分割成字符串数组。
+	//trim()去掉左右的空格
+	//indexOf() 方法可返回某个指定的字符串值在字符串中首次出现的位置。
+	function getCookie(cname)
+	{
+	  var name = cname + "=";
+	  // console.log(document.cookie);
+	  var ca = document.cookie.split(';');
+	  // console.log(ca);
+	  for(var i=0; i<ca.length; i++) 
+	  {
+	    var c = ca[i].trim();
+	    // console.log(c);
+	    if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+	  }
+	  return "";
+	  //如果没找到就return 空字符串
+	}
+
+
+	</script>
+</body>
+</html>

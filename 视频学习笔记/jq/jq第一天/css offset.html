@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.div1{
+			width: 100px;
+			height: 100px;
+			background: red;
+			margin-left: 100px;
+			/*position: relative;*/
+			/*margin-top: 30px;*/
+
+		}
+		.div2{
+			width: 50px;
+			height: 50px;
+			background: green;
+			position: absolute;
+			left: 30px;
+			/*margin-left: 10px;*/
+
+		}
+		.div0{
+			position: relative;
+			width: 500px;
+			height: 500px;
+			background: yellow;
+			margin-left: 50px;
+			/*overflow: hidden;*/
+			/*border: 1px solid #333;*/
+		/*	padding-top: 30px;*/
+		}
+
+
+	</style>
+</head>
+<body>
+<div class="div0">
+	<div class="div1">
+		<div class="div2"></div>
+	</div>
+</div>	
+	<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+	<script>
+		var p=$(".div2");
+		var offset=p.offset();
+		console.log(offset);//相对于浏览器窗口left40
+		var m=$(".div2");
+		var position0=m.position();
+		console.log(position0);//left30相对于父级
+	// （父级有定位，自身有定位，是相对于父级的值；父级没定位，自身有定位，是相对于有定位的父级；父级没定位，自身没定位，是父级相对于有定位的父级）
+		//position不能设置
+
+
+
+
+	</script>
+</body>
+</html>

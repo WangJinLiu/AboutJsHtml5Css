@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	*{
+		margin: 0;padding: 0;
+	}
+		div{
+			width: 120px;
+			border: 2px solid red;
+			margin-top: 100px;
+			position: relative;																																																	
+		}
+		img{
+			width: 120px;
+		}
+		p{
+			color: yellow;
+			position: absolute;
+			top:50px;
+		}
+
+
+	</style>
+</head>
+<body>
+	<!-- 
+		绝对定位必须要找一个参照物，依次向其上一级或者上上级查找是否有定位，如果有定位，则按照该标签的左上角为参照点，如果其上级均没有定位，则以body（页面）的左上角为参照点
+
+		绝对定位：完全脱离文档流，原来位置不再占用
+
+	 -->
+	<div >
+		<img src="img/erweima.png" alt="">
+		<p>这是一张二维码</p>
+	</div>
+	
+</body>
+</html>

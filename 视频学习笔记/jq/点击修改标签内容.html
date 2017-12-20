@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>点击修改bia</title>
+	<style>
+		#wrap{
+			width: 200px;
+			height: 200px;
+			border:1px solid;
+		}
+		#change{
+			display: none;
+		}
+		
+
+
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div class="name">名字</div>
+		<div class="tel">电话</div>
+	</div>
+	<div id="change">
+		名字：<input type="text" id="name">
+		<input type="text" id="pwd">
+		<input type="button" value="确定">
+	</div>
+	
+</body>
+<script>
+	var wrap=document.getElementById('wrap');
+	var change=document.getElementById('change');
+	wrap.onclick=function(){
+		this.style.display='none';
+		change.style.display='block'
+	}
+
+</script>
+
+</html>
+
+<!-- window.onresize -->

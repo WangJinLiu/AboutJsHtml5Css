@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>网站来回撞动的广告图片</title>
+
+
+<!--
+1.现有一个div图片，div就是我们控制的图片起始点为（0，0）
+2.设定横向和纵向的速度
+3.控制div的移动
+ 1》广告div是否到达边界
+ 2》如果到达以后，我们设置按照这个速度反向移动
+-->
+<style>
+*{margin:0;padding:0;}
+#div1{
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	background: pink;
+
+}
+#divImg{
+	width: 500px;
+	height: 500px;
+	background: red;
+}
+
+</style>
+
+</head>
+
+<body>
+<div id="divImg">
+<div id="div1"></div>
+</div>
+
+<script language="javascript" type="text/javascript">
+//获取图片div对象
+var div1=document.getElementById("div1");
+    
+//设置div起始点的坐标(0,0）左上角坐标
+var x=0,y=0;
+
+//设置图片的运行的速度
+var xS=2,yS=3;
+//将有效的屏幕高度和宽度都减去div的宽和高，就是图片运行空间
+// var w=window.screen.availWidth-130,h=window.screen.availHeight-180;
+var w=450,h=450;
+
+function floatimg(){
+    //比较图片是否到达边界
+    //如果到达边界后，控制图片改变方向，
+    //当图片碰到底边缘的时候应该往上走，也就y轴达到最大值，应该缩小了（就是符合y>h这个条件），这时y的增长数xSpeed变为负数
+    //当图片碰到右边缘的时候这时候该往左走，也就是x达到最大值，该缩小了。（就是符合x>w），这时y的增长数xSpeed变为负数
+    //当图片碰到上边缘的时候图片的该往往下走了，也就是y的值为零的时候，增长数再次变为负数后将增大（符合y<0）
+    //当图片碰到左边的时候，图片该往右走，也就是x的值为零的时候，增长数变为负数后将增大（符合x<0）
+    if(x>w||x<0) xS=-xS;console.log(xS);
+    if(y>h||y<0) yS=-yS;console.log(yS);
+    //如果没到达边界，设置图片的左上角的坐标
+    //设置坐标值， 起始坐标+速度
+    x+=xS;console.log(x);
+    y+=yS;console.log(y);
+//alert(x+","+y);
+    //将每次改变后的图片的坐标从新赋值
+    div1.style.left=x+"px";
+    div1.style.top=y+"px";
+
+    //js定时器：setTimeout(funhander,time)的作用是在过time毫秒后，执行一次句柄funhander指向的方法。
+    setTimeout("floatimg()",1000);
+}
+
+floatimg();
+</script>
+</body>
+</html>

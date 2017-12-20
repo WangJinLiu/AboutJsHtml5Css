@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片滑动</title>
+	<style>
+	    *{margin:0;padding: 0;}
+		#div3{
+			position: absolute;
+			top: 180px;
+			width: 100%;
+
+		}
+		.div2 img{
+			float: left;
+		}
+		#img4{
+			margin-left: 20px;
+		}
+		#img5{
+			float: right;
+			margin-right: 15px;
+		}
+		#div1{
+			height:400px;
+			border:1px solid;
+			
+		}
+		#div2{
+            /*width: 5780px;*/
+            width: 11600px;
+            height:400px;
+            position: absolute;
+            top: 0;
+            /*left:-1920px;*/
+            left: 0;
+
+		}
+
+
+	</style>
+</head>
+<body>
+	<div id="div1">
+		<div id="div2">
+			<!-- <img id="img7"  src="img/05.jpg" alt=""> -->
+			<img id="img1"  src="img/01.jpg" alt="">
+			<img id="img2"  src="img/02.jpg" alt="">
+			<img id="img3"  src="img/03.jpg" alt="">
+			<img id="img6"  src="img/04.jpg" alt="">
+			<img id="img7"  src="img/05.jpg" alt="">
+			<img id="img1"  src="img/01.jpg" alt="">
+		</div>
+		
+	</div>
+	<div id="div3">
+		<img id="img4" src="img/zuo.png" alt="">
+		<img id="img5" src="img/you.png" alt="">
+	</div>
+	<script>
+		var img4=document.getElementById('img4');
+		var img5=document.getElementById('img5');
+		var div2=document.getElementById('div2');
+		var a=0;
+		img4.onclick=function(){
+
+
+
+			if(a<9600){
+				a=a-1920;
+				div2.style.transition='1.5s';
+			}
+			else{
+				a=9600;
+				div2.style.transition='1.5s';
+			}
+			div2.style.left=a+'px';
+
+		}
+		 var b=0;
+		 img5.onclick=function(){
+		 	if(b!=-9600)
+		 	{
+		 		b-=1920;
+		 		console.log(b);
+		 		div2.style.transition='1.5s';
+		 		
+		 	}
+		 	else{
+		 		b=0;
+		 		div2.style.transition='1.5s';
+		 		
+		 	}
+		 	div2.style.left=+b+'px';
+		 }
+		 var timer;
+		 function m(){
+			 timer = setInterval(function () {
+		        	img5.onclick();
+		    	}, 1500)
+		}
+		m();
+		div2.onmouseover=function(){
+			clearInterval(timer);
+		}
+		div2.onmouseout=function(){
+			timer;
+
+		}
+			
+
+
+			
+		 
+
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

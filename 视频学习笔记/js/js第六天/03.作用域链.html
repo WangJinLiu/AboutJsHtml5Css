@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>作用域链</title>
+</head>
+<body>
+	<script type="text/javascript">
+
+		a='全局变量';
+		function scope(){
+			var a='first';
+			function second(){
+				console.log(a);//first
+			}
+			function third(){
+				console.log(a);//first
+			}
+			third();
+			second();
+			console.log(a);//first
+		}
+		console.log(a);//全局变量
+		scope();
+
+		//作用域链：相同的变量名会产生一个作用域链，访问的时候，首先找本层是否有访问的变量，若果没有，会找上层，最终找全局变量，如果全局变量也没有，会抛出异常
+
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

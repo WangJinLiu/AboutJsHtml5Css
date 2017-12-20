@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#wrap{
+		width: 100px;
+		height: 100px;
+		background: red;
+	}
+	</style>
+</head>
+<body>
+	<div id="wrap"></div>
+	<script>
+		var wrap=document.getElementById('wrap');
+		m(wrap,'click',function(){
+			console.log(111);
+		})
+		function m(a,k,fn){
+			if(a.attachEvent){
+				a.attachEvent('on'+k,fn);
+			}else{
+				a.addEventListener(k,fn);
+			}
+
+		}
+
+	</script>
+	
+</body>
+</html>

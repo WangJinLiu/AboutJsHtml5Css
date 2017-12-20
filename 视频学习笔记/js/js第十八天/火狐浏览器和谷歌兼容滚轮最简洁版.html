@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#wrap{
+			width: 300px;
+			height: 500px;
+			background: red;
+		}
+
+
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		
+	</div>
+	
+</body>
+<script type="text/javascript">
+	var wrap=document.getElementById('wrap');
+	judge(wrap,function(value){
+		if(value){
+			wrap.style.background='black';
+		}else{
+			wrap.style.background='green';
+		}
+
+	})
+	function judge(obj,fn){
+		var ff = window.navigator.userAgent.indexOf('Firefox')!=-1 ? 'DOMMouseScroll':'mousewheel';
+		obj.addEventListener(ff,function(e){
+			var e=e||window.event;
+			var down=e.wheelDelta?e.wheelDelta>0:e.detail<0;
+			if(fn){
+				fn(down);
+			}
+			//就相当于下面的
+			// if(e.wheelDelta){
+			// 	if(e.wheelDelta > 0){
+			// 		if(fn1){
+			// 			fn1();
+			// 		}
+			// 	}else{
+			// 		if(fn2){
+			// 			fn2();
+			// 		}
+			// 	}
+			// }else{
+			// 	if(e.detail > 0){
+			// 		if(fn2){
+			// 			fn2();
+			// 		}
+			// 	}else{
+			// 		if(fn1){
+			// 			fn1();
+			// 		}
+					
+			// 	}
+			// }
+
+		})
+
+	}
+
+
+
+
+</script>
+</html>

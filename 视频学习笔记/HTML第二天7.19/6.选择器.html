@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+	<title></title>
+	<style>
+	/*标签选择器*/
+
+	div{
+		background-color: red;
+		}
+		/*通配选择器*/
+		*{
+			margin: 0;
+			/*就是把它重置了*/
+			padding: 0;
+
+		}
+ 		/*class类选择器,（可以起两个名，是在两个名字一样时，想改变其中一个，所以用空格加另一个名字，见下面）*/
+ 		.div3{
+ 			background-color: pink;
+ 		}
+ 		.div4{
+ 			height: 40px;
+ 		}
+ 		/*id选择器*/
+ 		#div5{
+ 			background-color: green;
+ 		}
+ 		/*父子选择器，它只会选择div里的最近一层的标签，而<a>里的p标签不改变*/
+ 		.div>p{
+ 			background-color: yellow;
+
+ 		}
+ 		/*后代选择器，div里的所有p标签*/
+ 		.div p{
+ 			background-color: blue;
+ 		}
+ 		/*群组选择器*/
+ 		.div3,p{
+ 			background-color: cyan;
+ 		}
+
+	</style>
+</head>
+<body>
+    <p>this is p</p>
+    <div>Division1</div>
+    
+    <div>Division2</div>
+    <div class="div3">Division3</div>
+    <div class="div3 div4">Division4</div>
+    <div id="div5"> Division5</div>
+    <!-- 注意：ID选择器类名字必须是唯一的 -->
+    <div>
+        <a href=""><p>我是a里面的p标签</p></a>
+
+    	<p>我是div里面的p标签</p>
+    </div>
+    <p>this is p</p>
+
+
+</body>
+</html>

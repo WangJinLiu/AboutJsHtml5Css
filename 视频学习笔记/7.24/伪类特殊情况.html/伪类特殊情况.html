@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+	*{margin: 0;padding: 0}
+		div{
+			border: 1px solid black;
+			height: 40px;
+			
+			padding: 20px;
+			background-color:lightgreen;
+			text-align: center;字体居中
+			margin: 50px auto;div居中
+	}
+		p{
+			line-height: 40px;
+			
+	}
+		div:hover p{
+			
+			color: red;
+			font-size: 20px;
+
+		}
+
+
+
+	</style>
+	<body>
+			<div>
+				<p>特殊情况p</p>
+			   	   特殊情况m
+			</div>
+			<div style="background-color:lightgreen;text-align:center;overflow-hidden;height: 100px;">
+			 	<span style="background-color:yellow;line-height:80px;">行高设置</span><br>
+			 	<span style="background-color:yellow;line-height:40px;">行高设置</span> <!--margin兄弟之间上下取最大，左右取和-->
+			</div>
+			<div style="height:10px;width:30px;background:red;display:inline-block;"></div>
+			<div style="height:10px;width:30px;background:red;display:inline-block;"></div>
+			<!-- 兄弟之间的margin，左右取和，上下取最大值 -->
+
+		
+	</body>
+</html>

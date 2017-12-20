@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>json练习三</title>
+</head>
+<body>
+	<script>
+		var aa='[\
+	{\
+		"title":"官方活动",\
+	 	"date":[{"img":"1.jpg","state":1,"title":"新战役退出"},\
+				 {"img":"2.jpg","state":2,"title":"神秘商店的夏夜馈赠"},\
+				 {"img":"3.jpg","state":2,"title":"TI7神秘商店开张"},\
+				 {"img":"4.jpg","state":1,"title":"破泞之战退出"}]\
+	},\
+	{\
+		"title":"赛事活动",\
+	 	"date":[{"img":"1.jpg","title":"2017国际邀请赛"},\
+		 		 {"img":"2.jpg","title":"国际赛预选"},\
+		 		 {"img":"3.jpg","title":"国际赛预选报名"},\
+		 		 {"img":"4.jpg","title":"国际赛预选观战"}]\
+	},\
+	{\
+		"title":"推广活动",\
+	 	"date":[{"img":"1.jpg","title":"贴吧电竞"},\
+		 		 {"img":"2.jpg","title":"联想拯救者"},\
+		 		 {"img":"3.jpg","title":"京东游戏"},\
+		 		 {"img":"4.jpg","title":"维他可可"}]\
+	}\
+]';
+	var arr=JSON.parse(aa);
+	console.log(arr);
+
+
+
+
+	</script>
+	
+</body>
+</html>

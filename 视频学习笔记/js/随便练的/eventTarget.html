@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>event taget 加上获取非行间属性值</title>
+	<style>
+		#div1{
+			background: red;
+		}
+		#aaa{
+			border: 1px solid black;
+			width: 10px;
+			height: 10px;
+			background: green;
+		}
+		#div1 div{
+			background: yellow;
+			margin: 5px 5px;
+			display: inline-block;
+			width: 10px;
+			height: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap" id="div1">
+		<div class="a"></div>
+		<div class="b">B</div>
+		<div class="c"></div>
+		<div class="d"></div>
+		<div class="e"></div>
+	</div>
+	<div class="wrap"><span>2</span></div>
+	<div class="wrap"><span>3</span></div>
+	<div class="wrap"><span>4</span></div>
+	<div class="wrap"><span>5</span></div>
+</body>
+<script>
+	var div1 = document.getElementById('div1');
+	div1.addEventListener("click",loadFun);
+	function loadFun(e){
+		var e = event || window.event;
+		//(可以捕获当前事件作用的对象e.target)
+		var event = e.target || e.srcElement;//后面是ie，target火狐，谷歌两个都有
+		// console.log(e);
+		// console.log(e.target);
+		// console.log(event.className);
+
+
+	}
+	// console.log(div1.className);
+
+	// console.log(div1.width);
+	//获取非行间属性值i
+	// var bac = get(div1,'background');
+	// console.log(bac);
+	// function get(oDiv,attr){
+	// 	if(oDiv.currentStyle){ //当有这个属性的时候currentStyle
+	// 		return oDiv.currentStyle[attr];
+	// 	}else{
+	// 		return getComputedStyle(oDiv,false)[attr];
+	// 	}
+
+	// }
+	// var val = getComputedStyle(div1,false).backgroundColor;
+	// console.log(val);
+	// console.log(window.getComputedStyle);
+</script>
+</html>

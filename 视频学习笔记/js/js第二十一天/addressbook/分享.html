@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #div1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position:absolute;
+            top: 0;
+            left: 800px;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+</body>
+<script>
+    var oDiv1 = document.getElementById("div1");
+    function getStyle(obj,attr){
+        if (obj.currentStyle) {
+            return obj.currentStyle;
+        }else {
+            return getComputedStyle(obj)[attr];
+        }
+    }
+
+
+    function linearMove(obj,attr,iTarget,speed,h){
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function(){
+            var attrValue = parseInt(getStyle(obj,attr));
+            if (Math.abs(iTarget - attrValue) <= Math.abs(speed)) {
+                obj.style[attr] = iTarget + "px";
+            }else {
+                obj.style[attr] = attrValue + speed + "px";
+            }
+        },h);
+    }
+    linearMove(oDiv1,"left",800,10,20);
+    linearMove(oDiv1,"left",0,-10,20);
+
+</script>
+</html>

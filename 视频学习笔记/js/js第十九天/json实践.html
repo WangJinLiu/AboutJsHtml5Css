@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>json实践</title>
+	<style>
+	*{margin:0;padding:0;}
+		#box{
+			width: 250px;
+			height: 390px;
+			border: 1px solid red;
+			float: left;
+			border-radius: 20px;
+			margin-left: 2px;
+		}
+		#box img{
+			width: 250px;
+			height: 250px;
+		}
+		#divbox,#divbox2{
+			overflow: hidden;
+		}
+		#price,#shopname{
+			float: left;
+
+		}
+		#number,#address{
+			float: right;
+		}
+		#discribe{
+			font-size: 12px;
+			color: grey;
+		}
+		#divbig{
+			width: 1020px;
+			border: 1px solid;
+			background: pink;
+			overflow: hidden;
+			margin: 0 auto;
+		}
+		#divbut{
+			width: 100px;
+			height: 50px;
+			background: red;
+			position: absolute;
+			left: 0;
+			top:0;
+			outline: none;
+
+		}
+		#button{
+			position: absolute;
+			top:50px;
+		}
+		/*#butbox div{
+			display: inline-block;
+			border: 1px solid;
+			width: 50px;
+			height: 50px;
+
+		}*/
+		#butbox{
+			/*position: absolute;*/
+			/*border: 1px solid;*/
+			width: 100%;
+			/*margin:0 auto;*/
+			text-align: center;
+			margin: 50px 0;
+
+		}
+		li{
+			list-style: none;
+			display: inline-block;
+			border: 1px solid;
+			width: 50px;
+			margin-left: 10px;
+		}
+
+
+
+
+
+	</style>
+</head>
+<body>
+	<!-- <input type="text" id="divbut">
+	<input type="button" value="提交" id="button"> -->
+
+	   <!--  <div id="box">
+			<img src="1.jpg" alt="">
+			<div id="divbox">
+				<div id="price">89.00</div>
+				<div id="number">2711人付款</div>
+			</div>
+			<div id="discribe">v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮</div>
+			<div id="divbox2">
+				<div id="shopname">89.00</div>
+				<div id="address">2711人付款</div>
+			</div>
+		</div> -->
+		<div id="butbox">	
+        
+		</div>
+	<script>
+		var s1='[{"img":"1.jpg","price":89.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店01","address":"江苏苏州"},{"img":"2.jpg","price":100.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店02","address":"江苏苏州"},{"img":"3.jpg","price":180.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店03","address":"江苏苏州"},{"img":"4.jpg","price":180.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店01","address":"江苏苏州"},{"img":"5.jpg","price":89.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店01","address":"江苏苏州"},{"img":"6.jpg","price":100.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店02","address":"江苏苏州"},{"img":"7.jpg","price":180.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店03","address":"江苏苏州"},{"img":"8.jpg","price":180.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店01","address":"江苏苏州"},{"img":"1.jpg","price":89.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店01","address":"江苏苏州"},{"img":"2.jpg","price":100.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店02","address":"江苏苏州"},{"img":"3.jpg","price":180.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店03","address":"江苏苏州"},{"img":"4.jpg","price":180.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店01","address":"江苏苏州"},{"img":"5.jpg","price":89.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店01","address":"江苏苏州"},{"img":"6.jpg","price":100.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店02","address":"江苏苏州"},{"img":"7.jpg","price":180.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店03","address":"江苏苏州"},{"img":"8.jpg","price":180.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店01","address":"江苏苏州"}]';
+		var date=JSON.parse(s1);
+	
+		
+		// var divbut=document.getElementById('divbut');
+		// var button0=document.getElementById('button');
+		var butbox=document.getElementById('butbox');
+		var divbig=document.getElementById('box');
+		var divbig=createbiaoqian('div',document.body,'divbig');
+		//每页多少个
+		var p=parseInt(Math.random()*(6-3))+3;
+		console.log(p);
+		//一共多少页
+		var dd=Math.ceil(date.length/p);
+		var index=0;
+		//创建ul  li标签 并得到每个按钮的索引
+		function createIndex(n){
+			
+			var ul=createbiaoqian('ul',butbox);
+			for(var j=0;j<n;j++){
+				var li=createbiaoqian('li',ul);
+				console.log(li);
+				li.innerHTML=j+1;
+				li.onclick=(function(a){
+					return function(){
+						index=a;
+						console.log(a);
+						divbig.innerHTML = ' ';
+						create(p);
+					}
+				})(j);
+			}
+			console.log(ul);
+		}
+		
+		function create(p){
+			var begin = index*p;  //循环开始位置（数组下标）
+			var end=0;   //循环结束位置（数组下标）
+			if( index == dd-1){
+				//如果等于最后一页
+				end = date.length;
+			}else{
+				//不等于
+				end = begin + p;  
+			}
+			for(var i=begin;i<end;i++){
+				var o=date[i];
+				createmall(o);
+			}
+		}
+		createIndex(dd);
+		create(p);
+		//创建标签
+		function createmall(obj){
+			var divbox=createbiaoqian('div',divbig,'box');
+			var img=createbiaoqian('img',divbox);
+			img.src=obj.img;
+			var divboxsmall=createbiaoqian('div',divbox,'divbox');
+			var price=createbiaoqian('div',divboxsmall,'price');
+			price.innerHTML='¥'+obj.price;
+			var number=createbiaoqian('div',divboxsmall,'number');
+			number.innerHTML=obj.num+'人付款';
+			var discribe=createbiaoqian('div',divbox,'discribe');
+			discribe.innerHTML=obj.discribe;
+			var divbox2=createbiaoqian('div',divbox,'divbox2');
+			var shopname=createbiaoqian('div',divbox2,'shopname');
+			shopname.innerHTML=obj.shopname;
+			var address=createbiaoqian('div',divbox2,'address');
+			address.innerHTML=obj.address;
+			}
+		
+		function createbiaoqian(name,father,idname){
+			var o=document.createElement(name);
+			father.appendChild(o);
+			o.id=idname;
+			return o;
+
+
+
+		}
+
+
+
+	</script>
+	
+</body>
+</html>

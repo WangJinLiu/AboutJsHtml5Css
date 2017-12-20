@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#wrap,#move,#size{
+			width: 50px;
+			height: 50px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<div id ="wrap">
+		
+	</div>
+	<div id="move">
+		move
+	</div>
+	<div id="size">size</div>
+	
+</body>
+<script>
+	var wrap=document.getElementById('wrap');
+	var move=document.getElementById('move');
+	wrap.onclick=function () {
+		// window.open() - 打开新窗口
+		// window.open(URL,name,specs,replace)
+		// URL	可选。打开指定的页面的URL。如果没有指定URL，打开与新的空白窗口
+		// name可选。指定target属性或窗口的名称。支持以下值：
+			// _blank - URL加载到一个新的窗口。这是默认
+			// _parent - URL加载到父框架
+			// _self - URL替换当前页面
+			// _top - URL替换任何可加载的框架集
+			// name - 窗口名称
+		// window.open("http://baidu.com","","width=200,height=200");
+		//window是有返回值的
+		//newWindow是新创建的
+		newWindow=window.open("http://baidu.com","","width=200,height=200");
+		newWindow.document.write("hello");
+		// window.close() - 关闭当前窗口
+
+	}
+	move.onclick=function(){
+		//上面先创建完在修改。移动什么的
+		newWindow.moveTo(100,200);
+	}
+	size.onclick=function(){
+		//上面先创建完在修改。移动什么的window
+		newWindow.resizeTo(100,200);
+	}
+
+</script>
+</html>

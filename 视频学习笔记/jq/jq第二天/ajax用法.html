@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>f
+	<script>
+			$.ajax({
+				url:"",
+				type:"get",
+				data:"",
+				success:function(v){
+					console.log(v);
+					//请求成功并返回数据
+					// v就是responseText
+				},
+				error:function(a){
+					console.log(a);
+					//请求错误
+					// a就是错误信息
+				},
+				complete:function(){
+					//请求结束后调用这个函数，说明网络请求结束了
+				}
+
+			})
+		
+
+
+	</script>
+	
+</body>
+</html>

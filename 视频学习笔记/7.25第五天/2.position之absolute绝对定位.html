@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	*{margin: 0;padding: 0}
+		div{
+			height: 100px;
+			width: 200px;
+			background-color: red;
+			/*完全脱离文档流，只加这一句只会浮起来，不会移动，当加了top、left、right、bottom时才会移动，覆盖别的*/
+			position: absolute;
+			left:20px;
+			top:100px;
+			margin-top: 100px;
+			/*盒模型包括boder里的，不包括margin等的*/
+
+		}
+	</style>
+</head>
+<body>
+	<div class="div1"></div>
+	<div class="div2"></div>
+	
+</body>
+</html>
+<script type="text/javascript">
+	for( var i=0;i<=100;i++){
+		document.write(i+ "<br>");
+	}
+</script>

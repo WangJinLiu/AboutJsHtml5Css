@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>量词</title>
+</head>
+<body>
+	<script>
+		//量词规则一：+(前一字符可以存在一个或多个)
+		// var k=/ih+/ig;//+代表h多个，+永远修饰与他紧挨着的前一个字符，若有括号就是他那个整体，最少存在一个
+		// var str='nihhhhhhh';
+		// var m=str.replace(k,'W');
+		// console.log(m);//nW
+
+		//规则二 . 代表任意字符
+		var k=/m./ig;
+		var str='hellommwwwm';
+		var ne=str.replace(k,'O');
+		console.log(ne);//helloOwwwm(若是最后一个不换)
+		// // 例子
+		// var reg=/h.+/ig;
+		// // 相当于h.....
+		// var str='hello';
+		// var value=str.replace(reg,"M");
+		// console.log(value);//M
+
+		//量词规则三 * 代表前面的字符存在0个或者多个
+		// var k=/h*/ig;
+		// var str='hello';
+		// var mm=str.replace(k,"Q");
+		// console.log(mm);//*在replace有问题
+
+		//量词规则四：?代表0个或者一个
+		// var k=/h?/ig;
+		// var str='hello';
+		// var mm=str.replace(k,'M');
+		// console.log(mm);
+		//量词规则五{}  长度范围
+		// {1}长度必须为里面的数字（修饰前边的）
+		// var k=/h{1}/ig;
+		// var str='hhhello';
+		// var mm=str.replace(k,'M');
+		// console.log(mm);
+		// +*？{}都是修饰紧挨着的
+		// {1,4}长度最少一个，最多四个
+		// var k=/h{1,4}/ig;
+		// var str='hhhhhello';
+		// var mm=str.replace(k,'M');
+		// console.log(mm);
+		//{2，}最少两个，最多n个
+		// var k=/h{2,}/ig;
+		// var str='hhhhhello';
+		// var mm=str.replace(k,'M');
+		// console.log(mm);//Mello
+
+		// 量词总结：量词是修饰前面字符个数的，可以代表前面字符重复了多少次，量词有+*？{}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

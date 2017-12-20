@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	body,html{margin:0;padding:0;background:#fff;font-size:14px;font-family:Arial,Helvetica,'STHeiti','Microsoft YaHei','sans-serif'}
+		form,ul,li,p,h1,h2,h3,h4,h5,h6{margin:0;padding:0;}
+		img{border:0;}
+		ul,li{list-style-type:none;}
+		a{color:#00007F;text-decoration:none;}
+		a:hover{text-decoration:none;}
+
+		#oUl li
+		{
+			float: left;
+
+		}
+		#oUl{
+			/*width: 2400px;*/
+			height: 400px;
+
+			margin: 0 auto;
+			position: absolute;
+			left: 0;
+			top: 0;
+			transition:all 1s;
+		}
+		#oUl img{
+			width: 600px;
+			height: 400px;
+		}
+		#cansee{
+			width: 600px;
+			height: 400px;
+			border:1px solid;
+			/*overflow: hidden;*/
+			margin:0 auto;
+			position:relative; 
+			overflow: hidden;
+		}
+		#p1{
+			position: absolute;
+			left: 0;
+			top:170px;
+		}
+		#p2{
+			position: absolute;
+			left: 566px;
+			top:170px;
+		}
+		#div1 p{
+			display: inline-block;
+			border:1px solid;
+			/*background-color: grey;*/
+			border-radius: 6px;
+			color: white;
+			padding: 6px;
+			margin-left: 5px;
+
+		}
+		#div1{
+			/*border:1px solid;*/
+			position: absolute;
+			top: 350px;
+			left: 210px;
+
+		}
+
+
+		#p3{
+			background: grey;
+		}
+
+	</style>
+</head>
+<body>
+<!-- div 可视区 -->
+<div id="cansee">
+	<ul id="oUl">
+		<li><img src="img/01.jpg" alt=""></li>
+		<li><img src="img/02.jpg" alt=""></li>
+		<li><img src="img/03.jpg" alt=""></li>
+		<li><img src="img/04.jpg" alt=""></li>
+	</ul>
+	<p id="p1"><img src="img/zuo.png" alt=""></p>
+	<p id="p2"><img src="img/you.png" alt=""></p>
+	<div id="div1">
+		<p id="p3" class="active"></p>
+		<p id="p4"></p>
+		<p id="p5"></p>
+		<p id="p6"></p>
+	</div>
+</div>	
+<!-- 有问题 -->
+<script type="text/javascript">
+	var oUl=document.getElementById('oUl');
+	var oImg=oUl.getElementsByTagName('img');
+	var oCansee=document.getElementById('cansee');
+	var index=0;
+	oUl.style.width=oImg[0].width*oImg.length+'px';
+	var iTimer;
+	var leftBtn=document.getElementById('p1');
+	var rightBtn=document.getElementById('p2');
+	var yuan=document.getElementById('div1');
+	var aP=yuan.getElementsByTagName('p');
+	it();
+	// for(var i=0;i<aP.length;i++)//闭包
+	// {
+	// 	var index;//属性名
+	// 	aP[i].index=i;
+	// 	aP[i].onclick=function()
+	// 	{
+	// 		// alert(this.index);
+	// 		for(var i=0;i<aP.length;i++)
+	// 		{
+	// 			aP[i].style.background='none';
+	// 		}
+	// 		this.style.background='grey';
+	// 		theclick(this.index);//局部变量的index
+
+	// 	}
+	// }
+	function it()
+	{
+		iTimer=setInterval(function()
+		{
+			index++;
+			// console.log(index);
+			if(index>oImg.length-1)
+			{
+				index=0;
+			}
+			//获取img标签的宽度用width
+			oUl.style.left=index*-oImg[0].width+'px';
+			// console.log(typeof(oImg[0].width));//number类型的
+			
+			// console.log(typeof(oUl.style.left));//string类型的
+			// changesty(index);
+			// console.log(index);
+		},2000);
+
+	}
+
+	rightBtn.onclick=function()
+	{
+		// console.log(index);
+		index++;
+		// console.log(index);
+		if(index>oImg.length-1)//走到最右边让它回来
+		{
+			index=0;
+
+		}
+		
+
+		theclick(index); 
+		// changesty(index);
+	}
+	// function changesty(obj)
+	// {
+	// 	// alert(this.index);
+	// 		for(var i=0;i<aP.length;i++)
+	// 		{
+	// 			aP[i].style.background='none';
+	// 		}
+	// 		// console.log(obj);
+	// 		aP[obj].style.background='grey';
+	// }
+	leftBtn.onclick=function()
+	{
+		index--;
+		console.log(index);
+		if(index<0)//到在最左边的时候不让他出去
+		{
+			index=oImg.length-1;
+
+		}
+		theclick(index);
+		// changesty(index);
+		
+	}
+	function theclick(obj)
+	{
+		oUl.style.left=obj*-oImg[0].width+'px';
+	}
+
+	
+	
+	// oCansee.onmouseover=function()
+	// {
+	// 	clearInterval(iTimer);
+	// }
+	// oCansee.onmouseout=function()
+	// {
+	// 	it();
+
+	// }
+	
+
+
+
+
+</script>
+</body>
+</html>

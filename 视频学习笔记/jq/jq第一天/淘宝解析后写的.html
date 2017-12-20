@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>淘宝解析后写的</title>
+	<style>
+		#wrap{
+			width: 1040px;
+			height: 800px;
+			border: 1px solid;
+			margin:0 auto;
+		}
+		.box{
+			width: 253px;
+			height: 392px;
+			border: 1px solid;
+			display: inline-block;
+		}
+		#but_box{
+			width: 1040px;
+			list-style: none;
+			text-align: center;
+			margin:0 auto;
+
+		}
+		#but_box li{
+			display: inline-block;
+			padding: 20px 50px;
+			border: 1px solid;
+		}
+
+
+	</style>
+</head>
+<body>
+	<div id="bigbox">
+		<div id="wrap">
+		<!-- 	<div class="box"></div>
+			<div class="box"></div>
+			<div class="box"></div>
+			<div class="box"></div> -->
+		</div>
+		<ul id="but_box">
+		<!-- 	<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li> -->
+		</ul>
+	</div>
+	
+	<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+	<script>
+		var arr0='[{"img":"./img/1.jpg","price":"189","title":"预售乐町2017秋装新款女装1","shop":"乐町官方旗舰店1"},{"img":"./img/2.jpg","price":"189","title":"预售乐町2017秋装新款女装2","shop":"乐町官方旗舰店2"},{"img":"./img/3.jpg","price":"189","title":"预售乐町2017秋装新款女装3","shop":"乐町官方旗舰店3"},{"img":"./img/4.jpg","price":"189","title":"预售乐町2017秋装新款女装4","shop":"乐町官方旗舰店4"}]';
+		var arr=JSON.parse(arr0);
+		// create(arr);
+		//创建标签
+		function create(arr){
+			$("#wrap").html("");
+			$.each(arr,function(i){
+				console.log(this);
+				var box=$("<div>");
+				$(box).appendTo("#wrap");
+				box.addClass("box");
+				var img=$("<img>");
+				img.appendTo(box);
+				img.attr("src",this.img);
+				var p=$("<p>");
+				$(box).append(p);
+				p.text(this.price);
+				var span=$("<span>");
+				span.appendTo(box);
+				span.text(this.title);
+				var span1=$("<span>");
+				span1.appendTo(box);
+				span1.text(this.shop);
+			})
+
+
+		}
+		createshuzu(arr,2,0);
+		createBut(2,arr);
+		function createBut(perNumber,myArr){
+			var page=Math.ceil(myArr.length/perNumber);
+			for(var i=0;i<page;i++){
+				var but=$("<li>");
+				but.text(i+1);
+				$("#but_box").append(but);
+				but.attr("index",i);
+				but.click(function(){
+
+					// console.log(111);
+					var index=Number($(this).attr("index"));
+					console.log(index);
+					createshuzu(myArr,perNumber,index);
+
+
+				})
+			}
+
+		}
+		//创建新数组
+		function  createshuzu(myArr,perNumber,index){
+			var arr=[];
+			arr=myArr.slice(perNumber*index,perNumber*(index+1));
+			create(arr);
+		}
+
+		
+
+		
+
+
+
+
+	</script>
+</body>
+</html>

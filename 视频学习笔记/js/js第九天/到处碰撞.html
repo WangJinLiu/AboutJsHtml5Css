@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>到处碰撞反弹</title>
+	<style>
+
+
+	*{margin:0;padding:0;}
+	#mod{
+		position: relative;
+		width: 500px;
+		height: 300px;
+		margin: 50px auto;
+		border: 1px solid;
+	}
+	#box{
+		position: absolute;
+		width: 50px;
+		height: 50px;
+		background-color: red;
+		left: 0;
+		top: 0;
+
+	}
+	</style>
+</head>
+<body>
+	<div id="mod">
+		<div id="box"></div>
+	</div>
+	<script type="text/javascript">
+	var mod=document.getElementById('mod');
+	var box=document.getElementById('box');
+	// console.log(mod.clientWidth);//500
+	//clientWidth指的是元素不带边框的宽度
+	//clientHeight指元素不带边框的高度
+	// console.log(typeof(mod.offsetWidth));//number类型
+
+	//offsetWidth是元素包含了边框的宽度//502
+	//offsetHeight是元素包含了边框的高度//
+	var maxWidth=mod.clientWidth-box.clientWidth;
+	//最大运动宽度
+	var maxHeight=mod.clientHeight-box.clientHeight;
+	//最大运动高度
+	var speedY=5;
+	var speedX=2;
+	var thetop=0;
+	var theleft=0;
+	var timer=null;
+	//初始的位置
+	//执行运动
+
+	//定时器
+	function time()
+	{
+		timer=setInterval(function()
+		{
+
+			move();
+		},30)
+	}
+	time();
+	//执行运动
+	function move()
+	{
+		thetop=thetop+speedY;
+		theleft+=speedX;
+		//判断碰撞底边
+		if(thetop>=maxHeight)
+		{
+			speedY*=-1;
+		}
+		else if(thetop<=0)
+		{
+			speedY*=-1;
+		}
+		if(theleft>=maxWidth)
+		{
+			speedX*=-1;
+		}
+		else if(theleft<=0)
+		{ 
+			speedX*=-1;
+		}
+		
+		box.style.top=thetop+'px';
+		box.style.left=theleft+'px';
+	}
+
+
+
+
+
+	</script>
+
+	
+</body>
+</html>

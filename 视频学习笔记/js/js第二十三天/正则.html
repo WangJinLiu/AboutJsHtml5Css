@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>正则</title>
+</head>
+<body>
+<script>
+//正则创建方式
+	//第一种创建正则的方式(可以通过字符串的拼接)
+		var re = new RegExp("C","i");
+		//i代表不区分大小写（可写可不写），C 规则，可以写hello什么的
+		//正则创建(正则由两个/包裹起来的)
+		console.log(re);
+		var ree=new RegExp("C"+"hello");
+		console.log(ree);
+	//第二种(不可以字符串拼接)
+		var mm=/C/i;
+		console.log(mm);//    /C/i
+
+
+
+
+
+
+//正则常用函数
+	var k=/M/i;
+	var str="hemllom";
+	//正则函数一：test()
+	// var value=k.test(str);
+	// console.log(value);//true
+
+	//正则函数二：exec()(记录匹配的字符串在原字符串的位置)
+	var value=k.exec(str);
+	var value1=k.exec(str);
+
+	console.log(value);//返回的是数组(对象)
+	console.log(value.index);//匹配的字符串在原字符串的下标值
+	console.log(value1.index);
+	console.log(value[0]);
+	
+
+
+
+
+
+
+
+
+
+</script>
+	
+	
+</body>
+</html>

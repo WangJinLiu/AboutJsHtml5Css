@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>小方块</title>
+	<style>
+	*{margin:0;padding:0;}
+	.div1{
+		width: 1000px;
+		height: 500px;
+		border: 1px solid;
+		margin: 0 auto;
+		position: relative;
+
+
+	}
+	ul{
+		border: 1px solid;
+		margin:0 auto;
+		/*width: 542px;*/
+		margin-top: 470px;
+		position: absolute;
+		height: 20px;
+		left: 0px;
+		list-style: none;
+	}
+	li{
+
+		width: 20px;
+		height: 20px;
+		display: inline-block;
+		border: 1px solid;
+		margin-bottom: 1px;
+		background: grey;
+		box-sizing:border-box;
+
+
+	}
+
+
+
+
+	</style>
+</head>
+<body>
+	<div class="div1">
+		<ul>
+			
+		</ul>
+	</div>
+	<script type="text/javascript">
+	var ul=document.getElementsByTagName('ul')[0];
+	var div1=document.getElementsByClassName('div1')[0];
+
+	var a=20;
+	if(a==20){
+		for(i=0;i<a;i++)
+		{
+			var li=document.createElement('li');
+			ul.appendChild(li);
+		}
+		ul.style.width=li.offsetWidth*20;
+		console.log(li.offsetWidth*20);
+	}
+	var step=0;
+	var n=1;
+	var timer=setInterval(function(){
+		step+=n;
+		ul.style.left=step+'px';
+		// console.log(n,step,div1.offsetWidth-ul.offsetWidth);
+		if(step>div1.offsetWidth-ul.offsetWidth){
+			n=-1;
+			// clearInterval(timer);
+		}else if(step <= 0){
+			n=1;
+		}
+	},10)
+
+
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#wrap{
+			width: 600px;
+			padding: 15px;
+			border: 1px #ccc solid;
+			margin: 0 auto;
+		}
+		input{
+			width: 200px;
+			height: 30px;
+			border-radius: 6px;
+			padding-left: 10px;
+			outline: none;
+		}
+		.info{
+			font-size: 24px;
+			color: lightblue;
+		}
+		button{
+			height: 30px;
+			padding: 5px 20px;
+			background: lightblue;
+			border-radius: 8px;
+			text-align: center;
+			outline: none;
+		/* 	line-height: 30px; */
+		}
+		table{
+			border-collapse: collapse;
+			width: 600px;
+			margin: 20px 0px;
+		}
+		td{
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<span class="info">添加</span>
+		<input type="text" placeholder="姓名" id="name">
+		<input type="text" placeholder="年龄" id="age">
+		<button id="add">添加</button>
+		<table border="1">
+			<thead>
+                <tr>
+                    <th>ID</th>
+    				<th>姓名</th>
+    				<th>年龄</th>
+    				<th>操作</th>
+                </tr>
+			</thead>
+            <tbody>
+				<!-- <tr>
+					<td>1</td>
+					<td>张三</td>
+					<td>18</td>
+					<td>删除</td>
+				</tr> -->
+			</tbody>
+		</table>
+		<span class="info">搜索</span>
+		<input type="text" placeholder="姓名" id="seek">
+		<button id="search">搜索</button>
+		<span class="info">排序</span>
+		<button id="sort">年龄从小到大</button>
+
+	</div>
+</body>
+<script type="text/javascript">
+
+    var add = document.querySelector("#add");
+    var tbody = document.querySelector("tbody");//获取tbody标签
+    var i=0;
+    add.onclick = function () {
+        var name = document.querySelector("#name").value;
+        var age = document.querySelector("#age").value;
+        // 添加到tbody里面
+        i++;
+        tbody.innerHTML += "<tr><td>"+i+"</td>\
+        <td>"+name+"</td>\
+        <td>"+age+"</td>\
+        <td><a href='#' onclick='deleteNode(this)'>删除</a></td>\
+        </tr>"
+    }
+    //删除事件（跟以前有些不一样，改变了一个形式）
+ 	function deleteNode(obj){
+ 		var td=obj.parentNode;
+ 		var tr=td.parentNode;
+ 		tbody.removeChild(tr);
+
+ 	}
+ 	//底下是搜索功能
+
+    var search = document.querySelector("#search");
+    var seek = document.querySelector("#seek");
+    search.onclick = function () {
+        var trs = tbody.querySelectorAll("tr");
+        for (var i = 0; i < trs.length; i++) {
+            var tr = trs[i];
+            var tdName = tr.querySelectorAll("td")[1];
+            if(tdName.innerHTML == seek.value) {
+                tr.style.background = "pink";
+            }else {
+                tr.style.background = "";
+            }
+        }
+
+    }
+    console.log(document);
+    // 排序
+    var sort = document.querySelector("#sort");
+    sort.onclick = function () {
+        var trs = tbody.getElementsByTagName("tr");
+        for (var i = 0; i < trs.length - 1; i++) {
+            for (var j = 0; j < trs.length - i - 1; j++) {
+                var a = Number(trs[j].getElementsByTagName("td")[2].innerHTML);
+                var b = Number(trs[j + 1].getElementsByTagName("td")[2].innerHTML);
+                if(a > b) {
+
+                    var first = trs[j];
+                    var second = trs[j + 1];
+                    // 父级标签调用插入函数
+                    // 将第一个参数标签提到第二个参数标签之前
+                    tbody.insertBefore(second,first);
+                    // trs = tbody.querySelectorAll("tr");
+                }
+            }
+        }
+        //自己写的下面
+        // var trs = tbody.getElementsByTagName("tr");
+        // for(var i=0;i<trs.length-1;i++){
+        // 	for(var j=0;j<trs.length-1-i;j++){
+        // 		var a=trs[j].querySelectorAll('td')[2].innerHTML;
+        // 		console.log(a);
+        // 		var b=trs[j+1].querySelectorAll('td')[2].innerHTML;
+        // 		console.log(b);
+        // 		if(a>b){
+        // 			tbody.insertBefore(trs[j+1],trs[j]);
+
+        // 		}
+        // 	}
+        // }
+
+    }
+
+
+</script>
+</html>

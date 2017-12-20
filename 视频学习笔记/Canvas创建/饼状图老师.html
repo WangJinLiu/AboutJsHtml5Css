@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas" width="300" height="300"></canvas>
+</body>
+<script src="drawCircle.js" charset="utf-8"></script>
+<script type="text/javascript">
+    var canvas = document.querySelector("#canvas");
+    var str = '[{"name":"1月","value":100,"color":"#fff"},{"name":"2月","value":2000,"color":"blue"},{"name":"2月","value":200,"color":"#024567"},{"name":"2月","value":2800,"color":"red"}]';
+    var arr = JSON.parse(str);
+    var myCircle = new Circle({
+        data:arr,
+        canvas:canvas,
+        radius:80
+    })
+</script>
+</html>

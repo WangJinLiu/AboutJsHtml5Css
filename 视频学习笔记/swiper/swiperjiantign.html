@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="swiper-3.4.2.min.css">
+	<style>
+		#swiper1{
+			height: 300px;
+			width: 500px;
+			background: red;
+
+		}
+		#swiper2{
+			width: 500px;
+			height:100px;
+			background: green;
+
+		}
+	</style>
+</head>
+<body>
+	<div class="swiper-container" id="swiper1">
+		<div class="swiper-wrapper" >
+	        <div class="swiper-slide">1</div>
+	        <div class="swiper-slide">2</div>
+	        <div class="swiper-slide">3</div>
+    	</div>
+    	
+	</div>
+	<div class="swiper-container" id="swiper2">
+		<div class="swiper-wrapper" >
+	        <div class="swiper-slide">1</div>
+	        <div class="swiper-slide">2</div>
+	        <div class="swiper-slide">3</div>
+	    </div>
+    </div>
+
+</body>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="swiper-3.4.2.jquery.min.js"></script>
+<script src="swiper-3.4.2.min.js"></script>
+<script>
+	// 非loop情况下可以直接把onSlideChangeEnd（回调函数）写{}里，有loop就要把
+	// loop 模式会在原本slide前后复制若干个slide(默认一个)并在合适的时候切换，让Swiper看起来是循环的
+	// mySwiper.slideTo(index, speed, runCallbacks)参数  index:必选，num，指定将要切换到的slide的索引。
+	// var swiper1= new Swiper('#swiper1',{
+	// 	onSlideChangeEnd:function(bbb){
+	// 		console.log(bbb.realIndex);
+	// 		swiper2.slideTo(bbb.realIndex,false);
+
+	// 	},
+
+	// });
+	// var swiper2= new Swiper("#swiper2",{
+	// 	onSlideChangeEnd:function(aaa){
+	// 		swiper1.slideTo(aaa.realIndex,false);
+	// 	},
+
+	// });
+
+	//上下都有loop就得用swiper里的Swiper on方法（回调函数的另外一种写法）
+	var swiper1 = new Swiper('#swiper1',{
+		// autoplay:true,
+		loop:true
+	})
+	var swiper2 = new Swiper('#swiper2',{
+		loop:true,
+		//可视区一页多少个
+		slidesPerView : 3
+	})
+	//on只能修改回调函数
+	swiper1.on("slideChangeEnd",function(aaa){
+		// console.log(aaa.activeIndex);
+		swiper2.slideTo(aaa.realIndex,0,false);
+		swiper2.slides[aaa.ressfalIndex].style.background="pink"
+	})
+	//onSlideChangeEnd是回调函数
+	swiper2.on("slideChangeEnd",function(bbb){
+		console.log(bbb.activeIndex);
+		swiper1.slideTo(bbb.activeIndex,0,false);
+
+	})
+
+	//
+
+
+	
+</script>
+</html>

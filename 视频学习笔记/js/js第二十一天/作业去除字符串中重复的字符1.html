@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>作业1</title>
+</head>
+<body>
+<script type="text/javascript">
+//去重的思想，首先要先让遍历到的原数组中的元素和新数组中的元素每一个进行比较，然后再把原数组中符合条件的push进新数组中
+// .去除一个字符串中的重复字符
+	var a='adfgfgg';
+	var b=a.split('');
+	console.log(b);
+	var arr=[];
+	for(var i=0;i<b.length;i++){
+		var judge=true;
+		//定义这个judge就是为了证明新定义的数组中没有和原数组中第i个元素一样的，若有一样的让它变为false就行
+		//遍历新建立的数组
+		for(var j=0;j<arr.length;j++){
+			if(b[i]==arr[j]){
+				judge=false;
+				break;
+
+			}
+
+		}
+		if(judge){
+			arr.push(b[i]);
+
+		}
+	}
+	//join 就是把数组转化为字符串
+	console.log(arr.join(''));
+
+
+	
+
+
+
+
+
+</script>
+	
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>饼状图</title>
+	<style>
+	*{
+		margin:0;padding: 0;
+	}
+		#canvas{
+			background: pink;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="500" height="400"></canvas>
+	
+</body>
+<script src="./bing.js"></script>
+<script>
+	var canvas=document.getElementById('canvas');
+	console.log(canvas);
+	 var str = '[{"name":"1月","value":100,"color":"#fff"},{"name":"2月","value":2000,"color":"blue"},{"name":"2月","value":200,"color":"#024567"},{"name":"2月","value":2800,"color":"red"}]';
+	var myArr=JSON.parse(str);
+	console.log(myArr);
+	var aa=new Pie({
+		canvas:canvas,
+		myarr:myArr,
+		radius:50
+
+
+	})
+
+</script>
+</html>

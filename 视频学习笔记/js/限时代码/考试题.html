@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>考试题</title>
+	<style>
+	*{margin:0;padding:0;}
+		#wrap{
+			width: 490px;
+			height: 500px;
+			border: 1px solid;
+			margin:0 auto;
+			position: relative;
+			overflow: hidden;
+
+		}
+		#content{
+			width: 450px;
+			position: absolute;
+			left: 0;
+			top:0;
+
+		}
+		#line{
+			position: relative;
+			width: 40px;
+			left: 450px;
+			height: 500px;
+			border: 1px solid;
+			background: grey;
+		}
+		#move{
+			width: 40px;
+			height: 50px;
+			background: black;
+			position: relative;
+			top: 0;
+			border-radius: 25px;
+		}
+
+
+
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="content">
+			你放假覅就伺服电机刚看过到了那个女if两节课高密度赋值；吗，你放假覅就伺服电机刚看过到了那个女if两节课高密度赋值；吗，你放假覅就伺服电机刚看过到了那个女if两节课高密度赋值；吗
+			你放假覅就伺服电机刚看过到了那个女if两节课高密度赋值；吗，你放假覅就伺服电机刚看过到了那个女if两节课高密度赋值；吗，你放假覅就伺服电机刚看过到了那个女if两节课高密度赋值；吗
+			你放假覅就伺服电机刚看过到了那个女if两节课高密度赋值；吗，你放假覅就伺服电机刚看过到了那个女if两节课高密度赋值；吗，你放假覅就伺服电机刚看过到了那个女if两节课高密度赋值；吗
+			你放假覅就伺服电机刚看过到了那个女if两节课高密度赋值；吗，你放假覅就伺服电机刚看过到了那个女if两节课高密度赋值；吗，你放假覅就伺服电机刚看过到了那个女if两节课高密度赋值；吗
+			你放假覅就伺服电机刚看过到了那个女if两节课高密度赋值；吗，你放假覅就伺服电机刚看过到了那个女if两节课高密度赋值；吗，你放假覅就伺服电机刚看过到了那个女if两节课高密度赋值；吗
+			你放假覅就伺服电机刚看过到了那个女if两节课高密度赋值；吗，你放假覅就伺服电机刚看过到了那个女if两节课高密度赋值；吗，你放假覅就伺服电机刚看过到了那个女if两节课高密度赋值；吗
+			你放假覅就伺服电机刚看过到了那个女if两节课高密度赋值；吗，你放假覅就伺服电机刚看过到了那个女if两节课高密度赋值；吗，你放假覅就伺服电机刚看过到了那个女if两节课高密度赋值；吗
+			你放假覅就伺服电机刚看过到了那个女if两节课高密度赋值；吗，你放假覅就伺服电机刚看过到了那个女if两节课高密度赋值；吗，你放假覅就伺服电机刚看过到了那个女if两节课高密度赋值；吗
+		</div>
+		<div id="line">
+			<div id="move">
+				
+			</div>
+			
+		</div>
+		
+	</div>
+	<script>
+		var wrap=document.getElementById('wrap');
+		var content=document.getElementById('content');
+		var line=document.getElementById('line');
+		var move=document.getElementById('move');
+		//拖动
+		move.onmousedown=function(obj){
+			var obj=obj||window.event;
+			var x=move.offsetTop;
+			var before=obj.clientY;
+
+			document.onmousemove=function(obj1){
+				var obj1=obj1||window.event;
+				move.style.top=obj1.clientY-before+x+'px';
+				check(move,line);
+				var m=bili();
+				content.style.top=-move.offsetTop*m+'px';
+
+			}
+			document.onmouseup=function(){
+				document.onmousemove=null;
+			}
+		}
+		var step=10;
+		//键盘事件
+		window.onkeydown=function(obj3){
+			// console.log(obj3);
+			var obj3=obj3||window.event;
+			var mm=bili();
+			
+			if(obj3.keyCode==40){
+				move.style.top=move.offsetTop+step+'px';
+				content.style.top=-move.offsetTop*mm+'px';
+			}
+			if(obj3.keyCode==38){
+				move.style.top=move.offsetTop-step+'px';
+				content.style.top=-move.offsetTop*mm+'px';
+			}
+			check(move,line);
+		}
+		var step1=5;
+		//滚轮事件
+		window.onmousewheel=function(obj04){
+			var mm=bili();
+			// console.log(obj04);
+			var obj04=obj04||window.event;
+			if(obj04.wheelDelta<0){
+				move.style.top=move.offsetTop+step1+'px';
+				content.style.top=-move.offsetTop*mm+'px';
+			}if(obj04.wheelDelta>0){
+				move.style.top=move.offsetTop-step1+'px';
+				content.style.top=-move.offsetTop*mm+'px';
+
+
+			}
+
+			check(move,line);
+
+		}
+		//计算比例
+		function bili(){
+			var m=(content.offsetHeight-wrap.offsetHeight)/(line.offsetHeight-move.offsetHeight);
+			return m;
+
+		}
+		//判断函数
+		function check(move,line){
+			var mm=bili();
+			if(move.offsetTop<=0){
+					move.style.top=0;
+					content.style.top=0+'px';
+			}if(move.offsetTop>=line.clientHeight-move.offsetHeight){
+					move.style.top=line.clientHeight-move.offsetHeight+'px';
+					content.style.top=-mm*move.offsetTop+'px';
+			}
+
+		}
+		
+
+
+
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

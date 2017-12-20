@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>面向对象作业2</title>
+	<style>
+	*{
+		margin:0;padding:0;
+	}
+		#wrap{
+			width: 200px;
+			height: 200px;
+			background: red;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		
+	</div>
+	
+</body>
+<script src="jquery.js"></script>
+<script>
+	// function move(ele,start,end,direction,time){
+	// 	var index=0;
+	// 	var n=start>end?-1:1;
+	// 	var timer=setInterval(function(){
+	// 		index+=n;
+	// 		// console.log(index);
+	// 		console.log(start+index);
+	// 		ele.css({
+	// 			[direction]:start+index
+	// 		})
+	// 		if(n>0){
+	// 			if(index>=500){
+	// 				clearInterval(timer);
+
+	// 			}
+	// 		}else{
+	// 			if(index<=-500){
+	// 				clearInterval(timer);
+	// 			}
+	// 		}
+			
+	// 	},time)
+	// }
+	// move($("#wrap"),500,20,"top",10);
+
+	function move(myobj){
+		var index=0;
+		var n=parseInt(myobj.start)>parseInt(myobj.end)?-1:1;
+		var timer=setInterval(function(){
+			index+=n;
+			myobj.ele.css({
+				[myobj.direction]:parseInt(myobj.start)+index
+			})
+			if(n>0){
+				if(index>=500){
+					clearInterval(timer);
+
+				}
+			}else{
+				if(index<=-500){
+					clearInterval(timer);
+				}
+			}
+			
+		},parseInt(myobj.time))
+	}
+	// var obj={
+	// 	ele:$("#wrap"),
+	// 	start:500,
+	// 	end:20,
+	// 	direction:"top",
+	// 	time:10
+
+	// }
+	move({
+		ele:$("#wrap"),
+		start:500,
+		end:20,
+		direction:"top",
+		time:10
+
+	});
+
+	
+</script>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片延迟加载</title>
+	<style>
+	*{margin:0;padding:0;}
+	ul{
+		list-style: none;
+		width: 500px;
+		margin: 0 auto;
+		border: 1px solid red;
+		/*background-color: blue;*/
+	}
+	ul li{
+		position: relative;
+		width: 100%;
+		height: 1000px;
+		border: 1px solid green;
+	}
+	ul li img{
+		position: absolute;
+		bottom: 0;
+		width: 500px;
+		height: 500px;
+		border: 1px solid;
+
+	}
+</style>
+</head>
+<body>
+	<ul>
+	
+		<li><img src="img/img01(1).jpg" alt=""></li>
+		<!-- 当是真实写页面时这个src不写东西 -->
+		<li><img src="img/img02(1).jpg" alt=""></li>
+		<li><img src="img/img03(1).jpg" alt=""></li>
+		<li><img src="img/img04(1).jpg" alt=""></li>
+	</ul>
+	<script type="text/javascript">
+		var imgs=document.getElementsByTagName('img');
+		var screenHeight=document.documentElement.clientHeight;
+		//可视区高度
+		var scroll0=document.body.scrollTop||document.documentElement.scrollTop;
+		//滚动条高度
+		console.log(imgs);
+		for(var i=0;i<imgs.length;i++)
+		{
+			var scroll=imgs[i].getAttribute('src');
+			imgs[i].setAttribute('_src',scroll);
+			imgs[i].setAttribute('src','');
+			if(bodyTop(imgs[i])<screenHeight+scroll0)
+			{
+				
+				imgs[i].src=imgs[i].getAttribute('_src');
+
+			}
+
+		}
+		//获取绝对top，距body的距离
+		function bodyTop(obj)
+		{
+			var Ttop=0;
+
+			while(obj)
+			{
+				Ttop+=obj.offsetTop;
+				obj=obj.offsetParent;
+
+			}
+			return Ttop;
+		}
+		//鼠标滑动事件
+		window.onscroll=function()
+		{
+
+			var scrollTop0=document.body.scrollTop||document.documentElement.scrollTop;
+			for(var i=0;i<imgs.length;i++)
+			{
+				if(bodyTop(imgs[i])<screenHeight+scrollTop0)
+				{
+					imgs[i].src=imgs[i].getAttribute('_src');
+
+				}
+
+
+			}
+		}
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

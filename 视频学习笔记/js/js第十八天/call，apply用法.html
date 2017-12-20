@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#wrap{
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+
+
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		
+	</div>
+	<script type="text/javascript">
+		var wrap=document.getElementById('wrap');
+		wrap.onclick=function(){
+			console.log(111);
+			add(this);//window
+			add.call(wrap,10);//wrap 常用
+			add.apply(wrap,[]);
+			//第一个参数this想换成谁，第二个参数传的参
+			// 就相当于
+			// wrap.m=add;
+			// wrap.m();
+		}
+		function add(r){
+			console.log(r);
+			console.log(this);
+		}
+		//argument:参数
+		//add（标签，args）args就代表很多参数
+		// var foo = {
+		//   name:"mingming",
+		//   logName:function(){
+		//     console.log(this.name);
+		//   }
+		// }
+
+		// var bar={
+		//   name:"xiaowang"
+		// };
+		// foo.logName.call(bar);//xiaowang
+			
+
+
+
+</script>
+	
+</body>
+</html>

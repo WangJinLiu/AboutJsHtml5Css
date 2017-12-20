@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>定时器</title>
+	
+	<style>
+
+		#div1{
+			width: 10px;
+			height: 10px;
+			background-color: yellow;
+		}
+
+
+
+
+	</style>
+</head>
+<body>
+	<div id="div1"></div>
+	<script type="text/javascript">
+	// var set=setTimeout(
+	// 	function()
+	// 	{
+	// 		console.log('hello world');
+	// 	},3000);
+
+	//练习：使用延迟定时器延迟三秒以后让该div颜色改变为red，宽高均变为100px
+	var div1=document.getElementById('div1');
+	var set=setTimeout(
+		function(){
+			div1.style.width='100px';
+			div1.style.height='100px';
+			div1.style.backgroundColor='red';
+
+		},3000);
+	//清除延迟定时器
+	// clearTimeout(set);
+
+	//每隔一秒打印一个数，从0开始打印，每1秒钟加1；
+	//循环定时器
+	var i=0;
+	var set1=setInterval(function(){
+		console.log(i);
+		i++;
+
+	},1000);
+
+	//清除循环定时器
+	
+	// clearInterval(set1);
+
+
+
+	
+
+	/*定时器
+			延迟定时器：setTimeout();
+			第一个参数：方法，执行的内容function(){}
+			第二个参数：延迟的时间，以毫秒为单位，1s=1000ms
+						默认只执行一次
+			清除延迟定时器：clearTimeout()
+			参数：要清除的延迟定时器名称
+			循环定时器：setInterval();
+			第一个参数：方法，执行的内容function(){}
+			第二个参数：每间隔多少时间 以毫秒为单位，1s=1000ms
+					注意：如果没有停止的操作将一直进行
+
+*/
+		
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

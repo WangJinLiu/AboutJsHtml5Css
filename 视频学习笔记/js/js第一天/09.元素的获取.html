@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>元素的获取</title>
+	<style type="text/css">
+		.para_c{
+			color: red;
+
+		}
+		p{
+			color: blue;
+		}
+
+
+
+	</style>
+</head>
+<body>
+
+	<script type="text/javascript">
+	window.onload=function(){
+		//通过ID获取元素
+		var para02=document.getElementById('thep');
+		console.log(para02);
+		para02.style.height='200px';
+		para02.style.width='100px';
+		//通过class获取元素（注意:获取到的是一个集合）
+		var thep01=document.getElementsByClassName('para_c');
+		console.log(thep01);
+		thep01[0].style.color="green";
+		//通过标签名获取元素
+		var ps=document.getElementsByTagName('p');
+		ps[2].style.height='50px';
+	}
+		document.write('<p id="para">this is paragrah</p>');
+		var para=document.getElementById('para');
+		console.log(para);
+		para.style.color='black';
+		para.style.backgroundColor="red";
+		//改变标签中的文本内容
+		para.innerHTML="hello world";
+/*z在js中。我们可以获取到HTML中的元素，从而来动态的改变元素的内容，以及元素的样式
+
+通过ID获取元素：
+document：文档对象，获取元素必须使用
+.:的；
+getElementById，getElementsByClassName,getElementsByTagName(通过标签名获取)*/
+
+
+
+	</script>
+	<p class="para_c" id="thep">paragrah is for class</p>
+	<p class="para_c2">paragrah is for class</p>
+	<p class="para_c3">paragrah is for class</p>
+	
+
+</body>
+</html>

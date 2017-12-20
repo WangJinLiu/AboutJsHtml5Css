@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>开头和结尾</title>
+</head>
+<body>
+	<script>
+		//以什么开头
+		// ^
+		//要求网址可以是http，ftp开头
+		// var k=/^(http|ftp)/g;
+		// //加上g相当于从上次查到的位置开始查str，而不是从头开始
+		// //不加g每次都从头开始查询str
+		// var str='http://www';
+		// var a=k.test(str);
+		// console.log(a);//true
+
+		//以什么结尾$
+		// var k=/m$/g;
+		// var str='ffgm';
+		// var a=k.test(str);
+		// console.log(a);
+		
+		//以http开头，以com结尾，中间有6个任意字符/^(http).{6}(com$)/g
+		//以http开头，以com结尾，中间有6个字符
+		var k=/^(http)[a-zA-Z]{6}(com$)/g;
+		var str='http://256.com';
+		var a=k.test(str);
+		console.log(a);
+
+		
+
+		
+
+
+
+	</script>
+	
+</body>
+</html>

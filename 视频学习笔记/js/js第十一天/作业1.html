@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>作业1</title>
+	<style type="text/css">
+	*{margin: 0;
+		padding:0;}
+		#div1{
+			width: 400px;
+			height: 300px;
+			background: rgb(244,244,243);
+		}
+		#input2{
+			margin-top:5px;
+		}
+		#input1{
+			width: 194px;
+		}
+		#list{
+			list-style: none;
+			position: relative;
+		}
+
+
+
+
+	</style>
+</head>
+<body>
+	<div id="div1">
+		<span>姓名：</span><input type="text" style="margin-top:20px;" id="input1"><br>
+		<span style="vertical-align:top">内容：</span><textarea id="input2" cols="30" rows="10"></textarea>
+		<input id="but" type="button" value="提交" style="margin-left:350px;">
+	</div>
+	<h3>显示留言</h3>
+	<ul id="list">
+		
+	</ul>
+	<script type="text/javascript" src="js/tween.js"></script>
+	<script type="text/javascript">
+	nav();
+	function nav()
+	{
+		var div1=document.getElementById('div1');
+		var list=document.getElementById('list');
+		var thebut=document.getElementById('but');
+		var input1=document.getElementById('input1');
+		var input2=document.getElementById('input2');
+		var name;
+		var content;
+		var timer=null;
+		init();
+		//添加函数，时间绑定
+		function tovalue()
+		{
+
+			thebut.onclick=function()
+			{
+				var name=input1.value;
+				var content=input2.value;
+				var li=document.createElement('li');//创建一个li标签
+				var li0=document.createElement('li');
+				li0.innerHTML=name+'<br>';
+				li.innerHTML=content+'<a href="###">删除</a>';
+				li.style.background='#bebebe';
+				li.style.width='400px';
+				li0.style.background='#e0e0e0';
+				li0.style.width='400px';
+				list.appendChild(li0);
+				list.appendChild(li);
+				var aa=li.getElementsByTagName('a');
+				aa[0].style.marginLeft='300px';
+				move(li,li0);
+				aa[0].onclick=function()
+				{
+					
+					list.removeChild(li);
+					list.removeChild(li0);
+
+				}
+			}
+		}
+		var index=0;
+		//动画函数
+		function move(li,li0)
+		{	index++;
+			li.style.position='absolute';
+			li.style.top=0;
+			li0.style.position='absolute';
+			li0.style.top='20px';
+			var t=0;
+			var start1=0;
+			var start2=li.offsetHeight;
+			var change1=li0.offsetHeight*index;
+			var change2=li.offsetHeight*index;
+			console.log(change1);
+			console.log(change2);
+			var d=10;
+			clearInterval(timer);
+			timer=setInterval(function()
+			{
+				if(index==1)
+				{
+					clearInterval(timer);
+				}
+
+				t++;
+				if(t>=d)
+				{
+					clearInterval(timer);
+					timer='null';
+
+				}
+				else
+				{
+					li.style.top=Tween.Back.easeOut(t,start1,change1,d)+'px';
+					li0.style.top=Tween.Back.easeOut(t,start2,change2,d)+'px';
+				}
+
+			},200)
+
+		}
+
+
+		//初始化函数
+		function init()
+		{
+			tovalue();
+		}
+
+
+
+	}
+
+
+
+
+	</script>
+	
+</body>
+</html>

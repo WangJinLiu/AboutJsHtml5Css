@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>导航封装版</title>
+	<style>
+	#content{
+		width: 1000px;
+		height: 500px;
+		border: 1px solid;
+		margin:0 auto;
+	}
+	#content div{
+		display: inline-block;
+	}
+	img{
+		width: 200px;
+		height: 200px;
+	}
+	#but{
+		width: 1000px;
+		height: 50px;
+		border: 1px solid;
+		margin:0 auto;
+		text-align: center;
+	}
+	#but div{
+		width: 50px;
+		height: 50px;
+		margin-left: 30px;
+		border: 1px solid;
+		display: inline-block;
+		line-height: 50px;
+	}
+
+
+
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="content">
+			
+		</div>
+		<div id="but">
+			
+		</div>
+	</div>
+	<script type="text/javascript">
+		var s1='[{"img":"1.jpg","price":89.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店01","address":"江苏苏州"},{"img":"2.jpg","price":100.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店02","address":"江苏苏州"},{"img":"3.jpg","price":180.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店03","address":"江苏苏州"},{"img":"4.jpg","price":180.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店01","address":"江苏苏州"},{"img":"5.jpg","price":89.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店01","address":"江苏苏州"},{"img":"6.jpg","price":100.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店02","address":"江苏苏州"},{"img":"7.jpg","price":180.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店03","address":"江苏苏州"},{"img":"8.jpg","price":180.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店01","address":"江苏苏州"},{"img":"1.jpg","price":89.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店01","address":"江苏苏州"},{"img":"2.jpg","price":100.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店02","address":"江苏苏州"},{"img":"3.jpg","price":180.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店03","address":"江苏苏州"},{"img":"4.jpg","price":180.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店01","address":"江苏苏州"},{"img":"5.jpg","price":89.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店01","address":"江苏苏州"},{"img":"6.jpg","price":100.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店02","address":"江苏苏州"},{"img":"7.jpg","price":180.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店03","address":"江苏苏州"},{"img":"8.jpg","price":180.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店01","address":"江苏苏州"}]';
+		var date=JSON.parse(s1);
+		console.log(date);
+		var perpage=5;
+		var dd=Math.ceil(date.length/perpage);//一共多少页
+		createBut(dd,5,date);
+		//pageNumber页数,perpage:一页多少个，arr就是date
+		function createBut(pageNumber,perpage,arr){
+			var but=document.getElementById('but');
+			var content=document.getElementById('content');
+			//创建页数按钮
+			for(var i=0;i<pageNumber;i++){
+				var But=create('div',but);
+				But.innerHTML=i+1;
+				But.onclick=function(){
+					content.innerHTML='';
+					createcontent(this.innerHTML,perpage,arr);
+					
+				}
+
+
+
+			}
+		}
+		createcontent(1,5,date);
+		//创建内容
+		function createcontent(value,perpage,arr){
+			var k=value;
+			var start=(k-1)*perpage;
+			var end=k*perpage;
+			if(end>arr.length){
+				end=arr.length;
+			}
+			//创建内容（就相当于截取date里的一部分创建出来）
+			for(var j=start;j<end;j++){
+
+				var neirong=create('div',content);
+				var img=create('img',neirong);
+				img.src=arr[j].img;
+
+
+			}
+		}
+
+
+		//创建标签
+		function create(name,father){
+			var o=document.createElement(name);
+			father.appendChild(o);
+			return o;
+		}
+
+
+
+    // 函数创建规则：
+    // 1.肯定是一个功能，即如果想要实现什么功能，可以创建一个函数
+    	// 功能性划分函数:for循环内部
+    // 2.函数是把代码中公共的部分提取出来
+    // 3.函数的代码尽量少，不要超过20行
+    // 4.要明白函数的最终目的是什么
+    //
+    // 函数使用规则：
+    // 1.函数创建完必须先调用
+    // 2.函数调用后必须打印确认是否执行
+    // 3.函数內的变量不允许是全局变量
+    // 4.函数有返回值必须有接收
+    // 写代码规则：
+    // 1.先创建界面模型
+    // 2.每次只完成一个功能
+    // 3.在完成功能中做到缺什么，补什么
+    // 4.每次创建变量后必须打印该变量，确认是自己想要的结果
+
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

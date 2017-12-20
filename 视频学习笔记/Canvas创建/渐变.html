@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>渐变</title>
+	<style>
+		#canvas{
+			background:pink;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="500" height="500"></canvas>
+	
+</body>
+<script>
+	var canvas=document.getElementById('canvas');
+	var content=canvas.getContext("2d");
+	content.beginPath();
+	//设置文字
+	var text="Hello World";
+	content.font="MingLiU 50px serif";
+	//渐变
+	var gradient=content.createLinearGradient(100,0,400,0);
+	gradient.addColorStop("0","blue");
+	gradient.addColorStop("0.5","green");
+	gradient.addColorStop("1","red");
+	//设置风格
+	content.strokeStyle=gradient;//设置样式的
+	content.strokeText(text,100,100);//起始点位置
+	content.closePath();
+
+
+</script>
+</html>

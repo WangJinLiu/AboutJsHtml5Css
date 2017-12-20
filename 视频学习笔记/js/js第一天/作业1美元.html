@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="text1"><button id="button1">提交</button>
+	<script type="text/javascript">
+		var a=document.getElementById('text1');
+		var b=document.getElementById('button1');
+		// console.log(a);
+		// console.log(b);
+
+		b.onclick=function(){
+			
+			var c=a.value;
+
+			var d=parseInt(c/20);
+			var e=c%20;//余数
+
+			var d1=parseInt(e/10);
+			var	e1=e%10;//余数
+
+			var d2=parseInt(e1/5);
+			var e2=e1%5;
+
+			alert('输入的数'+a.value+'    20美元个数：'+d+'    10美元个数：'+d1+'    5美元个数：'+d2+'    1美元个数：'+e2);
+			
+
+		}
+
+
+
+
+
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

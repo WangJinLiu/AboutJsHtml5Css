@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>继承</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// function People(name,age,sex) {
+	// 	this.name=name;
+	// 	this.age=age;
+	// 	this.sex=sex;
+	// }
+	// function Student(name,age,sex,score){
+	// 	this.name=name;
+	// 	this.age=age;
+	// 	this.sex=sex;
+	// 	this.score=score;
+	// }
+
+	//student继承了People
+	function People(name,age,sex) {
+		this.name=name;
+		this.age=age;
+		this.sex=sex;
+	}
+	function Student(name,age,sex,score){
+		
+		this.score=score;
+		People.call(this,name,age,sex);
+	}
+	var aa=new Student("zhangsan",18,"男",18);
+	console.log(aa.name);
+	//Collegesstudent继承了Student
+	function Collegestudents(name,age,sex,score,hobby){
+		hobby:"唱歌";
+		Student.call(this,name,age,sex,score);
+
+	}
+	var bb=new Collegestudents("小红",18,"男",18,"唱歌");
+	console.log(bb.name);
+
+	//instanceof:用来判断对象变量是哪个构造函数构造出来的
+	var value=bb instanceof Collegestudents;
+	console.log(value);// 返回值布尔值
+	console.log(bb);
+	// 所有最根本的是object类型
+
+
+
+</script>
+</html>

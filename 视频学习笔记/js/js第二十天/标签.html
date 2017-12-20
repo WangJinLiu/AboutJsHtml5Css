@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>标签的自定义属性</title>
+	<style>
+	*{margin:0;padding:0;}
+		img{
+			width: 100px;
+			height: 100px;
+		}
+		#wrap{
+			width: 100%;
+			height: 80px;
+			border: 1px solid;
+			margin:0 auto;
+			text-align: center;
+			background: black;
+		}
+		#wrap div{
+			width: 80px;
+			height: 50px;
+			display: inline-block;
+			/*border: 1px solid;*/
+			color: grey;
+		}
+
+
+
+	</style>
+</head>
+<body>
+<div id="wrap">
+
+	
+</div>
+	<!-- <img src="1.jpg" alt="">
+	<img src="2.jpg" alt="">
+	<img src="3.jpg" alt=""> -->
+	
+</body>
+<script>
+	//标签的自定义属性
+	var imgs=document.getElementsByTagName('img');
+	//用这个不用闭包了
+	// for(var i=0;i<imgs.length;i++){
+	// 	imgs[i].index=i;
+	// 	imgs[i].onclick=function(){
+
+	// 		alert(this.index);
+	// 	}
+	// }
+	var s1='[\
+	{"title":"首页","english":"home"},\
+	{"title":"资讯","english":"news"},\
+	{"title":"赛事","english":"match"},\
+	{"title":"互动","english":"interaction"},\
+	{"title":"资料","english":"data"},\
+	{"title":"服务","english":"search"},\
+	{"title":"下载","english":"down"}\
+]';
+	var arr=JSON.parse(s1);
+	console.log(arr);
+	create(arr);
+	function create(arr){
+		var wrap=document.getElementById('wrap');
+		for(var i=0;i<arr.length;i++){
+			//创建标签
+			var divbox=createbiaoqian('div',wrap)
+			divbox.style.marginTop='20px';
+			var div1=createbiaoqian('div',divbox);
+			div1.innerHTML=arr[i].title;
+			var english=createbiaoqian('div',div1);
+			english.style.fontSize='12px';
+			english.innerHTML=arr[i].english;
+
+		
+		}
+
+	}
+	//创建标签
+	function createbiaoqian(name,father){
+		var o=document.createElement(name);
+		father.appendChild(o);
+		return o;
+
+	}
+	
+	
+</script>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>验证码</title>
+</head>
+<body>
+	<canvas id="canvas" width="120" height="40"></canvas>
+	<a href="" id="change">看不清,换一张</a>
+	<br>
+	<input type="text" value="" id="inp">
+	<button id="btn">确定</button>
+</body>
+<script>
+	var change = document.querySelector('#change');
+
+	//生成随机数的函数
+	function random(min,max){
+		return parseInt(Math.random()*(max-min)+min);
+	}
+
+	//生成随机颜色的函数
+	function randomColor(min,max){
+		var r = random(min,max);
+		var g = random(min,max);
+		var b = random(min,max);
+		return "rgb("+r+","+g+","+b+")";
+	}
+
+	draw();
+	change.onclick = function(){
+		draw();
+	}
+
+	//绘制验证码的函数
+	function draw(){
+		var canvas = document.querySelector('#canvas');
+		var ctx = canvas.getContext('2d');
+		var width = canvas.width;
+		var height = canvas.height;
+
+		//绘制背景色
+		ctx.fillStyle = randomColor(180,240);
+		ctx.fillRect(0,0,width,height);
+
+		//绘制文字
+		var str = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM0123456789';
+		var newStr = '';
+		var str1 = str.split("");
+		console.log(str1);
+		for(var i=0;i<4;i++){
+			var text = str1[random(0,str.length)];
+			newStr += text;
+			ctx.font = random(15,40)+'px SimHei';
+			ctx.fillStyle = randomColor(80,160);
+
+			//修改坐标原点和角度
+			var x = 10 + i*25;
+			var y = random(25,40);
+			var deg = random(-45,45);
+
+			ctx.translate(x,y);
+			ctx.rotate(deg*Math.PI/180);
+
+			ctx.fillText(text,0,0);
+
+			//恢复坐标原点和角度
+			ctx.rotate(-deg*Math.PI/180);
+			ctx.translate(-x,-y);
+		}
+		console.log(newStr);
+
+		var inp = document.querySelector('#inp');
+		var btn = document.querySelector('#btn');
+		btn.onclick = function(){
+			if(newStr == inp.value){
+				window.open('danmu.html');
+			}else{
+				alert('验证失败!');
+			}
+		}
+
+		//绘制干扰线
+		for(var i=0;i<6;i++){
+			ctx.beginPath();
+			ctx.moveTo(random(0,width),random(0,height));
+			ctx.lineTo(random(0,width),random(0,height));
+			ctx.strokeStyle = randomColor(60,150);
+			ctx.stroke();
+			ctx.closePath();
+		}
+
+		//绘制干扰点
+		for(var i=0;i<50;i++){
+			ctx.beginPath();
+			ctx.arc(random(0,width),random(0,height),1,0,Math.PI*2);
+			ctx.fillStyle = randomColor(0,255);
+			ctx.fill();
+			ctx.closePath();
+		}
+	}
+</script>
+</html>

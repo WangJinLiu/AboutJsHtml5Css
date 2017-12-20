@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>正则常用元字符</title>
+</head>
+<body>
+	<script>
+	// \d代表[0-9]
+	// \w代表  匹配字母和数字及_
+	// \s 空格或者tab
+	// [\u4e00-\u9fa5]中文
+	// \D非数字
+	//判断一个字符串中是否有数字\d
+		// var k=/\d/;
+		// var m='44sddf';
+		// var aa=k.test(m);
+		// console.log(aa);//true
+
+		// var k=/\D/g;
+		// var m='44swkdnaf';
+		// var aa=m.replace(k,'');
+		// console.log(aa)；
+		//如果在【】中最前面写^代表对中括号中的内容取反
+		//把汉字之外的全去掉
+		var reg=/[^\u4e00-\u9fa5]/g;
+		var str='你好颠肺流离；人格4468';
+		console.log(str.replace(reg,''));//你好颠肺流离人格
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

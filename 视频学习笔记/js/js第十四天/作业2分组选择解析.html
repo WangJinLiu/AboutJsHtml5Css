@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>分组提交</title>
+</head>
+<body>
+	<dl class="area">
+		<dt>城区</dt>
+		<dd>东城区</dd>
+		<dd>西城区</dd>
+		<dd>朝阳区</dd>
+	</dl>
+	<dl class="position">
+		<dt>职位</dt>
+		<dd>UI</dd>
+		<dd>H5</dd>
+		<dd>CEO</dd>
+	</dl>
+	<dl class="salary">
+		<dt>薪资</dt>
+		<dd>1000</dd>
+		<dd>500</dd>
+		<dd>2000</dd>
+	</dl>
+	<ul class="selected">
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+	<script type="text/javascript">
+	// 这是三个没用
+	// var area=document.querySelectorAll('.area dd');
+	// var posi=document.querySelectorAll('.position dd');
+	// var sala=document.querySelectorAll('.salary dd');
+	var seleLi=document.querySelectorAll('.selected li');
+	var dls=document.querySelectorAll('dl');
+	var dlsdd=document.querySelectorAll('dl dd');
+	//给所有dd添加点击事件
+	function fnclick(obj,index)
+	{
+		var objChild=obj.children;//obj下所有的子集
+
+		for(var i=1;i<objChild.length;i++)
+		{
+			objChild[i].onclick=function()
+			{
+				// console.log(this.innerHTML);
+				// console.log(index)
+
+				fnpush(index,this.innerHTML);
+
+			}
+		}
+
+	}
+	//插入数据
+	function fnpush(num,html)
+	{
+		seleLi[num].innerHTML=html;
+
+	}
+
+	//遍历dls（为dl添加事件）（当前项，当前项的索引）
+	for(var i=0;i<dls.length;i++)
+	{
+		fnclick(dls[i],i);
+	}
+
+	
+	
+
+
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

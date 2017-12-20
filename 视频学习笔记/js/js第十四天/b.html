@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		#wrap{
+			width: 300px;
+			height: 500px;
+			border: 1px solid red;
+			margin: 0 auto;
+			position: relative;
+		}
+		#begin{
+			width: 300px;
+			height: 500px;
+			background: red;
+			position: absolute;
+			left: 0;
+			top: 0;
+			z-index: 10;
+		}
+		.wolf{
+			width: 108px;
+			height: 101px;
+			background: url(img/grayWolf.png) no-repeat;
+			/*background-position: 108px;*/
+
+			position: absolute;
+			left: 20px;
+			top: 100px;
+
+		}
+		
+	</style>
+</head>
+<body>
+
+	<div id="wrap">
+		<div id="begin">
+			<div id="start">游戏开始</div>
+			<div id="detail">游戏说明</div>
+		</div>
+		<!-- <div class="wolf"></div> -->
+	</div>
+
+
+</body>
+<script>
+	var wrap = document.getElementById("wrap");
+	var start = document.getElementById("start");
+	var begin = document.getElementById("begin");
+	start.onclick = function () {
+		begin.style.display = "none";
+		beginGame();
+	}
+	var arr = [{x:20,y:100},{x:130,y:100},{x:240,y:100},{x:20,y:210},{x:130,y:210},{x:240,y:210}];
+	// create();
+	// create();
+	function beginGame() {
+		setInterval(function () {
+			create();
+		}, 2000);
+	}
+
+
+	function arcrandom(min,max) {
+		return parseInt(Math.random() * (max - min + 1) + min);
+	}
+
+	// 创建狼
+	function create() {
+		// 先获得一个随机数，通过随机数取数组对应元素
+		var index = arcrandom(0,arr.length - 1);
+
+		var w = document.createElement("div");
+		wrap.appendChild(w);
+		w.className = "wolf";
+		w.style.left = arr[index].x + "px";
+		w.style.top = arr[index].y + "px";
+		var i = 0;
+		var m = w;
+		var n = 1;
+		w.beginTimer = setInterval(function () {
+			// console.log(m);
+			i += n;
+			m.style.backgroundPosition = -108 * i + "px";
+			if(i == 5) {
+				n = -1;
+			}
+			if(i < 1) {
+				clearInterval(m.beginTimer);
+				wrap.removeChild(w);
+			}
+
+		}, 100);
+		w.onclick = function () {
+
+			clearInterval(w.beginTimer);
+
+			w.endTimer = function () {
+				console.log("ennnnnnn");
+				var m = this;
+				var i = 6;
+				var timer = setInterval(function () {
+					m.style.backgroundPosition = -108 * i + "px";
+					i++;
+					if(i == 10) {
+						clearInterval(timer);
+						wrap.removeChild(m);
+					}
+				}, 100);
+
+			}
+			w.endTimer();
+			
+			
+
+		}
+	}
+	
+
+
+
+
+
+</script>
+</html>

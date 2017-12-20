@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+		*{margin: 0;padding: 0;}
+			img{
+				width: 200px;
+				height: 200px;
+			}
+		.div1{
+				display: inline-block;
+			}
+			.div_top{
+				position: relative;
+				height: 1000px;
+				
+				/*border: 1px solid white;*/
+				width: 1000px;
+				
+				
+			}
+			@keyframes move{
+				50%{
+					transform:/* rotateX(3600deg) */rotateY(3600deg);
+				}
+			}
+			.div_top{
+				transform-style: preserve-3d;
+				animation: move 100s infinite;
+			}
+			/*加上这个就可以在Z轴平移了*/
+			.img1{
+				position: absolute;
+				top: 200px;
+				left: 400px;
+				
+			}
+			.img2{
+				position: absolute;
+				top: 200px;
+				left: 400px;
+				transform-origin:right;
+				transform: rotateY(90deg);
+				
+				
+			}
+			.img3{
+				position: absolute;
+				top: 200px;
+				left: 200px;
+				transform-origin: right;
+				transform: rotateY(90deg);
+				
+			}
+			.img4{
+				position: absolute;
+				top:400px;
+				left: 400px;
+				transform-origin: top;
+				transform: rotateX(90deg);
+			}
+			.img5{
+				position: absolute;
+				left: 400px;
+				transform-origin: bottom;
+				transform: rotateX(-90deg)translateZ(-14px);
+				
+			}
+			.img6{
+				position: absolute;
+				left: 400px;
+				transform: translateZ(200px) translateY(200px) translateY(-14px);
+				
+				
+			}
+			
+			html{
+				background: black;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="div_top">
+			<div class="div2">
+				<img class="img1" src="img/1.jpg" alt="" />
+			</div>
+			<div class="div1">
+				<img class="img2" src="img/2.jpg" alt="" />
+				<img class="img3" src="img/3.jpg" alt="" />
+				<img class="img4" src="img/4.jpg" alt="" />
+				<img class="img5" src="img/5.jpg" alt="" />
+				<img class="img6" src="img/6.jpg" alt="" />
+			</div>
+		</div>
+	</body>
+</html>

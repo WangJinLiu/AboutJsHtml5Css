@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>去重应用排序</title>
+</head>
+<body>
+<!-- 解题思路：（去重）首先先取出数组中的第一个元素m重新组成个数组，然后让这个元素与原数组中的内容比较，若不等则取出原数组中的这个元素放入新数组中最后一位，若不等则去掉新数组中的这个元素 -->
+<script type="text/javascript">
+	var a=['d','g','t','e','r','b','g','d','t','r','e'];
+	a.sort(a);//先排序
+	console.log(a.sort(a));
+	var a0=[a[0]];//为了得到单独的那个字母
+	var a1=[a[0]];
+	var a2=[a[0]];
+	for(var i=1;i<a.length;i++)
+	{
+		if(a[i]!=a0[a0.length-1])
+		{
+			a0.push(a[i]);
+			a1.push(a[i]);
+			a2.push(a[i]);
+
+		}
+		else
+		{
+			a0.splice(a0.length-1,1);
+		}
+
+	}
+	console.log(a0);//d
+	console.log(a1);//b,d,e,g,r,t
+	console.log(a2);//b,d,e,g,r,t
+	for(var j=0;j<a1.length;j++)
+	{
+		if(a0[0]==a1[j])
+		{
+			a1.splice(j,1);
+			a2.splice(j,1);
+			a1.push(a0[0]);
+
+		}
+	}
+	console.log(a1);//d,e,g,r,t,b
+	console.log(a2);//d,e,g,r,t
+	for(var k=a2.length-1;k>=0;k--)//把a2反着遍历依次添加到a1里
+	{
+		a1.push(a2[k]);
+
+	}
+	console.log(a1);//最后结果"d", "e", "g", "r", "t", "b", "t", "r", "g", "e", "d"
+
+
+
+
+
+
+
+
+
+</script>
+	
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>对象当形参</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function move(myobj){
+		console.log(myobj.end);
+		myobj.end;
+
+
+	}
+	move({
+		element:document.querySelector("#wrap"),
+		direction:"left",
+		end:'100px',
+		start:'200px',
+		fn:function(){
+
+		}
+	});
+</script>
+</html>

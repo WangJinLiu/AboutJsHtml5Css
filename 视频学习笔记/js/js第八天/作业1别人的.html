@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+	#bigdiv{
+		width:800px;
+		height:800px;
+		margin:0 auto;
+		border:1px solid;
+		position: relative;
+	}
+	#small{
+		width:100px;
+		height:100px;
+		background: red;
+		position: absolute;
+		top:0;
+		left:0;
+	}
+	</style>
+</head>
+<body>
+<div id="bigdiv">
+	<div id="small"></div>
+</div>
+<script type="text/javascript">
+	var big = document.getElementById('bigdiv');
+	var small = document.getElementById('small');
+	var i=0; //定义x轴，向右
+	var j=0; //定义y轴，向下
+	var k=0; //圈数
+	var play;
+		it();
+		function it(){
+			play=setInterval(function(){
+				if(j==0&&i<700){			//向右
+					i+=2;
+			 		small.style.left=i+'px';
+				}
+				if(i==700){					//向下
+					j+=2;
+					small.style.top=j+'px';
+				}
+				if(j==700){					//向左
+					i-=2;
+					small.style.left=i+'px';
+				}
+				if(i==0){					//向上
+					j-=2;
+					small.style.top=j+'px';
+				}
+				if(j==0&&i==0)				//判断圈数
+				{
+					k++;
+				}
+				if(k==10)					//10圈停止
+					{
+						clearInterval(play);		
+					}
+				console.log(k);
+			},1);
+		}
+</script>
+</body>
+</html>

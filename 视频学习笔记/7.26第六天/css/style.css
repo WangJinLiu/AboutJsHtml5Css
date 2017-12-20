@@ -1,0 +1,114 @@
+/* 标签样式初始化 */
+body,html{margin:0;padding:0;background:#fff;font-size:14px;font-family:Arial,Helvetica,'STHeiti','Microsoft YaHei','sans-serif'}
+form,ul,li,p,h1,h2,h3,h4,h5,h6{margin:0;padding:0;}
+img{border:0;}
+ul,li{list-style-type:none;}
+a{color:#00007F;text-decoration:none;}
+a:hover{text-decoration:none;}
+.page_top{
+	/*border: 1px solid red;*/
+	position: fixed;/*加上他div会根据内容变化*/
+	top: 0;
+	z-index: 100px;
+	width: 100%;/*宽度一整行 */
+	background-color: white;
+}
+.page_title{
+	height: 80px;
+	
+	width: 1400px;
+	margin: 0 auto;
+}
+.page_title img{
+	margin-top: 16px;
+}
+.text{
+	height: 80px;
+	display: inline-block;
+	/*行标签无法设置宽高*/
+	line-height: 80px;
+	font-size: 20px;
+	vertical-align: top;
+	/*border: 1px solid;*/
+	
+	/*border: 1px solid;*/
+	margin-left: 30px;
+	margin-right: -20px;
+	
+	
+}
+
+.text1{
+	height: 80px;
+	margin-left: 30px;
+	display: inline-block;
+	line-height: 80px;
+	font-size: 18px;
+	vertical-align: top;
+	/*border: 1px solid red;*/
+	cursor: pointer;/*当鼠标移入时有一个小手*/
+	
+}
+/*.top_rightDiv a{
+	margin-left: 10px;
+}*/
+.top_rightDiv{
+	display: inline-block;
+	float: right;
+	
+	/*border: 1px solid;*/
+}
+.second_div{
+	background:rgba(0,0,0,0.2);
+	
+
+}
+.second_div_one{
+	width: 1400px;
+	height: 400px;
+	margin:0 auto;
+	border: 1px solid;
+	margin-top: 80px;
+}
+.div_one{
+	width: 300px;
+	height: 400px;
+	background-color: lightblue;
+	display: inline-block;
+}
+.one_right{
+	float: right;
+}
+.one_left>p{
+	padding-left: 50px;
+	line-height: 50px;
+	font-size: 18px;
+	color: white;
+
+
+}
+.one_left{
+	background:rgba(0,0,0,0.5);
+}
+.one_left>p>span{
+	float: right;
+	padding-right: 50px;
+}
+.one_left>p:hover{
+	background: blue;
+}
+.left_side{
+	width: 100px;
+	position: fixed;
+	left: 0;
+	top: 130px;
+}
+.left_side p{
+	height: 100px;
+	background-color: blue;
+}
+.left_side p:hover{
+	background: yellow;
+}
+
+

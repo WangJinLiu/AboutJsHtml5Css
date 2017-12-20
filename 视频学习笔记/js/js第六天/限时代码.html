@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+	<script>
+		var inp=document.getElementsByTagName('input');
+		iTimer=setInterval(function(){
+			var oDate=new Date();
+			var h=fixNum(oDate.getHours());
+			var m=fixNum(oDate.getMinutes());
+			var s=fixNum(oDate.getSeconds());
+			var str=h+m+s;
+			for(var i=0;i<str.length;i++){
+				inp[i].value=str.charAt(i);
+
+			}
+		},1000)
+		function fixNum(n)
+{
+	return n<10?'0'+n:''+n;
+}
+
+
+	</script>
+</body>
+</html>

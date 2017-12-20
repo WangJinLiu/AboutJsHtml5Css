@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>作用域</title>
+</head>
+<body>
+	<script type="text/javascript">
+
+	//匿名函数
+	/*var func=function(){
+		console.log('匿名函数');
+	}
+	func();//匿名函数执行*/
+
+	//自执行函数
+	/*var a=18;
+	(function(age){
+		console.log('大傻子'+age+'岁');
+
+	}(a));*/
+	//感叹号型
+	/*var a=18;
+	!function(age){
+		console.log('大傻子'+age+'岁');
+
+	}(a);*/
+
+	function scope()
+	{
+			var foo="函数内的变量";
+			if (1) 
+			{
+				var a='i am if';
+				console.log(a+foo);
+			}
+			while(1)
+			{
+				var b='i am in while';
+				console.log(b+foo);
+				break;
+			}
+			!function()
+			{
+				var c='i am in function';
+				foo='自执行函数内的变量';//给foo赋值，不是定义
+				console.log(c+foo);
+			}();
+			// console.log(a,b,c,foo);//c会报错（抛出异常）
+	}
+	scope();
+
+	// console.log(a,b,c,foo);//a,b,c,foo都调不到抛出异常，无权访问
+
+
+	function real()
+	{
+		y=200;
+	}
+	console.log(y);//报错，因为函数还未执行
+	real();
+	// console.log(y);
+	//相当于在函数外定义的y，函数里只是改变了y，所以是全局变量
+	//在函数内给一个没有定义过的变量赋值，相当于上边那句话
+
+
+	/*局部变量：在函数内定义的变量（foo相对于scope就是局部变量，相对于里边那个function就是全局变量）
+	  全局变量：在函数外定义的变量
+	  注意：局部或全局要相对于那个函数而言*/
+
+	  /*作用域：非特殊情况下，函数外定义的变量在函数内可以调用，反之不可以*/
+
+
+
+	</script>
+</body>
+</html>

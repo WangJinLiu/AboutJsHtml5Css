@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>images对象</title>
+</head>
+<script type="text/javascript">
+//var array=new Array;(Array是js中的保留对象)
+window.onload=function()
+{
+	var body=document.getElementsByTagName('body')[0];
+	var img=new Image("300","200");//创建了img对象
+	//接收两个参数：设置宽，设置高
+	img.onload=function()
+	{
+		console.log("当图片加载完成时出现");
+		console.log("height:"+img.height);
+
+	}
+	//图片加载成功
+	img.onerror=function()
+	{
+		console.log('加载失败');
+	}
+	//图片加载失败
+
+	// document.body.appendChild(img);
+	body.appendChild(img);
+	img.src="https://img3.doubanio.com/view/photo/photo/public/p2344520401.jpg";//这个就叫做图片加载完成
+	//由于事件的目的是在图片加载完之后显示某些信息，但图片下载并不是把image对象添加到DOM中才开始下载而是赋予src时候就开始下载了，所以为了避免网速过快，src已经加载完毕，但事件还没有被触发的这种极端情况，结论我们要将src放在事件之后添加
+
+}
+	
+
+</script>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+
+		// if (条件) {
+
+		// 	执行的代码（分支语句）
+		// }
+		// if(true){
+		// 	alert(1);
+		// }
+
+		/*if的简写方式(if语句后面的一条语句，可以么有{},正常执行)
+		// if(true)alert(1);*/
+		// var price=180;
+		// if(price>100){
+		// 	alert(1);
+		// }
+		//if判断的第二种形式
+		// var price=50;
+		// if(price>100){
+		// 	alert('Expensive');
+
+		// }
+		// else{
+		// 	alert('Cheap');
+		// }
+		//如果条件成立那么执行第一个语句，否则执行else中的语句
+
+		//通过prompt输入一个字符，如果输入的是m则弹出一个男性，否则女性
+		// var a=0;
+		// var a=prompt('请输入一个字符');//把prompt赋给变量时，就是把你输入的内容赋给变量
+		// if(a=='m'){
+		// 	alert('男性');
+		// }
+		// else{
+		// 	alert('女性');
+		// }
+
+		//闰年：(能被400整除)或者(能被4整除并且不能被100整除)
+		//1、能整除4且不能整除100 2、能整除400
+
+		//输入一个年份，判断该年份是否是闰年，如果是闰年则输出‘是闰年’，否则输出不是闰年
+		// var a=prompt('输入一个年份');
+		// if((a%400==0)||(a%4==0)&&(a%100!=0))
+		// {
+		// 	alert('我是闰年');
+		// }
+		// else{
+		// 	alert('我不是闰年');
+		// }
+		//题目：提示用户输入一个数字，如果大于0，那么提示用户 ‘大于0’，如果输入的是0，提示用户‘=0’，如果输入的是小于0，那么提示用户<0,如果这些条件都不满足，提示error
+		var number=prompt('输入一个数字');//prompt中输入的都是字符串
+		if(number>0){
+			alert('>0');
+
+		}
+		else if(number==0){
+			alert('=0');
+
+		}
+		else if(number<0){
+			alert('<0');
+		}
+		else{
+			alert('error');
+		}
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

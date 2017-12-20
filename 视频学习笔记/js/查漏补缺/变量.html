@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>变量</title>
+</head>
+<body>
+	<!-- 数组和标签：引用类型（改变一个两个都会变）
+		基础类型：string number bool
+		存储在栈空间（有名称的）的类型：Number，bool，null，undefined 
+							（栈空间里存的就是地址）
+		存储在堆空间创建（堆空间里不能有名字）的：数组，对象
+		数组中修改一个其他的也会跟着改变
+
+	-->
+	
+		<!-- <!DOCTYPE html>
+		<html lang="en">
+		<head>
+			<meta charset="UTF-8">
+			<title>复习1</title>
+		</head>
+		<body>
+			
+		</body>
+		<script type="text/javascript">
+			var a=10;
+			//变量：可以随时改变，可以存储一些东西
+			//类型：基础类型，引用类型(数组和对象)
+			//空间对象的分配：栈（有名称） 堆（无名称） 全局 静态 代码
+			//硬盘（存储代码）-CPU（处理）-GPU（显像卡 渲染）
+			//内存条 ：分区 一个区一个区分开 有地址
+			//存储在栈空间的类型：基础类型：number bool string
+			// var a=10;
+			// function()
+			// {
+				
+			// }
+			//数组
+			var a1=["iiii"];
+			var b1=a1;//栈空间里传递地址 
+			b1.push("oooo");//修改的是堆空间
+			console.log(a1);
+			//堆空间：（无名称） 数组 标签 都是引用类型（）
+
+
+		</script>
+		</html> -->
+		
+
+		 <!-- <!DOCTYPE html>
+		<html lang="en">
+		<head>
+			<meta charset="UTF-8">
+			<title></title>
+		</head>
+		<body>
+			<script> //基础类型 引用类型.
+				var a = 10;
+				var arr = ["nihao"];
+				function add(a1,b){
+					a1=100;
+				}
+				add(a,90);
+				console.log(a);
+
+				function test(a){//var a=arr;
+					a[0]='iii';
+				}
+				test(arr);
+				console.log(arr[0]);
+
+				//数组,标签等引用变量
+				var a1=['iii'];
+				var b1=a1;
+				b1.push('ooo');
+				console.log(a1);//a1也会改变
+
+			//存储在栈(有名字)中的数据类型 Number bool
+			//存储在堆(没有变量名称)中的数据类型 数组  标签(引用类型)  地址存储在栈中.
+			</script>
+</body>
+</html> -->
+
+	
+</body>
+</html>

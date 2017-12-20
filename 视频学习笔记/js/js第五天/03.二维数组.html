@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>二维数组</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// var array1=[];
+		// array1[0]=[5];
+		// array1[0][1]=6;
+		// console.log(array1[0]);
+		// console.log(array1);
+		//[[5,6]]
+		var array=[[15,5,9,6,11],[2,6,8,9,16],[16,14,15]];
+		// console.log(array[1][2]);//[1]最外层下表为1，[2]内层下表为2
+		for(var i=0;i<array.length;i++)//遍历二维数组中一维数组个数
+		{
+			for(var j=0;j<array[i].length-1;j++)
+			{
+				for(var k=0;k<array[i].length-1-j;k++)
+				{
+					if(array[i][k]>array[i][k+1])
+					{
+						var a=array[i][k];
+						array[i][k]=array[i][k+1];
+						array[i][k+1]=a;
+					}
+				}
+			}
+		}
+		//二维数组：数组中承载另外的数组。
+		//第一维数组下标[]：控制的是外围数组。
+		//第二维数组下标[]:控制的是内层数组
+		console.log(array);
+	</script>
+</body>
+</html>

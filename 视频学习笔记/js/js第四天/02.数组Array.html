@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组</title>
+</head>
+<body>
+	<script type="text/javascript">
+
+		// //声明/创建一个数组,特点：数组的数据在中括号里
+		var fruits=['apple','banana','orange','lemon'];
+		// //访问数组
+		// console.log(fruits);
+		// console.log(fruits[1]);
+
+		// //数组的属性length
+		// console.log(fruits.length);
+
+		//数组的方法
+		//pop
+		fruits.pop();
+		console.log(fruits);
+		//push
+		fruits.push('grape');
+		console.log(fruits);
+		//shift
+		var del_f=fruits.shift();
+		console.log(del_f);
+		console.log(fruits);
+		//unshift
+		fruits.unshift('watermelon','peach');
+		console.log(fruits);
+		//splice
+		var array=['go','to','home'];
+		//参数一：下标，参数二：长度
+		array.splice(1,1);
+		console.log(array);//go home
+
+		var array02=['go','to','home','now'];
+		array02.splice(0,3,'come','here');//先删除后添加
+		console.log(array02);//come here now
+
+		array02.splice(2,0,'my','sweet');//不删除。找到位置再添加
+		console.log(array02);
+		//当第一个参数为负数时，参数从结尾算起
+		var array03=[1,2,5,6];
+		array03.splice(-1,0,3,4);//-1代表从后网前数第一个
+		console.log(array03);
+		//第一个参数：开始位置：第二个参数：结束位置（不写就是到结束）
+		var array04=['why','learn','javascript'];
+		var temp=array04.slice(0,2);//开始位置和结束位置(复制)
+		console.log(temp);
+		console.log(array04);
+		//如不写第二个参数，代表从给定位置到最后
+		var temp01=array04.slice(1);
+		console.log(temp01);
+
+		var array05=[1,2,3,4,5];
+		var newArray=array05.join();
+		console.log(array05);
+		console.log(newArray);//字符串
+		console.log(typeof(array05[0]));
+		console.log(typeof(newArray[0]));
+		console.log(array05[0]===newArray[0]);//类型不同
+
+		var array06=['abc','def','ghi'];
+		console.log(array06.reverse()); 
+
+
+
+
+
+
+
+		//方法
+		// pop();删除数组最后一个元素，并返回新的长度
+		// push():向数组的末尾添加一个或多个元素并返回新的长度
+		// shift():删除并返回数组的第一个元素，改变了数组长度
+		//unshift();向数组的开头添加一个或多个元素并返回新长度
+		//splice（）：从数组中添加或删除元素
+		//slice():选取数组中的一部分返回一个新数组
+		//join():将数组中的所有元素转换成字符串
+		//reverse():将数组中的所有元素倒置
+
+
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

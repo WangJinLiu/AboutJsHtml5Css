@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style media="screen">
+        #canvas{
+            background: green;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="300" height="300"></canvas>
+</body>
+<script src="drawLine.js" charset="utf-8"></script>
+<script type="text/javascript">
+    var str = '[{"name":"1月","value":100},{"name":"2月","value":2000},{"name":"2月","value":20},{"name":"2月","value":2800}]';
+    var arr = JSON.parse(str);
+    var canvas = document.querySelector("#canvas");
+    var draw = new Draw(arr,canvas,{
+        color:'red',
+        lineWidth:3
+    });
+    draw.drawPiex();
+    draw.drawPoint();
+</script>
+
+</html>

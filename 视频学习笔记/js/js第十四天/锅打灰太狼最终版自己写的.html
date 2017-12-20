@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>打灰太狼</title>
+	<style type="text/css">
+	#borderwrap{
+		width: 320px;
+		height: 480px;
+		border: 1px solid;
+		margin: 0 auto;
+		background: url(img/game_bg.jpg);
+		position: relative;
+	}
+	#begin{
+		width: 320px;
+		height: 480px;
+		background: black;
+		left: 0;
+		top: 0;
+		position: absolute;
+		z-index: 3;
+		text-align: center;
+		font-size: 30px;
+		opacity: 0.8;
+	}
+	.graywolf{
+		width: 108px;
+		height: 101px;
+	
+		position: absolute;
+		top: 150px;
+		left: 20px;
+		background: url(img/grayWolf.png) no-repeat;
+		/*border:1px solid;*/
+	}
+	.redwolf{
+		width: 108px;
+		height: 101px;
+		/*border: 1px solid;*/
+		position: absolute;
+		top: 150px;
+		left: 20px;
+		background: url(img/redWolf.png) no-repeat;
+	}
+	#progress{
+		position: absolute;
+		left: 63px;
+		top:66px;
+		background: url(img/progress.png) no-repeat;	
+		width: 180px;
+		height: 16px;
+	}
+	.score{
+		position: absolute;
+		left: 60px;
+		top:14px;
+		width: 50px;
+		height: 50px;
+	}
+	#over{
+		width: 320px;
+		height: 480px;
+		background: black;
+		display: none;
+		opacity: 0.5;
+		position: absolute;
+		left: 0;
+		top: 0;
+		z-index: 100;
+		text-align: center;
+		
+		font-size: 30px;
+		color: white;
+		
+	}
+	#start{
+		margin-top: 200px;
+		cursor: pointer;
+		color: white;
+
+	}
+
+
+
+
+	</style>
+</head>
+<body>
+	<div id="borderwrap">
+		
+		<div id="begin">
+			<div id="start">开始游戏</div>
+			<div>游戏简介</div>
+		</div>
+		<div class="score">0</div>
+		<div id="progress"></div>
+		<!-- <div id="box"></div> -->
+		<div id="over">游戏结束		分数：</div>
+	</div>
+	
+</body>
+<script type="text/javascript">
+	var begin=document.getElementById('begin');
+	var start=document.getElementById('start');
+	var borderwrap=document.getElementById('borderwrap');
+	var progress=document.getElementById('progress');
+	var score0=document.getElementsByClassName('score')[0];
+	var over=document.getElementById('over');
+	var timer;
+	var timerend=null;
+	var timerbegin=null;
+	var score=0;
+	var arr=[
+			{x: 18,y: 83},
+			{x: 98,y: 38},
+			{x: 186,y: 65},
+			{x: 15,y: 144},
+			{x: 104,y: 114},
+			{x: 200,y: 134},
+			{x: 32,y: 200},
+			{x: 120,y: 186},
+			{x: 208,y: 210},
+		];
+	start.onclick=function()
+	{
+		begin.style.display='none';
+
+		gamestart();
+		
+
+
+
+	}
+	//游戏开始
+	function gamestart()
+	{
+		var width=progress.offsetWidth;
+
+		console.log(width);
+		clearInterval(timerbegin);
+		timerbegin=setInterval(function()
+		{
+			width-=10;
+			progress.style.backgroundSize=width+'px 16px';
+			if(width<=0)
+			{
+				clearInterval(timerbegin);
+				over.style.display='block';
+				over.innerHTML='你的得分是：'+score;
+
+			}
+
+
+			create();
+
+		},2000)
+
+		
+	}
+	//创造狼
+	function create()
+	{
+		var oDiv=document.createElement('div');
+		var num=rand(0,100);
+
+		oDiv.className=num>85?'redwolf':'graywolf';
+
+		borderwrap.appendChild(oDiv);
+		//随机洞口
+		var index=rand(0,arr.length-1);
+		oDiv.style.left=arr[index].x+'px';
+		oDiv.style.top=arr[index].y+'px';
+		//狼的进来和出去
+		movein(oDiv);
+
+		var m=true;
+		oDiv.onclick=function()
+		{	
+			if(m)
+			{
+				m=false;
+				clearInterval(timer);
+				clearInterval(timerend);
+				var i=6;
+				if(oDiv.className=='redwolf')
+					{
+						score-=10;
+						console.log(score);
+						score0.innerHTML=score;
+					}
+					if(oDiv.className=='graywolf')
+					{
+						score+=10;
+						console.log(score);
+						score0.innerHTML=score;
+					}
+				//锅出来的过程	
+				timerend=setInterval(function()
+				{
+					i++;
+					oDiv.style.backgroundPosition=i*-108+'px';
+
+					if(i==9)
+					{
+						clearInterval(timerend);
+						
+						borderwrap.removeChild(oDiv);
+						m=true;
+					}
+
+				},100)
+			}
+
+
+
+
+		}
+	}
+	//狼的进来和出去
+	function movein(oDiv)
+	{
+
+		var i=0;
+		var n=1;
+		
+		clearInterval(timer);
+		timer=setInterval(function()
+		{
+
+			i+=n;;
+			oDiv.style.backgroundPosition=-i*108+'px';
+			if(i==5)
+			{
+				n=-1;
+			}
+			if(i<0)
+			{
+				clearInterval(timer);
+				if(oDiv.className=='redwolf')
+				{
+					score+=10;
+					score0.innerHTML=score;
+
+				}
+				borderwrap.removeChild(oDiv);
+
+			}
+		},100)
+	}
+	//随机事件
+	function rand(min,max)
+	{
+		return Math.floor(Math.random()*(max-min+1)+min);
+	}
+
+
+	
+
+
+
+
+
+</script>
+</html>

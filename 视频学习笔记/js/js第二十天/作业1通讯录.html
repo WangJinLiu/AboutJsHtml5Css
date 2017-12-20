@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>通讯录</title>
+	<style>
+		#wrap{
+			width: 500px;
+			border: 1px solid;
+			margin:0 auto;
+		}
+		a{
+			cursor: pointer;
+
+		}
+		a:hover{
+			color: blue;
+		}
+	</style>
+	
+</head>
+<body>
+	<div id="wrap">
+
+
+		
+	</div>
+<script>
+	var s1='[{"cap":"W","date":[{"name":"王玉","number":"15668789563"},{"name":"王津柳","number":"15590285455"},{"name":"王浩亮","number":"15668789563"},{"name":"王彦坤","number":"15668789563"},{"name":"王子豪","number":"15668789563"}]},{"cap":"A","date":[{"name":"艾林","number":"124567898"}]},{"cap":"S","date":[{"name":"宋传永","number":"1234557484"}]},{"cap":"G","date":[{"name":"郭晓霞","number":"45879515"},{"name":"郜超","number":"4587899513"}]},{"cap":"L","date":[{"name":"李晓凤","number":"15668789563"},{"name":"李梦月","number":"15590285455"},{"name":"李晓芮","number":"15668789563"}]},{"cap":"M","date":[{"name":"苗婕","number":"124567898"}]},{"cap":"Q","date":[{"name":"全莹","number":"124567898"}]},{"cap":"S","date":[{"name":"孙晓忱","number":"124567898"},{"name":"孙帅","number":"124589858"}]},{"cap":"T","date":[{"name":"田志东","number":"124567898"}]},{"cap":"W","date":[{"name":"武超敏","number":"124567898"}]},{"cap":"X","date":[{"name":"许飞","number":"124567898"}]},{"cap":"Y","date":[{"name":"于景年","number":"124567898"},{"name":"尹子涛","number":"124567898"},{"name":"宇文斌杰","number":"124567898"},{"name":"杨婷","number":"124567898"},{"name":"游洲","number":"48541586655"}]},{"cap":"Z","date":[{"name":"张然","number":"124567898"},{"name":"邹鑫鑫","number":"45841848641"},{"name":"肇鹏","number":"45841848641"},{"name":"张乐","number":"45841848641"},{"name":"赵帅","number":"45841848641"},{"name":"赵双","number":"45841848641"},{"name":"张云","number":"45841848641"},{"name":"赵子筠","number":"45841848641"}]},{"cap":"C","date":[{"name":"崔颖星","number":"124567898"}]}]';
+	var arr=JSON.parse(s1);
+	// console.log(arr);
+	creatething(arr);
+	
+	function creatething(arr){
+		var wrap=document.getElementById('wrap');
+		for(var i=0;i<arr.length;i++){
+			var divbox=create('div',wrap,'');
+			var number=create('div',divbox,'');
+			number.innerHTML=arr[i].cap;
+			number.style.fontSize='12px';
+			number.style.color='grey';
+			number.style.background='#bebebe';
+			var divline=create('div',divbox);
+			divline.style.border="1px solid grey";
+			
+			var m=arr[i].date;
+			console.log(m);
+			for(var j=0;j<m.length;j++){
+				var name=create('div',divbox);
+				name.innerHTML=m[j].name;
+				var number=create('div',name);
+				number.innerHTML=m[j].number;
+				number.style.display='inline-block';
+				var divdelete=create('a',name);
+				divdelete.innerHTML="删除";
+				divdelete.style.display='inline-block';
+				divdelete.style.float='right';
+				divdelete.onclick=function(){
+					console.log(this.innerHTML);
+					//只修改了界面
+					this.parentNode.innerHTML=null;
+					//修改数组
+					
+				}
+			}
+
+		}
+		
+
+
+	}
+
+	//创造函数
+	function create(name,father,classname){
+		var o=document.createElement(name);
+		o.className=classname;
+		father.appendChild(o);
+		return o;
+
+
+	}
+	
+
+
+
+</script>
+	
+</body>
+</html>

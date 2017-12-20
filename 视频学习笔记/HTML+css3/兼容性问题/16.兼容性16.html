@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.box{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				/*ie7和它之前的会显示yellow这个颜色*/
+				+background-color: yellow;
+				/*ie6和它之前的IE版本会显示这个颜色blue*/
+				_background-color: blue;	
+				/*ie10和它之前的可以识别*/	
+				background-color: green \9;	
+				}
+		</style>
+		<!--IE hack
+			\9 IE10之前的浏览器解析
+			+或*表示IE7之前的浏览器版本解析
+			_表示ie6之前的浏览器版本解析
+		-->
+	</head>
+	<body>
+		<div class="box"></div>
+	</body>
+</html>

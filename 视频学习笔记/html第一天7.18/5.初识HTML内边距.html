@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    	<meta charset="utf-8">
+		<title>内边距</title>
+	</head>
+	<body>
+	<!-- padding的统一赋值 -->
+	     <div style="border: 1px solid;padding: 20px;">Division</div>
+	     <!-- padding的单独赋值 -->
+	     <div style="border: 1px solid;padding-left: 20px;">Division</div>
+	     <!-- padding的两两赋值 顺时针赋值(上右下左)找不到找对面-->
+	     <div style="border: 1px solid;padding: 10px 30px;display: inline-block;">Division</div>
+	     <!-- 父子嵌套(这个已经把内层的放到中间了) -->
+	     <div style="width: 200px;height: 200px;background-color: yellow;padding-left: 100px;padding-top: 80px;">大白菜	     	
+	     	<div style="width: 100px;height: 100px;background-color: hotpink;">大白菜</div>
+	     </div>
+	     <!-- 与上边的对比其实内边距就是给边上加像素,不改变内层的大小 -->
+
+
+	     <div style="width: 200px;height: 200px;background-color: yellow; ">大白菜
+	     	<div style="width: 100px;height: 100px;background-color: hotpink;">大白菜</div>
+	     </div>
+	     <!-- 内边距用途:使元素产生留白,但会加大自身元素的值
+	     顺序:上右下左(顺时针) -->
+
+	</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>最终</title>
+	<style>
+	#wrap{
+		overflow: hidden;
+	}
+		.small{
+			float: left;
+			width: 400px;
+			height: 400px;
+			background: url(img/max.png) no-repeat;
+			position: relative;
+			background-size: 100% 100%;
+
+
+		}
+		.big{
+			float: left;
+			width: 400px;
+			height: 400px;
+			background: url(img/max.png) no-repeat;
+			background-size: 1600px 1600px;
+			display: none;
+			/*background-size: 100% 100%;*/
+		}  
+		.mengban{
+			width: 100px;
+			height: 100px;
+			background: black;
+			opacity: 0.5;
+			position: absolute;
+			left: 0;
+			top:0;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div class="small">
+			<div class="mengban"></div>
+		</div>
+		<div class="big">
+			
+		</div>
+	</div>
+	
+</body>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+	$(".small").mouseover(function(){
+		$(".mengban").show();
+		$(".big").show();
+
+		$(this).mousemove(function(ev){
+			// console.log($(this).offset().left);
+			//设置居中的位置
+			//蒙版的left  X
+			var x=ev.clientX-$(".mengban").width()/2-$(this).offset().left;
+			var y=ev.clientY-$(".mengban").height()/2-$(this).offset().top;
+			//四个边判断
+			if(x<0){
+				x=0;
+
+			}
+			if(x>$(this).width()-$(".mengban").width()){
+				x=$(this).width()-$(".mengban").width()
+			}
+			if(y<0){
+				y=0;
+			}
+			if(y>$(this).height()-$(".mengban").height()){
+				y=$(this).height()-$(".mengban").height()
+
+
+			}
+			$(".mengban").css({
+				left:x,
+				top:y
+			})
+			//修改大图
+			var scale=$(".big").width()/$(".mengban").width();
+			var bigX=-scale*x;
+			var bigY=-scale*y;
+			$(".big").css({
+				backgroundPosition:bigX+'px '+bigY+'px'
+			})
+
+
+
+		})
+	})
+	$(".small").mouseout(function(){
+		$(".mengban").hide();
+		$(".big").hide();
+	})
+	//获得jq position的left，top值不需要定位，要是设置必须定位
+
+	
+</script>
+</html>

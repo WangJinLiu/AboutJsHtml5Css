@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>打地鼠</title>
+	<style>
+	*{margin:0;padding:0;}
+		#divTop{
+			width: 320px;
+			height: 480px;
+			background-image: url(img/game_bg.jpg);
+			margin:0 auto;
+			position: relative;
+		}
+		#divTop div{
+			/*width: 50px;*/
+			width: 108px;
+			height: 101px;
+			/*border: 1px solid;*/
+			position: absolute;
+			overflow: hidden;
+		}
+		#divone{
+			top:10px;
+			left: 859px;
+			width: 50px;
+			height: 28px;
+			position: absolute;
+			border: 1px solid;
+			z-index: 2;
+			text-align: center;
+		}
+		#divtwo{
+			left: 862px;
+			top:64px;
+			width: 180px;
+			height: 16px;
+			position: absolute;
+			border: 1px solid;
+			z-index: 2;
+			overflow: hidden;
+		}
+		#divthree{
+			top:130px;
+			left: 95px;
+		}
+		#divfour{
+			top:175px;
+			left: 19px;
+		}
+		#divfive{
+			top:155px;
+			left: 187px;
+		}
+		#divsix{
+			top:205px;
+			left: 103px;
+		}
+		#divseven{
+			top:235px;
+			left: 15px;
+		}
+		#diveight{
+			top:230px;
+			left: 196px;
+		}
+		#divnine{
+			top:310px;
+			left: 30px;
+		}
+		#divten{
+			top:290px;
+			left: 118px;
+		}
+		#diveleven{
+			top:310px;
+			left: 205px;
+		}
+        #divTop img{
+        	margin-top:-20px;
+        	position: absolute;
+        	left: 0px;
+        	/*border: 1px solid red;*/
+        }
+        #divtwo img{
+        	height: 16px;
+        }
+        #divbutton{
+        	position: absolute;
+        	z-index: 3;
+        	left: 920px;
+        	top:300px;
+        	background:red;
+        	display: block;
+        }
+   
+
+
+
+
+
+
+	</style>
+</head>
+<body>
+	<div id="divbutton">开始游戏</div>
+	<div id="divone"></div>
+	<div id="divtwo"><img src="" alt=""></div>
+
+	<div id="divTop">
+		<div id="divthree"><img src="" alt=""></div>
+		<div id="divfour"><img src="" alt=""></div>
+		<div id="divfive"><img src="" alt=""></div>
+		<div id="divsix"><img src="" alt=""></div>
+		<div id="divseven"><img src="" alt=""></div>
+		<div id="diveight"><img src="" alt=""></div>
+		<div id="divnine"><img src="" alt=""></div>
+		<div id="divten"><img src="" alt=""></div>
+		<div id="diveleven"><img src="" alt=""></div>
+	</div>
+	<script type="text/javascript" src="js/tween.js"></script>
+	<script>
+		var divbutton=document.getElementById('divbutton');
+
+		var divone=document.getElementById('divone');
+		var divtwo=document.getElementById('divtwo');
+		var divTop=document.getElementById('divTop');
+		var divlist=divTop.getElementsByTagName('div');
+		var imglist=divTop.getElementsByTagName('img');
+		var divtwoImg=divtwo.getElementsByTagName('img')[0];
+	
+	    console.log(divtwoImg);
+		var timer0=null;
+		var timer1=null;
+		var timer4=null;
+		var timer3=null;
+		divbutton.onclick=function(){
+			jindu();
+			divbutton.style.display='none';
+
+		}
+		
+		// console.log(width0.width);
+		//进度条定时器
+		
+		//点击事件
+		function oncl(m,i)
+		{
+			moveout(m,i);
+			for(var k=0;k<9;k++)
+			{	
+				
+					divlist[k].onclick=(function(k)
+					
+					{	
+
+						return function()
+						{
+							if(k==m)
+							{
+								result(i);
+								moveout(m,null);
+							}
+
+						}
+					})(k)
+				
+			}
+		}
+		//进度条
+		function jindu()
+		{
+			divtwoImg.src='img/progress.png';
+			var widths=document.defaultView.getComputedStyle(divtwo,null);
+			console.log(widths.width);
+			var widtha=parseInt(widths.width);
+			
+			var index=0;
+			
+			timer4=setInterval(function()
+			{
+				if(widtha!=index)
+				{
+					index+=10;
+					divtwoImg.style.width=-index+widtha+'px';
+				}
+				else
+				{
+					clearInterval(timer4);
+					clearInterval(timer0);
+					clearInterval(timer1);
+					clearInterval(timer3);
+				
+					alert('游戏结束：你的得分是'+divone.innerHTML);
+				}
+				
+			},1000)
+			
+
+			rand();
+
+
+
+
+		}
+			
+		//老鼠出去了
+		function movein(a)
+		{
+
+				var index=0;
+				var width0=document.defaultView.getComputedStyle(divlist[0],null);
+				var i = Math.floor(Math.random()*2);	
+				if(i==0){
+					imglist[a].src='img/grayWolf.png';
+				}else{
+					imglist[a].src='img/redWolf.png';
+				}
+				clearInterval(timer0);
+				timer0=setInterval(function()
+				{
+					index+=1;
+					if(index<=8)
+					{
+						
+						imglist[a].style.left=-index*parseInt(width0.width)+'px';
+					}else{
+                		
+                		clearInterval(timer0);
+                		// imglist[a].style.left='0px';
+
+                	}
+					
+
+				 },150)
+				// if（s=null）{
+					oncl(a,i);
+
+					
+				// }{}
+				
+
+		}
+		clearInterval(timer1);
+		//老鼠回去了
+		function moveout(a,i)
+		{
+				// console.log(i);
+				var index=6;
+				var width0=document.defaultView.getComputedStyle(divlist[0],null);
+				if(i!=null)
+				{
+
+					
+					if(i==0){
+						imglist[a].src='img/grayWolf.png';
+					}if(i==1){
+						imglist[a].src='img/redWolf.png';
+					}
+					timer1=setInterval(function()
+					{
+						if(index>=0)
+						{
+							index-=1;
+		               		imglist[a].style.left=-index*parseInt(width0.width)+'px';
+		                	// console.log(imglist[0].style.left);
+						}
+						
+
+					},200)
+				}
+				else{
+					imglist[a].src='';
+
+				}
+		}
+		
+
+		//随机洞
+		function rand()
+		{
+			
+				timer3=setInterval(function(){
+
+				var m=Math.floor(Math.random()*10);
+				movein(m);
+				clearInterval(timer0);
+
+			},1000)
+		}
+		//得分
+		var score=0;
+		function result(d)
+		{
+				if(d==0){
+					score+=10;
+				}
+				if(d==1){
+					score-=10;
+				}
+				divone.innerHTML=score;
+				
+
+		}
+		
+
+		
+
+
+
+
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

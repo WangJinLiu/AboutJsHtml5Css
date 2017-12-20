@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>复习三</title>
+	<style>
+	.a{
+		width: 100px;
+	 	height: 100px;
+	 	background: red;
+	 	margin-bottom: 20px;
+	 	position: absolute;
+	 	left: 0;
+
+
+	}
+	 .a:nth-child(1){
+	 	
+	 	top:0;
+
+	 }
+	 .a:nth-child(2){
+	 	
+	 	top:100px;
+	 	margin-top: 20px;
+
+	 }
+	</style>
+</head>
+<body>
+	<div class="a">
+		
+	</div>
+	<div class="a"></div>
+
+	<!-- a.style.left就等于
+			b='left';
+			a.style[b] -->
+</body>
+<script type="text/javascript">
+	var values=document.getElementsByTagName('div');
+	for(var i=0;i<values.length;i++)
+	{
+		var a=values[i];
+		a.onclick=function()
+		{
+			click(this,'left',200,1000,10);
+		}
+	}
+	//c为当前的对象
+	//direction:移动的方向：只有left，right，bottom，top
+	// beginValue:开始位置
+	// endValue:结束位置
+	// perTime:循环一次的时间
+	function click(c,direction,beginValue,endValue,perTime)
+	{
+		var step=beginValue;
+		var perValue=beginValue>endValue?-1:1;
+		//判断起始位置和结束位置哪个是最大的
+		var timer=setInterval(function()
+		{
+			//设置循环定时器
+			step+=perValue;
+			c.style[direction]=step+'px';
+			if(perValue>0)
+			//说明开始位置小于结束位置
+			{
+				if(step>=endValue)
+				{
+					clearInterval(timer);
+				}
+			}
+			else
+			//说明开始位置大于结束位置
+			{
+				if(step<=endValue)
+				{
+					clearInterval(timer);
+				}
+
+			}
+			
+
+		},perTime)
+	}
+</script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>json使用</title>
+</head>
+<body>
+	
+	
+</body>
+<script>
+	var str='zhang|18|男|156884124554';
+	var name1=str.split('|');
+	console.log(name1[0]);
+	console.log('姓名'+name1[0]+';'+'年龄'+name1[1]+';'+'性别'+name1[2]+';'+'手机号'+name1[3]);
+	var s1='{\
+		"name":"zhang",\
+		"age":18,\
+		"sex":"男",\
+		"id":"156884124554"\
+		"婚否":true,\
+		"记录":null,\
+	}';
+	//“key”：value
+	// key的名不要用汉字，要以字母或下划线开头
+	//换行了加\
+	//这种格式就叫json
+	//中括号[]-----数组
+	//大括号{}----一条数据(它里边的值必须是“key”：value形式)
+	//数据类型：字符串，bool，number，null
+	var s2='[{"name":"张三","age":12,"adress":"张三路","photo":"1.jpg","number":"158984556556"},{"name":"小妞妞","age":35,"adress":"昌平路","photo":"2.jpg","number":"1584987854574"}]';
+	//学校里有三个班，每个班3个人,每个人属性：姓名。年龄。性别
+	var s3='[{"class1":"研发一","student":[{"name":"张三","age":18,"sex":"男"},{"name":"张三","age":18,"sex":"男"},{"name":"张三","age":18,"sex":"男"}]},{"class2":"研发一","student":[{"name":"张三","age":18,"sex":"男"},{"name":"张三","age":18,"sex":"男"},{"name":"张三","age":18,"sex":"男"}]},{"class3":"研发一","student":[{"name":"张三","age":18,"sex":"男"},{"name":"张三","age":18,"sex":"男"},{"name":"张三","age":18,"sex":"男"}]}]'
+
+
+	
+
+
+
+</script>
+</html>

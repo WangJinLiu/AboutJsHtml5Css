@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单验证</title>
+	<style>
+		*{margin:0;padding: 0;}
+	</style>
+</head>
+<body>
+	<span>* 姓名：</span><input type="text" id="name"><br>
+	<span>* 性别：</span><span>男</span><input type="radio" id="gender1" name="gen"><span>女</span><input type="radio" id="gender2" name="gen"><span id="span00"></span><br>
+	<span>* 邮箱：</span><input type="text" id="mail"><br>
+	<span>* 电话：</span><input type="text" id="tel"><br>
+	<span>&nbsp;&nbsp;地址：</span><input type="text" id="site"><br>
+	<span>  &nbsp;&nbsp;邮编：</span><input type="text" id="pos"><br>
+	<input type="button" value="提交" id="but">
+	<script type="text/javascript">
+		var name01=document.getElementById('name');
+		var gender1=document.getElementById('gender1');
+		var gender2=document.getElementById('gender1');
+		var mail=document.getElementById('mail');
+		var tel=document.getElementById('tel');
+		var site=document.getElementById('site');
+		var pos=document.getElementById('pos');
+		var but=document.getElementById('but');
+		var span00=document.getElementById('span00');
+		but.onclick=function()
+		{
+			// console.log(name01.value);
+			if(name01.value=='')
+			{
+				name01.value='请输入姓名';
+			}
+			if(gender1.checked==false&&gender2.checked==false)
+			{
+				span00.innerHTML='请输入性别';
+
+			}
+			if(mail.value=='')
+			{
+				mail.value='请输入邮箱';
+
+			}
+			if(tel.value=='')
+			{
+				tel.value='请输入电话';
+			}
+			if(site.value=='')
+			{
+				site.value='请输入地址';
+			}
+			if(pos.value=='')
+			{
+				pos.value='请输入邮编';
+			}
+			if(name01.value!=''&&gender1.checked==true&&gender2.checked==true&&mail.value!=''&&tel.value!='')
+			{
+				alert('提交成功');
+			}
+			else
+			{
+				alert('请输入必填项');
+			}
+
+
+		}
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+
+</html>

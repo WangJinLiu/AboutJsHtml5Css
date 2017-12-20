@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>注意项</title>
+	<style>
+	#wrap{
+		width: 100px;
+		height: 100px;
+		background: red;
+	}
+
+
+
+	</style>
+</head>
+<body>
+	<div id="wrap2">wrap2</div>
+	<div id="wrap"></div>
+	<p>i like</p>
+	<p>I would like to say: </p>
+	<div class="box"></div>
+	
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+	// $("#wrap").on("click",function(){
+	// 	console.log(this);//返回的是所对应的标签
+	// 	$(this).css({
+	// 		width:200,
+	// 		height:200,
+	// 		background:'green'
+	// 	})
+	// })
+	//另外一种写法
+	// $("#wrap").click(function(){
+	// 	console.log(this);//this返回的是所对应的标签
+	// 	$(this).css({
+	// 		'width':200,
+	// 		'height':200,
+	// 		'background':'green'
+	// 	})
+	// })
+
+	//事件对象
+	var obj={name:"zhangsan",age:18};
+	$("#wrap").click(obj,function(ev){
+		console.log(ev);
+		console.log(ev.data.name,ev.data.age);
+	})
+
+	// $("#wrap").on("click",function(ev){
+	// 	console.log(ev);
+	// })
+	//给jQuery添加额外属性（注意不要给jQuery添加额外的属性，给标签添加就不会出错了）
+	// $("")---相当于创建了一个新的对象
+	// $("wrap").aaa=10;
+	// console.log($("wrap").aaa);//undefined（原因：$("wrap）相当于又创建了一个数组（jquery对象）,不是之前的那个数组对象了，但标签是唯一不变的
+	// 要改为
+	// var a=$("wrap");
+	// a.aaa=10;
+	// console.log(a.aaa);//10
+
+	//例子
+	var arr=$(".a");//假设有三个。a
+	for(var i=0;i<arr.length;i++){
+		var m=arr[i];//相当于取到了标签
+		m.index=i;//给标签添加了自定义属性
+		$(m).click(function(){
+			console.log(this.index);
+		})
+	}
+
+	//文档处理
+
+	$("#wrap").append("<div>");
+	$("<img>").appendTo("#wrap");
+	$("p").appendTo("div");
+	$("p").prepend("<a>Hello</a>");//这是向所有匹配元素内部的开始处插入内容的最佳方式。
+	$("#wrap2").prependTo(".box");
+
+	//设置的时候可以用链式写法，获取不可以
+
+
+</script>	
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>作业3</title>
+	<!-- 将网址：http://www.baidu.com?name=nihao&pwd=88&id=99
+转换为{name:"nihao",pwd:"88",id:"99"}格式 -->
+</head>
+<body>
+<script>
+	var a='http://www.baidu.com?name=nihao&pwd=88&id=99';
+	var arr=a.split('?');
+	console.log(arr);
+	var arr1=arr[1];
+	console.log(arr1);//name=nihao&pwd=88&id=99
+	var arr2=arr1.split('&');
+	console.log(arr2);//["name=nihao", "pwd=88", "id=99"]
+	var m=create(arr2);
+	console.log(m);
+	function create(arr2){
+		var arrr=[];
+		for(var i=0;i<arr2.length;i++){
+			var k=arr2[i].split('=');
+			console.log(k);
+			arrr.push(k);
+		}
+		console.log(arrr);
+		var obj=new Object();
+		console.log(a);
+		obj.name=arrr[0][1];
+		obj.pwd=arrr[1][1];
+		obj.id=arrr[2][1];
+		return obj;
+	}
+	
+
+
+	
+
+
+
+</script>
+	
+</body>
+</html>

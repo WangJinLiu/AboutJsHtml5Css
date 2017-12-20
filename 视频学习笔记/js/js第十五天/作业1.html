@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表格</title>
+	<style>
+	*{margin:0;padding:0;}
+		table{
+			margin-top: 20px;
+			/*border: 1px solid;*/
+			border-collapse: collapse;
+		}
+		th,td{
+			width: 130px;
+			border: 1px solid;
+			margin:0;
+			text-align: center;
+
+		}
+		input{
+			width: 150px;
+			height: 30px;
+			border-radius: 10px;
+		}
+		
+
+
+
+
+
+
+	</style>
+
+</head>
+<body>
+	<span>添加</span><input type="text" placeholder="name" id="name"><input type="text" placeholder="age" id="age"><input type="button" value="添加" id="addBtn">
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>姓名</th>
+				<th>年龄</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody>
+			
+		</tbody>
+	</table>
+	<span>搜索</span><input type="text" placeholder="name" id="search"><input type="button" value="搜索" id="searchBut"><span>排序</span><input type="button" value="年龄从小到大" id="agebut">
+</body>
+<script>
+	var name0=document.getElementById('name');
+	var age=document.getElementById('age');
+	var addBtn=document.getElementById('addBtn');
+	var tbody=document.querySelectorAll('tbody' )[0];
+	var search=document.getElementById('search');
+	var searchBut=document.getElementById('searchBut');
+	var table=document.getElementsByTagName('row')[0];
+	var agebut=document.getElementById('agebut');
+	var num=0;
+	
+	addBtn.onclick=function()
+	{
+		
+		
+		num++;
+		var tdS=document.createElement('tr');
+		tdS.innerHTML='<td>'+num+'</td><td>'+name0.value+'</td><td>'+age.value+'</td><td><a href="#">删除</a></td>';
+		tbody.appendChild(tdS);
+		var aa=tdS.getElementsByTagName('a')[0];
+		aa.onclick=function()
+		{
+			tbody.removeChild(tdS);
+		}
+		
+	}
+	searchBut.onclick=function()
+	{
+		// console.log(tbody);
+		var mn=document.getElementsByTagName('tr');
+		//获取所有tr，组成一个数组
+		// console.log(mn);
+		for(var i=1;i<mn.length;i++)
+		{
+			//遍历tr数组
+			var mg=mn[i].getElementsByTagName('td')[1];
+			if(search.value==mg.innerHTML)
+			{
+				// console.log(i);
+				mn[i].style.background='red';
+				
+			}	
+			else{
+				mn[i].style.background='';
+			}
+					
+		}
+	}
+	//DOM就是用来渲染的
+	agebut.onclick=function()
+	{
+		var age=tbody.getElementsByTagName('tr');
+		//取出的全部tr
+		console.log(age);
+		for(var j=0;j<age.length;j++)
+		{
+			for (var i=0;i<age.length-1-j;i++) 
+			{
+				// console.log(age[i].getElementsByTagName('td')[2].innerHTML);
+				var trrr=parseInt(age[i].getElementsByTagName('td')[2].innerHTML);
+				var trr2=parseInt(age[i+1].getElementsByTagName('td')[2].innerHTML);
+				if(trrr>trr2)
+				{
+					tbody.insertBefore(age[i+1],age[i]);
+				}
+				
+			}
+		}
+
+
+		
+
+
+		
+
+	}
+
+	
+
+</script>
+</html>

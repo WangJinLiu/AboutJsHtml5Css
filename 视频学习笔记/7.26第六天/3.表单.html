@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单</title>
+</head>
+<body>
+		<!-- action:引号中写地址：地址是数据提交的地址
+			method：提交方式 
+			get:直接提交，value:会在提交地址后以字符串拼接的方式显示
+			post：先把数据打包，然后传到地址，地址栏不会显示提交的内容
+			input 可以设置style样式-->
+	<form action="http://www.baidu.com" method="get/post">
+		用户名：<input type="text" name="user" value="学习学习" placeholder="请输入"><br>
+		密码：<input type="password" name="pw"><br>
+		男：<input type="radio" name="ra" checked="checked"><!-- 单选按钮 -->
+		<!-- checked默认选中 -->
+
+		女：<input type="radio" name="ra"><br>
+		兴趣爱好：王者荣耀<input type="checkbox" name="box1"><!-- （那个方块的，对号的 ）多选按钮 -->
+		Dota <input type="checkbox" name="box1">
+		Shopping <input type="checkbox" name="box1"><br>
+		<input type="file">
+		选择地区：<select name="" id="">
+				<!-- 下拉框 -->
+					<option value="">北京</option>
+					<option selected="selected" value="">山西</option>
+					<!--加上selected就可以让它第一个显示-->
+					<option value="">河北</option>
+					<option value="">辽宁</option>
+					<option value="">天津</option>
+					<option value="">上海</option>
+			   </select><br>
+		<textarea name="" id="" cols="30" rows="10" style="resize:vertical;">
+		<!-- 一个可以调大小的文本框 -->
+					resize:vertical:垂直可以（用户可调整元素的高度）
+					resize:horizontal:水平可以（用户可调整元素的宽度）
+					resize：both 都可以调（用户可调整元素的宽高）
+					resize：none  不可以调（用户不可调整元素的宽高）
+		</textarea><br>
+		<input type="submit" value="提交">
+	</form>
+	
+</body>
+</html>

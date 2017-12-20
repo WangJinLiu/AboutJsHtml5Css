@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组遍历</title>
+</head>
+<body>
+<script type="text/javascript">
+	
+
+		// var array=[1,2,3,4,5];
+		// for(var i=0;i<=array.length;i++){
+		// 	console.log(array[i]);
+
+		// }
+		//1.定义一个具有20个元素的整形数组，每个元素的取值范围在30-70之间，求数组元素的和
+		// var a=[];
+		// var sum=0;
+		// for(var i=0;i<20;i++){
+
+		// 	a[i]=Math.floor((Math.random()*40+30));
+			
+		// 	var sum=sum+a[i];
+
+
+			
+		// }
+		// console.log(a);
+		// console.log(sum);
+
+		// //2.已知一个数组，此数组有若干元素，把此数组的所有元素复制到另一个空数组中
+
+		// //第一步：创建一个有值得数组
+		// var array=[1,2,3,4,5];
+		// //创建一个空数组
+		// var array02=[];
+		// //第三步，循环遍历 循环的次数：已知数组的长度
+		// for(var i=0;i<array.length;i++){
+		// 	array02[i]=array[i];
+
+		// }
+		// console.log(array02);
+
+		//3.生成两个数组，每个数组都有十个元素，元素的取值范围在20-40之间，两个数组的对应元素相加，放到另外一个数组中
+		var array=[];
+		var array02=[];
+		var array03=[];
+		var sum=0;
+		for(var i=0;i<10;i++){
+
+			array[i]=Math.floor(Math.random()*20+20);
+			array02[i]=Math.floor(Math.random()*20+20);
+			
+			array03[i]=array[i]+array02[i];
+
+
+		}
+		
+		console.log(array03);
+
+
+
+
+
+
+</script>
+	
+</body>
+</html>

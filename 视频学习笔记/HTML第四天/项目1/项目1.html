@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="text/css">
+		body,html{
+			margin:0;
+			padding:0;
+			background:#fff;
+			font-size:14px;
+			font-family:Arial,Helvetica,'STHeiti','Microsoft YaHei','sans-serif'
+	}
+		form,ul,li,p,h1,h2,h3,h4,h5,h6{
+			margin:0;padding:0;
+		}
+		img{
+			border:0;
+		}
+		ul,li{
+			list-style-type:none;
+		}
+		a{
+			color:#00007F;text-decoration:none;
+		}
+		a:hover{
+			text-decoration:none;
+		}
+		
+		.big{
+			width: 900px;
+			border: 1px solid pink;
+			margin: 0 auto;
+			height: 1500px;
+		}
+		.top{
+			border: 1px solid #d0d0d0;
+			
+			height: 27px;
+			background-color: #f0f0f0;
+		}
+		.img1{
+			margin-left: 333px;
+		}
+		.img2{
+			width: 900px;
+			margin-top: 15px;
+		}
+		.div2{
+			border: 2px solid red;
+			width: 900px;
+			height: 850px;
+
+		}
+		.div3{
+
+			border: 2px solid green;
+			width: 555px;
+			height: 850px;
+			float: right;
+			
+			
+		}
+		.div4{
+			border: 2px solid yellow;
+			height: 850px;
+			width: 330px;
+		}
+		.div-left{
+			width: 330px;
+			border: 1px solid #d0d0d0;
+			height: 200px;
+			margin-top: 5px;
+			background-color:#e0e0e0;
+		}
+		.div-left1{
+			width: 60px;
+			border: 1px solid grey;
+			height: 16px;
+			background-color: #3c3c3c;
+			color: white;
+			margin-left: 10px;
+			margin-top: 10px
+
+		}
+		.img3{
+			margin-left: 10px;
+		}
+		.div-left2{
+			border: 1px solid #5e005e;
+			height: 135px;
+			width: 292px;
+			margin-left: 10px;
+			margin-top: 10px;
+		}
+		.div-left3{
+			width: 140px;
+			height: 63px;
+			border: 1px solid;
+			background-color: #3c3c3c;
+
+		}
+		.div-left3 img{
+			float: left;
+		}
+		.div-left3 p{
+			margin-top: 20px;
+			color: white;
+		}
+		.div5{
+			float: right;
+		}
+		.div-left4{
+			border: 1px solid;
+			width: 330;
+			height: 330px;
+			margin-top: 10px;
+		}
+		
+		.div-one{ 
+			border: 1px solid;
+			/*height: 30px;*/
+			background-color: #272727;
+
+		}
+		.div-one span{
+			color: white;
+			line-height: 30px;
+			margin-left: 10px;
+		}
+		.div3-1{
+			border: 1px solid #ff00ff;
+			height: 205px;
+			margin-top: 10px;
+			width: 150px;
+			float: right;
+
+
+		}
+		.div3-2{
+			border: 1px solid #ff00ff;
+			height: 205px;
+			margin-top: 10px;
+			width: 150px;
+
+		}
+		.div3-3{
+			border: 1px solid;
+			width: 3px;
+			height: 13px;
+			background-color: red;
+			margin-left: 9px;
+			float: left;
+		}
+		.div3-2 span{
+			margin-left: 5px;
+
+		}
+		.div3-4{
+			margin-left: 10px;
+			margin-top: 20px;
+		}
+		.div-right1{
+			border: 1px solid;
+			width: 555px;
+			height: 30px;
+			background-color: #272727;
+			color: white;
+			line-height: 30px;
+		}
+		.img4{
+			width: 555px;
+		}
+		.div-right2{
+			border: 3px solid #bebebe;
+			height: 230px;
+			margin-top: -3px;
+		}
+		.div-right2-1{
+			border: 1px solid red;
+			height: 80px;
+			width: 510px;
+			margin-top: 20px;
+			margin-left: 15px;
+
+
+			
+		}
+		.div-right2-2{
+
+			margin-top: 25px;
+			border: 1px solid red;
+			height: 80px;
+			width: 510px;
+			margin-left: 15px;
+		}
+		.div-right2-3{
+			margin-top: 20px;
+			border: 1px solid yellow;
+			margin-left: 20px;
+			height: 66px;
+		}
+		.div-right2-3 img{
+			float: left;
+		}
+		.div-right2-4 p{
+			
+			text-indent:30px;
+		}
+		.div-right2-4{
+			margin-left: 10px;
+		}
+		.p1{
+			color: red;
+		}
+		.div-right2-5{
+			border: 1px solid;
+			height: 70px;
+			width: 220px;
+			float: right;
+
+		}
+		.div-right2-6{
+			border: 1px solid;
+			height: 70px;
+			width: 220px;
+
+		}
+		.div-right2-7{
+			border: 1px solid;
+			height: 70px;
+			width: 220px;
+			float: right;
+			margin-left: 60px;
+		}
+		.div-right2-8{
+			border: 1px solid;
+			height: 70px;
+			width: 220px;
+			float: right;
+		}
+		.div-right3{
+			border: 1px solid #00e3e3;
+			width: 553px;
+			height: 470px;
+			margin-top: 8px;
+			
+
+		}
+		.div-right3 img{
+			margin-top: -3px;
+
+		}
+		.div-right3-1{
+			border: 1px solid;
+			width: 250px;
+			height: 470px;
+			float: right;
+			margin-right: 5px;
+		}
+		.div-right3-2{
+			border: 1px solid;
+			width: 250px;
+			height: 470px;
+		}
+		.div-right3-2 img,.div-right3-1 img{
+			width: 260px;
+
+		}
+		.div-bottom{
+			height: 55px;
+			width: 900px;
+			border: 1px solid purple;
+			background-color: #272727;
+		}
+		.div-bottom div{
+			text-align: center;
+			color: white;
+			font-size: 10px;
+		}
+		.div-bottom-1{
+			margin-top: 10px;
+			margin-bottom: 7px;
+		}
+
+
+
+
+
+		
+	</style>
+</head>
+<body>
+<div class="big">
+	<div class="top"></div>
+	<div class="div1">
+		<img src="img/yibaidu.gif">
+		<img class="img1" src="img/chihewanle.gif" alt="">
+	</div>
+	<div style="border:1px solid;">
+		<img class="img2" src="img/dangao.jpg" alt="">
+	</div>
+	<div class="div2">
+		<div class="div3">
+			<div class="div-right1"><span style="font-weight: 1000;font-size:16px;">&nbsp;&nbsp;HOT 博文</span>&nbsp;&nbsp;查看更多</div>
+			<img class="img4" src="img/liwu.jpg" alt="">
+			<div class="div-right2">
+				<div class="div-right2-1">
+					<div class="div-right2-5">
+						<div style="border:2px solid #bebebe;width:66px;float:left;">
+							<img src="img/liwu2.jpg" alt="">
+						</div>
+						<p style="text-indent:30px;">这是一个瞎吃的时代，也是一个吃虾的时代</p>
+						<p style="text-indent:30px;color:red;">带你去最HOT的地</p>
+					</div>
+					<div class="div-right2-6">
+						<div style="border:2px solid #bebebe;width:66px;float:left;">
+							<img src="img/liwu1.jpg" alt="">
+						</div>
+						<p style="text-indent:30px;">好伦哥转型海鲜自助，赌一场华丽转型！</p>
+						<p style="text-indent:30px;color:red;">带你去最HOT的地方</p>
+					</div>
+				</div>
+				<img src="img/Z.jpg" alt="">
+				<div class="div-right2-2">
+					<div class="div-right2-7">
+						<div style="border:2px solid #bebebe;width:66px;float:left;">
+							<img src="img/liwu4.jpg" alt="">
+						</div>
+						<p style="text-indent:30px;">朴素的栗子甜品，浓滑甜蜜余香味浓</p>
+						<p style="text-indent:30px;color:red;">带你去最HOT的地方</p>
+					</div>
+					<div class="div-right2-8">
+						<div style="border:2px solid #bebebe;width:66px;float:left;">
+							<img src="img/liwu3.jpg" alt="">
+						</div>
+						<p style="text-indent:30px;">开门纳福，美美的甜点总是被称为“治愈系的食物”</p>
+						<p style="text-indent:30px;color:red;">带你去最HOT的地</p>
+					</div>
+  				</div>
+				
+			</div>
+				<div class="div-right3">
+					<div class="div-right3-1">
+						<img src="img/4.gif" alt="">
+						<img src="img/5.gif" alt="">
+						<img src="img/6.gif" alt="">
+						<img src="img/7.gif" alt="">
+						
+					</div>
+					<div class="div-right3-2">
+						<img src="img/1.gif" alt="">
+						<img src="img/2.gif" alt="">
+						<img src="img/3.gif" alt="">
+						<img src="img/3-1.gif" alt="">
+
+						
+					</div>
+
+				
+				</div>
+			<div></div>
+		</div>
+			
+		<div class="div4">
+			<div>
+				<img src="img/jieping.png" alt="">
+			</div>
+			<!-- 左边第二块 -->
+			<div class="div-left">
+				<div class="div-left1">查看更多</div>
+				<img class="img3" src="img/heng.jpg">
+				<div class="div-left2">
+					
+			    <div class="div5">
+			   		<div class="div-left3">
+						<img src="img/lijunjiudian.jpg">
+						<p>励骏酒店</p>
+					</div>
+					
+					<div class="div-left3" style="margin-top:5px;">
+						<img src="img/yidalicanting.jpg">
+						<p>Assaggi 尝试意大利餐厅</p>
+					</div>
+				</div>
+					<div class="div-left3">
+						<img src="img/wangfujing.jpg">
+						<p>王府井希尔顿酒店</p>
+					</div>
+					
+					<div class="div-left3" style="margin-top:5px;">
+						<img src="img/beijingxiaojudan.jpg">
+						<p>Arena Club 北京小巨蛋</p>
+					</div>
+				</div>
+				
+			</div>
+			<!-- 左边第三块 -->
+			<div class="div-left4">
+				<div class="div-one">
+					<span>免费体验</span>
+				</div>
+					<img src="img/quanminyundong.jpg">
+				<div style="border:1px solid;">
+					<div class="div3-1">
+						<div style="border:1px solid;">
+							<div class="div3-3">
+								</div>
+							<span>最近大奖得主</span>
+							
+						</div>
+						<div class="div3-4">
+							<p style="color:red">Good 白</p>
+							<p>抢到天台爱情电影票</p>
+							<p style="color:red">于小怀</p>
+							<p>抢到天台爱情电影票</p>
+							<p style="color:red">萱贝儿</p>
+							<p>抢到天台爱情电影票</p>
+							<p style="color:red">思思</p>
+							<p>抢到天台爱情电影票</p>
+
+						</div>
+					</div>
+					<div class="div3-2">
+						<div style="border:1px solid;">
+							<div class="div3-3">
+								</div>
+							<span>今日大奖</span>
+							
+						</div>
+						<img src="img/zhoujielun.jpg" alt="">
+
+						<span style="color:red;">天台爱情 电影票</span>
+						<p>东都国际影城 提供</p>
+					</div>
+					
+				</div>
+
+				
+			</div>
+			
+		</div>
+	</div>
+	<div class="div-bottom">
+		<div class="div-bottom-1">
+			网络视听许可证0108251号
+		</div>
+		<div>
+			Copyright @2013 一百度 100du.com 版权所有
+		</div>
+		
+	</div>
+	
+</div>
+</body>
+</html>

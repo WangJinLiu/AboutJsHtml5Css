@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>cookie</title>
+</head>
+<body>
+	<script>
+	setcookie("name","sun",1);
+	setcookie('spk',100,1);
+	//设置 cookie 值的函数
+	//cname:将要存储的cookie的名称
+	//cvalue：名称对应的值
+	//exdays：cookie过期时间，天
+	//getTime()返回 1970 年 1 月 1 日至今的毫秒数,叫时间戳1000毫秒=1s。
+	function setcookie(cname,cvalue,exdays)
+	{
+	  console.log(cname,cvalue,exdays)
+	  var d = new Date();
+	  //创建 Date 对象的语法
+	  console.log(d);
+	  d.setTime(d.getTime()+(exdays*24*60*60*1000));
+	  console.log(d.getTime());
+	  var expires = "expires="+d.toGMTString();
+	  console.log(expires);
+	  document.cookie = cname + "=" + cvalue + "; " + expires;
+	  console.log(cname + "=" + cvalue + "; " + expires);
+	}
+	var v=getcookie('name');
+	console.log(v);
+	//获取 cookie 值的函数
+	//split() 方法用于把一个字符串分割成字符串数组。
+	function getcookie(cname)
+	{
+	  var name = cname + "=";
+	  console.log(document.cookie);
+	  var ca = document.cookie.split(';');
+	  console.log(ca);
+	  for(var i=0; i<ca.length; i++) 
+	  {
+	    var c = ca[i].trim();
+//	    console.log(c);
+	    if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+	  }
+	  return "";
+	}
+
+
+	</script>
+</body>
+</html>

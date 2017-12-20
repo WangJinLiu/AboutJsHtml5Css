@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			html{
+				font-size: 8px;
+			}
+		</style>
+	</head>
+	<body>
+		<!--
+		流式布局：百分比布局，width的百分比，定位的百分比
+		用em rem去替换像素（px）
+		需要记住的公式：
+			目标元素的宽度/上下文元素的宽度=百分比的宽度
+			使用em/rem去替换px：
+			原因：1.TE6用户也能进行缩放文字
+				 2.em实际大小是根据相对上下文的字体大小而定的 
+		em :em大小是根据父级大小而定
+		rem:全名 root em 	
+		rem：大小根据HTML大小而定的
+		em和rem的区别：
+			em的值是不固定的，它会随着父级元素大小的变化而改变
+			好处：设置段落间隙方便
+			坏处：嵌套层数有多个时，需要计算
+		-->
+		<div >
+			<div  style="font-size: 20px;">
+				<p style="font-size:1em;">我是1em</p>
+				<p style="font-size:2em;">我是2em</p>
+				<p style="font-size:3em;">我是3em</p>
+				<span style="font-size:2rem;">我是1rem</span>
+				
+			</div>
+			
+		</div>
+	</body>
+</html>

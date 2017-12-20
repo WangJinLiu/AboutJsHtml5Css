@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>移动</title>
+	<style>
+	*{margin:0;
+		padding:0;}
+		div{
+			border: 1px solid;
+			display: inline-block;
+
+		}
+		p{
+			/*border: 1px solid;*/
+			margin-top:-10px;
+			
+			top:19px;
+			left:0;
+
+		}
+		#p1{
+			display: inline-block;
+			width: 42px;
+			height: 2px;
+			background-color: red;
+			position: absolute;
+			top:35px;
+			left:0;
+
+		}
+	</style>
+</head>
+<body>
+	<div id="div1">
+		<div>按钮1</div>
+		<div>按钮1</div>
+		<div>按钮1</div>
+		<div>按钮1</div>
+		<div>按钮1</div>
+		
+	</div>
+	<p id="p1">
+		
+	</p>
+	
+	<script type="text/javascript">
+		var div1=document.getElementById('div1');
+		var but=div1.getElementsByTagName('div');
+		var p1=document.getElementById('p1');
+		console.log(but);
+		//第一种方法
+		// function move(x,y)
+		// {
+		// 	x.onmouseover=function()
+		// 	{
+		// 		p1.style.left=y+'px';
+		// 		p1.style.transition='all 0.5s'
+		// 	}
+
+
+		// }
+		// move(but[0],0);
+		// move(but[1],45);
+
+		// move(but[2],90);
+
+		// move(but[3],137);
+
+		// move(but[4],185);
+		//第二种方法
+		for(var i=0;i<but.length;i++)
+		{
+			but[i].onmouseover=(function(a)
+			{
+				return function()
+				{
+					console.log(a);
+					p1.style.left=a*46+'px';
+					p1.style.transition='all 0.5s';
+				}
+			})(i);
+
+		}
+
+
+
+
+
+
+
+
+
+	</script>
+	
+</body>
+
+</html>

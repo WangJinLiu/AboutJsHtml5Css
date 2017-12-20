@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 300px;
+				padding: 20px 0;
+				background: red;
+				border: 7px dashed pink;
+				text-align: center;
+				background: url(img/8_23.png) no-repeat;
+			}
+			.border-box{
+				background-clip: border-box;
+				/*background-origin: border-box;*/
+			}
+			.padding-box{
+				background-clip: padding-box;
+				/*background-origin: padding-box;*/
+			}
+			.content-box{
+				background-clip: content-box;
+				/*background-origin: content-box;*/
+			}
+			/*background-clip:指背景可以覆盖到什么地方
+							 border-box：可以覆盖到边框那
+							 padding-box：背景可以覆盖到内部
+							 content-box：背景可以覆盖到内容
+			 background-origin:指背景从什么位置开始
+							 border-box:默认值，指背景从边框开始
+			 				 padding-box：北京从内边距开始
+			 				 content-box：背景从内容开始
+							 */
+		</style>
+	</head>
+	<body>
+		<h2>background-clip:border-box</h2>
+		<div class="border-box">实例1</div>
+		<h2>background-clip:padding-box</h2>
+		<div class="padding-box">实例2</div>
+		<h2>background-clip:content-box</h2>
+		<div class="content-box">实例3</div>
+	</body>
+</html>

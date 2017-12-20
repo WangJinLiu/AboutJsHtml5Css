@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>面向对象的创建</title>
+</head>
+<body>
+	<!-- 主要用于游戏开发 -->
+	<!-- window document 标签 都是对象 -->
+
+
+	
+</body>
+<script>
+	// 常用的创建对象的方法1
+	// var obj={
+	// 	name:"hello",
+	// 	arr:[],
+	// 	fff:function(){
+	// 		console.log(this);
+	// 	}
+	// };
+	// // 添加属性
+	// obj.mmm=1;
+	// obj.fff();
+	
+
+	// 常用的创建对象的方法2构造函数创建对象
+	// 函数名首字母大写
+	// function People(){
+	// 	this.name = "张三";
+	// 	this.age=19;
+	// 	this.sex="女";
+	// 	this.move=function(){
+
+	// 	}
+
+	// }
+	//在堆里开辟出一块新空间
+	//上边this就是p
+	var p=new People();
+	console.log(p.name);
+	//构造函数添加属性方法
+	p.aaa=1;
+	p.move();
+
+	var p1=new People();
+	p1.name='李四';
+	console.log(p);//修改第二个不影响第一个
+
+	function People(name,age,sex){
+		this.name=name;
+		this.age=age;
+		this.sex=sex;
+		this.move=function(){
+
+		}
+
+	}
+	var p1=new People("张三",17,"女");
+	var p2=new People("张三2",17,"女");
+	console.log(p1,p2);
+
+
+
+
+</script>
+</html>

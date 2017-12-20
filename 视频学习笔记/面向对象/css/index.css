@@ -1,0 +1,36 @@
+#wrap{
+	width: 900px;
+	height: 500px;
+	border: 1px solid;
+	margin: 0 auto;
+	
+}
+*{margin:0;padding:0;}
+.content{
+	width: 100%;
+	height:400px;
+	background: pink;
+	position: relative;
+	background-image: url(../img/bac.jpg);
+	background-position: 0 0;
+	background-size:100% 100%;
+
+}
+.road{
+	width: 100%;
+	height:100px;
+	background: hotpink;
+
+}
+.hero{
+	width: 50px;
+	height: 50px;
+	background: red;
+	position: absolute;
+	left: 0;
+	top:350px; 
+	background: url(../img/maliao.jpg);
+	border-radius: 50%;
+	background-size: 410px 375px; 
+	background-position:-1410px -302px;
+}

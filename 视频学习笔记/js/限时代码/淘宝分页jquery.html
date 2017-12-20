@@ -1,0 +1,113 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>淘宝分页jQuery版</title>
+</head>
+<style>
+	#wrap{
+			width: 1040px;
+			height: 800px;
+			border: 1px solid;
+			margin:0 auto;
+		}
+	.box{
+		width: 253px;
+		height: 392px;
+		border: 1px solid;
+		display: inline-block;
+	}
+	#but_box{
+		width: 1040px;
+		list-style: none;
+		text-align: center;
+		margin:0 auto;
+
+	}
+	#but_box li{
+		display: inline-block;
+		padding: 20px 50px;
+		border: 1px solid;
+	}
+	img{
+		width: 256px;
+		height: 256px;
+	}
+	.p1:hover{
+
+		color: #ff8000;
+	}
+
+
+
+</style>
+<body>
+	<div id="bigbox">
+		<div id="wrap">
+		<!-- 	<div class="box"></div>
+			<div class="box"></div>
+			<div class="box"></div>
+			<div class="box"></div> -->
+		</div>
+		<ul id="but_box">
+		<!-- 	<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li> -->
+		</ul>
+	</div>
+	<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+	<script>
+		var arr0='[{"img":"./img/1.jpg","price":"189","title":"预售乐町2017秋装新款女装1","shop":"乐町官方旗舰店1"},{"img":"./img/2.jpg","price":"189","title":"预售乐町2017秋装新款女装2","shop":"乐町官方旗舰店2"},{"img":"./img/3.jpg","price":"189","title":"预售乐町2017秋装新款女装3","shop":"乐町官方旗舰店3"},{"img":"./img/4.jpg","price":"189","title":"预售乐町2017秋装新款女装4","shop":"乐町官方旗舰店4"}]';
+		var arr=JSON.parse(arr0);
+		//一页两个数据
+		createbiaoqian(0,2,arr)
+		createanniu(2,arr);
+		//创造分页按钮
+		function createanniu(perNumber,myArr){
+			var page=Math.ceil(myArr.length/perNumber);
+			for(var i=0;i<page;i++){
+				var li=$("<li>");
+				li.appendTo("#but_box");
+				li.text(i+1);
+				li.click(function(){
+					$("#wrap").html("");
+					var index=$(this).text();
+					console.log(index);
+					var start=(index-1)*perNumber;
+					var end=index*perNumber;
+					if(end>myArr.length){
+						end=myArr.length;
+
+					}
+					createbiaoqian(start,end,myArr);
+
+				})
+			}
+
+		}
+		//创造标签
+		function createbiaoqian(start,end,myArr){
+			for(var j=start;j<end;j++){
+				var div=$("<div class='box'>");
+				div.appendTo("#wrap");
+				var img=$("<img>");
+				img.appendTo(div);
+				img.attr("src",myArr[j].img);
+				var p=$("<p class='p1'>");
+				p.appendTo(div);
+				p.text(myArr[j].title);
+				var p1=$("<p>");
+				p1.appendTo(div);
+				p1.text(myArr[j].shop)
+
+			}
+		}
+		
+
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			height: 100px;
+
+		}
+
+	</style>
+
+</head>
+<body>
+
+	<script type="text/javascript">
+
+		document.body.oncontextmenu=function(ev){
+			var e=ev || window.event;
+			//取消默认事件（默认事件就是点击右键时会出现窗口等，取消这个事件让它不耽误自己代码功能的实现）
+			e.preventDefault();
+			return false;//相当于返回一个false给系统
+			//用在早期ie版本，写的时候就把上边两行都写上
+		}
+
+
+
+
+	</script>
+	
+</body>
+</html>

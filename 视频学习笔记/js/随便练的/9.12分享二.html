@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{margin:0;padding:0;list-style: none}
+	#wrap{
+		width: 200px;
+		margin:20px auto;
+		text-align: center;
+
+	}
+	ul li{
+		border: 1px solid;
+		height: 40px;
+		line-height: 40px;
+	}
+	ul{
+		display: none;
+	}
+	#title{
+		border: 1px  solid;
+		height: 70px;
+		line-height: 70px;
+	}
+	.active{
+		background: red;
+	}
+
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="title">隐藏</div>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			
+
+
+		</ul>
+	</div>
+	<script>
+		var wrap=document.getElementById('wrap');
+		var title=document.getElementById('title');
+		var ul=document.getElementsByTagName('ul')[0];
+		var lis=document.getElementsByTagName('li');
+		var judge=true;
+		title.onclick=function(){
+
+			if(judge){
+				ul.style.display='block';
+				title.innerHTML="展开";
+				click();
+				judge=false;
+			}else{
+				ul.style.display='none';
+				title.innerHTML="隐藏";
+
+				judge=true;
+			}
+			
+		}
+		
+		function click(){
+			for(var i=0;i<lis.length;i++){
+				lis[i].flog=0;
+				lis[i].onclick=function(){
+					if(this.flog==0){
+						this.className='active';
+						this.flog=1;
+
+					}else{
+						this.className='';
+						this.flog=0;
+
+					}
+					
+					
+				}
+			}
+		}
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			html{
+				background-color: pink;
+			}
+			.flex_container{
+				list-style: none;
+				display: flex;
+				/*(加上这个会自动把它里边的子级排成一行)*/
+				/*就是告诉要用主轴对齐方式了*/
+			}
+			.flex_item{
+				background: tomato;
+				padding: 5px;
+				margin: 5px;
+				width: 50px;
+				height: 50px;
+				line-height: 50px;
+				text-align: center;
+				font-size: 32px;
+			}
+/*align-items属性用于弹性容器，而align-self用于弹性项目*/
+			.flex_style{
+				/*靠左*/
+				/*justify-content: flex-start;*/
+				/*靠右*/
+				/*justify-content: flex-end;*/
+				/*水平居中*/
+				/*justify-content: center;*/
+				/*垂直居中*/
+				/*align-items: center;*/
+				/*靠两边  两端对齐，中间平分*/
+				/*justify-content: space-between;*/
+				/*间距相等  平分父盒子空间*/
+				justify-content: space-around;
+				
+							}
+		</style>
+	</head>
+	<body>
+		<ul class="flex_container flex_style">
+			<li class="flex_item">1</li>
+			<li class="flex_item">2</li>
+			<li class="flex_item">3</li>
+			<li class="flex_item">4</li>
+			<li class="flex_item">5</li>
+		</ul>
+	</body>
+</html>

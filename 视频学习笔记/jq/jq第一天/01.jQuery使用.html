@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+
+	</style>
+</head>
+<body>
+	<div id="wrap"></div>
+	
+	
+</body>
+<!-- 第一种方式，本地引用 -->
+<!-- <script src="jquery.js"></script> -->
+<!-- 第二种方式cdn，直接引用Baiducdn -->
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+	console.log(window);
+	//在window中存在两个新的属性一个是$,一个是jQuery，可以通过这两个属性直接使用jQuery里面的函数
+	//1.获得标签,获得一个jQuery对象，本质上是一个数组
+	var m=$("#wrap");
+	console.log($("#wrap"));//数组[div#wrap, context: document, selector: "#wrap"]
+	console.log(m);
+	//设置样式
+	m.css({
+		width:"100px",
+		height:"100px",
+		background:"red"
+	});
+	//设置样式方式二
+	$("#wrap").css({
+		width:"100px",
+		height:"100px",
+		background:"red"
+	})
+
+
+
+
+
+
+</script>
+</html>

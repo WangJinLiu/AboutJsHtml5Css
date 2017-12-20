@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>作业1</title>
+</head>
+<body>
+	
+	<span>美女</span><br>
+	<input type="text" id="inputleft"><input type="text" id="inputright"><br>
+
+	<span>帅哥</span><br>
+	<span>帅哥的手指数:</span>
+	<select name="" id="select1">
+		<option value="0">0</option>
+		<option value="5">5</option>
+		<option value="10">10</option>
+
+
+	</select>
+	<span>帅哥说的数:</span>
+	<select name="" id="select2">
+		<option value="0">0</option>
+		<option value="5">5</option>
+		<option value="10">10</option>
+		<option value="15">15</option>
+		<option value="20">20</option>
+	</select><br>
+	<input type="button" value="Come on!" id="but">
+	<script type="text/javascript">
+		
+		var but=document.getElementById('but');
+		
+		var inputleft_1=document.getElementById('inputleft');
+		var inputright_2=document.getElementById('inputright');
+		var select_1=document.getElementById('select1');
+		var select_2=document.getElementById('select2');
+		but.onclick=function(){
+				
+			var inputleft_01=[0,5,10];
+			var inputright_02=[0,5,10,15,20];
+			var i=parseInt(Math.floor(Math.random()*inputleft_01.length));
+			var j=parseInt(Math.floor(Math.random()*inputright_02.length));
+			var a=inputleft_01[i];
+			var b=inputright_02[j];	
+			// var c1=a;
+			// var c2=b;
+			var d1=parseInt(select_1.value);
+			var d2=parseInt(select_2.value);		
+			inputleft_1.value=a;
+			inputright_2.value=b;
+			if(a+d1==b&&a+d1!=d2){
+				alert('美女赢了');
+
+			}
+			if(a+d1!=b&&a+d1==d2){
+				alert('帅哥赢了');
+
+			}
+			if(a+d1==b&&a+d1==d2){
+				alert('平局');
+
+			}
+			if(a+d1!=b&&a+d1!=d2){
+				alert('再来一局');
+
+			}
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		}
+
+
+
+
+
+
+	</script>
+
+	
+
+	
+</body>
+</html>

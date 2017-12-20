@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#wrap{
+		width: 100px;
+		height: 100px;
+		background: red;
+	}
+
+
+	</style>
+</head>
+<body>
+	<div id="wrap"></div>
+	<script type="text/javascript">
+	var wrap=document.getElementById('wrap');
+	// wrap.onclick=function(){
+	// 	console.log(111);
+	// 	// m();
+	// }
+	//现在的浏览器添加事件监听方法
+				//把函数提出来写的
+				// function m(){
+				// 	console.log('aaa');
+				// 	console.log(this);//是wrap,因为是wrap调用的
+				// }
+				// function n(){
+				// 	console.log('bbb')
+				// }
+				// wrap.addEventListener('click',m,false);
+				// wrap.addEventListener('click',n,false);
+				//如果addEventListener中调用的是同一个函数则会替换，必须调用两个不同的函数
+				// wrap.removeEventListener('click', m);
+				//把函数放里边写
+				// wrap.addEventListener('click',function(obj){
+				// 	var obj=obj||window.event;
+				// 	console.log('aaa');
+				// 	console.log(this);
+
+				// },false);
+				// wrap.addEventListener('click',function(obj){
+				// 	var obj=obj||window.event;
+				// 	console.log('bbb');
+
+				// },false);
+
+				// element.removeEventListener(event, function, useCapture)语法和addEventListener一样
+				// 1参数：必须。要移除的事件名称。.
+					// 注意:不要使用 "on" 前缀。 例如，使用 "click" ,而不是使用 "onclick"，字符串
+				// 2.参数：必须。指定要事件触发时执行的函数。 当事件对象会作为第一个参数传入函数。 事件对象的类型取决于特定的事件。例如， "click" 事件属于 MouseEvent(		鼠标事件) 对象。
+				// 3.参数：可选。布尔值，指定事件是否在捕获或冒泡阶段执行。
+				// 	可能值:
+				// 	true - 事件句柄在捕获阶段执行
+				// 	false- false- 默认。事件句柄在冒泡阶段执行
+	//Internet Explorer 8 及更早IE版本不支持 addEventListener() 方法，，Opera 7.0 及 Opera之前事件监听方法
+				// wrap.attachEvent(type, listener); 
+				// 	wrap： 文档节点 
+				// 	type： 字符串，事件名称，含“on”，比如“onclick”、“onmouseover”、“onkeydown”等。 
+				// 	listener ：实现了 EventListener 接口或者是 javascript 中的函数。 例如：document.getElementById("txt").attachEvent("onclick",function(event){alert(event.keyCode);}); 
+				// //清除方法
+				// wrap.detachEvent(event,function); 
+
+				// //例子
+				// function m(){
+				// 	console.log('aaa');
+				// 	console.log(this);//是wrap,因为是wrap调用的
+				// }
+				// function n(){
+				// 	console.log('bbb')
+				// }
+				// wrap.attachEvent('onclick',m,false);
+				// wrap.detachEvent('onclick',m);
+	
+
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

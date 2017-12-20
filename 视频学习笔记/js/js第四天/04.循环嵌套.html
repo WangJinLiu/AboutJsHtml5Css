@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>循环嵌套</title>
+</head>
+<body>
+
+	<script type="text/javascript">
+
+	//每一行输出比上一行多一个数
+
+		// for(var i=1;i<=3;i++){
+
+		// 	for(var j=1;j<=i;j++){
+
+		// 		document.write(j);
+
+		// 	}
+		// 	document.write('<br>');
+
+		// }
+		//使用for循环打印九九乘法表
+		for(var i=1;i<=9;i++){
+			for(j=1;j<=i;j++){
+
+				var sum=i*j;
+				document.write(j+'*'+i+'='+sum+' ');
+			}
+			document.write('<br>');
+
+		}
+
+
+
+		//循环嵌套：主要应用于for循环，在循环嵌套中，外层循环控制趟数，内层循环控制次数。
+
+	</script>
+	
+</body>
+</html>

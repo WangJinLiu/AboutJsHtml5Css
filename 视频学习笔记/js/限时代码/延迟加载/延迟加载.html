@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>延迟加载</title>
+	<style>
+		.wrap{
+			width: 500px;
+			margin:0 auto;
+			border: 1px solid;
+		}
+		.wrap img{
+			width: 500px;
+			height: 500px;
+			background: url(./images/loading.gif) no-repeat;
+			background-size:100px 100px;
+			background-position: center center;
+
+		}
+		#aaa{
+			width: 10px;
+			height: 20px;
+			background:red;
+
+		}
+	</style>
+</head>
+<body>
+
+	<div class="wrap">
+		<img src="images/blank.gif" alt="" data-echo="images/big-1.jpg">
+		<img src="images/blank.gif" alt="" data-echo="images/big-2.jpg">
+		<img src="images/blank.gif" alt="" data-echo="images/big-3.jpg">
+		<img src="images/blank.gif" alt="" data-echo="images/big-4.jpg">
+		<img src="images/blank.gif" alt="" data-echo="images/big-5.jpg">
+		<img src="images/blank.gif" alt="" data-echo="images/big-6.jpg">
+		<img src="images/blank.gif" alt="" data-echo="images/big-7.jpg">
+		
+		
+	</div>
+	
+</body>
+<script src="js/echo.js"></script>
+<script>
+	var ele=document.getElementById('aaa');
+	var coords = ele.getBoundingClientRect();
+	console.log(coords);
+	// Echo.init({
+	// 	offset:500,
+	// 	throttle:100,
+
+	// })
+</script>
+</html>

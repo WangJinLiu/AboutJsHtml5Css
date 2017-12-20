@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.flex_container{
+				margin: 0;
+				padding: 0;
+				display: flex;
+				/*去掉ul里的点*/
+				list-style: none;
+				margin-left: 200px;
+			}
+			.flex_item{
+				background: tomato;
+				width: 50px;
+				text-align: center;
+				margin: 15px;
+			}
+			.nowrap{
+				flex-wrap: nowrap;
+			}
+			.wrap{
+				flex-wrap: wrap;
+			}
+			.wrap_reverse{
+				flex-wrap: wrap-reverse;
+			}
+		</style>
+	</head>
+	<body>
+		<ul class="flex_container nowrap">
+			<li class="flex_item">1</li>
+			<li class="flex_item">2</li>
+			<li class="flex_item">3</li>
+			<li class="flex_item">4</li>
+			<li class="flex_item">5</li>
+		</ul>
+		<ul class="flex_container wrap">
+			<li class="flex_item">1</li>
+			<li class="flex_item">2</li>
+			<li class="flex_item">3</li>
+			<li class="flex_item">4</li>
+			<li class="flex_item">5</li>
+		</ul>
+		<ul class="flex_container wrap_reverse">
+			<li class="flex_item">1</li>
+			<li class="flex_item">2</li>
+			<li class="flex_item">3</li>
+			<li class="flex_item">4</li>
+			<li class="flex_item">5</li>
+		</ul>
+	</body>
+</html>

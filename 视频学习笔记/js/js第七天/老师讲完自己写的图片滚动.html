@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片滚动</title>
+	<style>
+	body,html{margin:0;padding:0;background:#fff;font-size:14px;font-family:Arial,Helvetica,'STHeiti','Microsoft YaHei','sans-serif'}
+		form,ul,li,p,h1,h2,h3,h4,h5,h6{margin:0;padding:0;}
+		img{border:0;}
+		ul,li{list-style-type:none;}
+		a{color:#00007F;text-decoration:none;}
+		a:hover{text-decoration:none;}
+
+	#ul1 img{
+		width: 600px;
+		height: 400px;
+	}
+	#ul1{
+		/*width: 2400px;*/
+		height: 400px;
+		position: absolute;
+		left: 0;
+		top: 0;
+		transition:all 1s;
+	}
+	li{
+		float: left;
+	}
+	#div1{
+		width: 600px;
+		height: 400px;
+		margin:0 auto;
+		border: 1px solid;
+		position: relative;
+		overflow: hidden;
+	}
+	#p1{
+		position: absolute;
+		left: 0;
+		top:170px;
+	}
+	#p2{
+		position: absolute;
+		left: 566px;
+		top:170px;
+	}
+	#div2{
+		position: absolute;
+		top:350px;
+		left: 250px;
+
+	}
+	#div2 p{
+		float: left;
+		border:1px solid;
+		/*background-color: grey;*/
+		padding: 5px;
+		border-radius: 5px;
+		margin-right: 10px;
+	}
+
+
+
+	</style>
+</head>
+<body>
+<div id="div1">
+	<ul id="ul1">
+		<li><img class="img00" src="img/01.jpg" alt=""></li>
+		<li><img class="img00" src="img/02.jpg" alt=""></li>
+		<li><img class="img00" src="img/03.jpg" alt=""></li>
+		<li><img class="img00" src="img/04.jpg" alt=""></li>
+	</ul>
+	<p id="p1"><img src="img/zuo.png" alt=""></p>
+	<p id="p2"><img src="img/you.png" alt=""></p>
+	<div id="div2">
+		<p id="p3"></p>
+		<p id="p4"></p>
+		<p id="p5"></p>
+		<p id="p6"></p>
+	</div>	
+</div>
+
+	<script>
+		var ul1=document.getElementById('ul1');
+		var img0=document.getElementsByClassName('img00');
+		var div1=document.getElementById('div1');
+		var p2=document.getElementById('p2');
+		var p1=document.getElementById('p1');
+		var div2=document.getElementById('div2');
+		var pN=div2.getElementsByTagName('p');
+		console.log(pN);
+
+		ul1.style.width=img0[0].width*img0.length+'px';
+		var index=0;
+
+		var timer;
+		for(var i=0;i<pN.length;i++){
+			pN[i].onclick=(function(a){
+				return function(){
+                    index=a;
+                    ul1.style.left=index*-img0[0].width+'px';
+                    opN();
+				}
+			}(i))
+		}
+		//点击左边的箭头滑动
+		p1.onclick=function()
+		{
+			index--;
+			console.log(index);
+			console.log()
+			if(index<0)
+			{
+				index=img0.length-1;
+			}
+			ul1.style.left=index*-img0[0].width+'px';
+			opN();
+		}
+		//点击右边的箭头滑动
+		 p2.onclick=function(){
+		 	index++;
+		 	console.log(index);
+			if(index>img0.length-1)
+			{
+				index=0;
+			}
+			ul1.style.left=index*-img0[0].width+'px';
+			opN();
+		 }
+
+
+        function opN(){
+
+        	for (var i=0;i< pN.length; i++) {
+        		// console.log('11111');
+        		if(i==index){
+        			pN[i].style.background='grey';
+        		}else{
+        			pN[i].style.background='none';
+        		}
+        	}
+        }
+
+		function m()
+		{
+			timer=setInterval(function()
+			{
+				p2.onclick();
+			},2000)
+		}
+		m();
+		div1.onmouseover=function()
+		{
+			clearInterval(timer);
+		}
+		div1.onmouseout=function()
+		{
+			m();
+
+		}
+		
+
+
+
+
+
+
+
+
+
+
+	</script>
+
+</body>
+</html>

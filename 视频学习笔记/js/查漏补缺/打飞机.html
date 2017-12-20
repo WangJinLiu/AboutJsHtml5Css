@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box1{
+			width: 100px;
+			height: 100px;
+			background: red;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		#box2{
+			width: 100px;
+			height: 100px;
+			background: yellow;
+			position: absolute;
+			top:0px;
+			left: 300px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box1"></div>
+	<div id="box2"></div>
+</body>
+<script type="text/javascript">
+	var box1=document.getElementById('box1');
+	var box2=document.getElementById('box2');
+	// var step=0;
+	// var timer=setInterval(function()
+	// {
+	// 	step++;
+	// 	box2.style.left=step+"px";
+	// },100)
+	//2碰撞1 
+
+	function judge(box1,box2)
+	{
+		var box2X_min=box1.offsetLeft-box2.offsetWidth;
+		var box2X_max=box1.offsetLeft+box1.offsetWidth;
+		var box2Y_min=box1.offsetTop-box2.offsetHeight;
+		var box2Y_max=box1.offsetTop+box1.offsetHeight;
+		if(box2.offsetLeft>=box2X_min&&box2.offsetLeft<=box2X_max&&box2.offsetTop>=box2Y_min&&box2.offsetTop<=box2Y_max)
+		{
+			console.log("发生碰撞");
+			return true;
+
+		}
+		return false;
+	}
+	
+	
+</script>
+</html>

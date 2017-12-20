@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style type="">
+		#wrap{
+			width: 100px;
+			height: 100px;
+			background: red;
+			position: absolute;;
+			left: 0;
+		}
+		#aa{
+			position: absolute;
+			left: 0;
+			top:200px;
+			display: inline-block;
+		}
+
+
+
+
+	</style>
+</head>
+<body>
+	<div id="wrap"></div>
+	<a id="aa">删除</a>
+	<script type="text/javascript" src="leftMove.js"></script>
+	<script type="text/javascript">
+		var wrap=document.getElementById('wrap');
+		var aa=document.getElementById('aa');
+		wrap.onclick=function(){
+			move(this,function(){
+				wrap.style.background='green';
+			});
+			
+		}
+		aa.onclick=function(){
+			move(this,function(){
+				alert('警告');
+			});
+			
+		}
+
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

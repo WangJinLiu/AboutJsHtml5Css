@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>映纷创意</title>
+	<style type="text/css">
+	*{margin: 0;padding: 0}
+		.div-one{
+			height: 70px;
+			width: 100%;
+			background-color:black;
+			position: fixed;
+			top: 0px;
+			z-index: 100;
+			opacity: 0.7;
+		}
+		.div-big0{
+			width: 100%;
+			border: 1px solid;
+		}
+		.div-one-1{
+			/*width: 500px;*/
+			width: 70%;
+			border: 1px solid;
+			height: 70px;
+			margin: 0 auto;
+			text-align: center;
+		}
+		.div-one-1 img{
+			width: 110px;
+			height: 35px;
+			margin-left: 195px;
+			margin-top: 5px;
+		}
+		.span1{
+			color: white;
+			margin-right: 62px;
+			display: inline-block;
+			margin-top: 12px;
+			font-size: 15px;
+
+		}
+		.span2{
+			color: #bebebe;
+			margin-right: 62px;
+			display: inline-block;
+			margin-top: 12px;
+			font-size: 15px;
+
+		}
+		.span2:hover{
+			color: white;
+		}
+		html{
+			background-color:rgb(242,242,242);
+			/*border: 1px solid;*/
+		}
+		.div-two-1{
+			/*width: 1050px;*/
+			width: 70%;
+			border: 1px solid;
+			margin: 0 auto;
+			margin-top: 150px;
+			position:relative;
+			/*text-align: center;*/
+			
+
+			
+
+		}
+		.img1{
+			width: 1050px;
+			height: 500px;
+			
+		}
+		.p1{
+			position: absolute;
+			/*width: 1050px;*/
+			width: 80%;
+			top: 480px;
+			background-color: rgba(1,1,1,0.5);
+			height: 22px;
+			text-align: center;
+			line-height: 22px;
+			color: white;
+			margin: 0 auto;
+			
+			
+
+
+		}
+		.pzuo{
+			position: absolute;
+			top:200px;
+			left: 5px;
+			width: 99%;
+
+		}
+		.pyou{
+			position: absolute;
+			top:200px;
+			right: 5px;
+			width: 1%;
+
+		}
+		.div-three{
+			/*border: 1px solid red;*/
+			height: 20px;
+			margin-top: 60px;
+			margin-bottom: 50px;
+		}
+		.div-three p{
+			width:1050px;
+			height: 1px;
+			background-color: #adadad;
+			margin-top: 10px;
+			/*margin: 0 auto;*/
+		}
+		.div-four-1{
+			/*width: 300px;*/
+			width: 30%;
+			
+			background-color:rgb(255,255,255);
+			/*margin: 0 auto;*/
+			position: relative;
+			/*border: 1px solid green;*/
+			display: inline-block;
+			/*margin-right: 66px;*/
+			
+			
+
+		}
+		.img0{
+			width: 300px;
+			height:180px;
+		}
+		.p-four-1{
+			/*border: 1px solid;*/
+			/*width: 300px;*/
+			width: 100%;
+			
+			color: #9d9d9d;
+			text-align: center;
+
+		}
+		.div-four-1-2{
+			height: 180px;
+			background-color:rgba(0,0,0,0.2);
+			width: 300px;
+			position: absolute;
+			top:0px;
+			opacity: 0;/*隐藏*/
+
+
+		}
+		.div-four-1-2:hover{
+			opacity: 1;
+		}
+		.div-four-1-2 p{
+			color: white;
+			width: 100%;
+		}
+		.div-four-1-3{
+			margin: 0 auto;
+			height: 20px;
+			width: 150px;
+			margin-top: 70px;
+
+		}
+		.four-p1{
+			font-size: 40px;
+			line-height: center;
+
+		}
+		.div-big{
+			/*border: 1px solid red;*/
+			display: inline-block;
+
+
+		}
+		.div-four{
+			/*width: 1050px;*/
+			/*border: 1px solid pink;*/
+			width: 100%;
+
+		}
+		/*.div-red{
+			/*width:740px;*/
+			/*width:68%;
+			border: 1px solid red; 
+			display: inline-block;
+		}*/
+		.div-blue{
+			/*width: 300px;*/
+			width: 30%;
+			border: 1px solid blue;
+			display: inline-block;
+			/*float: right;*/
+		}
+		.div-big1{
+			margin-top: 40px;
+			width: 100%;
+		}
+		.div-bottom{
+			height: 200px;
+			background-color: rgb(224,224,224);
+			margin-top: 80px;
+			width: 70%;
+			margin: 0 auto;
+		}
+		.div-center{
+			/*border: 1px solid;*/
+			margin: 0 auto;
+			width: 1050px;
+			height: 200px;
+		}
+		.div-center-1 img{
+			width: 25px;
+			height:25px;
+			float: right;
+			margin-left: 10px;
+
+		}
+		.div-center-1{
+			width: 500px;
+			/*border: 1px solid;*/
+			display: inline-block;
+			float: left;
+
+			
+
+		}
+		.div-center-2{
+			height: 198px;
+			
+			border: 1px solid rgb(188,188,188);
+			display: inline-block;
+			margin-left: 20px;
+		}
+		.div-center-3{
+			width: 500px;
+			/*border: 1px solid;*/
+			height: 200px;
+			float: right;
+			display: inline-block;
+		}
+		.div-center-3 img{
+			width: 150px;
+			height: 50px;
+			margin-left: 10px;
+			margin-top: 10px;
+		}
+		.div-p p{
+			font-size: 10px;
+			color: rgb(149,149,149);
+			margin-left: 10px;
+			line-height: 18px;
+
+		}
+		.img1{
+			width: 100%;
+			margin: 0 auto ;
+		}
+		
+
+
+</style>
+</head>
+<body>
+	<div class="div-one">
+		<div class="div-one-1">
+			<img src="img/top.png" alt="">
+			<div>
+				<span class="span1">HOME</span>
+				<span class="span2">WORK</span>
+				<span class="span2">CONTACT</span>
+				<span class="span2">JOIN US</span>
+			</div>
+		</div>
+	</div>
+	
+	<div class="div-two-1">
+			<img class="img1" src="img/top1.jpg" alt="">
+			<p class="p1">今日头条品牌概念动画</p>
+			<p class="pzuo"><img src="img/zuojiantou.png" alt=""></p>
+			<p class="pyou"><img src="img/youjiantou.png" alt=""></p>
+			<div class="div-three"><p></p></div>
+			<div class="div-big0">
+				<div class="div-four">
+					
+						<div class="div-four-1">
+							<div class="div-four-1-1">
+									<img class="img0" src="img/1.jpg" alt="">
+									<div class="div-four-1-2">
+										<div class="div-four-1-3">
+											<p class="four-p1">抖音</p>
+											<p class="four-p2">世界名画抖起来了</p>
+										</div>
+									</div>
+									<p class="p-four-1">世界名画抖起来了H5</p>
+							</div>
+						</div>
+						<div class="div-four-1">
+							<div class="div-four-1-1">
+								<img class="img0" src="img/2.jpg" alt="">
+								
+							
+								<div class="div-four-1-2">
+									<div class="div-four-1-3">
+										<p class="four-p1">扬子江航空</p>
+										<p class="four-p2">扬子江航空</p>
+									</div>
+								</div>
+								<p class="p-four-1">扬子江航空</p>
+							</div>
+						</div>
+					
+					<div class="div-blue">
+						<div class="div-four-1">
+							<div class="div-four-1-1">
+								<img class="img0" src="img/3.jpg" alt="">
+								
+							
+								<div class="div-four-1-2">
+									<div class="div-four-1-3">
+										<p class="four-p1">小米MAX2</p>
+										<p class="four-p2">小米MAX2创意海报</p>
+									</div>
+								</div>
+							</div>
+							<p class="p-four-1">小米	</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="div-big1">
+				<div class="div-four">
+					
+						<div class="div-four-1">
+							<div class="div-four-1-1">
+								<img class="img0" src="img/4.jpg" alt="">
+								<p class="p-four-1">阿里巴巴</p>
+							</div>
+							<div class="div-four-1-2">
+								<div class="div-four-1-3">
+									<p class="four-p1">阿里巴巴</p>
+									<p class="four-p2">聚星台会员通</p>
+								</div>
+							</div>
+						</div>
+						<div class="div-four-1">
+							<div class="div-four-1-1">
+								<img class="img0" src="img/5.jpg" alt="">
+								<p class="p-four-1">OPPO</p>
+							</div>
+							<div class="div-four-1-2">
+								<div class="div-four-1-3">
+									<p class="four-p1">OPPO</p>
+									<p class="four-p2">r9s清新绿实验室</p>
+								</div>
+							</div>
+						</div>
+					
+					<div class="div-blue">
+						<div class="div-four-1">
+							<div class="div-four-1-1">
+								<img class="img0" src="img/6.jpg" alt="">
+								<p class="p-four-1">今日头条功能片第二弹</p>
+							</div>
+							<div class="div-four-1-2">
+								<div class="div-four-1-3">
+									<p class="four-p1">今日头条</p>
+									<p class="four-p2">世界名画抖起来了</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			<div class="div-big1">
+				<div class="div-four">
+					
+						<div class="div-four-1">
+							<div class="div-four-1-1">
+								<img class="img0" src="img/7.jpg" alt="">
+								<p class="p-four-1">世界名画抖起来了H5</p>
+							</div>
+							<div class="div-four-1-2">
+								<div class="div-four-1-3">
+									<p class="four-p1">百度</p>
+									<p class="four-p2">世界名画抖起来了</p>
+								</div>
+							</div>
+						</div>
+						<div class="div-four-1">
+							<div class="div-four-1-1">
+								<img class="img0" src="img/8.jpg" alt="">
+								<p class="p-four-1">世界名画抖起来了H5</p>
+							</div>
+							<div class="div-four-1-2">
+								<div class="div-four-1-3">
+									<p class="four-p1">腾讯</p>
+									<p class="four-p2">世界名画抖起来了</p>
+								</div>
+							</div>
+						</div>
+					
+					<div class="div-blue">
+						<div class="div-four-1">
+							<div class="div-four-1-1">
+								<img class="img0" src="img/9.jpg" alt="">
+								<p class="p-four-1">世界名画抖起来了H5	</p>
+							</div>
+							<div class="div-four-1-2">
+								<div class="div-four-1-3">
+									<p class="four-p1">网易</p>
+									<p class="four-p2">世界名画抖起来了</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+
+	</div>
+	<div class="div-bottom">
+		<div class="div-center">
+			<div class="div-center-1">
+				<img src="img/xinlang.jpg" alt="">
+				<img src="img/sanmao.jpg" alt="">
+				<img src="img/xinlang.jpg" alt="">
+
+				
+			</div>
+			<div class="div-center-2"></div>
+			<div class="div-center-3">
+				<div >
+					<img src="img/111.jpg" alt="">
+					<div class="div-p">
+						<p>Infini Studio | 映纷创意</p>
+						<p>北京市朝阳区常营</p>
+						<p>TEL:010-85394331</p>
+						<p>QQ：7585917</p>
+						<p>Email：infinistudio@foxmail.com</p>
+						<p>Weibo:@infiniStudio</p>
+						
+					</div>
+				</div>
+				
+			</div>
+			
+		</div>
+
+		
+	</div>
+	
+	
+	
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 200px;
+				height: 200px;
+				background: red;
+				font-size: 40px;
+				text-align: center;
+				line-height: 200px;
+				margin: 20px;
+				transition:all 3s ;
+			}
+			.a:hover{
+				transform: rotateX(360deg);
+			}
+			.b:hover{
+				transform: rotateY(360deg);
+			}
+			.c:hover{
+				transform: rotateZ(360deg);
+			}
+			.d:hover{
+				transform: scaleX(2);
+			}
+			.e:hover{
+				transform: scaleY(2);
+			}
+			.f:hover{
+				transform: scale(50);
+			}
+			.warp{
+				background: green;
+				transform-style: preserve-3d;
+				/*开启3D效果（加上这个就可以用位移的那个Z轴的移动）*/
+				perspective: 1000px;
+				/*perspective：定义3D元素的距视图的距离，以像素为单位，该属性允许改变3D元素，查看3D元素的视图
+				 当为元素定义这个属性的时候，其子元素获取透明效果，而不是本身*/
+			}
+			.g:hover{
+				transform: translateX(100px);
+			}
+			.h:hover{
+				transform: translateY(100px);
+			}
+			.i:hover{
+				transform: translateZ(100px);
+				/*transform: rotateX(50deg);*/
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="a">rotateX</div>
+		<div class="b">rotateY</div>
+		<div class="c">rotateZ</div>
+		<div class="d">scaleX</div>
+		<div class="e">scaleY</div>
+		<div class="warp">
+			<div class="f">scaleZ</div>
+		</div>
+		<div class="g">translateX</div>
+		<div class="h">translateY</div>
+		<div class="warp">
+			<div class="i">translateZ</div>
+		</div>
+		
+	</body>
+</html>

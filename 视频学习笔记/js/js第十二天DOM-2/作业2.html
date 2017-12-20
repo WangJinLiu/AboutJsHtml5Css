@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>作业2</title>
+	<style>
+
+		ul{
+			list-style: none;
+		}
+		p span{
+			background: red;
+		}
+		#p1 span{
+			background: grey;
+			/*border: 1px solid;*/
+			margin-left: 10px;
+		}
+
+	</style>
+</head>
+<body>
+	<h3>地区</h3>
+	<ul id="ul1">
+		<li>东城</li>
+		<li>西城</li>
+		<li>朝阳</li>
+		<li>昌平</li>
+	</ul>
+	<h3>职位</h3>
+	<ul id="ul2">
+		<li>美工设计</li>
+		<li>前端工程师</li>
+		<li>后台开发</li>
+	</ul>
+	<h3>地区</h3>
+	<ul id="ul3">
+		<li>4000</li>
+		<li>5000</li>
+		<li>6000</li>
+	</ul>
+	<p id="p1"><span></span><span></span><span></span></p>
+	<script type="text/javascript">
+		var ul1=document.getElementById('ul1');
+		var list1=ul1.getElementsByTagName('li');
+		var ul2=document.getElementById('ul2');
+		var list2=ul2.getElementsByTagName('li');
+		var ul3=document.getElementById('ul3');
+		var list3=ul3.getElementsByTagName('li');
+		var p1=document.getElementsByTagName('span');
+		for(var i=0;i<list1.length;i++)
+		{
+			list1[i].onclick=(function(a)
+			{
+				return function()
+				{
+					p1[0].innerHTML=list1[a].innerHTML;
+					
+				}
+
+			})(i)
+
+
+		}
+
+		for(var j=0;j<list2.length;j++)
+		{
+			list2[j].onclick=(function(b)
+			{
+				return function()
+				{
+					p1[1].innerHTML=list2[b].innerHTML;
+					
+				}
+
+			})(j)
+
+
+		}
+		for(var k=0;k<list3.length;k++)
+		{
+			list3[k].onclick=(function(b)
+			{
+				return function()
+				{
+					p1[2].innerHTML=list3[b].innerHTML;
+					
+				}
+
+			})(k)
+
+
+		}
+
+
+
+
+
+
+
+	</script>
+
+	
+</body>
+</html>

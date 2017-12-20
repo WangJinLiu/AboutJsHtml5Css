@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单事件</title>
+	<style>
+		
+
+
+
+	</style>
+</head>
+<body>
+	<input type="text" id="inputfirst" >
+	
+</body>
+<script type="text/javascript">
+	var inputfirst=document.getElementById('inputfirst');//加上.focus()就可以一打开就有光标了
+	
+	inputfirst.onfocus=function(e)
+	{
+		var m=e || window.event;
+		console.log(m);
+		console.log('选中了input');
+	}
+	inputfirst.onblur=function(e)
+	{
+		console.log('没选中input');
+	}
+	
+	inputfirst.oninput=function(e)
+	{
+		var m=e || window.event;
+		console.log(m);
+		if(e.data=='@'){
+			// e.data就是每个输入的内容（一个一个来）
+			alert('不能输入@');
+			this.value = this.value.substring(0,this.value.length - 1);
+		}
+		console.log('在input中输入了内容，输入一个触动一回');
+	}
+
+	inputfirst.onchange=function(e)
+	{
+		console.log('改变内容之后(必须要改变input中的内容再点外边才会触发)点击外边了，输入内容之后点击input外边也会触发');
+	}
+
+	
+
+
+
+</script>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图形组合</title>
+	<style>
+		#canvas{
+			background: grey;
+		}
+	</style>
+</head>
+<body>
+		<canvas id="canvas" width="500" height="500"></canvas>
+	
+</body>
+<script>
+	var canvas=document.getElementById('canvas');
+	var content=canvas.getContext("2d");
+	content.beginPath();
+	var deg=Math.PI/180;
+	content.arc(50,50,50,0,deg*360);
+	content.fillStyle='red';
+	content.fill();
+	content.closePath();
+	// content.globalCompositeOperation="source-in";//得到的是两个图形重叠的部分
+	// content.globalCompositeOperation="source-out";//得到右边的圆的和左边不重叠部分
+	// content.globalCompositeOperation="destination-over";//原图覆盖新图
+	// content.globalCompositeOperation="destination-in";//绘制原图和新图重叠部分
+	// content.globalCompositeOperation="destination-out";//绘制原图和新图不重叠部分
+	// content.globalCompositeOperation="destination-atop";//绘制原图和新图重叠部分以及新图
+	// content.globalCompositeOperation="lighter";//绘制新图和原图重叠部分加色处理
+	// content.globalCompositeOperation="copy";//绘制新图覆盖原图
+
+
+	content.beginPath();
+	var deg=Math.PI/180;
+	content.arc(100,50,50,0,deg*360);
+	content.fillStyle='green';
+	content.fill();
+	content.closePath();
+</script>
+</html>

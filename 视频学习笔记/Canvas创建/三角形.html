@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>三角形</title>
+	<style>
+		#canvas{
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="500" height="500"></canvas>
+	
+</body>
+<script>
+	var canvas=document.getElementById('canvas');
+	var content=canvas.getContext("2d");
+	content.beginPath();
+	content.moveTo(50,10);
+	content.lineTo(30,50);
+	content.lineTo(60,50);
+	content.lineTo(50,10);
+	content.lineTo(30,50);
+	content.storkeStyle='black';
+	content.fillStyle='grey';
+	content.fill();
+	content.lineWidth='10';
+	content.stroke();
+	content.closePath();
+
+
+	// strokeStyle用来设置自己画的线的颜色
+	//fillStyle 和fill()一起用。用来填充图形的颜色
+</script>
+</html>

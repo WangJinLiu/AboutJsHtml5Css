@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Canvas创建</title>
+	<style>
+	*{margin:0;padding: 0;}
+		#canvas{
+			background:pink;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="500" height="500">
+		您的浏览器不支持h5，请升级浏览器
+	</canvas>
+	
+</body>
+<!-- Canvas是h5中的元素，有强大的图形处理功能，性能消耗高 -->
+<script>
+	//1.获取canvas
+	var canvas=document.getElementById('canvas');
+	//2.获取绘制环境(获取上下文)（所有前端语言都有上下文）
+	var content=canvas.getContext("2d");
+	//3.开始绘制
+	content.beginPath();
+	//4.移动到起始点
+	content.moveTo(30,70);
+	//5.移动到的下一个点
+	content.lineTo(95,150);
+	//5.1绘制样式设置
+		// (1)颜色设置
+		content.strokeStyle='hotpink';
+		// (2)线的宽度
+		content.lineWidth='10';
+		// (3)画的类型（一定要在前面都设置好了再写这个）
+		content.stroke();//绘制线
+	//6.结束绘制
+	content.closePath();
+
+</script>
+</html>

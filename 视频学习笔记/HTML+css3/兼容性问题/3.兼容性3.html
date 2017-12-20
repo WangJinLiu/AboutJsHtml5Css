@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.left{
+				width: 100px;
+				height: 100px;
+				background: red;
+				float: left;
+			}
+			.right{
+				width: 200px;
+				height: 100px;
+				background: blue;
+				/*margin-left: 100px;*/
+				/*解决方法*/
+				float: left;
+				
+			}
+		</style>
+	<!--ie6,7下会出现3px的空白，
+		
+	解决方法：元素要通过浮动排在一排，就要给这一行都添加浮动-->
+	</head>
+	<body>
+		<div class="box">
+			<div class="left">
+				
+			</div>
+			<div class="right">
+				
+			</div>
+		</div>
+	</body>
+</html>

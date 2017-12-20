@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>班级通讯录</title>
+	<style>
+		#wrap{
+			width: 700px;
+			height: 400px;
+			margin:10px auto;
+		}
+		#nav{
+			width: 100%;
+			height: 50px;
+			font-size: 18px;
+		}
+		.button{
+			box-sizing: border-box;
+			padding: 12px;
+			float: left;
+			width: 100px;
+			height: 100%;
+			text-align: center;
+			cursor: pointer;
+			background-color: lightblue;
+			margin-left: 3px;
+		}
+		.button1{
+			margin-left: 0px;
+		}
+		#container{
+			width: 100%;
+			background-color: lightblue;
+		}
+		.content{
+			display: none;
+			width: 100%;
+		}
+		.content1{
+			display: block;
+		}
+		#selectAll{
+			margin-left: 15px;
+			margin-bottom: 10px;
+		}
+		table{
+			border: 1px solid;
+		}
+		td,th{
+			width: 120px;
+			height: 30px;
+			border: 1px solid;
+			padding: 0px;
+			margin:0;
+			font-size: 13px;
+			text-align: center;
+		}
+		#select{
+			margin-left: 15px;
+			margin-bottom: 10px;
+		}
+		#fail{
+			display: inline-block;
+			color: red;
+			font-weight: 900;
+			font-size: 14px;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="nav">
+			<div class="button button1">查询</div>
+			<div class="button">添加</div>
+			<div class="button">删除</div>
+			<div class="button">修改</div>
+		</div>
+		<div id="container">
+			<div class="content content1">
+				<button id="selectAll">查询所有</button>
+
+				<form action="" id="postForm">
+					<select name="select" id="select">
+						<option value="id">ID</option>
+						<option value="name">Name</option>
+						<option value="city">City</option>
+						<option value="state">State</option>
+					</select>
+					<input type="text" name="query" id="query" placeholder="Please input query">
+					<input type="submit" id="selectPart" value="按条件查询">
+					<div id="fail"></div>
+				</form>
+
+				<div class="displayResult">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Name</th>
+								<th>Email</th>
+								<th>Address</th>
+								<th>City</th>
+								<th>State</th>
+							</tr>
+						</thead>
+						<tbody class="tbodyAll">
+							
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="content content2">
+				这是一个添加信息的页面
+			</div>
+			<div class="content content3">
+				这是一个删除信息的页面
+			</div>
+			<div class="content content4">
+				这是一个修改信息的页面
+			</div>
+		</div>
+	</div>
+</body>
+<script>
+	// 给导航栏的四个按钮添加点击事件
+	var navBtn = document.querySelectorAll('.button');
+	var content = document.querySelectorAll('.content');
+	for(var i = 0; i < navBtn.length; i++){
+		displayContent(i);
+	}
+	function displayContent(index){
+		navBtn[index].onclick = function(){
+			for(var i = 0; i < content.length; i++){
+				content[i].style.display = 'none';
+			}
+			content[index].style.display = 'block';
+		}
+	}
+</script>
+</html>

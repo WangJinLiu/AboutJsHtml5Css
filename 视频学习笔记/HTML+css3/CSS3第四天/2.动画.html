@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		div{
+			width: 200px;
+			height: 200px;
+			background: red;
+			/*animation: name duration timing-function delay iteration-count direction;*/
+			/*动画的名字*/
+			animation-name: changcolor;
+			/*动画的持续时间*/
+			animation-duration:1s;
+			/*动画结束后的状态,停留在原地还是返回初始位置*/
+			animation-fill-mode:forwards;
+			/*动画的延迟时间*/
+			animation-delay: 1s;
+			/*动画运行速度的曲线*/
+			animation-timing-function: ease;
+			/*动画是否反向播放*/
+			animation-direction:alternate-reverse;
+			/*动画播放的次数*/
+			animation-iteration-count:1;
+			/*控制动画 paused暂停 running 开始*/
+			animation-play-state: paused;
+			
+			
+		}
+		div:hover{
+				animation-play-state: running;
+			}
+		@keyframes changcolor{
+			from{background: red;}
+			to{background: yellow;}
+		}
+	</style>
+	<body>
+		<div></div>
+	</body>
+</html>

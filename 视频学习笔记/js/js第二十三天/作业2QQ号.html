@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>qq正则</title>
+</head>
+<body>
+	<input type="text" id="wrap">
+	<script>
+	var wrap=document.getElementById('wrap');
+	wrap.onchange=function(){
+		var a=/^[1-9][0-9]{5,10}$/;
+		if(a.test(this.value)){
+			alert('qq正确');
+		}else{
+			alert('qq格式不正确');
+		}
+		// console.log(a.test(str));
+
+	}
+		
+
+
+	</script>
+	
+</body>
+</html>

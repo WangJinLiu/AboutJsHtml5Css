@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>原型注意点</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Car(){
+	}
+	Car.prototype={//给__proto__添加属性
+		// name:"小车"
+		move:function(){
+			console.log(this);
+
+		},
+	}
+	var aa=new Car();
+	aa.name="李四";//给原先的添加属性
+	console.log(aa.__proto__.name);//小车
+	console.log(aa.name);//李四
+
+	//查找的时候先找Car里的 再找原型里的
+	//设置会先给Car设置
+	//原型里一般放函数，不放具体属性值
+
+	aa.move();
+
+	//原型继承(就相当于把people里的属性放student原型里面了，原型就是一个对象，也就是上面的花括号)
+	function People(name,age){
+		this.name=name;
+		this.age=age;
+	}
+	function Student(score){
+		this.score=score;
+
+	}
+	Student.prototype=new People("df",18);
+	var s=new Student("100");
+	console.log(s.name);//df
+	//原型链
+	// 构造函数属性分为两部分，1自带属性 2原型属性，
+
+
+</script>
+
+
+</html>

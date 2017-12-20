@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>qq邮箱自动提示效果</title>
+</head>
+<body>
+	<input type="text" list="mydata" placeholder="热门电影">
+	<datalist id="mydata">
+		<option value="@qq.com" label="Top1"></option>
+		<option value="@163.com" label="Top1"></option>
+	</datalist>
+</body>
+<script src="datalist-mail.js"></script>
+<script>
+	var put=document.querySelector("input");
+	fnDatalistMail(put);
+	// var option=document.querySelectorAll("option");
+	// 原理
+	// var str=[];
+	// for(var i=0;i<option.length;i++){
+	// 	str.push(option[i].value);
+	// }
+	// console.log(str);
+	// var inputVal=[];
+	// put.oninput=function(e){
+	// 	inputVal.push(e.data);
+	// 	var str1=inputVal.join("");
+	// 	console.log(str1);
+	// 	for(var j=0;j<option.length;j++){
+	// 		option[j].style.display="block";
+	// 		option[j].value=str1+str[j];
+	// 	}
+	//自己定义的
+	// var arr=["aa.com","bb.com"];
+ //    fnDatalistMail(put,{
+ //        email:arr
+ //    });
+
+
+</script>
+</html>

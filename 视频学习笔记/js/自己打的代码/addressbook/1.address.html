@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="layout.css">
+</head>
+<body>
+    <div id="wrap">
+        <div id="addP" class="add_people">+</div>
+        <ul id="peoples" class="stylenone">
+
+        </ul>
+        <div id="edit" class="display_none">
+            <input type="text" id="user">
+            <input type="text" id="tel">
+            <div id="sure">确定</div>
+        </div>
+        <div id="add" class="display_none">
+            <input type="text" id="user_add">
+            <input type="text" id="tel_add">
+            <div id="sure_add">确定</div>
+        </div>
+    </div>
+
+</body>
+<script src="default.js" charset="utf-8"></script>
+<script src="pinyin.js" charset="utf-8"></script>
+<script type="text/javascript">
+    var ul = getElement("#peoples");
+    var edit = getElement("#edit");
+    var sure = getElement("#sure");
+    var user_edit = getElement("#user");
+    var tel_edit = getElement("#tel");
+    var add_p = getElement("#addP");
+    var add_jiemian = getElement("#add");
+    var sure_btn = getElement("#sure_add");
+    var user_add = getElement("#user_add");
+    var tel_add = getElement("#tel_add");
+    var data_arr = [];
+
+    function ajax(url,fn) {
+        var request = new XMLHttpRequest();
+        request.open("get",url);
+        request.send();
+        request.onreadystatechange = function () {
+            if(this.readyState == 4 && this.status == 200) {
+                if(fn){
+                    fn(this.responseText);
+                }
+            }
+        }
+    }
+    // 第一步：进行网络请求
+    ajax("./1.data.php",function (value) {
+        var obj = JSON.parse(value);
+        data_arr = obj;
+        // 第二步：数据解析后进行使用
+        create(obj);
+    })
+    // 第三步：开始创建界面
+    function create(value) {
+        for (var i = 0; i < value.length; i++) {
+            var li = createElement("li",ul,"stylenone");
+            li.innerHTML = value[i].letter;
+            for (var j = 0; j < value[i].peoples.length; j++) {
+                var my = value[i].peoples[j]; // 字母下面的元素
+                var myli = createElement("li",ul,"stylenone bgblue clearFloat");
+                var name_v = createElement("div",myli,"myleft");
+                name_v.innerHTML = my.name;
+                // 创建删除标签
+                createDelete(my,myli,value[i],li);
+                // 点击行进入当前行的编辑界面
+                myli.data = my;
+                myli.name = name_v;
+                myli.onclick = function () {
+                    ul.className = "display_none";
+                    edit.className = "display_block";
+                    sure.data = this.data;
+                    sure.name = this.name;
+                    user_edit.value = this.data.name;
+                    tel_edit.value = this.data.tel;
+                }
+            }
+        }
+    }
+    // 添加删除按钮
+    function createDelete(my,father,myValue,li) {
+        var deleteLine = createElement("div",father,"right red");
+        deleteLine.innerHTML = "删除";
+        deleteLine.data = my; // 将数据和删除标签绑定
+        deleteLine.allData = myValue; // 字母A的对象{letter:A,peoples:[{name:张三,tel:1111}]};
+        deleteLine.ppp = li; // 字母标签
+        deleteLine.onclick = function (ev) {
+            var e = ev || window.event;
+            cancelBubble(e);
+            // 修改界面
+            this.parentNode.parentNode.removeChild(this.parentNode);
+            // 修改数组
+            // 获得元素下标
+            var index = this.allData.peoples.indexOf(this.data);
+            this.allData.peoples.splice(index,1);
+            if(this.allData.peoples.length == 0) {
+                ul.removeChild(this.ppp);
+            }
+            return false;
+        }
+    }
+
+    // 编辑界面确认按钮
+    sure.onclick = function () {
+        // 修改数据
+        this.data.name = user_edit.value;
+        this.data.tel = tel_edit.value;
+        // 修改界面
+        this.name.innerHTML = user_edit.value;
+        ul.className = "display_block";
+        edit.className = "display_none";
+    }
+
+    // 点击+号按钮
+    add_p.onclick = function () {
+        ul.className = "display_none";
+        add_jiemian.className = "display_block";
+    }
+    sure_btn.onclick = function () {
+        var obj = new Object();
+        obj.name = user_add.value;
+        obj.tel = tel_add.value;
+        // 插入到数组中
+        var pinyin = codefans_net_CC2PY(obj.name);
+        var shouzimu = pinyin.charAt(0);
+        var judge = true;
+        for (var i = 0; i < data_arr.length; i++) {
+            if(data_arr[i].letter == shouzimu) {
+                data_arr[i].peoples.push(obj);
+                judge = false;
+                break;
+            }
+        }
+        // 判断原数组中是否有该首字母，没有的话，创建一个新的首字母添加进去
+        if(judge){
+            var letterObj = new Object();
+            letterObj.letter = shouzimu;
+            letterObj.peoples = [obj];
+            data_arr.push(letterObj);
+            // 对数组进行排序
+            sort(data_arr);
+        }
+        // 刷新界面
+        ul.innerHTML = "";
+        create(data_arr);
+        ul.className = "display_block";
+        add_jiemian.className = "display_none";
+    }
+
+
+
+
+
+
+</script>
+</html>

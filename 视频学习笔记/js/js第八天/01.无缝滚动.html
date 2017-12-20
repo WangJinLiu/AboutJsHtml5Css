@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>无缝滚动</title>
+	<style>
+	*{margin:0;
+		padding:0;}
+		#wrap{
+			position: relative;
+			width: 600px;
+			height: 300px;
+			margin:20px auto;
+			border: 1px solid;
+			/*overflow: hidden;*/
+		}
+		#roll{
+			position: absolute;
+			left: 0;
+		
+		}
+		#roll img{
+			float: left;
+			width: 300px;
+			height: 300px;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="roll">
+			<img src="img/img01.jpg" alt="">
+			<img src="img/img02.jpg" alt="">
+			<img src="img/img03.jpg" alt="">
+			<img src="img/img04.jpg" alt="">
+		</div>
+	</div>
+	<script type="text/javascript">
+	var wrap=document.getElementById('wrap');
+	var roll=document.getElementById('roll');
+	var imgs=roll.getElementsByTagName('img');
+	roll.innerHTML=roll.innerHTML+roll.innerHTML;
+	var timer;
+	
+	var step=0;
+	var width=imgs.length*imgs[0].width;
+	roll.style.width=width+'px';
+	init();
+	//页面初始化
+	function init()
+	{
+		bind();
+		rollAuto();
+	}
+	//自动滚动定时器
+	function rollAuto()
+	{
+		timer=setInterval(
+			function()
+			{
+				move();
+			},30);
+	}
+	//执行滚动
+	function move()
+	{
+
+		step-=2;
+		if(step<=-width/2)//600可视区的宽度
+		{
+			step=0;
+		}
+		roll.style.left=step+'px';
+	}
+	//鼠标事件
+	function bind()
+	{
+		wrap.onmouseover=function()
+		{
+			clear();
+		}
+		wrap.onmouseout=function()
+		{
+			rollAuto();
+		}
+	}
+	function clear()
+	{
+		clearInterval(timer);
+	}
+
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

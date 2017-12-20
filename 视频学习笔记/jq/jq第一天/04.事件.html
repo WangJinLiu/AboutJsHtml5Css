@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>	
+		#wrap{
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+
+
+	</style>
+</head>
+<body>
+<div id="wrap"></div>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+	$(function($){
+		//添加onclick事件
+		$("#wrap").on("click",function(){
+			alert(11);
+		})
+		// off() 方法移除用.on()绑定的事件处理程序
+		$("#wrap").off("click");
+		//移除p标签的所有事件
+		$("p").off();
+
+
+	});
+	//ready 
+	$(document).ready(function(){});
+	// 简写
+	$(function($) {
+  	// 你可以在这里继续使用$作为别名...
+	});
+	
+</script>
+	
+	
+</body>
+</html>

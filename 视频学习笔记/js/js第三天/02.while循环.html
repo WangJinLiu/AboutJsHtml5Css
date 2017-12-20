@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>white循环</title>
+</head>
+<body>
+	<script type="text/javascript">
+	//当..条件，表达式为真的时候，那么执行花括号里面的语句，否则不执行
+	// while(条件表达式){
+		//执行的代码
+
+
+	// }
+	//快速打印helloworld 10遍
+	
+	// var b=0;
+	// while(b<10){
+	// 	console.log('helloworld');
+	// 	b++;
+	// }
+	//题目，打印1+2+3+.0..+100和
+	// var i=0;
+	// var sum=0;
+	// while(i<101){
+	// 	sum=sum+i;//0+1
+	// 	i++;//2
+
+	// }
+	// alert(sum);
+	//题目：用while打印出1-100之间的不是7的倍数，并且不包含7的数
+	// 第一种方式：
+	// var i=0;
+	// while(i<101){
+	// 	if(parseInt(i/10)!=7&&i%7!=0&&i%10!=7){
+	// 		console.log(i);
+	// 	}
+	// 	i++;
+
+	// }
+	// 第二种方式：
+		var i=0;
+		while(i<101){
+			if(i%7!=0)
+			{
+				var m=i.toString();
+				if(m.indexOf("7")<0)
+				{
+					document.write(m+'<br>');
+				}
+				
+
+			}
+			i++;
+			
+
+		}
+
+
+	</script>
+	
+</body>
+</html>

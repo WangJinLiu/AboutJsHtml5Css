@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>邮箱验证</title>
+</head>
+<body>
+	<input type="text" id="wrap">
+	<script>
+	// 规则：以数字字母开头，中间可以是多个数字字母下划线或‘—’，然后是@符号，后面是数字字母，然后是.符号加2-4个字母结尾
+		// var wrap=document.getElementById('wrap');
+		// wrap.onchange=function(){
+			var reg=/^[0-9a-zA-Z][\w\-]+@[0-9a-zA-Z]+\.[a-zA-Z]{2,4}$/;
+			var str='1242178302@qq.com';
+			console.log(reg.test(str));
+		// }
+
+
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

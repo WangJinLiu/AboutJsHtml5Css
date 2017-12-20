@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>json练习2</title>
+</head>
+<style>
+	ul:hover{
+		cursor: pointer;
+		color: blue;
+	}
+	
+
+
+
+</style>
+<body>
+
+	
+</body>
+<script>
+	var s1='[\
+	{"title":"2017年国际邀请赛","time":"2014-06-18"},\
+	{"title":"2017年十大经典战役","time":"2017-06-18"},\
+	{"title":"20171000万美金","time":"2019-06-18"},\
+	{"title":"冠军的心","time":"2010-06-18"},\
+	{"title":"群星闪耀","time":"2011-06-18"},\
+	{"title":"淘汰淘汰","time":"2016-06-18"},\
+	{"title":"自古名将如美人","time":"2020-06-18"}\
+]';
+	var arr=JSON.parse(s1);
+	console.log(arr);
+	create(arr);
+	function create(arr){
+		for(var i=0;i<arr.length;i++){
+			var box=createbiaoqian('ul',document.body);
+			var span1=createbiaoqian('span',box);
+			var span2=createbiaoqian('span',box);
+			span1.innerHTML=arr[i].time;
+			span1.style.float='right';
+			span2.innerHTML=arr[i].title;
+		}
+
+	}
+
+	//创建标签
+	function createbiaoqian(name,father){
+		var o=document.createElement(name);
+		father.appendChild(o);
+		return o;
+
+	}
+	
+
+
+
+</script>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+  	<html>
+  	<head lang="en">
+  	<meta charset="UTF-8">
+  	<title></title>
+  	<style>
+  	body{
+  	background-color: #eee;
+  	}
+  	*{
+  	margin:0;
+  	padding: 0;
+  	list-style: none;
+  	}
+  	 
+  	section{
+  	width: 1000px;
+  	margin:10px auto;
+  	}
+  	ul{
+  	background-color: #fff;
+  	border: 1px solid red;
+  	height: 250px;
+  	}
+  	li{
+  	width: 150px;
+  	height: 150px;
+  	background-color: pink;
+  	margin:10px;
+  	 
+  	}
+  	 
+  	 
+  	section:nth-child(1) ul{
+  	/*设置伸缩布局*/
+  	display:flex;
+  	/* 主轴对齐方式：从主轴开始的地方对齐*/
+  	justify-content: flex-start;
+  	}
+  	 
+  	section:nth-child(2) ul{
+  	/*设置伸缩布局*/
+  	display:flex;
+  	/* 主轴对齐方式：从主轴结束的地方对齐*/
+  	justify-content: flex-end;
+  	}
+  	 
+  	section:nth-child(3) ul{
+  	/*设置伸缩布局*/
+  	display:flex;
+  	/* 主轴对齐方式：在主轴方向居中*/
+  	justify-content: center;
+  	}
+  	 
+  	section:nth-child(4) ul{
+  	/*设置伸缩布局*/
+  	display:flex;
+  	/* 主轴对齐方式：在主轴方向上平分空间*/
+  	justify-content: space-around;
+  	}
+  	 
+  	section:nth-child(5) ul{
+  	/*设置伸缩布局*/
+  	display:flex;
+  	/* 主轴对齐方式：在主轴方向上方两端对齐*/
+  	justify-content: space-between;
+  	}
+  	 
+  	</style>
+  	</head>
+  	<body>
+  	<section>
+  	<h4>主轴对齐方式：flex-start</h4>
+  	<ul>
+  	<li>1</li>
+  	<li>2</li>
+  	<li>3</li>
+  	</ul>
+  	</section>
+  	<section>
+  	<h4>主轴对齐方式：flex-end</h4>
+  	<ul>
+  	<li>1</li>
+  	<li>2</li>
+  	<li>3</li>
+  	</ul>
+  	</section>
+  	<section>
+  	<h4>主轴对齐方式：center</h4>
+  	<ul>
+  	<li>1</li>
+  	<li>2</li>
+  	<li>3</li>
+  	</ul>
+  	</section>
+  	<section>
+  	<h4>主轴对齐方式：space-around</h4>
+  	<ul>
+  	<li>1</li>
+  	<li>2</li>
+  	<li>3</li>
+  	</ul>
+  	</section>
+  	 
+  	<section>
+  	<h4>主轴对齐方式：space-between</h4>
+  	<ul>
+  	<li>1</li>
+  	<li>2</li>
+  	<li>3</li>
+  	<li>4</li>
+  	</ul>
+  	</section>
+  	 
+  	 
+  	</body>
+  	</html>

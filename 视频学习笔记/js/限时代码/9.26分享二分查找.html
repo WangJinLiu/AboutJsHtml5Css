@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>二分查找</title>
+</head>
+<body>
+	<script>
+		var arr = [1,5,6,8,9,10,12,13];
+		search(arr,9);
+		function search(arr,key){
+			var judge=true;
+			for(var i = 0;i < arr.length;i++){
+				if(key == arr[i]){
+					console.log("查找内容下标为"+i,"查找次数为"+(i+1));
+					judge = false;
+				}
+			}
+			if(judge){
+				console.log("未找到");
+			}
+		}
+
+		//二分查找
+		function erfen(arr,key){
+			//起始下标
+			var low = 0;
+			//结束下标
+			var high = arr.length-1;
+			while(low<=high){
+				var centerIndex = parseInt((low+high)/2);
+				if(key == arr[centerIndex]){
+					return centerIndex;
+				}else if(key>arr[centerIndex]){
+					low = centerIndex + 1;
+
+				}else if(key<arr[centerIndex]){
+					high = centerIndex - 1;
+
+				}
+			}
+			return -1;
+
+
+
+		}
+		var m=erfen(arr,6);
+		console.log(m);
+	</script>
+	
+</body>
+</html>

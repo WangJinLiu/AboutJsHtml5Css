@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+		*{margin: 0;padding: 0;}
+			.box{
+				width: 400px;
+			}
+			.left{
+				width: 200px;
+				height: 200px;
+				background: blue;
+				display: inline-block;
+			}
+			.right{
+				width: 200px;
+				height: 200px;
+				background: red;
+				display: inline-block;
+			}
+			.right div{
+				width: 180px;
+				padding: 15px;
+				background: green;
+			}
+	/*ie6下，子集的宽度（比父级的宽度宽）会撑开父级设置好的宽度
+	 标准浏览器不会这样
+	 
+	 *结果：标准浏览器在同一行，ie6不在同一行，跳到第二行*/
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="left"></div><div class="right">
+				<div></div>
+			</div>
+			
+		</div>
+	</body>
+</html>

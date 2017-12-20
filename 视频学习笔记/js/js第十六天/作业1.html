@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>方形碰撞</title>
+	<style>
+	*{margin:0;padding:0;}
+		#div1{
+			width: 100px;
+			height: 100px;
+			background: red;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+		#div2{
+			width: 100px;
+			height: 100px;
+			background: pink;
+			position: absolute;
+			left: 400px;
+			top: 0;
+		}
+
+
+
+
+	</style>
+</head>
+<body>
+	<div id="div1"></div>
+	<div id="div2"></div>
+	<script type="text/javascript">
+	var div1 = document.getElementById('div1');
+	var div2 = document.getElementById('div2');
+	move(div1);
+	move(div2);
+	function move(div){
+		div.onmousedown = function(obj)
+		{
+			var left = this.offsetLeft;
+			var top = this.offsetTop;
+			var X = obj.clientX;
+			var Y = obj.clientY;
+			document.onmousemove = function(m)
+			{
+				var endX = m.clientX - X;
+				var endY = m.clientY - Y;
+				div.style.left = endX + left + 'px';
+				div.style.top = endY + top + 'px';
+				var a = judge(div1,div2);
+				// console.log(a);
+				if(a){
+					console.log('发生碰撞了');
+					// document.onmousemove = null;
+				}
+
+			}
+			document.onmouseup = function()
+			{
+				
+				document.onmousemove = null;
+			}
+		}
+	}
+	//判断是否发生碰撞
+	function judge(box1,box2)
+	{
+		var box2X_min = box1.offsetLeft - box2.offsetWidth;
+		var box2X_max = box1.offsetLeft + box1.offsetWidth;
+		var box2Y_min = box1.offsetTop - box2.offsetHeight;
+		var box2Y_max = box1.offsetTop+box1.offsetHeight;
+		if(box2.offsetLeft >= box2X_min && box2.offsetLeft <= box2X_max && box2.offsetTop >= box2Y_min && box2.offsetTop <= box2Y_max){
+			// console.log("发生碰撞");
+			return true;
+
+		}
+		return false;
+	}
+
+
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

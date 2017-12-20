@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>打砖块</title>
+	<style>
+		*{margin:0;padding: 0;}
+		#wrap{
+			width: 600px;
+			height: 400px;
+			border:1px solid;
+			box-shadow: 0 0 2px gray;
+			margin:0 auto;
+			position: relative;
+		}
+		#content{
+			width: 600px;
+			height: 390px;
+
+		}
+		#stone{
+			width: 100px;
+			height: 10px;
+			background: lightblue;
+			position: absolute;
+			left: 0;
+			bottom: 0;
+		}
+		#ball{
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			background: red;
+			position: absolute;
+			left: 0;
+			bottom: 10px;
+		}
+		.box{
+			width: 60px;
+			height: 20px;
+			background: hotpink;
+			border-radius: 5px;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="content">
+			<div id="ball"></div>
+		</div>
+		<div id="stone">
+			
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	//首先，布局，包括下方蓝条
+	//然后个蓝色条添加键盘事件
+	//小球的运动加上初速度
+	//判断四个方向的碰撞
+	//砖块和小球的碰撞检测
+	//获取标签
+	var wrap = document.getElementById('wrap');
+	var stone = document.getElementById("stone");
+	var ball = document.getElementById('ball');
+	var content = document.getElementById('content');
+	var speedX = 1;
+	var speedY = -3;
+	wrap.onclick = function(){
+		createFn();
+		key();
+		ballRun();
+	}
+	//创建小砖块
+	
+	function createFn(){
+		for(var i = 0;i<wrap.offsetWidth/100-1;i++){
+			for(var j = 0;j<3;j++){
+				var box = document.createElement('div');
+				content.appendChild(box);
+				box.className = 'box';
+				box.style.left = i*100 +20 +"px";
+				box.style.top = j*40 +20 +'px';  
+			}
+		}
+	}
+	//下方蓝色的小块的键盘事件
+	
+	function key(){
+		window.onkeydown = function(ev){
+			var e = ev || window.event;
+			switch(e.keyCode){
+				case 37:
+					stone.judge = 1;
+					break;
+				case 39:
+					stone.judge = 2;
+
+					break;
+
+			}
+			window.onkeyup = function(ev){
+				var e = ev || window.event;
+				switch(e.keyCode){
+					case 37:
+						stone.judge = 0;
+						break;
+					case 39:
+						stone.judge = 0;
+						break;
+				}
+			}
+		
+				
+			judge();
+		}
+	}
+	function judge(){
+		stone.timer = setInterval(function(){
+			border();
+			if(stone.judge == 1){
+				stone.style.left = stone.offsetLeft -5 +'px';
+			}
+			 if(stone.judge == 2){
+			 	stone.style.left = stone.offsetLeft +5 +'px';
+			 }
+		},20)
+	}
+
+	function border(){
+		if(stone.offsetLeft<0){
+			stone.style.left =0;
+		}
+		if(stone.offsetLeft>=wrap.offsetWidth - stone.offsetWidth){
+			stone.style.left = wrap.offsetWidth - stone.offsetWidth +'px';
+		}
+	}
+	//小球的运动
+	
+	function ballRun(){
+		ball.timer = setInterval(function(){
+			ball.style.left = ball.offsetLeft + speedX +'px';
+			ball.style.top = ball.offsetTop + speedY +'px';
+			ballJudge();
+		},20)
+	}
+	//判断小球的碰撞
+	function ballJudge(){
+		if(ball.offsetLeft<0){
+			speedX = 1;
+		}
+		if(ball.offsetLeft>wrap.offsetWidth - ball.offsetWidth){
+			speedX = -1;
+		}
+		if(ball.offsetTop<0){
+			speedY = 3;
+		}
+		if(ball.offsetTop >content.offsetHeight - ball.offsetHeight){
+			if(ball.offsetLeft < stone.offsetLeft - ball.offsetWidth||ball.offsetLeft>stone.offsetLeft+stone.offsetWidth){
+				alert('游戏结束');
+				clearInterval(ball.timer);
+			}else{
+				speedY =-3;
+			}
+		}
+	}
+
+
+</script>
+</html>

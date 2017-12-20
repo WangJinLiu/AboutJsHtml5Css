@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// alert('hello');
+		// document.write(123456);
+		// console.log(5+5);
+		//函数：具有一定功能的代码段
+		//函数的组成部分：关键字function 函数名：myFunction(){要执行的语句}
+		//声明函数/函数定义
+		// function myFunction(){
+		// 	alert('calling a function');
+		// }
+
+		//函数调用
+		// myFunction();
+
+
+		//函数的四种形式
+		//无参数，无返回值
+		// function buywater(){
+		// 	alert('谁去买水');
+		// }
+		//返回值：return的结果就是函数的返回值
+		//无参数，有返回值
+		// function buywater02(){
+		// 	return '水';
+		// }
+		// buywater();
+		// var a=buywater02();
+		// console.log(a);
+		//有参数，无返回值
+		/*function buyrice(obj){
+			console.log('我给'+obj+'买饭');
+		}
+
+		buyrice('王津柳');*/
+
+		//有参数有返回值
+
+		// function buyrice02(obj){
+
+		// 	return ('我给'+obj+'买饭');
+		// 	alert(1);
+
+		// }
+		// var a=buyrice02('小仙女');
+		// alert(a);
+
+		//练习：使用函数求出两个数的最大值
+			/*function shu(c,d){
+				return Math.max(c,d);
+			}
+			console.log(shu(5,6));
+			console.log(shu(10,8));*/
+
+			//老师写的
+			function maxValue(a,b)
+			{
+				return c=a>b?a:b;
+				// console.log(c);
+
+			}
+			console.log(maxValue(5,6));
+			
+			//使用函数求3个数的最大值
+			/*function max1(a,b,c){
+				var i=a>b?a:b;
+				return i>c?i:c;
+				 
+
+			}
+			console.log(max1(1,8,9));
+
+			var max=0;
+			function maxof(a,b,c){
+				max=a>b?a:b;
+				return max>c?max:c;
+
+			}*/
+			// var d=maxof(5,8,3);
+			// console.log(d);
+
+			//函数嵌套调用（函数回调）
+
+			// function maxValue(a,b)
+			// {
+			// 	return c=a>b?a:b;
+
+			// }
+			// // console.log(maxValue(5,6));
+			// var max=0;
+			// function maxthree(a,b,c){
+
+			// 	max=maxValue(a,b);
+			// 	return max>c?max:c;
+
+			// }
+			// max1=maxthree(4,8,1);
+			// console.log(max1);
+
+			// function self(obj){
+
+			// 	var a=obj++;
+			// 	self(obj);
+			// 	return obj;
+
+			// }
+			// console.log(self(1));
+			
+
+
+
+
+
+
+		/*参数： 形参：形式参数
+				实参：实际参数
+				return:可以终止代码
+						返回值*/
+
+
+
+		
+
+
+
+	</script>
+</body>
+</html>

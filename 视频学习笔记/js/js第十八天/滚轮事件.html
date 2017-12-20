@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>滚轮事件</title>
+	<style>
+	#wrap{
+		width: 400px;
+		height: 600px;
+		border: 3px solid;
+	}
+	#div2{
+		width: 100px;
+		height: 100px;
+		background: green;
+		margin-top: 10px;
+	}
+
+
+
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		
+	</div>
+	<div id="div2"></div>
+	<script>
+	var wrap=document.getElementById('wrap');
+	var div2=document.getElementById('div2');
+	//分着写的
+	// wrap.onmousewheel=function(obj){
+	// 	var obj=obj||window.event;
+	// 	console.log(obj);
+	// 	if(obj.wheelDelta>0){
+	// 		console.log('01内容向下,鼠标滚轮向上');
+	// 	}else if(obj.wheelDelta<0){
+	// 		console.log('01内容向上，鼠标滚轮向下');
+	// 	}
+
+	// }
+	// div2.onmousewheel=function(obj){
+	// 	var obj=obj||window.event;
+	// 	console.log(obj);
+	// 	if(obj.wheelDelta>0){
+	// 		console.log('02内容向下,鼠标滚轮向上');
+	// 	}else if(obj.wheelDelta<0){
+	// 		console.log('02内容向上，鼠标滚轮向下');
+	// 	}
+	// }
+	wrap.onmousewheel=function(obj){
+		var obj=obj||window.event;
+		
+		var m=kk(obj);
+		if(m){
+			console.log('内容向下，滚轮向上');
+		}else{
+			console.log('内容向上，滚轮向下');
+		}
+
+
+	}
+	div2.onmousewheel=function(obj){
+		var obj=obj||window.event;
+		
+		var m=kk(obj);
+		if(m){
+			console.log('内容向下，滚轮向上');
+		}else{
+			console.log('内容向上，滚轮向下');
+		}
+
+
+	}
+	//封装完滚轮的函数
+	function kk(obj){
+			if(obj.wheelDelta>0){
+				return true;
+			}else if(obj.wheelDelta<0){
+				return false;
+
+			}
+
+	}
+
+	// 谷歌浏览器
+	// obj.wheelDelta<0,滚轮向下
+	// obj.wheelDelta>0,滚轮向上
+
+
+
+
+	</script>
+</body>
+</html>

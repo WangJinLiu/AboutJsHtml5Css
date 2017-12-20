@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>导航滚动tween版</title>
+	
+	<style>
+	*{margin:0;padding: 0;}
+	.nav{
+		position: relative;
+		width: 400px;
+		margin: 50px auto;
+
+	}
+	.nav ul{
+		list-style: none;
+		position: absolute;
+		overflow: hidden;
+	}
+	.nav ul li{
+		float: left;
+
+	}
+	.nav ul a{
+		display: block;
+		width: 80px;
+		font-size: 16px;
+		color: black;
+		text-decoration: none;
+		text-align: center;
+	}
+	.nav .slider{
+		position: absolute;
+		top:20px;
+		width: 80px;
+		height: 2px;
+		background: red;
+	}
+
+
+
+
+
+
+
+	</style>
+</head>
+<body>
+	<div class="nav">
+		<ul>
+			<li><a href="#">按钮1</a></li>
+			<li><a href="#">按钮2</a></li>
+			<li><a href="#">按钮3</a></li>
+			<li><a href="#">按钮4</a></li>
+			<li><a href="#">按钮5</a></li>
+		</ul>
+		<div class="slider"></div>
+	</div>
+	<script type="text/javascript" src="js/tween.js"></script>
+	<script type="text/javascript">
+	nav();
+	function nav(){
+		var navList=document.querySelectorAll('.nav ul li');
+		var slider=document.querySelector('.slider');
+		var activeIndex=0;
+		//记录当前导航的选中项索引
+		var timer=null;
+		init();
+
+
+		//选中项执行函数
+		function selected(index)
+		{
+			activeIndex=index;
+			var t=0;
+			var b=slider.offsetLeft;
+			console.log(b);
+			var end=activeIndex*slider.offsetWidth;
+			//slider最终的left
+			var c=end-b;
+			var d=10;
+			clearInterval(timer);
+			timer=setInterval(function()
+			{
+				t++;
+				if(t>=d)
+				{
+					clearInterval(timer);
+					timer=null;
+				}
+				else
+				{
+					slider.style.left=Tween.Back.easeOut(t,b,c,d)+'px';
+				}
+
+			},150)
+
+		}
+		//事件绑定
+		function bind()
+		{
+			for(var i=0;i<navList.length;i++)
+			{
+				// 另一种方法
+				// navList[i].onmouseover=(function(a)
+				// {
+				// 	return function()
+				// 	{
+				// 		selected(a);
+				// 	}
+				// })(i)
+
+				(function(i)
+				{
+					navList[i].onmouseover=function()
+					{
+						selected(i);
+					}
+
+				})(i);
+
+			}
+		}
+		function init()
+		{
+			bind();
+		}
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

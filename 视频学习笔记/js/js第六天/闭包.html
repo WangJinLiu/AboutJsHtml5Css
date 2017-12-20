@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>闭包</title>
+	<style>
+	ul{
+		background-color: grey;
+		margin:0 auto;
+		text-align: center;
+		padding-right: 10px;
+	}
+	li{
+		background-color: orange;
+		padding:10px 30px;
+		display: inline-block;
+		margin-left: 10px;
+		margin-bottom: 30px;
+		border: 1px solid;
+	}
+	.div11{
+		width: 50px;
+		height: 50px;
+		background: red;
+	}
+	.div11 div{
+		padding: 10px;
+		float: left;
+	}
+
+
+	</style>
+</head>
+<body>
+	<ul>
+		<li title="4986654959">1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+	<div class="div11">
+		<div>dx</div>
+		<div>x</div>
+	</div>
+	<script type="text/javascript">
+		var aLi=document.getElementsByTagName('li');
+		// for(var i=0;i<aLi.length;i++){
+
+
+			// aLi[i].onclick=function()
+			// {
+			// 	console.log(i);
+			// }//就相当于把它写到了for循环外边
+		// }
+		//onclick事件运行机制：在不点击相应的变量之前不执行onclick后面的function
+		//题目分析：先执行5次循环之后i++，给ali【i】分别添加onclivk，但不执行后面的function，但i最终变成了5，在100年以后，鼠标点击ali【i】，此时执行onclick后面的function，把function添加到onclick事件里，注意：（function相当于写在了for循环的外面）
+
+		//
+
+		for(var i=0;i<aLi.length;i++)
+		{
+			aLi[i].onclick=(function(index)
+			{
+				return function()
+				{
+					console.log(index);
+				};
+			}(i))
+
+		}
+		/*
+		分析：第一步：自执行外层函数把i这个实参传进来，代替所有形参
+			 第二步：确定了返回值是一个函数。
+			 500年以后，点击了ali，把返回值里的函数添加到点击事件*/
+		//闭包：闭包可以实现将值存储起来
+
+		//变量作用域特性，是出了该变量的域就失去作用，如何让变量的值保存起来呢？闭包
+
+		function init(){
+			var age=20;
+			function displayAge(){
+
+				console.log(age);
+
+			}
+			displayAge();
+		}
+		init();
+		// console.log(age);//报错
+
+
+
+		//通过这种方式把内层的变量拿出来用了
+		//使用闭包将变量值持久化
+		/*function closure_func(){
+			var age=20;
+			console.log(age);
+			// return 
+			function displayAge(){
+				console.log(age);
+				console.log(age++);
+			}
+			return displayAge;//重点是返回的是内层的函数，可以把return放内层函数前面
+		}
+		var myfun=closure_func();
+		myfun();//20
+		myfun();//21
+		myfun();//22
+		myfun();//23*/
+		/*闭包的条件：
+			1.一个函数嵌套另一个函数，并且被嵌套的函数访问了父级的变量
+			2.要将内部函数返回给父级函数
+
+			闭包的作用：
+			1.防止变量名冲突
+			2.变量持久化（上面的++保存住）
+			3.闭包可以成为外层函数内部与外层函数的外部的桥梁*/
+
+		//实例一
+		function makeAdder(y)
+		{
+			return function(y){
+				alert(y);
+
+			}
+
+
+		}
+		var adder5=makeAdder(10);//传的是10但是没运行
+		adder5(5);
+	
+		
+
+
+
+	</script>
+	
+</body>
+</html>

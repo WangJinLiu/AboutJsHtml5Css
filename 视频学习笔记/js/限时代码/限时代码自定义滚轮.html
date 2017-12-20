@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义滚轮</title>
+	<style>
+		#wrap{
+			width: 200px;
+			height: 500px;
+			border: 2px solid;
+			position: relative;
+			overflow: hidden;
+		}
+		#content{
+			width: 160px;
+			position: absolute;
+			left: 0;
+			top: 0;
+
+		}
+		#line{
+			height: 500px;
+			width: 30px;
+			background: grey;
+			position: absolute;
+			left: 170px;
+			top:0;
+		}
+		#move{
+			width: 30px;
+			height: 40px;
+			background: black;
+			border-radius: 20px;
+			position: absolute;
+			top:0;
+			left: 0;
+		}
+
+
+
+
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="content">
+			小说：以刻画人物形象为中心，通过完整的故事情节和环境描写来反映社会生活的文学体裁。人物、情节、环境是小说的三要素。情节一般包括开端、发展、高潮、结局四部分，有的包括序幕、尾声。环境包括自然环境和社会环境小说：以刻画人物形象为中心，通过完整的故事情节和环境描写来反映社会生活的文学体裁。人物、情节、环境是小说的三要素。情节一般包括开端、发展、高潮、结局四部分，有的包括序幕、尾声。环境包括自然环境和社会环境小说：以刻画人物形象为中心，通过完整的故事情节和环境描写来反映社会生活的文学体裁。人物、情节、环境是小说的三要素。情节一般包括开端、发展、高潮、结局四部分，有的包括序幕、尾声。环境包括自然环境和社会环境小说：以刻画人物形象为中心，通过完整的故事情节和环境描写来反映社会生活的文学体裁。人物、情节、环境是小说的三要素。情节一般包括开端、发展、高潮、结局四部分，有的包括序幕、尾声。环境包括自然环境和社会环境小说：以刻画人物形象为中心，通过完整的故事情节和环境描写来反映社会生活的文学体裁。人物、情节、环境是小说的三要素。情节一般包括开端、发展、高潮、结局四部分，有的包括序幕、尾声。环境包括自然环境和社会环境小说：以刻画人物形象为中心，通过完整的故事情节和环境描写来反映社会生活的文学体裁。人物、情节、环境是小说的三要素。情节一般包括开端、发展、高潮、结局四部分，有的包括序幕、尾声。环境包括自然环境和社会环境
+		</div>
+		<div id="line">
+			<div id="move">
+				
+			</div>
+			
+		</div>
+	</div>
+	<script type="text/javascript">
+		var content=document.getElementById('content');
+		var line=document.getElementById('line');
+		var wrap=document.getElementById('wrap');
+		var move=document.getElementById('move');
+		function bili(){
+			var m=(content.offsetHeight-wrap.offsetHeight)/(line.offsetHeight-move.offsetHeight);
+			return m;
+		}
+		move.onmousedown=function(obj){
+			var obj=obj||window.event;
+			var Y=obj.clientY;
+			var k=move.offsetTop;
+			document.onmousemove=function(obj1){
+				var obj1=obj1||window.event;
+				move.style.top=obj1.clientY-Y+k+'px';
+				if(move.offsetTop<0){
+					move.style.top=0+'px';
+				}else if(move.offsetTop>=line.offsetHeight-move.offsetHeight){
+					move.style.top=line.offsetHeight-move.offsetHeight+'px';
+				}
+				var nn=bili()*move.offsetTop;
+				content.style.top=-nn+'px';
+
+			}
+			document.onmouseup=function(){
+				document.onmousemove=null;
+			}
+		}
+		var n=4;
+		window.onkeydown=function(obj2){
+			var obj2=obj2||window.event;
+			var m=bili();
+			if(move.offsetTop<=0){
+					move.style.top=0+'px';
+			}else if(move.offsetTop>=line.offsetHeight-move.offsetHeight){
+					move.style.top=line.offsetHeight-move.offsetHeight+'px';
+			}
+
+			if(obj2.keyCode==40){
+				move.style.top=n+move.offsetTop+'px';
+				content.style.top=-m*move.offsetTop+'px';
+
+
+			}
+			if(obj2.keyCode==38){
+				move.style.top=-n+move.offsetTop+'px';
+				content.style.top=-m*move.offsetTop+'px';
+
+			}
+		}
+
+
+
+
+	</script>
+</body>
+</html>

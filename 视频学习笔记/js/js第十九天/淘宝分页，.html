@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>导航解析</title>
+	<style>
+
+		.first{
+			display: inline-block;
+		}
+	
+		#page div{
+			width: 50px;
+			height: 50px;
+			border: 1px solid;
+			float: left;
+			text-align: center;
+			line-height: 50px;
+
+		}
+		#page{
+			overflow: hidden;
+			border: 1px solid;
+			margin:0 auto;
+			width: 1000px;
+			display: flex;
+			justify-content:space-around;
+
+		}
+		#content{
+			width: 1000px;
+			margin:0 auto;
+			border: 1px solid;
+			height: 500px;
+		}
+		#content div{
+			display: inline-block;
+		}
+		img{
+			width: 100px;
+			height: 100px;
+		}
+
+
+
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<!-- content用于布局， -->
+		<div id="content">
+		<!-- 	<div class="first">
+				<img src="" alt="">
+
+				</div>
+				<div class="first">
+					
+				</div>
+				<div class="first">
+					
+				</div> -->
+
+			
+
+
+		</div>
+		<!-- 放按钮 -->
+		<div id="page">
+			
+		</div>
+	</div>
+	<script type="text/javascript">
+		//1.获得数据
+		var content=document.getElementById('content');
+		var page=document.getElementById('page');
+		var s1='[{"img":"1.jpg","price":89.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店01","address":"江苏苏州"},{"img":"2.jpg","price":100.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店02","address":"江苏苏州"},{"img":"3.jpg","price":180.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店03","address":"江苏苏州"},{"img":"4.jpg","price":180.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店01","address":"江苏苏州"},{"img":"5.jpg","price":89.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店01","address":"江苏苏州"},{"img":"6.jpg","price":100.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店02","address":"江苏苏州"},{"img":"7.jpg","price":180.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店03","address":"江苏苏州"},{"img":"8.jpg","price":180.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店01","address":"江苏苏州"},{"img":"1.jpg","price":89.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店01","address":"江苏苏州"},{"img":"2.jpg","price":100.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店02","address":"江苏苏州"},{"img":"3.jpg","price":180.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店03","address":"江苏苏州"},{"img":"4.jpg","price":180.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店01","address":"江苏苏州"},{"img":"5.jpg","price":89.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店01","address":"江苏苏州"},{"img":"6.jpg","price":100.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店02","address":"江苏苏州"},{"img":"7.jpg","price":180.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店03","address":"江苏苏州"},{"img":"8.jpg","price":180.00,"num":2711,"discribe":"v领短袖t恤男夏装薄款九分裤纯色夏季休闲运动套装男士一套衣服潮","shopname":"小美女旗舰店01","address":"江苏苏州"}]';
+		//2.解析
+		var arr=JSON.parse(s1);
+		fenye(6,arr.length,arr);
+		//3.做分页处理
+		//pernum每页多少个
+		function fenye(pernum,allNUm,myArr){
+			var page=document.getElementById('page');
+			//获得content
+			var content=document.getElementById('content');
+			var wrap=document.getElementById('wrap');
+			//1.得到有多少页
+			var m= Math.ceil(allNUm/pernum);
+			//2.创建按钮
+			for(var j=0;j<m;j++){
+				var btn=create('div',page);
+				btn.innerHTML=j+1;;
+				btn.onclick=function(){
+					content.innerHTML='';
+					console.log(myArr);
+					//点击添加对应按钮的数据到界面上
+					var cNum=Number(this.innerHTML);
+					//这样就能存住j了
+					var start=(cNum-1)*pernum;
+					var end=cNum*pernum;
+					if(end>myArr.length){
+						end=myArr.length;
+					}
+					for(var i=start;i<end;i++){
+						console.log(i);
+						//创建页面
+						var f=create('div',content);
+						var img0=create('img',f);
+						img0.src=myArr[i].img;
+						console.log(myArr[i].img);
+						var price0=create('div',f);
+						price0.innerHTML=myArr[i].price;
+
+
+					}
+				}
+
+
+			}
+
+		}
+		
+
+		//创建标签
+		function create(name,father,classname){
+			var o=document.createElement(name);
+			o.className=classname;
+			father.appendChild(o);
+			return o;
+
+		}
+
+
+
+
+	</script>
+	
+</body>
+</html>

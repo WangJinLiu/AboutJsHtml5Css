@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>输入框</title>
+</head>
+<body>
+	<input type="text" id="input1">
+	<input type="text" id="input2">
+	<input type="button" value="登录" id="But">
+	
+</body>
+<script type="text/javascript">
+	var input1=document.getElementById('input1');
+	var input2=document.getElementById('input2');
+	var But=document.getElementById('But');
+	input1.focus();
+	window.onkeydown=function(n){
+		var e=n||window.event;
+		// if(e.keyCode==16)
+		// {
+		// 	input2.focus();
+		// }else if(e.keyCode==13){
+		// 	if(input1.value=='134'&&input2.value=='123456'){
+		// 		alert('登录成功');
+		// 	}
+		// }
+
+		switch(e.keyCode){
+			case 13:
+				But.focus();
+				if(input1.value=='123'&&input2.value=='123'){
+					alert('登录成功');
+				}
+				break;
+			case 16:
+				input2.focus();//就是把光标给input2
+				break;
+			default:
+				break;
+		}
+	}
+	
+	
+
+
+
+
+</script>
+</html>

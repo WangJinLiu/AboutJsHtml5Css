@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#wrap{
+		width: 400px;
+		height: 600px;
+		border: 3px solid;
+	}
+	#div2{
+		width: 100px;
+		height: 100px;
+		background: green;
+		margin-top: 10px;
+	}
+
+
+
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		
+	</div>
+	<div id="div2"></div>
+	<script type="text/javascript">
+	var wrap=document.getElementById('wrap');
+	var div2=document.getElementById('div2');
+	wrap.onmousewheel=function(obj){
+		var obj=obj||window.event;
+		console.log(obj);
+		kk(obj,function(){
+			console.log('滚轮向上');
+		},function(){
+			console.log('滚轮向下');
+		})
+		
+
+	}
+	div2.onmousewheel=function(obj){
+		var obj=obj||window.event;
+		kk(obj,function(){
+
+			console.log('滚轮向上');
+		},function(){
+			console.log('滚轮向下');
+		})
+
+	}
+	//封装完滚轮的函数
+	function kk(obj,fn,fn1){
+		if(obj.wheelDelta>0){
+			if(fn){
+				fn();
+			}
+			
+		}else if(obj.wheelDelta<0){
+			if(fn1){
+				fn1();
+			}
+			
+		}
+
+	}
+
+
+	</script>
+	
+</body>
+</html>

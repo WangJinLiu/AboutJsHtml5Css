@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				height: 2000px;
+				background: red;
+			}
+			.box{
+				width: 300px;
+				height: 200px;
+				background: green;
+				/*在IE6上没有固定定位，会认为这是一个绝对定位
+				 解决方法：用js模拟固定定位，意味着增加top的值*/
+				position: fixed;
+				top:100px;
+				left: 100px;	
+				/*ie6,7,8都不识别这个属性
+				*/
+				opacity: 0.5;
+				/*解决方法 取值0~100*/
+				filter:alpha(opacity=50)
+					}
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+	</body>
+</html>

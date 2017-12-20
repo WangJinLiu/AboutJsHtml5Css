@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+		//获取计算后的非行间样式的封装函数
+		console.log(move(oDiv,'left'));
+		function move(obj,cssName)
+		{
+			if(obj.currentStyle)
+			{
+				return obj.currentStyle[cssName];
+
+			}
+			else{
+				return getComputedStyle(obj,null)[cssName];
+
+			}
+
+		}
+		//取消默认事件
+		document.body.oncontextmenu=function(ev){
+			var e=ev || window.event;
+			//取消默认事件（默认事件就是点击右键时会出现窗口等，取消这个事件让它不耽误自己代码功能的实现）
+			e.preventDefault();
+			return false;//相当于返回一个false给系统
+			//用在早期ie版本，写的时候就把上边两行都写上
+		}
+
+		//*事件冒泡：就是点击这个小div会触发大div和小div两个点击事件，为了解决这个问题就在小的div的最后加上解决冒泡的兼容写法*/
+		diva.onclick=function(obj1){
+			var e=obj1 || window.event;
+			// obj1.cancelBubble=true;//默认false
+			//cancelBubble取消冒泡(ie)
+			// obj1.stopPropagation();这是W3C（非ie）里的
+			//解决冒泡兼容性写法(下边)
+			if(e.stopPropagation){
+				e.stopPropagation();
+			}else{
+				e.cancelBubble = true;
+			}
+
+		}
+		//事件监听兼容写法(这个分为ie和普通浏览器)
+		var wrap=document.getElementById('wrap');
+		function m(){
+			console.log(111);
+		}
+		function n(){
+			console.log(222);
+		}
+		addListener(wrap,'click',m,false);
+		addListener(wrap,'click',n,false);
+		//添加的兼容写法
+		function addListener(ele,event,Fn,useCapture){
+			if(ele.addEventListener){
+				ele.addEventListener(event,Fn,useCapture);（其他浏览器）
+			}else{
+				ele.attachEvent('on'+event,Fn,useCapture);（ie）
+			}
+
+		}
+		removeListener(wrap,'click',n,false);
+		//删除的兼容写法
+		function removeListener(ele,event,Fn,useCapture){
+			if(ele.removeEventListener){
+				ele.removeEventListener(event,Fn,useCapture)
+			}else{
+				ele.detachEvent('on'+event,Fn,useCapture);
+			}
+
+		}
+		//封装火狐谷歌鼠标滚轮事件
+		var wrap=document.getElementById('wrap');
+		judge(wrap,function(value){
+			if(value){
+				wrap.style.background='black';
+			}else{
+				wrap.style.background='green';
+			}
+
+		})
+		function judge(obj,fn){
+			var ff = window.navigator.userAgent.indexOf('Firefox')!=-1 ? 'DOMMouseScroll':'mousewheel';
+			obj.addEventListener(ff,function(e){
+				var e=e||window.event;
+				var down=e.wheelDelta?e.wheelDelta>0:e.detail<0;
+				if(fn){
+					fn(down);
+				}
+				//就相当于下面的
+				// if(e.wheelDelta){
+				// 	if(e.wheelDelta > 0){
+				// 		if(fn1){
+				// 			fn1();
+				// 		}
+				// 	}else{
+				// 		if(fn2){
+				// 			fn2();
+				// 		}
+				// 	}
+				// }else{
+				// 	if(e.detail > 0){
+				// 		if(fn2){
+				// 			fn2();
+				// 		}
+				// 	}else{
+				// 		if(fn1){
+				// 			fn1();
+				// 		}
+						
+				// 	}
+				// }
+
+			})
+
+		}
+
+		//ajax请求封装函数
+		function ajax(url,fn){
+			var m=new XMLHttpRequest();
+			m.open("get",url);
+			m.send();
+			m.onreadystatechange=function(){
+				//说明网络请求成功了
+				if(this.readyState==4&&this.status==200){
+					if(fn){
+						fn(this.responseText);
+					}
+
+				}
+			}
+		}
+
+</script>
+</html>

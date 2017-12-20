@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>放大镜</title>
+	<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+
+			#minDiv {
+				width: 350px;
+				height: 350px;
+				background-image: url(img/min.png);
+				background-size: 100% 100%;
+				border: 1px solid black;
+				float: left;
+				position: relative;
+				/*margin-left: 100px;*/
+			}
+			#mengDiv{
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 150px;
+				height: 150px;
+				border: 1px solid;
+				background-color: lightgray;
+				opacity: 0.6;
+				/*display: none;*/
+			}
+			#maxDiv{
+				width: 400px;
+				height: 400px;
+				float: left;
+				position: relative;
+				/*overflow: hidden;*/
+				border: 1px solid black;
+				/*display: none;*/
+			}
+			#maxImg{
+				position: absolute;
+			}
+		</style>
+</head>
+<body>
+	<!--左边小图部分-->
+		<div id="minDiv">
+			<!--蒙版div-->
+			<div id="mengDiv"></div>
+		</div>
+
+		<!--右边大图部分可视区域-->
+		<div id="maxDiv">
+			<!--右边的大图片-->
+			<img id="maxImg" src="img/max.png" alt="" />
+		</div>
+		<script type="text/javascript">
+			
+
+
+
+
+		</script>
+	
+</body>
+</html>

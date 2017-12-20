@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.div_top{
+				width: 1500px;
+				height:1000px;
+				background: black;
+				border-radius: 50%;
+				position: relative;
+			}
+			.div1{
+				position: absolute;
+				top:350px;
+				left: 450px;
+			}
+			.div2{
+				position: absolute;
+				top:390px;
+				left: 180px;
+				/*background: pink;*/
+				animation: move 10s linear;
+				padding: 40px;
+				
+				
+			}
+			
+			
+			@keyframes move{
+				
+				10%{top:180px;left: 250px;}
+				20%{top:150px;left: 400px;}
+				30%{top:140px;left: 650px;}
+				40%{top:180px;left: 850px;}
+				50%{top:390px;left: 1100px;}
+				60%{top:550px;left: 940px;}
+				70%{top:650px;left: 800px;}
+				80%{top:750px;left: 600px;}
+				90%{top:770px;left: 300px;}
+				95%{top:700px;left: 200px;}
+				100%{top:390px;left: 180px;}
+			}
+			.div2_1{
+				animation: moon 10s linear;
+				display: inline-block;
+				position: absolute;
+				top:50px;
+				left: 10px;
+				
+				
+				
+			}
+			@keyframes moon{
+				10%{top:20px;left: 30px;}
+				30%{top:17px;left: 80px;}
+				50%{top:50px;left: 90px;}
+				70%{top:85px;left: 85px;}
+				80%{top:90px;left: 60px;}
+				90%{top:85px;left: 50;}
+				100%{top:50px;left: 10px;}
+				
+				
+				
+			}
+			
+			
+			
+			
+		</style>
+	</head>
+	<body>
+		<div class="div_top">
+			<div class="div1">
+				<img src="img/sun.gif" alt="" />
+			</div>
+			<div class="div2">
+				
+				<img  class="img2" src="img/earth.jpg" alt="" />
+				<div class="div2_1">
+					<img class="img2" src="img/moon.jpg" alt="" />
+				</div>
+			</div>
+		</div>
+		
+	</body>
+</html>

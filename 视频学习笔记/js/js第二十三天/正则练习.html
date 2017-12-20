@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>正则练习</title>
+</head>
+<body>
+	<input type="text" id="wrap">
+	<script>
+	var wrap=document.getElementById('wrap');
+	wrap.oninput=function(obj){
+		var a=/\d/;
+		this.value=this.value.replace(a,'');
+			
+		
+	}
+
+
+	</script>
+</body>
+</html>

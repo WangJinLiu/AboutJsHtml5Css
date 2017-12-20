@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>平移</title>
+</head>
+<body>
+	<canvas id="canvas" width="500" height="500"></canvas>
+	
+</body>
+<script>
+	var canvas=document.getElementById('canvas');
+	var content=canvas.getContext("2d");
+	content.beginPath();
+	content.fillStyle='blue';
+	content.fillRect(0,0,100,100);
+	//平移
+	content.translate(150,150);
+	content.fillStyle='red';
+	content.fillRect(0,0,100,100);
+	content.closePath();
+</script>
+</html>

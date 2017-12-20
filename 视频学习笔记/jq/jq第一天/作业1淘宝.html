@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>作业1淘宝</title>
+	<style>
+/*		#wrap{
+			width: 800px;
+			height: 800px;
+			border: 1px solid;
+			margin:0 auto;
+		}
+		.box{
+			width: 253px;
+			height: 392px;
+			border: 1px solid;
+			display: inline-block;
+		}*/
+
+
+
+
+	</style>
+</head>
+<body>
+	<!-- <div id="wrap">
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+		<div class="box"></div>
+	</div> -->
+	<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+	<script>
+		var arr='[{"img":"./img/1.jpg","price":"189","title":"预售乐町2017秋装新款女装1","shop":"乐町官方旗舰店1"},{"img":"./img/2.jpg","price":"189","title":"预售乐町2017秋装新款女装2","shop":"乐町官方旗舰店2"},{"img":"./img/3.jpg","price":"189","title":"预售乐町2017秋装新款女装3","shop":"乐町官方旗舰店3"},{"img":"./img/4.jpg","price":"189","title":"预售乐町2017秋装新款女装4","shop":"乐町官方旗舰店4"}]';
+		var str=JSON.parse(arr);
+		console.log(str);
+		$(document).ready(function(){
+			var a=$("<div class='wrap'></div>").css({
+				"width":"1020px",
+				"height":"800px",
+				"border":"1px solid",
+				"margin":"0 auto",
+				"position":"relative"
+			})
+			a.appendTo(document.body);
+			createneirogn(0,2);
+			// createbiaoqian();
+			// function createbiaoqian(){
+			// 	$(str).each(function(i){
+			// 		console.log(this);
+			// 		$("<div class='box'></div>").css({
+			// 			'width':'253px',
+			// 			'height':'392px',
+			// 			'border':'1px solid',
+			// 			'display':'inline-block'
+			// 		}).appendTo(".wrap");
+
+			// var box=$("div");
+			// $("#wrap").append("box");
+			// box.addClass("box");
+			// 	})
+			// 	$("<img class='img1'>").appendTo($(".box"));
+			// 	$(".img1").each(function(i){
+			// 		console.log(this);
+
+			// 		$(this).attr("src",str[i].img)
+			// 	})
+			// 	$("<p class='p1'></p>").appendTo($(".box"));
+			// 	$(".p1").each(function(i){
+			// 		$(this).text(str[i].title);
+			// 		$(this).mouseover(function(){
+			// 			console.log(this);
+			// 			$(this).css({
+			// 				"color":"blue"
+			// 			})
+
+			// 		})
+			// 		$(this).mouseout(function(){
+			// 			console.log(this);
+			// 			$(this).css({
+			// 				"color":"black"
+			// 			})
+
+			// 		})
+
+			// 	})
+			// 	$("<span class='span1'></span>").appendTo($(".box"));
+			// 	$(".span1").each(function(i){
+			// 		$(this).text(str[i].shop);
+
+			// 	})
+			// }
+			
+
+			//分页
+			$("<div id='but_box'></div>").css(
+				{
+					width:"1020px",
+					height:"50px",
+					// border:"1px solid",
+					position:"absolute",
+					top:"750px",
+					"text-align":'center',
+				}).appendTo(document.body);
+			createbut();
+			//开始分页
+			function createbut(){
+				var m=2;
+				var n=str.length/2;
+				for(var i=0;i<n;i++){
+					$("<div class='but'></div>").css({
+						width:"50px",
+						height:"50px",
+						"text-align":'center',
+						"display":'inline-block',
+						"border":"1px solid",
+						"line-height":"50px"
+					}).text(i+1).appendTo("#but_box");
+
+
+				}
+				$(".but").click(function(j){
+					$(".wrap")[0].innerHTML='';
+					console.log(typeof(this.innerHTML));
+					var index=Number(this.innerHTML);
+					var start=(this.innerHTML-1)*m;
+					var end=index*m;
+					if(end>arr.length){
+						end=arr.length;
+
+					}
+					createneirogn(start,end);
+				
+				
+					// $(".box").each(function(){
+					// 	console.log(this);
+					// 	$("<img alt='' />").attr("src",str[this.index].img).appendTo(".box");
+					// })
+					
+
+
+				})
+			}
+			//创建标签
+			function createneirogn(start,end){
+					for(var i=start;i<end;i++){
+						console.log(box);
+
+						var box = $("<div class='box'></div>").css({
+							'width':'253px',
+							'height':'392px',
+							'border':'1px solid',
+							'display':'inline-block'
+						}).attr("index",i).appendTo(".wrap");
+
+						console.log($(".box"));
+						$("<img alt='' />").attr("src",str[i].img).appendTo(box);
+						$("<p class='p1'></p>").text(str[i].title).appendTo(box);
+						$("<span class='span1'></span>").text(str[i].shop).appendTo(box);
+
+					
+
+					}
+					$(".span1").mouseover(function(){
+						$(this).css("color","blue");
+							
+					})
+					$(".span1").mouseout(function(){
+						$(this).css("color","black");
+							
+					})
+
+			}
+
+
+
+
+
+
+			
+
+		})
+		
+
+	</script>
+	
+</body>
+</html>

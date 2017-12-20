@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>正则逻辑</title>
+</head>
+<body>
+<script>
+	// 规则一：| 或语法
+	var k=/((hm)|(m)|(n))/ig;
+	var str='hmllon';
+	var mm=str.replace(k,'M');
+	console.log(mm);
+
+	// 例子
+	// var k=/h((hm)|(m)|(n))/ig;
+	// var str='hmllon';
+	// var mm=str.replace(k,'M');
+	// console.log(mm);
+
+	// var k=/[0-9]/ig;
+	// var k=/0|1|2|3|4|5|6|7|8|9/ig;
+	// var str='hm2ll2on2515';
+	// var mm=str.replace(k,'');
+	// console.log(mm);
+
+	//规则二[] 或语法
+	// var k=/[a-z]/ig;
+	// var str='hm2ll2on2515';
+	// var mm=str.replace(k,'');
+	// console.log(mm);
+	// var k=/[hmn]/ig;
+	// var str='hm2ll2on2515';
+	// var mm=str.replace(k,'');
+	// console.log(mm);//2ll2o2515
+
+	//数字写法[0-9]
+	//字母写法[a-zA-Z]
+	//数字和字母[0-9a-zA-Z]
+	//汉字[\u4e00-\u9fa5]
+	
+
+
+
+
+</script>
+	
+
+	
+</body>
+</html>

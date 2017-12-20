@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<div id="a1"><span></span></div>
+	<div id="a2"><span></span><p><span></span></p></div>
+	<span></span>
+	<div class="a3"></div>
+	<div class="a3"></div>
+	<div class="a4"></div>
+	<p class="a5" id="b1">1</p>
+	<p class="a5" id="b2">2</p>
+	<span></span>
+	<p></p>
+	<form>
+		<label>Name:</label>
+		<input name="name" />
+		<fieldset>
+		      <label>Newsletter:</label>
+		      <input name="newsletter" />
+		</fieldset>
+	</form>
+	<input name="none" id="ccc" />
+
+	<ul>
+	    <li>list item 1</li>
+	    <li>list item 2</li>
+	    <li>list item 3</li>
+	    <li>list item 4</li>
+	    <li>list item 5</li>
+	</ul>
+	<table>
+	  <tr><td>Header 1</td></tr>
+	  <tr><td>Value 1</td></tr>
+	  <tr><td>Value 2</td></tr>
+	</table>
+
+	
+</body>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+//
+	//id选择器
+	console.log($("#a1"));
+	//element选择器（根据给定的元素标签名匹配所有元素）
+	console.log($("div"));
+	//class选择器
+	console.log($(".a3"));
+	//*(匹配所有元素)
+	console.log($("*"));//包括body，head什么的
+	//selector1,selector2,selectorN将每一个选择器匹配到的元素合并后一起返回你可以指定任意多个选择器，并将匹配到的元素合并到一个结果内。
+	console.log($("span,p.a5,div#a1"));
+	//格式$("祖先元素 你想要找出的后代元素")在给定的祖先元素下匹配所有的后代元素（第二个它必须是第一个选择器的后代元素）
+	console.log($("#a2 span"));
+	//父子
+	console.log($("#a2 > span"));
+	//紧邻选择器(匹配所有紧接在 prev 元素后的 next 元素)prev + next
+	console.log($("label + input"));
+	//匹配 prev 元素之后的所有 siblings 元素(prev ~ siblings)
+	console.log($("form ~ input"));
+	//:first 获取第一个元素
+	console.log($("li:first"));
+	//:not(selector)去除所有与给定选择器匹配的元素,返回的是所有未选中的元素
+	// console.log($("input:not(属性值)"));
+	console.log($("input:not(#ccc)"));//中间不能有空格
+	//:even 匹配所有索引值为偶数的元素，从 0 开始计数
+	console.log($("tr:even"));
+	//:odd 匹配所有索引值为奇数的元素，从 0 开始计数
+	console.log($("tr:odd"));
+	//:eq()匹配一个给定索引值的元素
+	console.log($(".a5:eq(0)"))
+
+
+
+
+
+	
+</script>
+</html>

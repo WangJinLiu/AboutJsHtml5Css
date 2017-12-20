@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>碰撞检测</title>
+	<style>
+		#div1{
+			width: 100px;
+			height: 100px;
+			position: absolute;
+			left: 0;
+		}
+		#div2{
+			width: 100px;
+			height: 100px;
+			position: absolute;
+			left: 0;
+		}
+
+
+
+
+
+	</style>
+</head>
+<body>
+	<div id="div1"></div>
+	<div id="div2"></div>
+	<script type="text/javascript">
+	var div1=document.getElementById('div1');
+	var div2=document.getElementById('div2');
+	move(div1,div2,function(value){
+		
+		alert('撞上啦');
+		
+		
+
+
+	},function(k){
+		
+		alert('没撞上');
+		
+
+	});
+	function move(a,b,Fn,errorFn){
+		var x1=a.offsetLeft-b.offsetWidth;
+		var x2=a.offsetLeft+a.offsetWidth;
+		var y1=a.offsetTop-b.offsetHeight;
+		var y2=a.offsetTop+a.offsetHeight;
+		if(b.offsetLeft>=x1&&b.offsetLeft<=x2&&b.offsetTop>=y1&&b.offsetTop<=y2){
+			if(Fn){
+				Fn();
+			}
+			//先判断一下这个函数是否存在，再传参，保险
+			
+			return;
+		}
+		if(errorFn){
+			errorFn();
+		}
+	}
+	
+
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

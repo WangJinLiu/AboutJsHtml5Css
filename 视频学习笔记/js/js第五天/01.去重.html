@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>去重</title>
+</head>
+<body>
+	<script type="text/javascript">
+		//已知两个数组【‘a’,'d','w','a','c','a'】,['w','e','d','d','f'],把这两个数组合并到一个数组，并且去重
+		var arr01=['a','d','w','a','c','a'];
+		var arr02=['w','e','d','d','f'];
+		var arr03=arr02;
+		
+		for(var i=0;i<arr01.length;i++){
+
+			arr03.push(arr01[i]);
+
+		}
+		arr03.sort();
+		var arr04=[arr03[0]];//把原始数组的第一位放到新数组最后一位
+		// console.log(arr03);
+		// console.log(arr04);
+		for(var i=1;i<arr03.length;i++){
+
+
+			if(arr03[i]!=arr04[arr04.length-1]){
+				arr04.push(arr03[i]);
+			}
+		}
+		console.log(arr04);
+
+
+
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

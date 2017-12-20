@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>创建对象</title>
+</head>
+<body>
+	<script>
+	//1.创建方式
+	// var obj={};
+	// //2.创建方式二
+	// var obj=new Object();
+	// obj.letter="T";
+	// obj.arr="456";
+	// console.log(obj);
+	//把这个转成通讯录json那种形式
+	  var p1={name:"苗捷",tel:12,letter:"M"};
+	  var p2={name:"游洲",tel:12,letter:"Y"};
+	  var p3={name:"丽丽",tel:12,letter:"L"};
+	  var p4={name:"李",tel:12,letter:"L"};
+	  var p5={name:"语文",tel:12,letter:"Y"};
+	  var arr=[p1,p2,p3,p4,p5];
+	  // var m=jisuan(arr);
+	  // console.log(m);
+	  
+	  // function jisuan(myarr){
+	  // 	var objnew=[];
+	  // 	for(var i=0;i<myarr.length;i++){
+	  // 		var first=myarr[i];
+	  // 		//遍历结果数组中是否存在了相同的字母
+	  // 		var judge=false;
+	  // 		for(var j=0;j<objnew.length;j++){
+	  // 			var second=objnew[j];
+	  // 			if(first.letter==second.letter){
+	  // 				second.arr.push(first);
+	  // 				judge=true;
+	  // 			}
+
+	  // 		}
+	  // 		if(judge==false){
+	  // 			var obj=new Object();
+	  // 			obj.letter=first.letter;
+	  // 			obj.arr=[first];
+	  // 			objnew.push(obj);
+	  // 		}
+	  		
+			
+	  // 	}
+	  // 	return objnew;
+	  
+
+
+	  // }
+	  function jisuan(myarr){
+	  	var newarr=[];
+	  	for(var i=0;i<myarr.length;i++){
+	  		var judge=true;
+	  		for(var j=0;j<newarr.length;j++){
+	  			if(myarr[i].letter==newarr[j].letter){
+	  				newarr[j].arr.push(myarr[i]);
+	  				judge=false;
+	  			}
+	  		}
+	  		if(judge){
+	  			var obj=new Object();
+	  			obj.letter=myarr[i].letter;
+	  			obj.arr=[myarr[i]];
+	  			newarr.push(obj);
+	  		}
+
+	  	}
+	  	return newarr;
+
+
+	  }
+	  var m=jisuan(arr);
+	  console.log(m);
+
+	  
+
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

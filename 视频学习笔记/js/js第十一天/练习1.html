@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>练习一</title>
+	<style>
+		*{
+			margin: 0;
+			padding:0;
+		}
+		#btn,#list{
+			display: block;
+			width: 200px;
+			margin: 20px auto 0;
+
+		}
+		#list{
+			list-style: none;
+		}
+		#list li{
+			margin-top:10px;
+		}
+
+
+	</style>
+</head>
+<body>
+	<input type="button" value="btn" id="btn">
+	<ul id="list">
+		
+	</ul>
+	<script type="text/javascript">
+	nav();
+	function nav()
+	{
+		var btn=document.getElementById('btn');
+		var list=document.getElementById('list');
+		var index=0;
+		init();
+		//时间绑定
+		function bind()
+		{
+			btn.onclick=function()
+			{
+				index++;
+				var li=document.createElement('li');//创造出一个li
+				li.innerHTML="我是"+index+"<a href='#'>删除</a>";//li里面的内容
+				list.appendChild(li);//把li添加到list里最后一个
+				var linkBtn=li.getElementsByTagName('a');//获取标签
+				linkBtn[0].onclick=function()
+				{
+					list.removeChild(li);
+				}
+
+			}
+		}
+		//初始化函数
+		function init()
+		{
+			bind();
+		}
+
+
+	}
+
+	</script>
+
+		
+</body>
+</html>

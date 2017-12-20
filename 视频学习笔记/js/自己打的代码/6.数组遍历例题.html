@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组遍历例题</title>
+</head>
+<body>
+<!-- 题目：分别给二维数组中的元素排序 -->
+	<script type="text/javascript">
+	var array=[[15,5,9,6,11],[2,6,8,9,16],[16,14,15]];
+	for(var i=0;i<array.length;i++)
+	{
+		for(var j=0;j<array[i].length;j++)
+		{
+			for(var k=0;k<array[i].length-1-j;k++)
+			{
+				var m=0;
+				if(array[i][k]>array[i][k+1])
+				{
+					m=array[i][k];
+					array[i][k]=array[i][k+1];
+					array[i][k+1]=m;
+				}
+			}
+		}
+	}
+	console.log(array);
+
+
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 100px;
+				height: 100px;
+				background: red;
+				text-align: center;
+				line-height: 100px;
+				display: inline-block;
+				margin-bottom: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div>2D</div>未变形
+		<div>2D</div>
+		<br>
+			<!--这些变化是以图片或者什么的中心旋转，加个transform-origin: left;就可以以图片左边为中心旋转了-->
+			rotate();自己定义角度
+		<div>2D</div>旋转60度
+		<div style="transform: rotateX(60deg);">2D</div>
+		<div style="transform: rotateY(60deg);">2D</div>
+		<div style="transform: rotateZ(60deg);">2D</div><br>
+		<div>2D</div>缩放
+		<div style="transform: scaleX(0.5);">2D</div>
+		<div style="transform: scaleY(2);">2D</div>
+		<div style="transform: scale(0.5);">2D</div><br>
+		<div>2D</div>平移
+		<div style="transform: translateX(10px);">2D</div>反反复复
+		<div style="transform: translateY(10px);">2D</div>点点滴滴
+		<div style="transform: translate(100px,100px);">2D</div>反反复复<br>
+		<div>2D</div>倾斜
+		<div style="transform: skewX(-45deg);">2D</div>
+		<div style="transform: skewY(-45deg);"><span style="transform: skewY(45deg); display: inline-block;">2D</span></div>
+		<div style="transform: skew(45deg);">2D</div>
+		
+	</body>
+</html>

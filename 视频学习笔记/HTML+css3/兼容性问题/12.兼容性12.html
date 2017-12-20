@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.box{
+				width: 201px;
+				height: 201px;
+				border: 1px solid #000;
+				position: relative;
+			}
+			span{
+				width: 30px;
+				height: 30px;
+				background: yellow;
+				position: absolute;
+				right: -1px;
+				bottom: -1px;
+			}
+			/*解决方法：把父级的改成200px
+			 在IE6下如果有绝对定位，他的父级的宽高是奇数的时候，子级元素的right和bottom的值会有1px的偏差
+			 注意：改变不了*/
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<span></span>
+		</div>
+	</body>
+</html>

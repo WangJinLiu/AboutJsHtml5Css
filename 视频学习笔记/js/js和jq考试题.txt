@@ -1,0 +1,105 @@
+1.jquery中常用动画函数有哪些 （5分，写出5个及以上满分，其他一个一分）
+show,hide,stop,finish,animate,slideUp,slideDown,fadeIn,
+fadeOut,delay,
+2.写出事件监听的兼容写法（10分，写错0分）
+3.写出：clientX、offsetX、offsetLeft、offsetWidth、innerWidth的区别（5分，一个一分）
+clientX:鼠标相对于浏览器界面的左边坐标
+offsetX：鼠标相对于当前标签的left坐标
+offsetLeft：元素相对于定位父级的左坐标
+offsetWidth:元素的宽度，包含边框,包含padding
+innerWidth：浏览器文本显示区域的宽度
+
+
+4.写出判断“1234567@gmail.com”是否是邮箱的正则表达式，如果不是，返回false；（10分，写错0分）
+function judge(str){
+	var reg = /^[\da-zA-Z][\w-]+@[\da-zA-Z]+\.[a-zA-Z]{2,4}$/ig;
+	if(reg.test(str) == false){
+		return false;
+	}
+	return reg.test(str);
+}
+5.写出取消事件冒泡和取消系统默认事件的方法（已知标签wrap和子标签first）（一个2.5分，写错一个扣2.5分）
+ 冒泡：first.onclick =function(ev){
+	var e = ev || window.event;
+	if(e.stopPropagation){
+		e.stopPropagation();
+	}else {
+		e.cancelBubble = true;
+	}
+}
+
+first.onclick = function(ev){
+	var e = ev || window.event;
+	e.preventDefault()
+	return false;
+}
+
+
+6.写出以下json：两个教室，每个教室中有1个讲师和3个学生，讲师和学生区分开，讲师和学生都有姓名，年龄，电话，性别四个属性（10分，写错0分）
+[
+	{	
+		“class”:”教室一”，
+		“teacher”:{“name”:”张三”,”tel”:”11”,”age”:”19”},
+		“stu”:[{“name”:”张三”,”tel”:”11”,”age”:”19”},
+			{“name”:”张三”,”tel”:”11”,”age”:”19”},
+			{“name”:”张三”,”tel”:”11”,”age”:”19”}
+			]
+	},
+]
+7.写出原生ajax创建的封装函数（10分，写错0分）
+function ajax(url,fn){
+	var a = new XMLHttpRequest();
+	a.open(“get”,url);
+	a.send();
+	a.onreadystatechange = function(){
+		if(this.status == 200 && this.readyState == 4) {
+			if(fn){
+				fn(this.responseText);
+			}
+		}
+	}
+
+}
+
+8.写出你对this的理解（5分，描述不清楚0分）
+       
+9.在jquery中如何添加标签（5分，写错0分）
+	var m = $(“<标签>”);
+	$(“父标签”).append(m);
+	或者
+	m.appendTo($(“父标签”))
+	或者:
+	m.insertBefore(同级标签)
+	m.insertAfter(同级标签)
+	
+
+10.对于标签而言，添加属性的两种方式都有哪些（直接写代码）（10分）
+	biaoqian.setAttribute(“属性名”,”值”)
+	biaoqian.属性名 = 值
+
+11.请写出获得计算后样式的兼容写法（10分）
+
+12.创建一个函数，实现鼠标移动封装（形参：标签，移动过程中的函数回调）（15分，写错0分）
+function move(obj,fn){
+	obj.onmousedown = function(ev){
+		var e = ev || window.event;
+		var curX = e.clientX;
+		var curY = e.clientY;
+		var offX = this.offsetLeft;
+		var offY = this.offsetTop;
+		document.onmousemove = function(ev){
+			var e = ev || window.event;
+			var endX = e.clientX - curX;
+			var endY = e.clientY - curY;
+			obj.style.left = endX + offX + "px";
+			obj.style.top = endY + offY + "px";
+
+			if(fn){
+				fn();
+			}
+		}
+		document.onmouseup = function(){
+			document.onmousemove = null;
+		}
+	}
+}

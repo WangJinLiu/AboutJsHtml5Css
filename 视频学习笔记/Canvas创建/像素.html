@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>像素</title>
+	<style>
+		#canvas{
+			background: pink;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="300" height="300"></canvas>
+	
+</body>
+<script>
+	var canvas=document.getElementById('canvas');
+	var content=canvas.getContext("2d");
+	var img=new Image();
+	img.src="./img/1.jpg";
+	img.onload=function(){
+		content.beginPath();
+		content.drawImage(img,0,0,canvas.width,canvas.height);
+		var data=content.getImageData(20,20,1,1);
+		console.log(data);
+		content.closePath();
+	}
+
+	//报错原因：图片存储在本地时，是默认没有域名的，用getImageData方法时，浏览器会判定为跨域而报错！
+	// 三、解决方法：1.把图片放置在服务器中，通过服务器返回给客户端，遵循同源策略； 2.用firefox浏览器打开；
+</script>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	#wrap{
+		width: 200px;
+		height: 200px;
+		background: red;
+	}
+
+
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		
+	</div>
+	<script type="text/javascript">
+	//火狐里没onmousewheel
+	// var wrap=document.getElementById('wrap');
+	//就火狐自己用datail
+
+	//火狐添加（和谷歌正好反着）(detail<0  滚轮向上，>0 滚轮向下)
+	console.log(wrap.onmousewheel);
+	wrap.addEventListener('DOMMouseScroll',function(obj){
+		var obj=obj||window.event;
+		console.log(obj);
+		if(obj.detail>0){
+			console.log('滚轮向下');
+
+		}else{
+			console.log('滚轮向上');
+		}
+
+	},false)
+
+
+	//总结
+	// Firefox使用DOMMouseScroll，其他的浏览器使用mousewheel。滚动事件触发时Firefox使用detail属性捕捉滚轮信息，其他的浏览器使用wheelDelta。Firefox可以使用addEventListener方法绑定DomMouseScroll事件。
+	// 添加监听的方式
+	// 现在的浏览器添加事件监听方法element.addEventListener(event, function, useCapture)   移除的方法：element.removeEventListener(event, function, useCapture)
+	// ie
+	// 添加：wrap.attachEvent(type, listener); 移除：wrap.detachEvent('onclick',m);
+
+
+
+
+	</script>
+</body>
+</html>

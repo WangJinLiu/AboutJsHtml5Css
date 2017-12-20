@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>下划线移动</title>
+	<style>
+	*{margin:0;padding:0;}
+	.nav{
+		position: relative;
+		width: 400px;
+		margin:50px auto;
+		}
+	.nav ul{
+		list-style: none;
+		position: absolute;
+		overflow: hidden;
+
+	}
+	.nav ul li{
+		float: left;
+	}
+	.nav ul li a{
+		display: inline-block;
+		width: 80px;
+		font-size: 16px;
+		color: black;
+		text-decoration: none;
+		text-align: center;
+	}
+	#slider{
+		position: absolute;
+		top:20px;
+		left: 0;
+		width: 80px;
+		height: 2px;
+		background-color: red;
+
+	}
+
+
+
+
+
+	</style>
+</head>
+<body>
+	<div class="nav">
+		<ul>
+			<li><a href="#">按钮一</a></li>
+			<li><a href="#">按钮二</a></li>
+			<li><a href="#">按钮三</a></li>
+			<li><a href="#">按钮四</a></li>
+			<li><a href="#">按钮五</a></li>
+		</ul>
+		<div id="slider"></div>
+	</div>
+	<script type="text/javascript">
+	nav();
+	function nav(){
+		var navList=document.getElementsByTagName('a');
+		console.log(navList);
+		var slider=document.getElementById('slider');
+		var activeIndex=0;//划过的a标签的索引
+		var navTimer;
+		init();
+		// selected();
+		//鼠标事件之后选中的项执行函数
+		function selected(index)
+		{
+				activeIndex=index;
+				// console.log(slider.offsetLeft);
+				//相对于第一个有相对定位的属性的父级的left的值，如果所有父级都没有相对定位，那么left值相对于body
+				//offsetleft与style.left的区别：前者获取到计算出的值，后者获取的是行间样式表里值
+
+				var start=slider.offsetLeft;
+
+				var end=activeIndex*slider.offsetWidth;
+				var change=end-start;
+				//chang是slider的位移
+				clearInterval(navTimer);
+				//end就是slider运动过后的left值，start代表获取当前slider的left值
+				navTimer=setInterval(function()
+				{
+					if(change<0)//<0就是网左走了(从右网左移动)
+					{
+						start-=20;
+						if(start<=end)
+						{
+							clearInterval(navTimer);
+							navTimer='none';
+						}
+					}
+					else
+					{
+						start+=20;
+						if(start>=end)
+						{
+							clearInterval(navTimer);
+						}
+					}
+					slider.style.left=start+'px';
+				},300)
+				// console.log(111);
+
+			}
+			//事件绑定
+			function bind()
+			{
+				for(var i=0;i<navList.length;i++)
+				{
+					(function(i)
+					{
+						navList[i].onmouseover=function()
+						{
+							selected(i);//a标签的索引
+						}
+						console.log(i);
+					})(i)
+
+
+				}
+			}
+			
+			//初始化
+			function init()
+			{
+				bind();
+			}
+
+
+		}
+		
+
+
+
+
+
+
+
+	</script>
+	<!-- 运动的核心思想：随时随地获取当前的left值 
+				如何给left赋值：获取到当前元素的实时left，进行相应加减乘除+-*/之后赋值给left
+				（而不是直接把最终的left赋值）-->
+	
+</body>
+</html>

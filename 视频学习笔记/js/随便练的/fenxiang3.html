@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- 碰撞检测 -->
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#wrap{
+			width: 50px;
+			height: 50px;
+			background: red;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+		#wrap1{
+			width: 50px;
+			height: 50px;
+			background: green;
+			position: absolute;
+			left: 0;
+			top:100px;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap"></div>
+	<div id="wrap1"></div>
+	<script>
+		var wrap=document.getElementById('wrap');
+		var wrap1=document.getElementById('wrap1');
+
+		function move(move){
+			move.onmousedown=function(e){
+				var e=e||window.event;
+				var mX=e.clientX;
+				var mY=e.clientY;
+				var nX=move.offsetLeft;
+				var nY=move.offsetTop;
+				document.onmousemove=function(e1){
+					var e1=e1||window.event;
+					move.style.left=e1.clientX-mX+nX+'px';
+					move.style.top=e1.clientY-mY+nY+'px';
+					var k=peng(wrap1,wrap);
+					if(k){
+						console.log('碰上啦');
+					}else{
+						console.log('没装上');
+					}
+
+				}
+				document.onmouseup=function(){
+					document.onmousemove='';
+				}
+
+
+
+			}
+		}
+		move(wrap);
+		move(wrap1);
+		//碰撞检测
+		function peng(a,b){
+			//假设a动，b不动
+			var xmin=b.offsetLeft-a.offsetWidth;
+			var xmax=b.offsetLeft+b.offsetWidth;
+			var ymin=b.offsetTop-a.offsetHeight;
+			var ymax=b.offsetTop+b.offsetHeight;
+			if(a.offsetLeft>=xmin&&a.offsetLeft<=xmax&&a.offsetTop>ymin&&a.offsetTop<=ymax){
+				return true;
+			}else{
+				return false;
+			}
+
+		}
+
+		
+
+
+	</script>
+	
+</body>
+</html>

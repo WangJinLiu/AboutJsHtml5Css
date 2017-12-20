@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!-- <div id="div1">
+		<div class="wrap"></div>
+		<div class="wrap"></div>
+	</div> -->
+	<img src="" alt="">
+	<div class="main" style="width:100px;height:100px;border:1px solid;"></div>
+
+
+	
+
+</body>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+	//天天给讲的
+	console.log(window);
+	$(".wrap")[0]==document.getElementByClassName('wrap')[0]
+	$(".main").click(function(){
+			$(".main").css("background","red");
+			$(".main").append($("<div class=nihao>"))
+	})
+	//老师讲的
+	//1.jQuery中如果有多个标签，那么这个jQuery对象调用函数的时候相当于所有标签都在调用
+	// var m=$("#div1");
+	// console.log(m);
+	// var r=$(".wrap");
+	// console.log(r);
+	// r.css({
+	// 	width:"100px",
+	// 	height:"100px",
+	// 	background:"red"
+	// })
+	//2.通过jQuery获得标签的方式,通过数组下标
+		// var m=$(".wrap");
+		// var a=m[0];
+		// console.log(a);//第一个标签
+
+	//3.创建标签的方式
+	// var m=$("<div class=nihao>");
+	// console.log(m);
+	// var n=$(".wrap")[0];
+	// $(n).append(m);
+	// $(".wrap").append(m);
+	// var m=$(".wrap",$("#div1"));
+	// console.log(m);
+
+	// $("<div></div>").appendTo("body");
+
+	// each原理
+	// var arr = document.querySelectorAll(".first");
+ //    arr.setInner = function (fn) {
+ //        for (var i = 0; i < this.length; i++) {
+ //            var m = this[i];
+ //            if(fn){
+ //                var r = fn.call(m,i);
+ //                if(r == true) {
+ //                    continue;
+ //                } else {
+ //                    break;
+ //                }
+ //            }
+ //        }
+ //    }
+ //    arr.setInner(function (i) {
+ //        console.log(this);
+ //        return true;
+ //    })
+
+
+
+	
+</script>
+</html>

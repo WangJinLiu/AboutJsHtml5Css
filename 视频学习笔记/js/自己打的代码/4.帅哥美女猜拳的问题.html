@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>meinvcaiquan</title>
+</head>
+<body>
+<span>美女</span><br>
+	<input type="text" id="inputleft"><input type="text" id="inputright"><br>
+
+	<span>帅哥</span><br>
+	<span>帅哥的手指数:</span>
+	<select name="" id="select1">
+		<option value="0">0</option>
+		<option value="5">5</option>
+		<option value="10">10</option>
+
+
+	</select>
+	<span>帅哥说的数:</span>
+	<select name="" id="select2">
+		<option value="0">0</option>
+		<option value="5">5</option>
+		<option value="10">10</option>
+		<option value="15">15</option>
+		<option value="20">20</option>
+	</select><br>
+	<input type="button" value="Come on!" id="but">
+	<script type="text/javascript">
+	var inputleft=document.getElementById('inputleft');
+	var inputright=document.getElementById('inputright');
+	var select1=document.getElementById('select1');
+	var select2=document.getElementById('select2');
+
+	var but=document.getElementById('but');
+	but.onclick=function()
+	{
+		
+		
+		var boyshouzhi=parseInt(select1.value);
+		var boysay=parseInt(select2.value);
+		//判断美女说的数一定要大于等于手指数（人工智能）
+		do
+		{
+			var girlshouzhi=parseInt(Math.random()*3)*5;
+			var girlsay=parseInt(Math.random()*5)*5;
+		}while(girlsay<girlshouzhi);
+		inputleft.value=girlshouzhi;
+		inputright.value=girlsay;
+		//判断条件
+		if(girlshouzhi+boyshouzhi==girlsay&&girlshouzhi+boyshouzhi!=boysay)
+		{
+			alert('美女赢了');
+		}
+		if(girlshouzhi+boyshouzhi!=girlsay&&girlshouzhi+boyshouzhi==boysay)
+		{
+			alert('帅哥赢了');
+		}
+		if(girlshouzhi+boyshouzhi==girlsay&&girlshouzhi+boyshouzhi==boysay)
+		{
+			alert('平局');
+		}
+		if(girlshouzhi+boyshouzhi!=girlsay&&girlshouzhi+boyshouzhi!=boysay)
+		{
+			alert('都输啦，再来一局吧');
+		}
+	}
+
+
+
+
+	</script>
+</body>
+</html>

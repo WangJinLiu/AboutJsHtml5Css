@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>复习</title>
+	<style>
+	.a{
+		width: 100px;
+	 	height: 100px;
+	 	background: red;
+	 	margin-bottom: 20px;
+	 	position: absolute;
+	 	left: 0;
+
+		}
+	 .a:nth-child(1){
+	 	
+	 	top:0;
+
+	 }
+	 .a:nth-child(2){
+	 	
+	 	top:100px;
+
+	 }
+
+
+
+
+	</style>
+</head>
+<body>
+	<div class="a">1</div>
+	<div class="a">2</div>
+	
+</body>
+<script type="text/javascript">
+	var as=document.getElementsByClassName('a');
+	console.log(as);
+	for(var i=0;i<as.length;i++)
+	{
+		as[i].index=i;
+		console.log(as[i]);
+		as[i].onclick=function()
+		{
+			alert(as[this.index].innerHTML);
+			//this点击谁就是谁比如as[0]点击了，这个this就是as[0]
+		}
+
+
+	// 	//另一种方法
+	// 	// as[i].onclick=function()
+	// 	// {
+			
+	// 	// 	alert(this.innerHTML);
+			
+	// 	// }
+
+	// }
+
+	// for(var i=0;i<as.length;i++)
+	// {
+	// 	as[i].onclick=function()
+	// 	{
+			
+	// 		var step=0;
+	// 		var m=this;
+	// 		//把this赋给变量m，这时候m就是一个（点击哪个div他就是哪个）timer这个定时器就可以用m这个变量了
+	// 		var timer=setInterval(function()
+	// 		{
+	// 			//单纯的setInterval中的this是指向window的
+	// 			step++;
+	// 			m.style.left=step+'px';
+	// 			if(step>=500)
+	// 			{
+	// 				clearInterval(timer);
+
+	// 			}
+
+
+	// 		},10)
+	// 	}
+
+	}
+
+
+
+
+
+
+</script>
+</html>

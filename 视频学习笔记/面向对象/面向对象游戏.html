@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>超级玛丽游戏</title>
+	<link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+	<!-- 先布局，然后先让人动 -->
+	<!-- 最外边的大盒子 -->
+	<div id="wrap">
+		<!-- 内容显示区域 -->
+		<div class="content">
+			<div class="hero">
+				
+			</div>
+		</div>
+		<!-- 马里奥走的路区域 -->
+		<div class="road"></div>
+	</div>
+	
+</body>
+<script src="./js/hero.js"></script>
+<script src="./js/index.js"></script>
+<script>
+	var myHero=new Hero({
+		selector:".hero",
+		moveFn:function(){
+			//每次移动调用该函数
+			// this.element
+			judgeBorder(this.element,document.querySelector(".content"));
+
+		}
+	});
+	pressKey();
+	function pressKey() {
+		window.onkeydown=function(ev){
+			var e=ev||window.event;
+			switch(e.keyCode){
+				// a键
+				case 65:
+					myHero.direction="left";
+					myHero.move();
+					break;
+				//d键 
+				case 68:
+					myHero.direction="right";
+					myHero.move();
+					break;
+				case 32:
+				// 向上跳
+					myHero.jump();
+					break;
+			}
+			return false;
+		}
+		window.onkeyup=function(e){
+			var ev=e||window.event;
+			switch(ev.keyCode){
+				case 65:
+				case 68:
+					myHero.stop();
+					break;
+				default:
+					break;		
+			}
+			
+		}
+	}
+	
+</script>
+</html>

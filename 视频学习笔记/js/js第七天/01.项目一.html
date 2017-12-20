@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>项目一</title>
+	<style>
+		
+		body,html{margin:0;padding:0;background:#fff;font-size:14px;font-family:Arial,Helvetica,'STHeiti','Microsoft YaHei','sans-serif'}
+		form,ul,li,p,h1,h2,h3,h4,h5,h6{margin:0;padding:0;}
+		img{border:0;}
+		ul,li{list-style-type:none;}
+		a{color:#00007F;text-decoration:none;}
+		a:hover{text-decoration:none;}
+
+		/*自定义样式*/
+		#wrap{
+			position: relative;
+			width: 400px;
+			height: 400px;
+			border: 1px solid;
+			margin:0 auto;
+		}
+		#time{
+			float: left;
+
+		}
+		#score{
+			float: right;
+		}
+		#main{
+			clear: both;
+			height: 400px;
+			line-height: 400px;
+			text-align: center;
+			font-size: 180px;
+		}
+		#tips{
+			text-align: center;
+			margin:10px 0;
+		}
+		#list{
+			width: 100%;
+		}
+		#list li{
+			float: left;
+			width: 20%;
+			font-size: 30px;
+			text-align: center;
+		}
+		
+
+
+
+
+
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div id="time">剩余时间：0</div>
+		<div id="score">完成：0</div>
+		<div id="main">红</div>
+		<div id="tips">根据上面的颜色选择下面的颜色</div>
+		<ul id="list">
+			<li>红</li>
+			<li>黄</li>
+			<li>蓝</li>
+			<li>绿</li>
+			<li>黑</li>
+			
+		</ul>
+		
+	</div>
+	<script type="text/javascript">
+	/*需要解决的问题：
+		1.处理倒计时
+		2.处理分数
+		3.处理大字文字及颜色随机
+		4.处理小字的点击事件
+		5.处理小字的文字和颜色随机
+		6.事件归零后，点击事件失效
+	需要用到的方法：
+		1.定时器
+		2.if分支语句
+		3.onclick
+		4.random
+		5.数组
+		6.alert
+		7.for循环
+		8.函数
+		9.innerHTML
+
+		步骤：1.写结构
+			 2.样式
+			 3.分析需求（js）*/
+
+		//使用数组承载文字和颜色
+		var fonts=["红","黄","蓝","绿","黑"];
+		var colors=["red","yellow","blue","green","black"];
+		var oMain=document.getElementById('main');
+		var oList=document.getElementById('list');
+		var oListchil=oList.getElementsByTagName('li');
+		var oTime=document.getElementById('time');
+		var oScore=document.getElementById('score');
+		var realText='';
+		createBigText();
+		createSmallText();
+		//处理大字
+		function createBigText()
+		{
+			var font=fonts[rand(0,fonts.length)];
+			//将随机得到的文字赋给赋给oMain
+			oMain.innerHTML=font;
+			//innerHTML代表标签里的具体内容
+			//大字的颜色
+			var cRand=rand(0,fonts.length);
+			var color=colors[cRand];
+			realText=fonts[cRand];
+			console.log(realText);
+			//将获取到的颜色赋值给大字
+			oMain.style.color=color;
+
+		}
+
+		//处理小字
+		function createSmallText()
+		{
+			//对文字进行重新排序
+			var nFonts=fonts.slice(0);//拷贝fonts里的
+			nFonts.sort(function()
+				{
+					return Math.random()-0.5;
+					//乱序
+				});
+
+			//对颜色进行重新排序
+			var nColors=colors.slice(0);//拷贝fonts里的
+			nColors.sort(function()
+				{
+					return Math.random()-0.5;
+					//乱序
+				});
+			// console.log(nColors);
+
+			for(var i=0;i<nFonts.length;i++)
+			{
+				var nFont=nFonts[i];
+				var nColor=nColors[i];
+				//将nFont的文字赋值给下标为i的li元素
+				oListchil[i].innerHTML=nFont;
+				oListchil[i].style.color=nColor;
+
+			}
+
+		}
+
+		//为小字添加点击事件
+		//定义一个分数的变量，用来记录点击正确的次数
+		var score=0;
+		var isClick=true;//点击时间的开关
+		var bool=true;//定时器的开关
+		for(var i=0;i<oListchil.length;i++)
+		{
+			oListchil[i].onclick=function()
+			{
+				// console.log(this.innerHTML);
+				bool=false;
+				if(isClick)
+				{
+					if(this.innerHTML==realText)
+					{
+						//条件成立
+						//加分
+						score++;
+						oScore.innerHTML="完成："+score;
+						createBigText();
+						createSmallText();
+					}
+				}
+
+			}
+		}
+		//倒计时
+		var time=10;//时间变量
+		var timer=setInterval(function()
+		{
+			if(!bool)
+			{
+				time--;
+				if(time==0)
+				{
+					clearInterval(timer);
+					isClick=false;
+					alert("总分是"+score);
+
+				}
+				oTime.innerHTML="剩余时间"+time;
+
+		
+			}
+		},1000)
+
+
+
+
+
+
+		//处理随机数(都得到的是min到max之间的随机数，不包括max)
+		function rand(min,max)
+		{
+			return parseInt(Math.random()*(max-min)+min);
+		}
+
+		console.log(rand(1,2));
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+		
+</body>
+</html>

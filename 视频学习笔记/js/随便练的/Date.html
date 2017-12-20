@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#wrap{
+			width: 500px;
+			height: 500px;
+			border: 1px solid;
+		}
+		#wrap div{
+			width: 50px;
+			height: 50px;
+			background: red;
+			margin-top: 10px;
+			float: left;
+			margin-left: 10px;
+		}
+
+
+
+
+	</style>
+</head>
+<body>
+<div id="wrap">
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</div>
+	<script>
+		// var now=new Date();
+		// console.log(now);
+		// var d1=new Date('2017 September 8');
+		// console.log(d1);
+		// var d2=new Date(2017,9,10,11,30);
+		// console.log(d2);
+		// var d3=new Date(1500000000);
+		// console.log(d3);
+		// var leftTime=d2.getTime()-now.getTime();
+		// // console.log(d2.getTime(),now.getTime());
+		// // var day=Math.floor(leftTime/(1000*60*60*24));
+		// // console.log(day);
+		// // var hour=Math.floor((leftTime-day*1000*60*60*24)/(1000*60*60*24));
+		// // console.log(hour);
+
+
+
+
+
+		// var day=new Date().getDay();
+		// console.log(day);
+		// switch(day){
+			
+		// 	case 5:alert('星期五');
+		// 			break;
+		// 	case 0:alert('星期日');
+		// 			break;
+		// 	case 1:alert('星期一');
+		// 			break;
+		// 	default:alert('都没有');
+		// }
+
+		var divs=document.querySelectorAll('#wrap div');
+		for(var i=0;i<divs.length;i++){
+			divs[i].index=i;
+			divs[i].onclick=function(){
+				console.log(this.index);
+				this.innerHTML=this.index;
+
+			}
+
+		}
+
+
+
+
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

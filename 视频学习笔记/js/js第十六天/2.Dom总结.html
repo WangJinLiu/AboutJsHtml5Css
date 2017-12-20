@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	//影响界面的-操作标签的
+	
+	1.父级.appendChild();
+	2.父级.removeChild();
+	3.父级.insertBefore();
+	4.父级.insertAfter();
+	5.document.createElement
+
+	//获得属性值：left top width height 的方式
+	//碰撞检测
+	标签.offsetLeft
+	标签.offsetTop
+	标签.offsetWidth
+	标签.offsetHeight
+
+	//浏览器的属性
+	1.document.documentElement.scrollTop; scrollLeft//（火狐）滚动条偏移量：向上走 负的 | 下 正的
+	2.document.body.scrollTop scrollLeft//谷歌
+	3.window.pageYOffset; pageXOffset //safari浏览器
+	//兼容写法 
+	4.document.documentElement.scrollTop||document.body.scrollTop||window.pageYOffset
+	5.//获得页面高度
+	document.documentElement.scrollHeight;//页面的实际高度
+	6.//页面的可视高度
+	document.documentElement.clientHeight;
+	//图片对象
+	1.var a=new Image();
+	a.onload=function()
+	{
+		console.log("图片加载成功以后由系统自己调用")
+	}
+	//添加属性
+	1.setAttribute()
+	2.getAttribute()
+	3.removeAttribute()
+	4.getComputedStyle和obj.currentStyle[cssName];
+	//节点操作
+	1.children//childNode
+	2.parentNode
+	3.insertAfter
+	4.insertBefore
+	5.firstChild
+	6.lastChild
+	7.nodeName
+	//标签的大小
+	1.clientHeight
+	2.clientWidth
+
+
+
+
+
+</script>
+</html>

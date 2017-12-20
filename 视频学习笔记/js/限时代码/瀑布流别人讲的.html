@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style>
+		*{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		#box{
+			width: 960px;
+			margin: 0 auto;
+		}
+		#box ul{
+			float: left;
+			width: 300px;
+			margin: 0 10px;
+		}
+		 #box ul li img{
+		 	width: 300px;
+		 	margin-bottom: 20px;
+
+		 }
+	</style>
+</head>
+<body>
+	<div id="box">
+		<ul></ul>
+		<ul></ul>
+		<ul></ul>
+		
+
+
+
+	</div>
+	<script type="text/javascript">
+	create();
+	function create(){
+		var oul=document.getElementsByTagName('ul');
+		for(var i=1;i<=18;i++){
+			var img=document.createElement('img');
+			img.src='img/'+i+'.jpg';
+			var oli=document.createElement('li');
+			oli.appendChild(img);
+			var min_index=checkHeight(oul);
+			oul[min_index].appendChild(oli);
+		}
+	}
+	
+	//获取最小的ul
+	function checkHeight(oul){
+		var height=100000;
+		var index=0;
+		for(var a=0;a<oul.length;a++){
+
+			var now_height=oul[a].offsetHeight;
+			if(now_height<height){
+				height=now_height;
+				index=a;
+			}
+
+		}
+		return index;
+
+	}
+	window.onscroll=function(){
+		var vH=document.documentElement.clientHeight;
+		//可视区的高度
+		var sH=document.documentElement.scrollTop||document.body.scrollTop;
+		//内容移动的高度
+		var neirong=document.documentElement.offsetHeight;
+		if(sH>neirong-vH-200){
+			create();
+		}
+	}
+
+
+
+
+	</script>
+	
+</body>
+</html>

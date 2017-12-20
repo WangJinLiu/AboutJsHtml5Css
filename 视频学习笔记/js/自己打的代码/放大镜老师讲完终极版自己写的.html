@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>放大镜</title>
+	<style>
+		.small{
+			width: 600px;
+			height: 600px;
+			border:1px solid;
+			background: url(img/图片1.jpg);
+			background-size: 100% 100%;
+			float: left;
+			position: relative;
+
+		}
+		.big{
+			width: 600px;
+			height: 600px;
+			border:1px solid;
+			display: none;
+			float: left;
+			background: url(img/图片1.jpg) no-repeat;
+			background-size: 1800px 1800px;
+
+
+		}
+		.move{
+			width: 200px;
+			height: 200px;
+			border:1px solid;
+			background: white;
+			opacity: 0.5;
+			display: none;
+			position: absolute;
+			left: 0;
+			top:0;
+		}
+		#wrap{
+			overflow: hidden;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div class="small">
+			<div class="move"></div>
+			
+		</div>
+		<div class="big">
+			
+		</div>
+	</div>
+
+	
+</body>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+	$(".small").mouseover(function(){
+		$(".move").css({display:"block"})
+		$(".big").css({display:"block"})
+		$(this).mousemove(function(ev){
+			var x=ev.clientX-$(".move").width()/2-$(this).offset().left+$(".move").position().left;
+			var y=ev.clientY-$(".move").height()/2-$(this).offset().top+$(".move").position().toph;;d;
+			if(x<0){
+				x=0;
+			}
+			if(y<0){
+				y=0;
+			}
+			if(x>$(".small").width()-$(".move").width()){
+				x=$(".small").width()-$(".move").width();
+			}
+			if(y>$(".small").height()-$(".move").height()){
+				y=$(".small").height()-$(".move").height();
+			}
+			$(".move").css({
+				left:x,
+				top:y
+			})
+			var scole=$(".big").width()/$(".move").width();
+			var X=-scole*x;
+			var Y=-scole*y;
+			console.log(scole);
+			$(".big").css({
+				backgroundPosition:X+"px "+Y+"px"
+			})
+		})
+
+	})
+	$('.small').mouseout(function(){
+		$(".move").css({display:"none"});
+		$(".big").css({display:"none"})
+	})
+	
+</script>
+</html>

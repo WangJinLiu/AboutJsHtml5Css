@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>百度注册页面</title>
+	<style>
+	*{margin:0;padding:0;}
+		.a{
+			width: 350px;
+			height: 40px;
+			margin-top: 20px;
+		}
+		.span0{
+			
+			margin-left: 50px;
+		}
+		.span1{
+			font-size:10px;
+
+		}
+		#Btn{
+			width: 350px;
+			color: white;
+			background:#2894ff;
+			margin-left: 50px;
+			margin-top: 20px;
+			height: 50px;
+		}
+		#judgetwo{
+			font-size:10px;
+			/*display: none;*/
+		}
+		#judgeone{
+			font-size:10px;
+			/*opacity: 1;*/
+		}
+		#judgefour{
+			font-size:10px;
+			/*display: none;*/
+			vertical-align: top;
+			position: absolute;
+			left: 420px;
+			top:240px;
+		}
+		#box{
+			margin-left: 300px;
+			width:1000px;
+			height: 500px;
+			border: 1px solid;
+			position: relative;
+			margin-top: 100px;
+		}
+		#p1{
+			display: inline;		
+		}
+
+
+
+
+
+	</style>
+</head>
+<body>
+<div id="box">
+	<span>用户名	</span><input type="text" placeholder='请设置用户名' class="a" id="inputname"><p id="p1"><span id="judgeone"></span></p><br>
+	<span>手机号	</span><input type="text" placeholder='可用于登录和找回密码' class="a" id="inputnumber"><span id="judgetwo"></span><br>
+	<span>验证码	</span><input type="text" placeholder='请输入验证码' class="a" id="inputcheck"><div id="judgethree"></div><br>
+	<span>密码&nbsp;&nbsp;&nbsp;&nbsp;</span><input type="password" placeholder='请设置登录密码' class="a" id="inputpassword"><div id="judgefour"></div><br>
+	<input type="checkbox" class="span0" id="read"><span class="span1">阅读并接受《百度用户协议》及《百度隐私权保护声明》</span><span id="judgefive"></span><br>
+	<input type="button" value="注册" id="Btn">
+</body>
+<script type="text/javascript">
+	var inputname=document.getElementById('inputname');
+	var judgeone=document.getElementById('judgeone');
+	var inputnumber=document.getElementById('inputnumber');
+	var judgetwo=document.getElementById('judgetwo');
+	var inputpassword=document.getElementById('inputpassword');
+	var judgefour=document.getElementById('judgefour');
+	var judgefive=document.getElementById('judgefive');
+	var p1=document.getElementById('p1');
+	var Sp=p1.getElementsByTagName('span');
+	var inputcheck=document.getElementById('inputcheck');
+	var Btn=document.getElementById('Btn');
+	var read=document.getElementById('read');
+	// inputname.focus();
+	// click(inputname,judgeone);
+	// click(inputnumber,judgetwo);
+	// click(inputpassword,judgefour);
+
+	
+	inputname.onfocus=function(){
+		judgeone.style.color='black';
+		judgeone.innerHTML='设置后不可更改，中英文均可，最长14个英文或7个汉字';
+		
+	}
+	// inputname.onblur=function(){
+
+	// 	judgeone.innerHTML='';
+	// }
+	inputname.onchange=function(a){
+		var m=/^[\u4e00-\u9fa5]{1,7}$|^[\A-Za-z]{1,14}$/; 
+		if(!m.test(inputname.value)){
+			judgeone.style.color='red';
+			judgeone.innerHTML='❌用户名仅支持中英文、数字和下划线,且不能为纯数字';
+			// inputname.focus();
+		}else{
+			judgeone.innerHTML='✅';
+			// inputname.blur();
+			// inputnumber.focus();
+		}
+	}
+	inputnumber.onfocus=function(){
+		judgetwo.style.color='black';
+		judgetwo.innerHTML='请输入中国大陆手机号，其他用户不可见';
+		
+	}
+	inputnumber.oninput=function(){
+		if(inputnumber.value.length>11){
+			this.value = this.value.substring(0,this.value.length - 1);
+		}
+		
+	}
+	inputnumber.onchange=function(){
+		var reg = /^1[34578]\d{9}$/; //验证规则
+		if(!reg.test(inputnumber.value)){
+			judgetwo.style.color='red';
+			judgetwo.innerHTML='❌手机号码格式不正确';
+		}
+		else{
+			judgetwo.innerHTML='✅';
+			inputcheck.focus();
+		}
+	}
+	inputpassword.onfocus=function(){
+		judgefour.style.color='black';
+		judgefour.innerHTML='。长度为6~14个字符<br>。支持数字,大小写字母和标点符号<br>。不允许有空格';
+		
+		
+	}
+	inputpassword.oninput=function(){
+		var reg=/^[\\p{Punct}a-zA-Z0-9]{6,14}$/;
+		if(!reg.test(inputpassword.value)){
+			judgefour.innerHTML='❌请输入';
+
+		}
+		else{
+			judgefour.innerHTML='✅';
+		}
+
+
+	}
+	Btn.onclick=function(){
+		if(judgeone.innerHTML=='✅'&&judgetwo.innerHTML=='✅'&&judgefour.innerHTML=='✅'&&inputcheck.value!=''&&read.checked==true){
+			alert('登录成功');
+		}
+
+	}
+
+
+
+
+
+
+
+	
+
+
+
+</script>
+</html>

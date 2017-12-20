@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			ul{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				width: 300px;
+			}
+			li{
+				list-style: none;
+				height: 30px;
+				border: 1px solid #000000;
+				/*IE6，7下，会有间隙，需要添加浮动*/
+				float: left;
+			}
+			a{
+				width: 100px;
+				height: 30px;
+				background: red;
+				/*浮起来了，就不受控制了，就可以设置宽高了*/
+				float: left;
+			}
+			span{
+				width: 100px;
+				height: 30px;
+				background: blue;
+				float: right;
+			}
+			
+		</style>
+		<!--在IE6，7下。li本身没有浮动，li里面的内容有浮动，li下会产生间隙
+			解决方法1:给li添加浮动
+			解决方法2：给li添加vertical-align：top；
+		-->
+	</head>
+	<body>
+		<ul>
+			<li>
+				<a href=""></a>
+				<span></span>
+			</li>
+			<li>
+				<a href=""></a>
+				<span></span>
+			</li>
+			<li>
+				<a href=""></a>
+				<span></span>
+			</li>
+			<li>
+				<a href=""></a>
+				<span></span>
+			</li>
+			
+			
+		</ul>
+	</body>
+</html>

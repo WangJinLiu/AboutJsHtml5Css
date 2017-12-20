@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>svg使用</title>
+</head>
+<body>
+	<div id="wrap">
+		<!-- <embed src="circle.svg" type="image/svg+xml" /> -->
+	</div>
+	<!-- 画折线图，圆饼图等 -->
+	
+	<script>
+		var wrap = document.querySelector("#wrap");
+	    var svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+	　　 svg.setAttribute('width','1000');
+	　　 svg.setAttribute('height','1000');
+	　　 wrap.appendChild(svg);
+	    var c = document.createElementNS('http://www.w3.org/2000/svg','circle');
+	    c.setAttribute("cx","100");
+	    c.setAttribute("cy","50");
+	    c.setAttribute("r",40);
+	    c.setAttribute("stroke","black");
+	    c.setAttribute("stroke-width","2");
+	    c.setAttribute("fill","red");
+	    svg.appendChild(c);
+
+
+	</script>
+	
+</body>
+</html>	

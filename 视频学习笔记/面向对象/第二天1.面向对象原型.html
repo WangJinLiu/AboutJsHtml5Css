@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>面向对象原型</title>
+</head>
+<body>
+	<script>
+		//原型对象
+		// 所有对象里面都包含一个_proto_对象，我们称之为原型对象
+		//创建对象第三种
+		// var obj=new Object();
+
+		// function Food(){
+		// 	this.color='ndfnfjks';
+		// 	this.kind='18';		
+		// }
+		// var p=new Food();
+		// console.log(p);
+		// constructor 构造函数，构造器
+		// _proto_里面的属性可以直接通过对象调用
+
+
+		//2. 原型的来历
+		function Car(){
+			this.wheel='圆形';
+		}
+		// prototype称为原型（一般放函数）(其实就是创建_proto_的)
+		// 特点：所有的构造函数都有一个默认的属性，prototype，而prototype里面所写的内容都会在_proto_原型对象中存在（可以直接使用原型里的属性，但不要修改）
+		Car.prototype={
+			bb:'123456'
+		}
+		var p2=new Car();
+		console.log(p2);
+		console.log(p2.bb);
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

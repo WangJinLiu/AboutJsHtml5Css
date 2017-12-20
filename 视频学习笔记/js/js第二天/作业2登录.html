@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>模拟登陆</title>
+
+</head>
+<body>
+	输入账号：<input type="text" id="tex_0"><br>
+	输入密码：<input type="text" id="tex_01" ><br>
+	<input type="button" value="登录" id="but_0">
+	<script>
+		
+		var but_1=document.getElementById('but_0');
+		but_1.onclick=function(){
+
+			var account=document.getElementById('tex_0').value;
+			var password=document.getElementById('tex_01').value;
+			if(account=='wangjinliu'&&password=='123456'){
+				document.write('<div style="width:100px;height:100px;background:red;">登录成功</div>');
+			}
+			else if(account=='wangjinliu'&&password!='123456'){
+				var m='密码错误'	;
+				document.getElementById('tex_01').value=m;		}
+			else if(account!='wangjinliu'&&password=='123456'){
+				var n='用户名错误';
+				document.getElementById('tex_0').value=n;
+			}
+			else if(account!='wangjinliu'&&password!='123456'){
+				var m='密码错误'	;
+				document.getElementById('tex_01').value=m;	
+				var n='用户名错误';
+				document.getElementById('tex_0').value=n;
+				
+			}
+		}
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

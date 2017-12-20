@@ -1,0 +1,64 @@
+[
+	{
+		"title":"官方活动",
+	 	"date":[{"img":"1.jpg","state":1,"title":"新战役退出"},
+				 {"img":"2.jpg","state":2,"title":"神秘商店的夏夜馈赠"},
+				 {"img":"3.jpg","state":2,"title":"TI7神秘商店开张"},
+				 {"img":"4.jpg","state":1,"title":"破泞之战退出"}]
+	},
+	{
+		"title":"赛事活动",
+	 	"date":[{"img":"1.jpg","title":"2017国际邀请赛"},
+		 		 {"img":"2.jpg","title":"国际赛预选"},
+		 		 {"img":"3.jpg","title":"国际赛预选报名"},
+		 		 {"img":"4.jpg","title":"国际赛预选观战"}]
+	},
+	{
+		"title":"推广活动",
+	 	"date":[{"img":"1.jpg","title":"贴吧电竞"},
+		 		 {"img":"2.jpg","title":"联想拯救者"},
+		 		 {"img":"3.jpg","title":"京东游戏"},
+		 		 {"img":"4.jpg","title":"维他可可"}]
+	}
+]
+// 轮播图的
+[
+	{"img":"1.jpg"},
+	{"img":"2.jpg"},
+	{"img":"3.jpg"}
+
+]
+
+
+[
+	{"title":"首页","english":"home"},
+	{"title":"资讯","english":"news"},
+	{"title":"赛事","english":"match"},
+	{"title":"互动","english":"interaction"},
+	{"title":"资料","english":"data"},
+	{"title":"服务","english":"search"},
+	{"title":"下载","english":"down"}
+]
+//通讯录
+[
+	{"name":"陈红","number":"12588498498","sex":"男"},
+	{"name":"陈红1","number":"1258800000","sex":"男"},
+	{"name":"陈红2","number":"12580000498","sex":"男"},
+	{"name":"陈红3","number":"120080098498","sex":"男"}
+]
+
+[
+	{"title":"2017年国际邀请赛","time":"2014-06-18"},
+	{"title":"2017年十大经典战役","time":"2017-06-18"},
+	{"title":"20171000万美金","time":"2019-06-18"},
+	{"title":"冠军的心","time":"2010-06-18"},
+	{"title":"群星闪耀","time":"2011-06-18"},
+	{"title":"淘汰淘汰","time":"2016-06-18"},
+	{"title":"自古名将如美人","time":"2020-06-18"}
+
+
+
+]
+
+
+

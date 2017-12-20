@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ainimation</title>
+	<style>
+		.move{
+			width: 50px;
+			height: 50px;
+			background: red;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="but">
+		我是按钮
+	</div>
+	<div class="move">
+		
+	</div>
+	
+</body>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+	//animate的应用
+	$(".but").on("click",function(){
+		mmm();
+		function mmm(){
+			$(".move").css({
+				left:0
+			})
+			$(".move").animate({
+				left:200
+			},3000,"linear",function(){
+				//requestAnimationFrame(callback);相当于一个setTimeout,但是不用自己设置间隔时间，默认60帧每秒
+				window.requestAnimationFrame(mmm);
+			})	
+		}
+		
+	})
+</script>
+</html>

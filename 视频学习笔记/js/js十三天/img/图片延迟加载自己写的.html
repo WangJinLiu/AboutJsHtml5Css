@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片延迟加载</title>
+	<style>
+	*{margin:0;padding:0;}
+	ul{
+		list-style: none;
+		width: 500px;
+		margin: 0 auto;
+		border: 1px solid red;
+		/*background-color: blue;*/
+	}
+	ul li{
+		position: relative;
+		width: 100%;
+		height: 1000px;
+		border: 1px solid green;
+	}
+	ul li img{
+		position: absolute;
+		bottom: 0;
+		width: 500px;
+		height: 500px;
+		border: 1px solid;
+
+	}
+</style>
+</head>
+<body>
+	<ul>
+	
+		<li><img src="img/img01(1).jpg" alt=""></li>
+		<!-- 当是真实写页面时这个src不写东西 -->
+		<li><img src="img/img02(1).jpg" alt=""></li>
+		<li><img src="img/img03(1).jpg" alt=""></li>
+		<li><img src="img/img04(1).jpg" alt=""></li>
+	</ul>
+	
+</body>
+</html>

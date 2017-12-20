@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>mac时钟</title>
+	<style>
+	*{margin:0;padding:0;}
+		.wrap{
+			position: relative;
+			width: 242px;
+			height: 242px;
+			margin:20px auto;
+			border-radius: 50%;
+			background-image: -webkit-linear-gradient(top,#d3e8ef 0px,#a3adb0 50px,#767674 100%);
+
+		}
+		.clock{
+			position: absolute;
+			top:11px;
+			left:11px;
+			width: 220px;
+			height: 220px;
+			border-radius: 50%;
+			background: #fff;
+			box-shadow: inset 0px 5px 10px #a3a9ad;
+		}
+		#number{
+			position: relative;
+			width: 100%;
+			height: 100%;
+
+		}
+		#number div{
+			position: absolute;
+			top:100px;
+			left:5px ;
+			width: 210px;
+			height: 22px;
+			font-size: 20px;
+			text-align: center;
+			line-height: 22px;
+		}
+		#number span{
+			display: block;
+			width: 22px;
+			height: 22px;
+		}
+		#hour{
+			bottom: 110px;
+			width: 6px;
+			height: 70px;
+			background: black;
+			opacity: 0.6;
+
+		}
+		.shot{
+			position: absolute;
+			left: 110px;
+			transform-origin:50% bottom;
+		}
+		#minute{
+			bottom: 110px;
+			width: 4px;
+			height: 100px;
+			background: purple;
+			opacity: 0.6;
+		}
+		#second{
+			bottom: 110px;
+			width: 2px;
+			height: 100px;
+			background: red;
+			opacity: 0.6;
+
+		}
+
+
+
+
+
+
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="clock">
+			<div id="number">
+				<div><span>9</span></div>
+				<div><span>10</span></div>
+				<div><span>11</span></div>
+				<div><span>12</span></div>
+				<div><span>1</span></div>
+				<div><span>2</span></div>
+				<div><span>3</span></div>
+				<div><span>4</span></div>
+				<div><span>5</span></div>
+				<div><span>6</span></div>
+				<div><span>7</span></div>
+				<div><span>8</span></div>
+			</div>
+			<div id="hour" class="shot"></div>
+			<div id="minute" class="shot"></div>
+			<div id="second" class="shot"></div>
+		</div>
+		
+		
+	</div>
+	<script type="text/javascript">
+	clock();
+	function clock(){
+		
+			var hour=document.getElementById('hour');
+			var minute=document.getElementById('minute');
+			var second=document.getElementById('second');
+			var timer=null;
+			init();
+			time();
+
+
+
+			//定时调用
+			function time()
+			{
+				timer=setInterval(function()
+				{
+					dateFn();
+
+				},30)
+				
+			}
+			//初始化表盘数字定位
+			function init()
+			{
+				var number=document.getElementById('number');
+				var shot=number.getElementsByTagName('span');
+				var shotBd=number.getElementsByTagName('div');
+				for(var i=0;i<shotBd.length;i++)
+				{
+					var rot=30*i;
+					//rot代表每一个数字的角度
+					shotBd[i].style.transform="rotate("+rot+"deg)";
+					shot[i].style.transform="rotate("+(-rot)+"deg)"
+				}
+			
+			}
+
+			//获取时间的函数
+
+			function dateFn()
+			{
+				var nowDate=new Date();
+					nowhour=nowDate.getHours();
+					nowMin=nowDate.getMinutes();
+					nowSec=nowDate.getSeconds();
+					second.style.transform="rotate("+nowSec*6+"deg)";
+					//每秒倾斜6度
+					var secDeg=nowSec/60*6;//秒除以60等于分钟数
+					minute.style.transform="rotate("+(nowMin*6+secDeg)+"deg)";
+					var minDeg=nowMin/60*30;
+					hour.style.transform="rotate("+(nowhour*30+minDeg)+"deg)";//时针每小时30度
+
+					
+
+			}
+		
+
+		}
+
+
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

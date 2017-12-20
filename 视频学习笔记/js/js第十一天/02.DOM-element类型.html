@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DOM-element类型</title>
+	<!-- 元素的属性：id等等 -->
+</head>
+<body>
+	<p id="page" index="2">
+		<span id="icon"></span>
+		<i id="font" title="aa">bb</i>
+		<img src="" alt="" id="img0">
+		
+	</p>
+	
+</body>
+<script type="text/javascript">
+	var page=document.getElementById('page');
+	var icon=document.getElementById('icon');
+	var font=document.getElementById('font');
+	var img0=document.getElementById('img0');
+	img0.src='img/01.jpg';
+	var obj={id:'theid'};
+	console.log(obj.id);
+	//id：获取和设置元素id
+	console.log(page.id);
+	page.id="page02";
+	console.log(page.id);
+	//title：
+	console.log(font.title);
+	font.title="cc";
+	//class
+	font.className = 'nihao';
+	//getAttribute
+	console.log(page.getAttribute("id"));//page02
+	console.log(page.getAttribute("index"));
+
+	//setAttribute  设置新的属性,和属性名 第一个参数属性名，二参：属性值
+	page.setAttribute("the","the00");//不能用page02得名，必须先获取
+
+	//removeAttribute  移动属性名
+	page.removeAttribute("the");
+
+	//createElement	创造元素
+	var em=document.createElement("div");
+	page.appendChild(em);
+
+
+
+
+
+
+	
+
+
+
+
+</script>
+</html>

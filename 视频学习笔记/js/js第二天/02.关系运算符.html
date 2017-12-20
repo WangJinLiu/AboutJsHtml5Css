@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>关系运算符</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var rel1=5>3;
+		console.log(rel1);
+		var rel2=5>7;
+		console.log(rel2);
+		var rel3=5==5;
+		console.log(rel3);
+		//==判断等号两端的值是否相等（优先级：先== 后= （=的先右后左））
+		var rel7=5!=4;
+		console.log(rel7);//true
+		var rel9=8>=8;
+		console.log(rel9);//true(>=之间符合一个即为真)
+		var rel_el=7===7;
+		console.log(rel_el);//true
+
+		var rel_e2=5==='5';//false===除了判断==还要判断类型(两个条件都要满足 )
+		console.log(rel_e2);
+
+		var rel_n1=5!='5';
+		console.log(rel_n1);//false
+		var rel_n2=5!=='5';//true
+		console.log(rel_n2);//比较符号左边和右边的值是否不相等，并且比较类型是否不相等，如果都相等返回false，否则返回true
+		/*关系运算符：> < == >= <= != === !==
+		  比较出来的值是true或false
+		  >:比较符号左边的值是否大于右边的值，大于返回true，小于返回false
+		  ==：比较符号左右两边的值是否相等，如果相等返回true，不相等返回false
+		  >=:比较符号左边的值是否大于右边的值，或者是否等于右边的值，其中有一个即为true，反之为false
+		  ！=：比较符号左边和右边的值是否不相等，若不相等，返回true，反之false
+		  === ：比较符号左边和右边的值是否相等，并且比较类型是否相等，如果都相等返回true，反之返回false
+		  ！==：比较符号左边和右边的值是否不相等，并且比较类型是否不相等，如果都相等返回false，否则返回true(=== 和 !== 只有在相同类型下,才会比较其值。)*/
+
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

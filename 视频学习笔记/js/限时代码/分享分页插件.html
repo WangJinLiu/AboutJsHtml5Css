@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>=分页插件</title>
+	<link rel="stylesheet" href="page.css">
+</head>
+<body>
+	<div id="wrap"></div>
+	<ul class="page" id="pageBtn"></ul>
+</body>
+<script src="jquery.min.js"></script>
+<script src="page.js"></script>
+<script>
+	var str = '[{"name":"第1条数据"},{"name":"第2条数据"},{"name":"第3条数据"},{"name":"第4条数据"},{"name":"第5条数据"},{"name":"第6条数据"},{"name":"第7条数据"},{"name":"第8条数据"},{"name":"第9条数据"},{"name":"第10条数据"}]';
+	var str=JSON.parse(str);
+	console.log(str);
+	var options = {
+		"id":"pageBtn",//放按钮的
+		"data":str,//数据
+		"maxshowpageitem":3,//最多显示的页码个数
+		"pagelistcount":4,//每一页数据的个数
+		"callBack":function(str){
+			$("#wrap").html("");
+			var cont = '';
+			for(var i=0;i<str.length;i++){
+				cont +="<div>"+str[i].name+"</div>";
+
+			}
+			$("#wrap").append(cont);
+
+		}
+	}
+	page.init(str.length,1,options);//数据长度，当前页
+
+</script>
+
+</html>

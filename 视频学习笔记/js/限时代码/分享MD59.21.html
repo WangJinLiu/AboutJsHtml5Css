@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>分享MD5</title>
+</head>
+<body>
+	<form action="">
+		姓名：<input type="text" id="name"><br>
+		密码：<input type="password" id="password"><br>
+		<input type="button" value="按钮" id="button"><br>
+		加密后：<input type="text" id="result">
+	</form>
+	
+</body>
+<script src="md5.js"></script>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script>
+	// MD5验证
+	var name=document.getElementById('name');
+	var password=document.getElementById('password');
+	var button=document.getElementById('button');
+	var result=document.getElementById('result');
+	button.onclick=function(){
+		var a=hex_md5(password.value);//调用方法
+		password.value=a;
+		result.value=a;
+	}
+	//长度32位
+
+
+</script>
+</html>

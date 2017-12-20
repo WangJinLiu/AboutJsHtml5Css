@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>变div</title>
+<style>
+	#div1{border: 1px solid;background: blue;width: 100px;height: 100px;padding: 10px;}
+</style>
+</head>
+<body>
+	<div id="div1"></div>
+	<span id="span1">background:</span>
+	<input type="text" id="background1"><br>
+	<span id="span1">width:</span>
+	<input type="text" id="width" value=""><br>
+	<span id="span1">height:</span>
+	<input type="text" id="height" value=""><br>
+	<span id="span1">padding:</span>
+	<input type="text" id="padding" value=""><br>
+	<span id="span1">border:</span>
+	<input type="text" id="border" value=""><br>
+	<button id="button">确定</button>
+</body>
+<script>
+	var btn=document.getElementById('button');
+	btn.onclick=function()
+	{
+		var div1=document.getElementById('div1');
+		var backgroundv=document.getElementById('background1').value;
+		var widthv=document.getElementById('width').value;
+		var heightv=document.getElementById('height').value;
+		var paddingv=document.getElementById('padding').value;
+		var borderv=document.getElementById('border').value;
+
+		div1.style.background=backgroundv;
+		div1.style.width=widthv+'px';
+		div1.style.height=heightv+'px';
+		div1.style.padding=paddingv+'px';
+		div1.style.border=borderv+'px';
+	}
+</script>
+</html>

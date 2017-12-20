@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			/*紧邻选择器*/
+			div+p{
+				color: red;
+			}
+			/*属性选择器*/
+			a[target=_blank]{
+				background: red;
+			}
+			a[target]{
+			color:yellow;}
+			p[name]{
+				color: green;
+			}
+			/*伪类选择器*/
+			h3::before{
+				content:url(img/2_15.png);
+
+			}
+			h3::after{
+				content:url(img/2_15.png);
+				background: red;
+
+			}
+			/*k可以用伪类来清除浮动*/
+			h3::after{
+				content: "";
+				display: block;
+				height: 0;
+				clear: both;
+			}
+			/*同一父级下的相同标签，重点记忆2n-1代表偶数个*/
+			.div1 p:nth-child(2n-1){
+				color: red;
+			}
+			/*判断input标签是不是启用状态(通过标签状态)*/
+			input:disabled{height: 100px;}
+			input:enabled{background: yellow;}
+			
+		</style>
+	</head>
+	<body>
+		<input type="text" name="" id="" value="" />
+		<input type="text" name="" id="" value="" disabled="disabled"/>
+		<!--disabled 禁用-->
+		<div>this is div</div>
+		<p name="p">this is p1</p>
+		<span>this is span</span>
+		<p>this is p2</p>
+		<a href="http://www.baidu.com" target="_blank">baidu</a>
+		<a href="http://www.baidu.com" target="_self">baidu</a>
+		<!--target：打开方式 _blank:新建窗口打开
+							_self:在原页面打开
+		-->
+		<h3>我是一个块标签</h3>
+		<div class="div1">
+			<!--p{THis is p$}*5-->
+			<p>THis is p1</p>
+			<p>THis is p2</p>
+			<p>THis is p3</p>
+			<p>THis is p4</p>
+			<p>THis is p5</p>
+		</div>
+		
+	</body>
+</html>

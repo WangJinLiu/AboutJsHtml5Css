@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>绘制文字</title>
+	<style>
+		#canvas{
+			background-color: grey;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="500" height="500"></canvas>
+</body>
+<script>
+	var canvas=document.getElementById('canvas');
+	var content=canvas.getContext("2d");
+	content.beginPath();
+	//颜色设置
+	content.strokeStyle='red';
+	//字体大小(第一个属性字体大小  二字体类型)
+	content.font='100px STKaiti';
+	content.strokeText("内容",200,200);//在最后写,内容的坐标
+	content.closePath();
+	
+</script>
+</html>

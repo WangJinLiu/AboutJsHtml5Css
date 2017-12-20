@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>获得计算后样式</title>
+	<style>
+	#div{
+		/*float: left;*/
+		width: 500px;
+		height: 100px;
+		background: red;
+		position: absolute;
+		left: 10px;
+		top: 100px;
+		margin-top: 20px;
+		border: 1px solid;
+
+
+	}
+
+
+	</style>
+</head>
+<body>
+	<div id="div"></div>
+	<script type="text/javascript">
+	// float和定位不能同时存在（他们会冲突）
+		var oDiv=document.getElementById('div');
+		var o=getComputedStyle(oDiv,null);
+		// console.log(o);
+		// var f=o.float;
+		// console.log(f);
+
+		var w=o.width;
+		console.log(w);
+
+		var p=o.position;
+		console.log(p);
+
+		var lef=o.left;
+		console.log(lef);
+
+		var t=o.top;
+		console.log(t);
+
+		var m=o.marginTop;
+		console.log(m);
+
+		var b=o.background;
+		console.log(b);
+		// 上边这种方法一定要分着写，样式名用驼峰
+
+		// var f1=getComputedStyle(oDiv,null).getPropertyValue('float');
+		// console.log(f1);
+		var p1=getComputedStyle(oDiv,null).getPropertyValue('position');
+		console.log(p1);//absolute
+		var lef1=getComputedStyle(oDiv,null).getPropertyValue('left');
+		console.log(lef1);
+		var bord=getComputedStyle(oDiv,null).getPropertyValue('border');
+		console.log(bord);
+		var ma=getComputedStyle(oDiv,null).getPropertyValue('margin-top');
+		console.log(ma);
+
+		//ie专属
+		// var m=oDiv.currentStyle.样式名
+		//获取计算后的非行间样式的封装函数
+		console.log(move(oDiv,'left'));
+		function move(obj,cssName)
+		{
+			if(obj.currentStyle)
+			{
+				return obj.currentStyle[cssName];
+
+			}
+			else{
+				return getComputedStyle(obj,null)[cssName];
+
+			}
+
+		}
+		//
+
+
+
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

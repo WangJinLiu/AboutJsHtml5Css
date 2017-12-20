@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<span>美女</span><br>
+	<input type="text" id="inputleft"><input type="text" id="inputright"><br>
+
+	<span>帅哥</span><br>
+	<span>帅哥的手指数:</span>
+	<select name="" id="select1">
+		<option value="0">0</option>
+		<option value="5">5</option>
+		<option value="10">10</option>
+
+
+	</select>
+	<span>帅哥说的数:</span>
+	<select name="" id="select2">
+		<option value="0">0</option>
+		<option value="5">5</option>
+		<option value="10">10</option>
+		<option value="15">15</option>
+		<option value="20">20</option>
+	</select><br>
+	<input type="button" value="Come on!" id="but">
+	<script type="text/javascript">
+
+		var thebut=document.getElementById('but');
+		thebut.onclick=function(){
+
+			var num3=document.getElementById('select1').value;
+			var num4=document.getElementById('select2').value;
+			num3-=0;
+			num4-=0;
+			var girlHandInput=document.getElementById('inputleft');
+			var girlSayInput=document.getElementById('inputright');
+			var num1=0;//手指
+			var num2=0;//说的话
+			do{
+				num1=Math.floor(Math.random()*3)*5;//0-10(0,5,10)
+				num2=Math.floor(Math.random()*5)*5;//0-20(0,5,10,15,20)
+
+
+			}while(num1>num2||num2-num1>10);
+			girlHandInput.value=num1;
+			girlSayInput.value=num2;
+			
+
+
+
+		}
+
+
+
+
+
+
+	</script>
+</body>
+</html>

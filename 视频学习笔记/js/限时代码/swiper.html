@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="swiper-3.4.2.min.css">
+</head>
+<style>
+    .swiper-container{
+        width: 600px;
+        height: 300px;
+        background: green;
+    }
+
+    /*每个内容的样式*/
+    .swiper-slide{
+        width: 600px;
+        height: 100%;
+        background: red;
+        font-size: 50px;
+        text-align: center;
+        /*vertical-align:center;*/
+        /*line-height: 100%;*/
+        /*单纯的设置 文字上下居中 只能通过 设置 行高属性*/
+        line-height: 300px;
+    }
+</style>
+
+<body>
+	<div class = "swiper-container">
+	    <div class = "swiper-wrapper">
+	        <div class = "swiper-slide"><img src="img/1.jpg" alt=""></div>
+	        <div class = "swiper-slide">slid2</div>
+	        <div class = "swiper-slide">slid3</div>
+	    </div>
+	    <!-- 如果需要分页器-->
+	    <div class = "swiper-pagination"></div>
+	    <!-- 如果需要导航按钮 -->
+	    <div class = "swiper-button-prev"></div>
+	    <div class = "swiper-button-next"></div>
+	    <!-- 如果需要滚动条 -->
+	    <div class = "swiper-scrollbar"></div>
+	</div>
+	
+</body>
+<script src="swiper-3.4.2.min.js"></script>
+<script>
+    var mySwiper = new Swiper ('.swiper-container', {
+        //上下 
+        direction:'vertical',
+        // 是否 循环
+        loop:true,
+        // 如果需要 分页器
+        pagination:'.swiper-pagination',
+        // 如果需要前进后退按钮
+        nextButton:".swiper-button-next",
+        prevButton:".swiper-button-prev",
+        //如果需要滚动条
+        scrollbar:'.swiper-scrollbar'
+    })
+</script>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>限时代码</title>
+</head>
+<body>
+	<script>
+		var str='http://www.baidu.com?name=nihao&pwd=88&id=99';
+		var str1=str.split('?');
+		console.log(str1);
+		var str2=str1[1].split('&');
+		var obj=new Object();
+		console.log(str2);
+		for(var i=0;i<str2.length;i++){
+			var str3=str2[i].split("=");
+			console.log(str3);
+			
+			obj[str3[0]]=str3[1];
+
+		}
+		console.log(obj);
+		var m=change(str);
+		console.log(m);
+		function change(str){
+			var str1=str.split("?");
+			var str2=str1[1].split("&");
+			var obj=new Object();
+			for(var i=0;i<str2.length;i++){
+				var arr=str2[i].split("=");
+				// console.log(arr);
+				obj[arr[0]]=arr[1];
+				// console.log(obj);
+
+
+			}
+			return obj;
+		}
+
+
+	</script>
+	
+</body>
+</html>

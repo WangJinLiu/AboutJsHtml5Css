@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DOM-样式方法</title>
+	<style>
+
+
+	#thediv{
+		width: 100px;
+		height: 100px;
+		background: red;
+	}
+	</style>
+</head>
+<body>
+	<div id="thediv" style="border:1px"></div>
+	<script type="text/javascript">
+	var thediv=document.getElementById('thediv');
+	console.log(thediv.style.background);//获取不到，因为style属性没写在行间
+	//通过.style方式只能获取行间样式
+	thediv.style.backgroundColor='green';
+	//css中间隔符的写法要改成驼峰
+
+	//getComputedStyle 此方法不兼容ie 
+	//’DOM2级样式“，增强了document.defaultView提供了getComputedStyle（）方法，这个方法接受两个参数：1.要取得样式的元素  2.伪元素字符串（例如after，before这些），如果不需要伪元素信息，第二个参数可以写null；这个方法返回返回一个CSSStyleDeclaration对象，其中包含当前元素的所有计算的样式
+	var style1=document.defaultView.getComputedStyle(thediv,null);
+	console.log(style1.height);
+
+	// thediv.currentStyle.width;
+	//在ie里的专属方法
+
+	//两个方法都会返回浏览器内部样式表的信息
+	
+
+
+
+
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

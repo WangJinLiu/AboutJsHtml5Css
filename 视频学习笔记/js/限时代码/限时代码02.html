@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>限时代码</title>
+	<style>
+	.a1{
+		width: 50px;
+		height: 50px;
+		background: red;
+		position: absolute;
+		left: 0;
+		top: 0;
+
+	}
+	.a2{
+		width: 50px;
+		height: 50px;
+		background: red;
+		position: absolute;
+		left: 0;
+		top:200px;
+		
+	}
+
+	</style>
+</head>
+<body>
+	<div class="a1"></div>
+	<div class="a2"></div>
+	
+</body>
+<script type="text/javascript">
+var sa=document.getElementsByTagName('div');
+for(var i=0;i<sa.length;i++){
+	sa[i].onclick=function()
+	{
+		var m=this;
+		var step=0;
+		var timer=setInterval(function()
+		{
+			step++;
+			m.style.left=step+'px';
+			if(step>500){
+				clearInterval(timer);
+			}
+
+
+		},10)
+	}
+}
+
+</script>
+</html>

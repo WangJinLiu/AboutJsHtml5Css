@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>面向对象作业1</title>
+	<style>
+	*{margin:0;padding:0;}
+		.wrap{
+			width: 500px;
+			height: 500px;
+			border:1px solid;
+			position: relative;
+		}
+		.left{
+			width: 80px;
+			height: 80px;
+			background: red;
+			position: absolute;
+			left: 0;
+			top: 90px;
+
+		}
+		.right{
+			width: 80px;
+			height: 80px;
+			background: green;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="left"></div>
+		<div class="right"></div>
+	</div>
+	
+</body>
+<!-- <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js" charset="utf-8"></script> -->
+<script src="jquery.js"></script>
+
+<script>
+	move($(".left"));
+	move($(".right"));
+	function move(aa){
+
+		aa.on("mousedown",function(ev){
+			var x=ev.clientX;
+			var y=ev.clientY;
+			var xb=aa.position().left;
+			var yb=aa.position().top;
+			$(document).on("mousemove",function(ev1){
+				aa.css({
+					left:ev1.clientX-x+xb,
+					top:ev1.clientY-y+yb
+				})
+				pengzhuang($(".left"),$(".right"),function(value){
+					if(value){
+						console.log("碰上啦")
+					}else{
+						console.log("没碰上");
+					}
+
+				});
+				
+
+			})
+			aa.mouseup(function(){
+				//移除on添加的事件
+				$(document).off();
+
+			})
+
+		})
+	}
+	
+	
+
+
+
+	
+
+
+
+
+
+	// 拖拽碰撞
+	function pengzhuang(a,b,fn){
+		//假设a动b不动
+		var xmin=b.position().left-a.width();
+		var xmax=b.position().left+b.width();
+		var ymin=b.position().top-a.height();
+		var ymax=b.position().top+b.height();
+		if(a.position().left>=xmin&&a.position().left<=xmax&&a.position().top>=ymin&&a.position().top<=ymax){
+			if(fn){
+				fn(true);
+			}
+		}else{
+			if(fn){
+				fn(false);
+			}
+		}
+
+
+
+	}
+
+</script>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>三目运算符</title>
+</head>
+<body>
+	
+	<script type="text/javascript">
+	//判断两个值大小，然后输出较大的值
+	// var a=10;
+	// var b=20;
+	// if(a>b){
+	// 	alert(a);
+	// }
+	// else{
+	// 	alert(b);
+	// }
+	// var c=a>b?a:b;
+	// alert(c);
+
+
+	//随便输入两个数，求两个数的最小值并弹出
+	// var a=parseInt(prompt('输入一个数'));
+	// var b=parseInt(prompt('输入第二个数'));
+	// var c=a<b?a:b;
+	// alert(c);
+
+	//在input标签中分别输入两个数，求较小的那个数，并弹出(value数据类型字符串)
+	window.onload=function(){
+	var button2=document.getElementById('button1');
+	var d=document.getElementById('input1');
+	var d1=document.getElementById('input2');
+	console.log(button2);
+	console.log(d);
+	console.log(d1);
+
+	button2.onclick=function(){
+
+		var d2=parseInt(d.value);
+		var d3=parseInt(d1.value);
+		var c=d2<d3?d2:d3;
+		alert(c);
+	}
+}
+	
+	</script>
+	<input type="text" id="input1">
+	<input type="text" id="input2">
+	<button id="button1">点击</button>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>一维数组扩展</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var num1='h';
+		var num2=2;
+		var num3=3;
+		//Array.of是将一组值转换成数组
+		var array=Array.of(num1,num2,num3);
+		console.log(array);
+
+		var str='hello';
+		//Arroy.from将字符串转换成数组
+		console.log(Array.from(str));
+
+		var arr=[1,2,3,4,5];
+		var find=arr.find(function(value)
+		{
+			return value>2;//>2的第一个元素
+		})
+		console.log(find);
+		var arr=[8,9,10,11]
+		var find=arr.findIndex(function(value)
+		{
+			return value>2;
+		})
+		console.log(find);
+
+		var arr=[1,2,3,4];
+		arr=arr.fill(4);
+		console.log(arr);
+
+		var arr=[1,2,3,4];
+		arr=arr.fill(6,1,2);//6元素，1开始位置，2结束位置
+		console.log(arr);
+
+		var array=[1,5,6,2,9];
+		for(var i in array)
+		{
+			console.log(i,array[i]);
+		}
+
+		var arr01=[1,2,3];
+		var arr02=[3,4,5];		
+		console.log(arr01.concat(arr02));
+		
+		//Array.of是将一组值转换成数组
+		//Arroy.from将字符串转换成数组
+		//find（）：找出数组中符合条件的第一个元素
+		//findIndex（）：找出数组中符合条件的元素的下标
+		//fill（）：全部填充
+		//fill():用指定的值填充到数组，并且替换元素；第一个值：填充位置；
+		// 第二个值： 起始位置；第三个值： 结束位置；
+		//for in 循环
+		//concat（）:连接数组，并返回一个新的数组。
+	</script>
+</body>
+</html>

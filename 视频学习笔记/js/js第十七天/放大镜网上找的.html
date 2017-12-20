@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+				*{ 
+		 margin: 0; 
+		 padding: 0; 
+		} 
+		div{ 
+		 position: relative; 
+		} 
+		div>div{ 
+		 width: 300px; 
+		 height: 300px; 
+		 float: left; 
+		 margin: 100px; 
+		 overflow: hidden; 
+		} 
+		#img_min>img{ 
+		 /*display: block;*/
+		 width: 300px; 
+		} 
+		#img_max{ 
+		 display: none; 
+		   
+		} 
+		#img_max>img{ 
+		 position: absolute; 
+		 top: 0; 
+		 left: 0; 
+		 display: block; 
+		 width: 1500px; 
+		} 
+		#mousebg{ 
+		 display: none; 
+		 position: absolute; 
+		 width: 60px; 
+		 height: 60px; 
+		 background-color: rgba(255,255,255,.7); 
+		 top: 0; 
+		 left: 0; 
+		}
+		#img_min{
+			left: 100px;
+
+		}
+	</style>
+</head>
+<body>
+	<div id="wrapper"> 
+ 	<!--小图-->
+	  	<div id="img_min"> 
+	  	<!--图片-->
+	  		<img src="img/yifu.jpg" alt="min"> 
+	  	<!--跟随鼠标的白块-->
+	  		<p id="mousebg"></p> 
+	  	</div> 
+	  	<!--大图-->
+	  	<div id="img_max">
+	  		<img id="img2_img" src="img/yifu.jpg" alt="max">
+	  	</div> 
+ 	</div>
+ 	<script type="text/javascript">
+		 window.onload = function () { 
+			 var minBox = document.getElementById('img_min');//小图盒子 
+			 var maxBox = document.getElementById('img_max');//大图盒子 
+			 var maxImg = document.getElementById('img2_img');//大图图片 
+			 var wrap = document.getElementById('wrapper'); 
+			 var mousebg = document.getElementById('mousebg');//鼠标白块 
+			 var mul = 5; 
+			 //当某一个模块dispaly:none的时候不能使用offsetWidth获取它的宽高 
+			 minBox.onmouseover = function () { 
+				  //鼠标进入 
+				  maxBox.style.display = 'block'; 
+				  mousebg.style.display = 'block'; 
+			    
+			 } 
+			 minBox.onmouseout = function () { 
+				  //鼠标离开 
+				  maxBox.style.display = 'none'; 
+				  mousebg.style.display = 'none'; 
+			 } 
+			 minBox.onmousemove = function (event) { 
+				  var _event = event||window.event;//兼容性处理 
+				  
+				  var mouseX = _event.clientX - wrap.offsetLeft - minBox.offsetLeft; 
+				  //计算鼠标相对与小图的位置 
+				  var mouseY = _event.clientY - wrap.offsetTop - minBox.offsetTop; 
+				  
+			 	 //特殊情况处理，分别靠近四条边的时候 
+				  if(mouseX<mousebg.offsetWidth/2){ 
+				   	mouseX = mousebg.offsetWidth/2; 
+				  } 
+				  if(mouseX>minBox.offsetWidth-mousebg.offsetWidth/2){ 
+				  	mouseX = minBox.offsetWidth-mousebg.offsetWidth/2; 
+				  } 
+				  if(mouseY<mousebg.offsetHeight/2){ 
+				  	mouseY = mousebg.offsetHeight/2; 
+				  } 
+				  if(mouseY>minBox.offsetHeight-mousebg.offsetHeight/2){ 
+				   	mouseY = minBox.offsetHeight-mousebg.offsetHeight/2; 
+				  } 
+				  //计算大图的显示范围 
+				  maxImg.style.left = -mul*mouseX+maxBox.offsetWidth/2+"px"; 
+				  maxImg.style.top = -mul*mouseY+maxBox.offsetHeight/2+"px"; 
+				  // //使鼠标在白块的中间 
+				  mousebg.style.left = mouseX-mousebg.offsetWidth/2+"px"; 
+				  mousebg.style.top = mouseY-mousebg.offsetHeight/2+"px"; 
+			    
+			 } 
+		} 
+
+
+
+
+ 	</script> 
+	
+</body>
+</html>
